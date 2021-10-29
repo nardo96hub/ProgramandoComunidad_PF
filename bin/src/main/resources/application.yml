@@ -1,0 +1,23 @@
+logging:
+  file:
+    path: /file/log/
+  register-shutdown-hook: true
+
+spring:
+  datasource: 
+    url: jdbc:mysql://localhost:3306/comunidad?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql 
+  thymeleaf:
+   cache: false 
+
+
+
+   
+

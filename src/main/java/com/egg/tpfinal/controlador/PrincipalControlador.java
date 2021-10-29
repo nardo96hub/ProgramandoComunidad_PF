@@ -12,6 +12,7 @@ public class PrincipalControlador {
 	public String s() {
 		System.out.println("Soy Nardo");
 		System.out.println("Soy Fede");
+		System.out.println("Soy Karen");
 		return "test.html";
 	}
 }

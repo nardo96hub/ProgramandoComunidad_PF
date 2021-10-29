@@ -10,6 +10,8 @@ public class PrincipalControlador {
 
 	@GetMapping("/")
 	public String s() {
+		System.out.println("Soy Nardo");
+		System.out.println("Soy Fede");
 		return "test.html";
 	}
 }

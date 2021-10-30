@@ -50,12 +50,7 @@ public class Usuario {
 	public void setAlta(Boolean alta) {
 		this.alta = alta;
 	}
-	public String getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+
 	public Rol getRol() {
 		return rol;
 	}
@@ -65,7 +60,8 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", email=" + email + ", contrasena=" + contrasena + ", alta="
-				+ alta + ", telefono=" + telefono + ", rol=" + rol + "]";
+				+ alta  + ", rol=" + rol + "]";
+
 	}
 	
 	

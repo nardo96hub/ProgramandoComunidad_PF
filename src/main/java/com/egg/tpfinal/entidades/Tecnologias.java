@@ -11,8 +11,12 @@ public class Tecnologias {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	private Long	id_tecnologia;
 	private String	lenguaje;
+
+
+
 	
 	
 	public Long getId_tecnologia() {

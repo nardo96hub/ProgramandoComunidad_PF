@@ -1,6 +1,7 @@
 package com.egg.tpfinal.entidades;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Developer {
 	private Usuario usuario;
 	@OneToOne
 	private Foto foto;  
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Tecnologias>tecnologias;
 	
 	

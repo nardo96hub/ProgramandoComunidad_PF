@@ -6,8 +6,8 @@ import com.egg.tpfinal.repositorios.OngRepository;
 
 @Service
 public class OngService {
-	
-/*	
+/*
+
 	@Autowired
 	private OngRepository ONGRepo;
 	
@@ -56,7 +56,6 @@ public class OngService {
 	public ONG getONG(String ID) {
 		return ONGRepo.buscarPorID(ID);
 	}
-	*/
-	
+*/
 	
 }

@@ -1,6 +1,10 @@
 package com.egg.tpfinal.entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 @Entity
 public class Foto {
@@ -10,4 +14,4 @@ public class Foto {
 private Long id_foto;
 }
 
-}
+

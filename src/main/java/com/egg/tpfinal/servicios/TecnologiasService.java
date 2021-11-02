@@ -14,17 +14,17 @@ public class TecnologiasService {
 	private TecnologiaRepository RepoTec;
 	
 	public void guardarTecnologias(String lenguaje) throws Exception {
-		//Tecnologias tec=RepoTec.buscarLenguaje(lenguaje);
-		Tecnologias tec=null;
+		Tecnologias tec=RepoTec.buscarPorLenguaje(lenguaje);
+		
 		if(tec==null) {
 			tec=new Tecnologias();
 			tec.setLenguaje(lenguaje);
-			//RepoTec.save(tec);
+			RepoTec.save(tec);
 		}else throw new  Exception("Ya existe la tecnologia");
 		
 	}
 	public List<Tecnologias> listarTecnologias(){
-		return null;
-		//return RepoTec.findAll();
+		
+		return RepoTec.findAll();
 	}
 }

@@ -1,5 +1,6 @@
 package com.egg.tpfinal.servicios;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import com.egg.tpfinal.repositorios.OngRepository;
 
 @Service
 public class OngService {
-/*
+
 
 	@Autowired
 	private OngRepository ONGRepo;
@@ -21,16 +22,16 @@ public class OngService {
 		ong.setUsuario(usuario);
 		ong.setAlta(true);
 				
-		//ONGRepo.save(ong);
+		ONGRepo.save(ong);
 				
 	}
 	
-	public void borrarONG(String ID) {
+	public void borrarONG(Long ID) {
 		 EditarONGActivo(ID);
 	}
 	
-	private void EditarONGActivo(String ID) {
-		ONG ong = ONGRepo.buscarPorID(ID);	
+	private void EditarONGActivo(Long ID) {
+		ONG ong = getONG(ID);	
 		
 		if (ong != null) {
 			ong.setAlta(!ong.getAlta());
@@ -44,20 +45,21 @@ public class OngService {
 	}
 
 	public List<ONG> listarONGactivas() {
-		return ONGRepo.findActive();
+		return ONGRepo.listarONGactivas();
 	}
 	
-	public void editarOng(String ID, String marca, String nombre_rep, String apellido_rep,Usuario usuario){
+	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep,Usuario usuario){
 		
-		//ONG ong = ONGRepo.buscarPorID(ID);
+		ONG ong = getONG(ID);
 	
 		guardarOng(ong, marca, nombre_rep, apellido_rep, usuario);
 		
 	}
 	
-	public ONG getONG(String ID) {
-		return ONGRepo.buscarPorID(ID);
+	public ONG getONG(Long ID) {
+		Optional<ONG> ong=ONGRepo.findById(ID);
+		return ong.get();
 	}
-*/
+
 	
 }

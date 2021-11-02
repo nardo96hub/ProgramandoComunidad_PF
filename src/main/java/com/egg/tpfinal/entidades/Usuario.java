@@ -20,7 +20,7 @@ public class Usuario {
 	private	String	email;
 	private String	contrasena;
 	private Boolean alta;
-	private String telefono;
+
 	@Enumerated (EnumType.STRING)
 	private Rol	rol;
 	

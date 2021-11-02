@@ -3,7 +3,6 @@ package com.egg.tpfinal.repositorios;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.egg.tpfinal.entidades.Developer;
@@ -27,7 +26,7 @@ public interface DeveloperRepository extends JpaRepository<Developer,Long> {
 	public List<Developer> buscarPorAlguna3Tecnologias(@Param("tecno1") String tecno1, @Param("tecno2") String tecno2, @Param("tecno3") String tecno3);
 	
 	*/
-	/*@Query("SELECT d FROM Developer d WHERE d.tecnologias.lenguaje = :tecno")
+	/*@Query("SELECT d FROM Developer d WHERE d.tecnologias.lenguaje = :tecno1")
 	public List<Developer> buscarPorTecnologias(@Param("tecno1") String tecno);*/
 	
 	@Query("SELECT d FROM Developer d WHERE d.usuario.id_usuario = :idUsuario")

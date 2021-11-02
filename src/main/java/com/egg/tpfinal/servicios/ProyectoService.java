@@ -19,22 +19,22 @@ public class ProyectoService {
 		return ProyectoRepo.findAll();
 	}
 	
-	public List<Proyecto> listarProyectosActivos() {
+	/*public List<Proyecto> listarProyectosActivos() {
 		return ProyectoRepo.findActive();
-	}
+	}*/
 	
-	public void EditarProyectoActivo(String ID) {
+	/*public void EditarProyectoActivo(String ID) {
 		//Proyecto proyecto = ProyectoRepo.buscarPorID(ID);
 		Proyecto proyecto = null;
 		if(proyecto != null) {
 			proyecto.setAlta(!proyecto.getAlta());
 		// ProyectoRepo.save(proyecto);
 		}
-	}
+	}*/
 	
-	public void borrarProyecto(String ID) {
+	/*public void borrarProyecto(String ID) {
 		EditarProyectoActivo(ID);
-	}
+	}*/
 	
 //	public void editarProyecto(String ID, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
 //		Proyecto proyecto = ProyectoRepo.buscarPorID(ID);

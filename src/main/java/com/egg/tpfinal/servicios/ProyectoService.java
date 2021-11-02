@@ -3,7 +3,6 @@ package com.egg.tpfinal.servicios;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.egg.tpfinal.entidades.Developer;
@@ -27,13 +26,12 @@ public class ProyectoService {
 	
 	public void EditarProyectoActivo(Long ID) {
 		Proyecto proyecto = buscarPorID(ID);
-		
 		if(proyecto != null) {
 			proyecto.setAlta(!proyecto.getAlta());
 		 ProyectoRepo.save(proyecto);
 		}
 	}
-	
+
 	public void borrarProyecto(Long ID) {
 		EditarProyectoActivo(ID);
 	}
@@ -58,8 +56,9 @@ public class ProyectoService {
 		Proyecto proyecto = new Proyecto();
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
+	
 	public Proyecto buscarPorID(Long ID) {
-		Optional<Proyecto> p=ProyectoRepo.findById(ID);
+		Optional<Proyecto> p = ProyectoRepo.findById(ID);
 		return p.get();
 	}
 	

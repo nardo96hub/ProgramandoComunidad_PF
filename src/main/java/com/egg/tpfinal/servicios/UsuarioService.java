@@ -2,6 +2,7 @@ package com.egg.tpfinal.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,23 +30,15 @@ public class UsuarioService  implements UserDetailsService{
 	
 	//Metodo para guardar en crear/editar
 	public void guardarUsuario(Usuario u,String email,String contrasena,Rol rol) {
-		
 		u.setContrasena(contrasena);
 		u.setEmail(email);
 		u.setRol(rol);
-		
 		u.setAlta(true);
-		
-		//RepoUsu.save(u);  //Falta Repositorio sea hija de JPARepository
-		
+		RepoUsu.save(u);
 	}
 	
-	@SuppressWarnings("unused") //Luego se borraria 
 	public void crearUsuario(String email,String contrasena, Rol rol) throws Exception {
-		//Usuario u=RepoUsu.buscarUsuarioEmail(email);  Cambiar cuando este los repositorio
-		
-		Usuario u =null; //Se borraria cuando este implementado los Repositorios 
-	
+		Usuario u=RepoUsu.buscarPorEmail(email);
 		if(u!=null)
 			throw new Exception("Usuario ya registrado");
 		else {
@@ -55,76 +48,48 @@ public class UsuarioService  implements UserDetailsService{
 	}
 	
 	public void editarUsuario(String email, String contrasena,Rol rol) throws Exception{
-		//Usuario u=RepoUsu.buscarUsuarioEmail(email);
-		Usuario u = new Usuario(); // Se borra al implementar repositorio
+		Usuario u=RepoUsu.buscarPorEmail(email);
 		guardarUsuario(u,email,contrasena,rol);
 	}
 	
-	
 	public void editarAlta(Long id) {
-		//Usuario u=RepoUsu.BuscarId(id);
-		Usuario u =new Usuario(); // Se borra en el futuro
-		
+		Usuario u = getUsuario(id);
 		if(u!=null) {
 			u.setAlta(!u.getAlta());
-			//RepoUsu.save(u);
+			RepoUsu.save(u);
 		}
 	}
 	
 	public void eliminarUsuario(Long id) {
-	
-		
 		editarAlta(id);
-		
-		
 	}
 	
-	
-	
-	/*
-	 
-	  Faltan metodos de obtener Usuarios segun las consultas 
-	  
-	 */
-	
 	public List<Usuario> mostrarUsuarioActivos(){
-	//	return RepoUsu.ListarUsuarioActivo;
-		return null;
+		return RepoUsu.listarUsuariosActivos();
 	}
 	
 	public List<Usuario> mostrarUsuarios(){
-		//return RepoUsu.findAll();
-		return null;
+		return RepoUsu.findAll();
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		//Usuario u=RepoUsu.buscarUsuario(email);
-		Usuario u=new Usuario();
+		Usuario u=RepoUsu.buscarPorEmail(email);
 		if(u==null) {
 			return null;
 		}
-		
 		List<GrantedAuthority> permisos = new ArrayList<>();
 		GrantedAuthority p1=new SimpleGrantedAuthority("ROLE_"+u.getRol());
-		
 		permisos.add(p1);
-		
 		ServletRequestAttributes attr=(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		HttpSession session=attr.getRequest().getSession(true);
 		session.setAttribute("usuariosession", u);
-		
-		
 		return new User(email,u.getContrasena(),permisos);
+	}
+	
+	public Usuario getUsuario(Long ID) {
+		Optional<Usuario> u = RepoUsu.findById(ID);
+		return u.get();
 	}
 	
 }

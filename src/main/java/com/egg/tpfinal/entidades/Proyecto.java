@@ -25,10 +25,10 @@ public class Proyecto {
 	@Temporal (TemporalType.DATE)
 	private Date fecha_post;
 	
-	private Boolean	admitir_deve;
+	private Boolean	admitir_deve; //se setea en false cuando el proyecto ya tiene 5 developers
 	private Boolean	alta;
 	@OneToMany
-	private List<Developer> Developer;	
+	private List<Developer> developer;	
 	@OneToOne
 	private ONG	ong;
 	
@@ -70,10 +70,10 @@ public class Proyecto {
 		this.alta = alta;
 	}
 	public List<Developer> getDeveloper() {
-		return Developer;
+		return developer;
 	}
-	public void setDeveloper(List<Developer> developer) {
-		Developer = developer;
+	public void setDeveloper(List<Developer> developer1) {
+		developer = developer1;
 	}
 	public ONG getOng() {
 		return ong;
@@ -84,7 +84,7 @@ public class Proyecto {
 	@Override
 	public String toString() {
 		return "Proyecto [id_proyecto=" + id_proyecto + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", fecha_post="
-				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + Developer
+				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + developer
 				+ ", ong=" + ong + "]";
 	}
 	

@@ -21,6 +21,7 @@ import enumeracion.Rol;
 
 @Controller
 @RequestMapping("/registrodev")
+
 public class DeveloperControlador {
 	@Autowired
 	private TecnologiasService ServiTec;
@@ -59,15 +60,17 @@ public class DeveloperControlador {
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);
 		//	ServiUsu.guardarUsuario(u, user, pass, Rol.DEVE);
 			
-		
 			ServiDev.crearDeveloper(u, name, apellido, tel, null, tecnologias); //crea y guarda
 			
+			return "redirect:/";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();	
+			
+			return "redirect:/registrodev";
 		}
 		
-		return "redirect:/";
+		//return "redirect:/";
 	}
 	
 	

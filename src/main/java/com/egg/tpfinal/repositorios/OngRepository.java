@@ -26,8 +26,8 @@ public interface OngRepository extends JpaRepository <ONG, Long>{
 	@Query("SELECT o FROM ONG o WHERE o.nombre_rep = :nombre AND o.apellido_rep=:apellido")
 	public List<ONG>buscarporRepresentante(@Param("nombre") String nombre, @Param("apellido")String apellido );
 	
-	@Query("SELECT o FROM ONG o WHERE o.usuario.id_usuario= :idUsuario")
-	public ONG buscarONGporidUsuario (@Param("idUsuaruio") Long id);
+	//@Query("SELECT o FROM ONG o WHERE o.usuario.id_usuario= :idUsuario")
+	//public ONG buscarONGporidUsuario (@Param("idUsuaruio") Long id);
 	
 	/*@Query("SELECT o FROM ONG WHERE o.publicaciones.id_proyecto= :idproyecto")
     public List<ONG> proyectosPorOng(@Param("idproyecto")Long Id );*/

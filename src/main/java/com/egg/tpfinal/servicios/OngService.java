@@ -61,7 +61,9 @@ public class OngService {
 		return ong.get();
 	}
 
-	public ONG buscarONGporidUsuario(Long ID) {
-		return ONGRepo.buscarONGporidUsuario(ID);
+	public Optional<ONG> buscarONGporidUsuario(Long ID) {
+	//	return ONGRepo.buscarONGporidUsuario(ID);
+		return ONGRepo.findById(ID);
+		
 	}
 }

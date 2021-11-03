@@ -40,20 +40,41 @@
           <button class="ingresar">Volver</button>
         </nav>
 
-        <div class="contenedor">
+
+       <!-- <nav><button>Ingresar</button></nav>-->
+       <!-- <form  method="POST" th:action="@{/ong/crearong}" th:objet=${ONG}>
+            <div class="form-group"><label for="Marca">Marca</label><input type="text" ></div>
+            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" th:field="*{nombre_rep}"></div>
+            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" th:field="*{apellido_rep}"></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com" th:field="*{usuario.email}"></div>
+            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" th:field="*{usuario.contrasena}"></div>
+
+            <button type="submit">Cargar datos</button>
+            <button type="submit">Cargar foto</button>
+        </form>-->
+		<!-- se comento despues de un pull que hizo auto merge 
+		<form  method="POST" th:action="@{/ong/crearong}" >
+            <div class="form-group"><label for="Marca">Marca</label><input type="text" name="marca" ></div>
+            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name"></div>
+            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape"></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com" name="user" ></div>
+            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
+-->
+		<div class="contenedor">
         <div class="centrar">
-        <form action="POST">
-            <div class="form-group"><label for="Marca">Marca</label><input type="text"></div>
-            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text"></div>
-            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text"></div>
-            <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com"></div>
-            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password"></div>
+        <form action="POST" th:action="@{/ong/crearong}" >
+            <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca"></div>
+            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name"></div>
+            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape"></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com"  name="user"></div>
+            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
 
             <div class="botones">           
             <button class="boton" type="submit">Cargar datos</button>
             <button class="boton" type="submit">Cargar foto</button>
             </div>
         </form>
+
 
 
     </div>

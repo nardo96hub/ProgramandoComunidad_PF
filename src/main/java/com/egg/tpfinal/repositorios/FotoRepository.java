@@ -8,4 +8,5 @@ import com.egg.tpfinal.entidades.Foto;
 @Repository
 public interface FotoRepository extends JpaRepository<Foto, Long>{
 
+	
 }

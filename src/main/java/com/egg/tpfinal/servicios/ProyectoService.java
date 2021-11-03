@@ -1,6 +1,6 @@
 package com.egg.tpfinal.servicios;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

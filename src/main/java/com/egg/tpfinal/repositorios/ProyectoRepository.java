@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.Proyecto;
 
 @Repository
@@ -30,6 +31,10 @@ public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
 	@Query("SELECT p FROM Proyecto p WHERE p.ong.id = :idONG")
 	public List<Proyecto> buscarPorIdONG(@Param("idONG") Long id);
 	
+	//public List<Proyecto> findByDeveloper(List<Developer> developer);
+	
+	@Query("SELECT p.developer from Proyecto p WHERE p.id_proyecto = :id_proyecto")
+	public List<Developer> listadeveloper(@Param("id_proyecto") Long id);
 	
 	
 }

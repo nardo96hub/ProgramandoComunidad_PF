@@ -28,23 +28,6 @@
 }
 
 .logo {
-<<<<<<< HEAD
-  height: 50px;
-  width: auto;
-  margin: 10px;
-  margin-left: 20px;
-}
-
-.ingresar {
-  background: #7dde92;
-  border-radius: 20px;
-  width: 100px;
-  padding: 2px;
-  float: right;
-  margin: 20px;
-  border: none;
-  font-family: "Poppins";
-=======
 	height: 50px;
 	width: auto;
 	margin: 10px;
@@ -60,7 +43,6 @@
 	margin: 20px;
 	border: none;
 	font-family: "Poppins";
->>>>>>> bae5a1b003c2d153978f395fe5bfce8554d18e5d
 }
 
 img {
@@ -79,68 +61,6 @@ img {
 }
 
 .descripcion {
-<<<<<<< HEAD
-  position: absolute;
-  top: 10px;
-  width: 40%;
-  left: 53%;
-  margin-top: 100px;
-}
-
-.titulo {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: bold;
-}
-
-p {
-  font-family: "Quicksand";
-  font-style: normal;
-  font-weight: bold;
-}
-
-footer {
-  height: 10vh;
-  width: 100%;
-  background-color: #2ebfa5;
-  position: absolute;
-  padding: 20px;
-  font-family: "Quicksand";
-  font-size: 18px;
-}
-
-i {
-  display: inline-block;
-}
-
-
-.boton {
-  position: relative;
-  height: 70vh;
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 0.5fr 0.5fr 1fr 0.5fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-  "vacio titulo titulo vacio"
-  "vacio icono-d icono-o vacio"
-  "vacio boton-d boton-o vacio";
-  gap: 0.5rem;
-}
-
-.ong-icono {
-  height: 200px;
-  width: auto;
-  grid-area: voto-o;
-}
-
-.developer-icono {
-  height: 200px;
-  width: auto;
-  grid-area: icono-d;
-}
-
-=======
 	position: absolute;
 	top: 10px;
 	width: 40%;
@@ -180,7 +100,6 @@ i {
 	background-color: #F8FFE5;
 
 	}
->>>>>>> bae5a1b003c2d153978f395fe5bfce8554d18e5d
 
 .developer {
 	background: #4e4187;
@@ -190,15 +109,6 @@ i {
 	border: none;
 	color: white;
 	font-family: "Poppins";
-<<<<<<< HEAD
-	grid-area: boton-d;
-  }
-  
-  .developer:hover {
-	background: #2f2657;
-  }
-  .ong {
-=======
 	font-size: 20px;
 	margin-left: -85px;
 	
@@ -209,7 +119,6 @@ i {
 }
 
 .ong {
->>>>>>> bae5a1b003c2d153978f395fe5bfce8554d18e5d
 	background: #7dde92;
 	border-radius: 20px;
 	width: 250px;
@@ -217,24 +126,6 @@ i {
 	border: none;
 	color: black;
 	font-family: "Poppins";
-<<<<<<< HEAD
-	grid-area: boton-o;
-	
-  }
-  
-  .ong:hover {
-	background: #55af69;
-  }
-
-  .titulo-botones{
-	  grid-column-start:2 ;
-	  grid-column-end: 3;
-	  justify-content: center;
-	  align-items:center ;
-  }
-
- 
-=======
 	font-size: 20px;
 	margin-left: 25px;
 	}
@@ -259,4 +150,3 @@ i {
 	
 	
 }
->>>>>>> bae5a1b003c2d153978f395fe5bfce8554d18e5d

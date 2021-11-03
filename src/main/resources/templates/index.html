@@ -28,18 +28,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/inicio.css" />
+    <link rel="stylesheet" href="/inicio.css" />
   </head>
   <body>
     <!-- Content here -->
 
     <nav class="barra">
-      <img src="../static/logo.png" alt="logo" class="logo">
+      <img src="/logo.png" alt="logo" class="logo">
       <button class="ingresar">Ingresar</button>
+       <button class="qs">¿Quienes somos?</button>
     </nav>
 
     <div class="contenido">
-      <img src="../static/foto-inicio.png" alt="fondo-programacion" />
+      <img src="/foto-inicio.png" alt="fondo-programacion" />
       <div class="descripcion">
       <h1 class="titulo">
         Lorem ipsum dolor, sit amet consectetur amet
@@ -52,21 +53,57 @@
       </p>
     </div>
     
-    </div>       <h1 class="titulo-botones">Elegí como registrarte</h1>
+    </div>
+
+	
+		<div class="boton">
+		<div class="row">
+		 <div class="col-sm-3"></div>
+		 <div class="col-sm-6"><h1 class="titulo-botones">Elegí como registrarte</h1></div>
+		 <div class="col-sm-1"></div>
+		</div>
+		
+		
+		<div class="row">
+		 <div class="col-sm-1"></div>
+		 <div class="col-sm-5"><img class="developer-icono" src="/logo-developer.png" alt=""></div>
+		 <div class="col-sm-5"><img class="ong-icono" src="/logo-ong.png" alt=""></div>
+		 <div class="col-sm-1"></div>
+		</div>
+		
+		
+		
+		
+				 
+		
+		<div class="row">
+		 <div class="col-sm-3"></div>
+		 <div class="col-sm-4"><button class="developer">Developer</button></div>
+		 <div class="col-sm-4"><button class="ong">ONG</button></div>
+		 <div class="col-sm-3"></div>
+		</div>
+		</div>
+		
+
+		
+		
+
 
     <div class="boton">
       <div class="roles">
         <div class="dev">
-        <img class="developer-icono" src="../static/icono-developer.png" alt="">
-          <button class="developer">Developer</button> 
+        <img class="developer-icono" src="/icono-developer.png" alt="">
+        	<a class="developer btn" th:href="@{/registrodev}">Developer </a>
+
       </div>
        
         <div class="gno">
-        <img class="ong-icono" src="../static/icono-ong.png" alt="">
+        <img class="ong-icono" src="/icono-ong.png" alt="">
         <button class="ong">ONG</button>
       </div>
       </div>
     </div>
+
     <footer>
       Contacto:
       <i class="fab fa-instagram fa-2x"></i>

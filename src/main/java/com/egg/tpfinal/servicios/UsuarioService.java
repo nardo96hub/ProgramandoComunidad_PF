@@ -28,13 +28,15 @@ public class UsuarioService  implements UserDetailsService{
 	private UsuarioRepository RepoUsu;
 	
 	
-	//Metodo para guardar en crear/editar
-	public void guardarUsuario(Usuario u,String email,String contrasena,Rol rol) {
+	//Metodo para setear usuario
+	public Usuario seteoUsuario(String email,String contrasena,Rol rol) {
+		Usuario u = new Usuario();
 		u.setContrasena(contrasena);
 		u.setEmail(email);
 		u.setRol(rol);
 		u.setAlta(true);
-		RepoUsu.save(u);
+		
+		return u;
 	}
 	
 	public void crearUsuario(String email,String contrasena, Rol rol) throws Exception {
@@ -43,13 +45,15 @@ public class UsuarioService  implements UserDetailsService{
 			throw new Exception("Usuario ya registrado");
 		else {
 			u=new Usuario();
-			guardarUsuario(u, email, contrasena,  rol);
+			//guardarUsuario(u, email, contrasena,  rol);
 		}
 	}
 	
 	public void editarUsuario(String email, String contrasena,Rol rol) throws Exception{
 		Usuario u=RepoUsu.buscarPorEmail(email);
-		guardarUsuario(u,email,contrasena,rol);
+		//guardarUsuario(u,email,contrasena,rol);
+		//editar usuario y volverselo a setear a developer o ong y persistir en esas entidades
+		
 	}
 	
 	public void editarAlta(Long id) {
@@ -91,5 +95,10 @@ public class UsuarioService  implements UserDetailsService{
 		Optional<Usuario> u = RepoUsu.findById(ID);
 		return u.get();
 	}
+	
+	public void saveUsuario(Usuario usuario) {
+		RepoUsu.save(usuario);
+	}
+	
 	
 }

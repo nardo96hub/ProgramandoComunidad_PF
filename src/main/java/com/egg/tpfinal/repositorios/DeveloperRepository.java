@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.egg.tpfinal.entidades.Developer;
+import com.egg.tpfinal.entidades.Tecnologias;
+
 
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer,Long> {
@@ -31,4 +33,12 @@ public interface DeveloperRepository extends JpaRepository<Developer,Long> {
 	
 	@Query("SELECT d FROM Developer d WHERE d.usuario.id_usuario = :idUsuario")
 	public Developer buscarPorIdUsuario(@Param("idUsuario") Long id);
+	
+	//Socio findByEmailLike(String email);
+	//public List<Tecnologias> FindById(Long id); 
+	
+	@Query("SELECT d.tecnologias FROM Developer d WHERE d.id_developer = :idDeveloper")
+	public List<Tecnologias> buscarTecnologiasporId(@Param("idDeveloper") Long id);
+	
+	
 }

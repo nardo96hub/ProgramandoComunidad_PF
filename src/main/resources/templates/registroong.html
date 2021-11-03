@@ -1,23 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Programando Comunidades</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/registro.css" />
 </head>
 
 <body>
-    <div class="container">
+    
         <!-- Content here -->
+        <nav>
+            <nav class="barra">
+          <img src="../static/logo.png" alt="logo" class="logo">
+          <button class="ingresar">Volver</button>
+        </nav>
+
 
        <!-- <nav><button>Ingresar</button></nav>-->
        <!-- <form  method="POST" th:action="@{/ong/crearong}" th:objet=${ONG}>
@@ -30,18 +52,32 @@
             <button type="submit">Cargar datos</button>
             <button type="submit">Cargar foto</button>
         </form>-->
+		<!-- se comento despues de un pull que hizo auto merge 
 		<form  method="POST" th:action="@{/ong/crearong}" >
             <div class="form-group"><label for="Marca">Marca</label><input type="text" name="marca" ></div>
             <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name"></div>
             <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape"></div>
             <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com" name="user" ></div>
             <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
+-->
+		<div class="contenedor">
+        <div class="centrar">
+        <form action="POST" th:action="@{/ong/crearong}" >
+            <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca"></div>
+            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name"></div>
+            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape"></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com"  name="user"></div>
+            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
 
-            <button type="submit">Cargar datos</button>
-            <button type="submit">Cargar foto</button>
+            <div class="botones">           
+            <button class="boton" type="submit">Cargar datos</button>
+            <button class="boton" type="submit">Cargar foto</button>
+            </div>
         </form>
 
 
+
+    </div>
     </div>
     <footer>Contacto:
         <i class="fab fa-instagram"></i>

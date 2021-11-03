@@ -96,6 +96,11 @@ public class UsuarioService  implements UserDetailsService{
 		return u.get();
 	}
 	
+	public Usuario getUsuarioEmail(String email) {
+		Usuario u = RepoUsu.buscarPorEmail(email);
+		return u;
+	}
+	
 	public void saveUsuario(Usuario usuario) {
 		RepoUsu.save(usuario);
 	}

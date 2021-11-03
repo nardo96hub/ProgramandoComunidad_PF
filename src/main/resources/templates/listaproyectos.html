@@ -10,17 +10,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+  <div class="contenedor">
       <nav><button>Cerrar sesión</button></nav>
       <h1>Proyectos disponibles</h1>
-       <div>
-        <h2>Titulo Proyecto</h2>
-        <h2>Nombre ONG</h2>
-        <h2>Fecha</h2>
-        <p>Cuerpo</p>
-        <p>Cantidad develop</p>
-        <button>Unirse</button>
-
-
+      
+       <div class="centrar">
+       	<div th:each="proyecto : ${proyectos} ">
+	        <h2 th:text="${proyecto.titulo}"></h2>
+	        <h2 th:text="${proyecto.marca}"></h2>
+	        <h2 th:text="${proyecto.fecha_post}"></h2>
+	        <p th:text="${proyecto.cuerpo}"></p>
+<!-- 	        <p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> -->
+		</div>
+       </div>
        </div>
       
     <!-- Optional JavaScript -->

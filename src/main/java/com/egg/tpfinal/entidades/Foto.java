@@ -13,6 +13,7 @@ public class Foto {
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private Long id_foto;
 private String url_foto;
+
 public Long getId_foto() {
 	return id_foto;
 }

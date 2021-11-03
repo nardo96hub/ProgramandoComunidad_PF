@@ -11,13 +11,12 @@
   padding: 0;
 }
 
-.logo{
-	height: 50px;
-	width: auto;
-	margin: 10px;
-	margin-left: 20px;
+.logo {
+  height: 50px;
+  width: auto;
+  margin: 10px;
+  margin-left: 20px;
 }
-
 
 .ingresar {
   background: #7dde92;
@@ -27,8 +26,7 @@
   float: right;
   margin: 20px;
   border: none;
-  font-family: 'Poppins';
-
+  font-family: "Poppins";
 }
 
 img {
@@ -50,113 +48,99 @@ img {
   position: absolute;
   top: 10px;
   width: 40%;
-  left:53%;
+  left: 53%;
   margin-top: 100px;
 }
 
 .titulo {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: bold;
 }
 
-p{
-	font-family: 'Quicksand';
-	font-style: normal;
-	font-weight: bold;
+p {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: bold;
+}
+
+footer {
+  height: 10vh;
+  width: 100%;
+  background-color: #2ebfa5;
+  position: absolute;
+  padding: 20px;
+  font-family: "Quicksand";
+  font-size: 18px;
+}
+
+i {
+  display: inline-block;
 }
 
 
-
-footer{
-	height: 10vh;
-	width: 100%;
-	background-color: #2EBFA5;
-	position: absolute;
-	padding: 20px;
-	font-family: 'Quicksand';
-	font-size: 18px;
+.boton {
+  position: relative;
+  height: 70vh;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.5fr 0.5fr 1fr 0.5fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "vacio titulo titulo vacio"
+  "vacio icono-d icono-o vacio"
+  "vacio boton-d boton-o vacio";
+  gap: 0.5rem;
 }
 
-i{
-	display: inline-block;
+.ong-icono {
+  height: 200px;
+  width: auto;
+  grid-area: voto-o;
 }
 
-.developer{
-	background: #4E4187;
+.developer-icono {
+  height: 200px;
+  width: auto;
+  grid-area: icono-d;
+}
+
+
+.developer {
+	background: #4e4187;
 	border-radius: 20px;
 	width: 150px;
 	padding: 10px;
 	border: none;
 	color: white;
-	font-family: 'Poppins';
-	margin-right: 50px;
-}
-
-.developer:hover{
+	font-family: "Poppins";
+	grid-area: boton-d;
+  }
+  
+  .developer:hover {
 	background: #2f2657;
-}
-.ong{
-	background: #7DDE92;
+  }
+  .ong {
+	background: #7dde92;
 	border-radius: 20px;
 	width: 150px;
 	padding: 10px;
 	border: none;
 	color: black;
-	font-family: 'Poppins';
-}
-
-.ong:hover{
+	font-family: "Poppins";
+	grid-area: boton-o;
+	
+  }
+  
+  .ong:hover {
 	background: #55af69;
+  }
 
-}
+  .titulo-botones{
+	  grid-column-start:2 ;
+	  grid-column-end: 3;
+	  justify-content: center;
+	  align-items:center ;
+  }
 
-
-.boton{
-	height: 50vh;
-	width: 100%;
-	background-color: #F8FFE5;
-	position: relative;
-	display: flex;
-}
-.roles{
-	position: absolute;
-	left: 35%;
-    top: 20%;
-
-}
-
-.developer-icono{
-	height: 100px;
-	width: auto;
-	display: block;
-	margin-left: 30px;
-	margin-bottom: 10px;
-
-}
-
-.ong-icono{
-	height: 100px;
-	width: auto;
-	display: block;
-	margin-left: 30px;
-	margin-bottom: 10px;
-}
-
-.dev{
-	float: left;
-}
-
-.gno{
-	float: right;
-}
-
-.titulo-botones{
-	font-family: 'Poppins';
-  font-style: normal;
-  font-weight: bold;
-  text-align: center;
-  position: relative;
-  margin-top: 30px;
-}
-
+ 

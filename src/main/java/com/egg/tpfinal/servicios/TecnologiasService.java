@@ -20,11 +20,14 @@ public class TecnologiasService {
 			tec=new Tecnologias();
 			tec.setLenguaje(lenguaje);
 			RepoTec.save(tec);
-		}else throw new  Exception("Ya existe la tecnologia");
+		}//else throw new  Exception("Ya existe la tecnologia");
 		
 	}
 	public List<Tecnologias> listarTecnologias(){
 		
 		return RepoTec.findAll();
+	}
+	public List<Tecnologias> listarTecnologiasUnicas(){
+		return RepoTec.listarLenguajes();
 	}
 }

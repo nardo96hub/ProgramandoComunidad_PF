@@ -3,6 +3,9 @@ package com.egg.tpfinal.servicios;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.egg.tpfinal.entidades.*;
 import com.egg.tpfinal.repositorios.DeveloperRepository;
 
@@ -13,6 +16,10 @@ public class DeveloperService {
 	@Autowired
 	private DeveloperRepository DevRepo;
 	
+	@Autowired
+	private UsuarioService userServi;
+	
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public void guardarDeveloper(Developer dev, Usuario usuario, String tel, String nombre, String apellido, Foto foto, List<Tecnologias> tec) {
 		dev.setNombre(nombre);
 		dev.setApellido(apellido);
@@ -21,6 +28,8 @@ public class DeveloperService {
 		dev.setTelefono(tel);
 		dev.setUsuario(usuario);
 		dev.setFoto(null);
+//		userRepo.save(dev.getUsuario());
+		userServi.saveUsuario(usuario);
 		DevRepo.save(dev);
 	}
 	
@@ -34,8 +43,16 @@ public class DeveloperService {
 	}
 	
 	public void crearDeveloper(Usuario usuario, String nombre, String apellido, String tel, Foto foto, List<Tecnologias> tec) throws Exception {
-		Developer dev = new Developer();
+		
+		
+		Developer dev =  DevRepo.buscarPorEmail(usuario.getEmail());
+		if(dev==null) {
+		dev = new Developer();
 		guardarDeveloper(dev, usuario, tel, nombre, apellido, foto, tec);
+		}else {
+			throw new Exception("el email ya existe");
+		}
+		
 	}
 	
 	public List<Developer> listarTodosDeveloper() {
@@ -60,5 +77,8 @@ public class DeveloperService {
 		return d.get();
 	}
 	
+	public void saveDeveloper(Developer developer) {
+		DevRepo.save(developer);
+	}
 	
 }

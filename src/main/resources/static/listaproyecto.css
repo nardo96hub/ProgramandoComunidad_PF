@@ -1,0 +1,58 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+
+h2{
+    font-family: "quicksand";
+    font-size:20px; 
+    padding: 20px;
+
+}
+
+h1{
+    font-family: "Poppins";
+    text-align: center;
+}
+
+.centrar{
+    height: 40vh;
+    border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+	overflow: hidden;
+	width: 95%;
+
+}
+
+.row{
+	width: 100%;
+	margin-top: 30px;
+}

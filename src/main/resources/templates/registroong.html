@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/registro.css" />
+    <link rel="stylesheet" href="/registro.css" />
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         <nav>
             <nav class="barra">
           <img src="/logo.png" alt="logo" class="logo">
-          <button class="ingresar">Volver</button>
+          <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
 
 
@@ -69,9 +69,10 @@
             <div class="form-group"><label for="email">Email</label><input type="email" placeholder="asd@asd.com"  name="user"></div>
             <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
 
-            <div class="botones">     
+            <div class="botones">
+            <button class="boton" type="submit">Cargar datos</button>      
             <button class="boton">Cargar foto</button>   
-            <button class="boton" type="submit">Cargar datos</button>          
+                     
             </div>
         </form>
 

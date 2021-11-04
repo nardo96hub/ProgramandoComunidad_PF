@@ -15,11 +15,11 @@
       <h1>Developer disponibles</h1>
       
        <div class="centrar">
-       	<div th:each="developer : ${listaTec} ">
+       	<div th:each="developer : ${listaDev} ">
 	        <h2 th:text="${developer.nombre}"></h2>
 	        <h2 th:text="${developer.apellido}"></h2>
 	        <h2 th:text="${developer.telefono}"></h2>
-	        <p th:text="${developer.usuario.email}"></p>
+	       <!-- <p th:text="${developer.usuario.email}"></p>-->
               <!-- VER COMO AGREGAR FOTO Y TECNOLOGIAS -->
 
 		</div>

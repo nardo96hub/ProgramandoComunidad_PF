@@ -19,15 +19,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/listaproyecto.css" />
+  <link rel="stylesheet" href="/listaproyecto.css" />
 </head>
 
 <body>
 
   <div class="contenedor">
     <nav class="barra">
-      <img src="../static/logo.png" alt="logo" class="logo">
-      <button class="ingresar">Volver</button>
+      <img src="/logo.png" alt="logo" class="logo">
+      <a href="/principal"><button class="ingresar">Volver</button></a>
     </nav><br>
     <h1>Proyectos disponibles</h1>
     <div class="row">
@@ -39,7 +39,7 @@
       <div class="col-sm-9">
         <div class="centrar">
           <div class="col-sm-8">
-            <div th:each="proyecto : ${proyectos} ">
+            <div th:each="proyecto : ${listaProyecto} ">
               <h2 th:text="${proyecto.titulo}"></h2>
               <h2 th:text="${proyecto.marca}"></h2>
               <h2 th:text="${proyecto.fecha_post}"></h2>

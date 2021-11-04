@@ -31,7 +31,7 @@ public class ONG {
 		private Foto foto;
 		@OneToMany
 		private List<Proyecto> publicaciones;
-		
+		//Ver si hace falta los JoinColumn
 		
 		public Long getId_ong() {
 			return id_ong;

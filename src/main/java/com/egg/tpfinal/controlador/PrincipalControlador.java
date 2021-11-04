@@ -13,4 +13,12 @@ public class PrincipalControlador {
 		return "index.html";
 	}
 	
+	@GetMapping("/quienesomos")
+	public String quiensoy() {
+		return "quienesomos";
+	}
+	@GetMapping("/principal")
+	public String principal() {
+		return "principal";
+	}
 }

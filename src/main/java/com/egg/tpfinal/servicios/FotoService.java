@@ -40,7 +40,13 @@ public class FotoService {
 	        	   url_imagen = upload_folder+1;
 	           }
 	           
+	           String extension = file.getOriginalFilename().substring ( file.getOriginalFilename().indexOf("."), file.getOriginalFilename().length());
+	           System.out.println(extension);
+	           //"1.jpeg
+	           // file.getOriginalFilename().substring ( file.getOriginalFilename().indexOf("."), file.getOriginalFilename().length());
+	           	url_imagen = url_imagen+extension;
 	            Path path = Paths.get(url_imagen);
+	            
 	            Files.write(path,bytes);
 	            foto = new Foto(url_imagen);
 	                    

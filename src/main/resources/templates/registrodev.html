@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/registro.css" />
+    <link rel="stylesheet" href="/registro.css" />
 </head>
 
 <body>
@@ -27,23 +27,29 @@
 
     
         <nav class="barra">
-            <img src="../static/logo.png" alt="logo" class="logo">
+            <img src="/logo.png" alt="logo" class="logo">
             <button class="ingresar">Volver</button>
         </nav>
         <div class="contenedor">
             <div class="centrar">
-                <form action="POST">
-                    <div class="form-group"><label for="nombre">Nombre</label><input type="text"></div>
-                    <div class="form-group"><label for="apellido">Apellido</label><input type="text"></div>
-                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text"></div>
-                    <div class="form-group"><label for="email">Email</label><input type="email"
+                <form  action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
+                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name"></div>
+                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido"></div>
+                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel"></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" name="user"
                             placeholder="asd@asd.com"></div>
-                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password"></div>
+                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
+                    
                     <br>
-                    <div class="form-check">
+                    
+                  	 <div class="form-group" style="margin-bottom:70px" >
+                     <input type="file" name="file" class="boton" > 
+                     </div>
+                   
+                    <div class="form-check" >
 
                        
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="java" id="flexCheckDefault" name="lenguajes">
                     <label class="form-check-label" for="tecnologia">
                         Java
                     </label><br>
@@ -76,7 +82,7 @@
                     </label>
 
                 </div>
-
+					
                     <div class="botones">
                         <button class="boton" type="submit">Enviar</button> 
                         <button class="boton">Cargar foto</button>

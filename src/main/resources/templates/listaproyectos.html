@@ -19,50 +19,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/listaproyecto.css" />
+  <link rel="stylesheet" href="../static/listaproyecto.css" />
 </head>
 
 <body>
-
-  <div class="contenedor">
-    <nav class="barra">
-      <img src="/logo.png" alt="logo" class="logo">
-      <a href="/principal"><button class="ingresar">Volver</button></a>
+   <nav class="barra">
+      <img src="../static/logo.png" alt="logo" class="logo">
+      <button class="ingresar">Volver</button>
     </nav><br>
-    <h1>Proyectos disponibles</h1>
-    <div class="row">
-      <div class="col-sm-3">
-        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
+        <h1 class="titulo">Proyectos disponibles</h1>
+
+<div class="contenedor">
+   
+        <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
           aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
-          ducimus.</h2>
-    </div>
-      <div class="col-sm-9">
-        <div class="centrar">
-          <div class="col-sm-8">
-            <div th:each="proyecto : ${listaProyecto} ">
-              <h2 th:text="${proyecto.titulo}"></h2>
-              <h2 th:text="${proyecto.marca}"></h2>
-              <h2 th:text="${proyecto.fecha_post}"></h2>
-              <p th:text="${proyecto.cuerpo}"></p>
+          ducimus.</h2> 
+          <div class="centrar">
+          <div class="proyecto" th:each="proyecto : ${proyectos} ">
+              <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2>
+              <h2 class="marca" th:text="${proyecto.marca}">Marca</h2>
+              <h2 class="fecha" th:text="${proyecto.fecha_post}">4/11/2021</h2>
+              <p  class="cuerpo" th:text="${proyecto.cuerpo}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error voluptate ea quas unde omnis delectus, culpa quibusdam, porro dolor commodi laboriosam fuga perferendis. In, unde amet quidem laborum impedit velit?</p>
               <!--<p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> -->
             </div>
-      </div>
-    </div>
-      <!-- <div class="centrar">
-			<h1>Libros</h1>
-		<div th:each="libro : ${libros}">
-			<div th:class="(${libro.alta == true}? libro-ind:libro-borde)" >
-			<h1>Título</h1>
-		 	<h2 th:text="${libro.titulo}"></h2>
-		 	<h1>Autor</h1>
-			<h2 th:text="${libro.autor.nombre}"></h2>
-			<h1>Editorial</h1>
-			<h2 th:text="${libro.editorial.nombre}"></h2>
-			</div>
-		</div>
--->
-  </div>
-
+        </div>
+ </div>
 
   
 

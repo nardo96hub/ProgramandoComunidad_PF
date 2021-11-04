@@ -78,7 +78,5 @@ public class OngControlador {
 		ServiOng.borrarONG(id);
 		return "redirect:/";
 	}
-	
-	
 
 }

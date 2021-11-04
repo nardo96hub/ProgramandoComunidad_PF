@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ import com.egg.tpfinal.servicios.ProyectoService;
 import com.egg.tpfinal.servicios.UsuarioService;
 
 @Controller
-@RequestMapping("proyect")
+@RequestMapping("/proyect")
 public class ProyectoControlador {
 	
 	@Autowired
@@ -35,32 +36,55 @@ public class ProyectoControlador {
 	
 	@GetMapping("/publicarproyecto")
 	public String registrar() {
-		
 		return "publishproyectTest.html";
 	}
 	
 	@PostMapping("/procesarform")
 	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo) {
 		//el email se obtendra por sesion o por json o otro
-		
 		String email_usuario="user1@gmail.com"; 
 		//reemplazar linea anterior cuando la seguridad o token o json o alternativa este hecha
 		Usuario user = userServi.getUsuarioEmail(email_usuario);
 		//hacer validacion de usuario null
-		ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get(); //arreglar en futuras versiones
+		ONG ongaux = new ONG();
+		for (ONG ong : OngServi.listarONGactivas()) {
+			if (ong.getUsuario().getId_usuario() == user.getId_usuario()) {
+				ongaux = ong;
+			} else { //redireccionar a sign up?
+				
+			}
+		}
+		//ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get(); //arreglar en futuras versiones
 		Date date = new Date();
 		List<Developer> list = new ArrayList<Developer>();
-		proyecServi.crearProyecto(titulo, cuerpo, date, list, ong);
-		return "redirect:/";
+		proyecServi.crearProyecto(titulo, cuerpo, date, list, ongaux);
+		return "redirect:/"; // falta vista
 	}
 	
-	@GetMapping()
+	@GetMapping("/proyecto")
 	public String mostrarproyectos(ModelMap mod) {
 		List<Proyecto> lp = proyecServi.listarProyectosActivos();
 		mod.addAttribute("listaProyecto", lp);
-		return "";
+		return ""; // falta vista
 	}
 	
+	@GetMapping("/eliminarproyecto/{id}")
+	public String eliminarProyecto(@PathVariable Long id) {
+		proyecServi.borrarProyecto(id);
+		return "redirect:/"; // falta vista
+	}
 	
+	/* EN SEGUNDA VERSION
+	public String editarProyecto() {
+		return "";
+	}
+	*/
+	
+	@GetMapping("/proyecto/{id}") // revisar
+	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
+		Proyecto proyecto = proyecServi.buscarPorID(id);
+		mod.addAttribute("proyecto", proyecto);
+		return ""; // falta vista
+	}
 	
 }

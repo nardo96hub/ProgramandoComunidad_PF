@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
@@ -38,7 +39,9 @@ public class DeveloperControlador {
 	}
 	
 	@PostMapping()
-	public String cargardev(@RequestParam List<String> lenguajes,@RequestParam String user,@RequestParam String pass, @RequestParam String name, @RequestParam String apellido,@RequestParam String tel) {
+	public String cargardev(@RequestParam List<String> lenguajes,
+			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
+			@RequestParam String apellido,@RequestParam String tel,@RequestParam("file") MultipartFile foto) {
 		try {
 			List<Tecnologias> tecnologias= new ArrayList<Tecnologias>();
 			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
@@ -47,11 +50,14 @@ public class DeveloperControlador {
 				tecnologias.add(tecn);
 			//	System.out.println(tec);
 			}
+			
 			/*System.out.println("\nLista de tecnologias");
 			for (Tecnologias t : tecnologias) {
 				System.out.println(t);
 			}*/
+			
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);
+			
 		//	ServiUsu.guardarUsuario(u, user, pass, Rol.DEVE);
 			ServiDev.crearDeveloper(u, name, apellido, tel, null, tecnologias); //crea y guarda
 			return "redirect:/";

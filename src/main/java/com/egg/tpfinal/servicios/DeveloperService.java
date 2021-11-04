@@ -27,7 +27,7 @@ public class DeveloperService {
 		dev.setTecnologias(tec);// ver como se arma en el front
 		dev.setTelefono(tel);
 		dev.setUsuario(usuario);
-		dev.setFoto(null);
+		dev.setFoto(foto);
 //		userRepo.save(dev.getUsuario());
 		userServi.saveUsuario(usuario);
 		DevRepo.save(dev);

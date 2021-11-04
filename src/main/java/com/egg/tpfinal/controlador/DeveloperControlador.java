@@ -75,7 +75,7 @@ public class DeveloperControlador {
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
 			return "redirect:/";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();	
 			return "redirect:/registrodev";
 		}

@@ -8,13 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.egg.tpfinal.entidades.Foto;
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.servicios.DeveloperService;
+import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.TecnologiasService;
 import com.egg.tpfinal.servicios.UsuarioService;
 
@@ -29,20 +32,23 @@ public class DeveloperControlador {
 	private DeveloperService ServiDev;
 	@Autowired
 	private UsuarioService ServiUsu;
-	
+	@Autowired
+	private FotoService ServiFoto;
 	
 	@GetMapping()
 	public String mostrardev(ModelMap mod){
 		List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();
 		mod.addAttribute("listaTec", lt);
-		return "registrodevtest.html";
+		return "registrodev.html";
 	}
 	
-	@PostMapping()
+	@PostMapping("cargardev")
 	public String cargardev(@RequestParam List<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
-			@RequestParam String apellido,@RequestParam String tel,@RequestParam("file") MultipartFile foto) {
+			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file  ) {
+		System.out.println("entre");
 		try {
+			
 			List<Tecnologias> tecnologias= new ArrayList<Tecnologias>();
 			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
 				Tecnologias tecn=new Tecnologias();
@@ -58,8 +64,15 @@ public class DeveloperControlador {
 			
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);
 			
+			
+			Foto foto=null;
+			if(file != null) {
+				foto = ServiFoto.guardarfoto(file);//solo sube la foto al server(no persiste la url)
+				//se hizo asi porque sino no se guarda relacionada al developer
+			}
+			
 		//	ServiUsu.guardarUsuario(u, user, pass, Rol.DEVE);
-			ServiDev.crearDeveloper(u, name, apellido, tel, null, tecnologias); //crea y guarda
+			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
 			return "redirect:/";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

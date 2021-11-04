@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.egg.tpfinal.entidades.*;
 import com.egg.tpfinal.repositorios.DeveloperRepository;
+import com.egg.tpfinal.repositorios.FotoRepository;
 
 @Service
 public class DeveloperService {
@@ -19,6 +20,9 @@ public class DeveloperService {
 	@Autowired
 	private UsuarioService userServi;
 	
+	@Autowired
+	private FotoRepository fotoRepo;
+	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public void guardarDeveloper(Developer dev, Usuario usuario, String tel, String nombre, String apellido, Foto foto, List<Tecnologias> tec) {
 		dev.setNombre(nombre);
@@ -28,6 +32,10 @@ public class DeveloperService {
 		dev.setTelefono(tel);
 		dev.setUsuario(usuario);
 		dev.setFoto(foto);
+		
+		if(foto!=null) {
+		fotoRepo.save(foto);
+		}
 //		userRepo.save(dev.getUsuario());
 		userServi.saveUsuario(usuario);
 		DevRepo.save(dev);

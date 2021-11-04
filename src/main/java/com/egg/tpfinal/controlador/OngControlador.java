@@ -69,8 +69,8 @@ public class OngControlador {
 	public String listarong(Model mod) {
 		List<ONG> lo=ServiOng.listarONGactivas();
 		mod.addAttribute("listarOng",lo);
-		//return "listarong";
-		return "redirect:/";
+		return "listaong";
+		//return "redirect:/";
 	}
 	
 	@GetMapping("/eliminarong/{id}")

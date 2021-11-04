@@ -65,7 +65,7 @@ public class ProyectoControlador {
 	public String mostrarproyectos(ModelMap mod) {
 		List<Proyecto> lp = proyecServi.listarProyectosActivos();
 		mod.addAttribute("listaProyecto", lp);
-		return ""; // falta vista
+		return "listaproyectos"; // falta vista
 	}
 	
 	@GetMapping("/eliminarproyecto/{id}")

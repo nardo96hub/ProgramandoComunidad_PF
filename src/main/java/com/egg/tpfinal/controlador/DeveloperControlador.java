@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.Foto;
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
@@ -42,7 +43,7 @@ public class DeveloperControlador {
 		return "registrodev.html";
 	}
 	
-	@PostMapping("cargardev")
+	@PostMapping("/cargardev")
 	public String cargardev(@RequestParam List<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file  ) {
@@ -80,6 +81,13 @@ public class DeveloperControlador {
 			return "redirect:/registrodev";
 		}
 		//return "redirect:/";
+	}
+	
+	@GetMapping("/listardev")
+	public String listardev(ModelMap mod) {
+		List<Developer> ld= ServiDev.listarDeveloperActivos();
+		mod.addAttribute("listaDev", ld);
+		return "listadevelop";
 	}
 	
 }

@@ -14,6 +14,10 @@ public class Foto {
 private Long id_foto;
 private String url_foto;
 
+public Foto(String url_foto) {
+	
+	this.url_foto = url_foto;
+}
 public Long getId_foto() {
 	return id_foto;
 }

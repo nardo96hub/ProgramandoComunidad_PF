@@ -2,10 +2,12 @@ package com.egg.tpfinal.entidades;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -22,7 +24,8 @@ public class ONG {
 		private String	nombre_rep;
 		private String	apellido_rep;
 		private Boolean	alta;
-		@OneToOne
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
 		private Usuario	usuario;
 		@OneToOne
 		private Foto foto;

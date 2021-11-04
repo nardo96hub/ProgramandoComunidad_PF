@@ -4,7 +4,7 @@
 }
 
 .barra {
-	height: 10.5vh;
+	height: 11vh;
 	width: 100%;
 	background-color: #2d2d2d;
 	margin: 0;
@@ -27,26 +27,30 @@
 	margin: 20px;
 	border: none;
 	font-family: "Poppins";
+	border-width: 18px;
 }
 
 .contenedor{
 	position: relative;
-	height: 80vh;
+	height: 120vh;
 	background-color: #F8FFE5 ;
 }
 
 .centrar{
 	position: absolute;
-	height: 70vh;
+	height: 100vh;
 	width: 100vh;
 	padding: 2em;
 	background: rgba(125, 222, 146, 0.3);
-	border-radius: 32px;
 	top: 0;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	margin: auto;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37bba300);
+	border-image-slice: 4;
+	overflow: hidden;
 }
 
 footer {
@@ -83,10 +87,11 @@ input::placeholder{
 }
 
 .botones{
-	margin: 30px;
+	margin-top: 100px;
 	margin-right: 0;
 	float: right;
 }
+
 
 .boton{
 	background: #7DDE92;
@@ -97,6 +102,8 @@ input::placeholder{
 	padding-top: 7px;
 	padding-bottom: 7px;
 	font: 'Poppins';
+	float: right;
+	margin: 10px;
 }
 
 .form-check{

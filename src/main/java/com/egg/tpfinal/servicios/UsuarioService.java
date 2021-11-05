@@ -86,19 +86,27 @@ public class UsuarioService  implements UserDetailsService{
 	}
 
 	@Override
-	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		System.out.println(email);
 		Usuario u=RepoUsu.buscarPorEmail(email);
-		if(u==null) {
-			return null;
+		System.out.println(u.getContrasena());
+		System.out.println(u.getEmail());
+		
+		if(u!=null) {
+			List<GrantedAuthority> permisos = new ArrayList<>();
+			GrantedAuthority p1=new SimpleGrantedAuthority("ROLE_"+u.getRol().toString());
+			permisos.add(p1);
+			ServletRequestAttributes attr=(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			HttpSession session=attr.getRequest().getSession(true);
+			session.setAttribute("usuariosession", u);
+			return new User(email,u.getContrasena(),permisos);
+		}else {
+			
+		throw new UsernameNotFoundException("error");
+		
 		}
-		List<GrantedAuthority> permisos = new ArrayList<>();
-		GrantedAuthority p1=new SimpleGrantedAuthority("ROLE_"+u.getRol());
-		permisos.add(p1);
-		ServletRequestAttributes attr=(ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-		HttpSession session=attr.getRequest().getSession(true);
-		session.setAttribute("usuariosession", u);
-		return new User(email,u.getContrasena(),permisos);
+		
+		
 	}
 	
 	@Transactional(readOnly=true)

@@ -9,7 +9,7 @@
 	margin: 0;
 	padding: 0;
 }
-.logo {
+.logo  {
 	height: 50px;
 	width: auto;
 	margin: 10px;
@@ -25,4 +25,53 @@
 	margin: 20px;
 	border: none;
 	font-family: "Poppins";
+}
+
+
+
+
+.integrantes{
+	height: 150px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-color: #2ebfa5;
+	
+
+}
+
+
+
+i{
+	display: inline-block;
+}
+
+.nombre{
+	display: inline;
+	font-family: 'Poppins';
+	font-size: 13px;
+	margin-left: 2px;
+}
+
+.rol{
+	font-family: 'Quicksand';
+}
+
+.contenedor{
+	margin: 20px;
+	margin-top: 50px;
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
 }

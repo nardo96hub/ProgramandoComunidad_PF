@@ -41,15 +41,18 @@ public class DeveloperService {
 		DevRepo.save(dev);
 	}
 	
+	@Transactional
 	public void borrarDeveloper(Long ID) {
 		EditarDeveloperActivo(ID);
 	}
 	
+	@Transactional
 	public void editarDeveloper(Long ID, Usuario usuario, String nombre, String apellido, String tel, Foto foto, List<Tecnologias> tec) {
 		Developer dev = getDeveloper(ID);
 		guardarDeveloper(dev, usuario, nombre, apellido, tel, foto, tec);
 	}
 	
+	@Transactional
 	public void crearDeveloper(Usuario usuario, String nombre, String apellido, String tel, Foto foto, List<Tecnologias> tec) throws Exception {
 		
 		
@@ -63,14 +66,17 @@ public class DeveloperService {
 		
 	}
 	
+	@Transactional(readOnly=true)
 	public List<Developer> listarTodosDeveloper() {
 		return DevRepo.findAll();
 	}
 	
+	@Transactional(readOnly=true)
 	public List<Developer> listarDeveloperActivos() {
 		return DevRepo.listarDeveloperActivos();
 	}
 	
+	@Transactional
 	public void EditarDeveloperActivo(Long ID) {
 		Developer dev = getDeveloper(ID);
 		
@@ -80,11 +86,13 @@ public class DeveloperService {
 		}
 	}
 	
+	@Transactional(readOnly=true)
 	public Developer getDeveloper(Long ID) {
 		Optional<Developer> d=DevRepo.findById(ID);
 		return d.get();
 	}
 	
+	@Transactional
 	public void saveDeveloper(Developer developer) {
 		DevRepo.save(developer);
 	}

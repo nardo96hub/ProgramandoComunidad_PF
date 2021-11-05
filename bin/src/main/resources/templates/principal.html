@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/inicio.css" />
+    <link rel="stylesheet" href="../static/inicio.css" />
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light barra">
-        <a class="navbar-brand" href="#"><img src="/logo.png" alt="logo" class="logo"></a>
+        <a class="navbar-brand" href="#"><img src="../static/logo.png" alt="logo" class="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,24 +42,24 @@
             <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Developer</span> </a>
                 <div class="dropdown-menu" >
-                    <a class="dropdown-item fuente" href="/registrodev/" >Crear Developer</a>
-                    <a class="dropdown-item fuente" href="/registrodev/listardev">Listar Developer Activos</a>
+                    <a class="dropdown-item fuente" href="#" >Crear Developer</a>
+                    <a class="dropdown-item fuente" href="#">Listar Developer Activos</a>
                  
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Ong</span></a>
                 <div class="dropdown-menu" >
-                    <a class="dropdown-item fuente" href="/ong/crearong">Crear Ong</a>
-                    <a class="dropdown-item fuente" href="/ong/listarong">Listar Ong Activos</a>
+                    <a class="dropdown-item fuente" href="#">Crear Ong</a>
+                    <a class="dropdown-item fuente" href="#">Listar Ong Activos</a>
                 
                   </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Proyectos</span></a>
               <div class="dropdown-menu" >
-                <a class="dropdown-item fuente" href="/proyect/publicarproyecto">Crear Proyectos</a>
-                <a class="dropdown-item fuente" href="/proyect/proyecto">Listar Proyecto Activos</a>
+                <a class="dropdown-item fuente" href="#">Crear Proyectos</a>
+                <a class="dropdown-item fuente" href="#">Listar Proyecto Activos</a>
                
               </div> 
             </li>
@@ -70,21 +70,11 @@
                 </div>
 
             </li>-->
-            <li>
-						<div class="navbar-item active d-flex align-items-right justify-content-right">
-							
-						  	<!--<p class="nav-link mt-3" th:value="${session.usuariosession.NyA}"></p> 
-							<p class="nav-link mt-3" th:value="${#authentication.getPrincipal().getUsername()}"></p>  -->
-							<a th:href="@{/logout}" class="btn btn-primary mt-2">Logout</a>
-						</div>
-
-					</li>
-
           </ul>
           <div class="barra">
-        		
-                   <a th:href="@{/logout}"><button class="ingresar"th:if="${session.usuariosession!=null}">Logout</button></a><a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
-              
+                   <button class="ingresar">Logout</button> <button class="qs">¿Quienes somos?</button>
+            
+                
           </div>
           
         </div>
@@ -95,7 +85,7 @@
 
 
     <div class="contenido">
-        <img src="/foto-inicio.png" alt="fondo-programacion" />
+        <img src="../static/foto-inicio.png" alt="fondo-programacion" />
         <div class="descripcion">
             <h1 class="titulo">
                 Lorem ipsum dolor, sit amet consectetur amet

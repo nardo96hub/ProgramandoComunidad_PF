@@ -13,7 +13,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -31,7 +33,8 @@ public class UsuarioService  implements UserDetailsService{
 	//Metodo para setear usuario
 	public Usuario seteoUsuario(String email,String contrasena,Rol rol) {
 		Usuario u = new Usuario();
-		u.setContrasena(contrasena);
+		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena);
+		u.setContrasena(contraseniaEncriptada);
 		u.setEmail(email);
 		u.setRol(rol);
 		u.setAlta(true);
@@ -39,6 +42,7 @@ public class UsuarioService  implements UserDetailsService{
 		return u;
 	}
 	
+	@Transactional
 	public void crearUsuario(String email,String contrasena, Rol rol) throws Exception {
 		Usuario u=RepoUsu.buscarPorEmail(email);
 		if(u!=null)
@@ -49,6 +53,7 @@ public class UsuarioService  implements UserDetailsService{
 		}
 	}
 	
+	@Transactional
 	public void editarUsuario(String email, String contrasena,Rol rol) throws Exception{
 		Usuario u=RepoUsu.buscarPorEmail(email);
 		//guardarUsuario(u,email,contrasena,rol);
@@ -56,6 +61,7 @@ public class UsuarioService  implements UserDetailsService{
 		
 	}
 	
+	@Transactional
 	public void editarAlta(Long id) {
 		Usuario u = getUsuario(id);
 		if(u!=null) {
@@ -64,19 +70,23 @@ public class UsuarioService  implements UserDetailsService{
 		}
 	}
 	
+	@Transactional
 	public void eliminarUsuario(Long id) {
 		editarAlta(id);
 	}
 	
+	@Transactional(readOnly=true)
 	public List<Usuario> mostrarUsuarioActivos(){
 		return RepoUsu.listarUsuariosActivos();
 	}
 	
+	@Transactional(readOnly=true)
 	public List<Usuario> mostrarUsuarios(){
 		return RepoUsu.findAll();
 	}
 
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Usuario u=RepoUsu.buscarPorEmail(email);
 		if(u==null) {
@@ -91,16 +101,19 @@ public class UsuarioService  implements UserDetailsService{
 		return new User(email,u.getContrasena(),permisos);
 	}
 	
+	@Transactional(readOnly=true)
 	public Usuario getUsuario(Long ID) {
 		Optional<Usuario> u = RepoUsu.findById(ID);
 		return u.get();
 	}
 	
+	@Transactional(readOnly=true)
 	public Usuario getUsuarioEmail(String email) {
 		Usuario u = RepoUsu.buscarPorEmail(email);
 		return u;
 	}
 	
+	@Transactional
 	public void saveUsuario(Usuario usuario) {
 		RepoUsu.save(usuario);
 	}

@@ -37,10 +37,12 @@ public class OngService {
 				
 	}
 	
+	@Transactional
 	public void borrarONG(Long ID) {
 		 EditarONGActivo(ID);
 	}
 	
+	@Transactional
 	private void EditarONGActivo(Long ID) {
 		ONG ong = getONG(ID);	
 		
@@ -50,15 +52,17 @@ public class OngService {
 		}
 		
 	}
-	
+	 @Transactional(readOnly=true)
 	public List<ONG> listartodaslasONG() {
 		return ONGRepo.findAll();
 	}
 
+	 @Transactional(readOnly=true)
 	public List<ONG> listarONGactivas() {
 		return ONGRepo.listarONGactivas();
 	}
 	
+	@Transactional
 	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep,Usuario usuario){
 		
 		ONG ong = getONG(ID);
@@ -67,6 +71,7 @@ public class OngService {
 		
 	}
 	
+	@Transactional(readOnly=true)
 	public ONG getONG(Long ID) {
 		Optional<ONG> ong=ONGRepo.findById(ID);
 		return ong.get();
@@ -83,13 +88,13 @@ public class OngService {
 			throw new Exception("Ya se encuentra la Ong en BDD");
 		}
 	}
+	
+	@Transactional
 	public void saveOng(ONG ong) {
-		
-		 
-
 		ONGRepo.save(ong);
 	}
-
+	
+	@Transactional(readOnly=true)
 	public Optional<ONG> buscarONGporidUsuario(Long ID) {
 	//	return ONGRepo.buscarONGporidUsuario(ID);
 		return ONGRepo.findById(ID);

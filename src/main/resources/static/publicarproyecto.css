@@ -1,10 +1,11 @@
 * {
 	margin: 0;
 	padding: 0;
+    
 }
 
 .barra {
-	height: 11vh;
+	height: 10.5vh;
 	width: 100%;
 	background-color: #2d2d2d;
 	margin: 0;
@@ -27,30 +28,6 @@
 	margin: 20px;
 	border: none;
 	font-family: "Poppins";
-	border-width: 18px;
-}
-
-.contenedor{
-	position: relative;
-	height: 120vh;
-	background-color: #F8FFE5 ;
-}
-
-.centrar{
-	position: absolute;
-	height: 110vh;
-	width: 100vh;
-	padding: 2em;
-	background: rgba(125, 222, 146, 0.3);
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	margin: auto;
-	border: 6px solid transparent;
-	border-image: linear-gradient(to bottom,#7DDE92 , #37bba300);
-	border-image-slice: 4;
-	overflow: hidden;
 }
 
 footer {
@@ -61,6 +38,56 @@ footer {
 	padding: 20px;
 	font-family: "Quicksand";
 	font-size: 18px;
+}
+
+.contenedor{
+	position: relative;
+	height: 100vh;
+}
+.centrar{
+	position: absolute;
+	height: 70vh;
+    width: 80vh;
+    padding: 2em;
+	background: rgba(125, 222, 146, 0.3);
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#4E4187 , #3083DC);
+	border-image-slice: 4;
+	overflow: hidden;
+}
+
+.titulo{
+    font-family: 'Poppins';
+    font-size: 35px;
+  padding: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.boton{
+	background: #7DDE92;
+	border-radius: 20px;
+	border: none;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	font: 'Poppins';
+	float: right;
+	margin: 10px;
+    font-family: 'Poppins';
+    transition: all .2s ease-in-out;
+}
+
+.boton:hover{
+    background: #63c077;
+    scale: (1.1);
+    transform: scale(1.1);
 }
 
 input{
@@ -91,30 +118,3 @@ input::placeholder{
 	margin-right: 0;
 	float: right;
 }
-
-
-.boton{
-	background: #7DDE92;
-	border-radius: 20px;
-	border: none;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	font: 'Poppins';
-	float: right;
-	margin: 10px;
-	transition: all .2s ease-in-out;
-}
-
-.boton:hover{
-	background: #5eb972;
-	transform: scale(1.1);
-}
-
-
-.form-check{
-	height: 5vh;
-	width: 50%;
-}
-

@@ -44,6 +44,7 @@ public class OngControlador {
 	public String cargaong(@RequestParam String marca, @RequestParam String name,@RequestParam String ape,
 			@RequestParam String user,@RequestParam String pass,@RequestParam(value="file", required=false) MultipartFile file)
 	{
+		System.out.println("entre");
 		
 		try {
 		

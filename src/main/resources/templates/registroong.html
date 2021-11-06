@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+ <html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
+
   <head>
     <title>Programando Comunidades</title>
     <!-- Required meta tags -->
@@ -28,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/registroong.css" />
+    <link rel="stylesheet" href="/registroong.css" />
 </head>
 
 <body>
@@ -62,7 +64,7 @@
 -->
 		<div class="contenedor">
         <div class="centrar">
-        <form action="POST" th:action="@{/ong/crearong}" >
+        <form method="POST" th:action="@{/ong/crearong}" enctype="multipart/form-data">
             <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca"></div>
             <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name"></div>
             <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape"></div>
@@ -72,7 +74,9 @@
             <div class="botones">
             <button class="boton" type="submit">Cargar datos</button>      
             <button class="boton">Cargar foto</button>   
-                     
+                      <div class="form-group" style="margin-bottom:70px" >
+                     <input type="file" name="file" class="boton" > 
+                     </div>
             </div>
         </form>
 

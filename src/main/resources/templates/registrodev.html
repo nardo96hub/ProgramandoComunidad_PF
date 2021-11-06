@@ -46,7 +46,7 @@
                      <input type="file" name="file" class="boton" > 
                      </div>
                    
-                    <div class="form-check" >
+                   <!-- <div class="form-check" >
 
                        
                     <input class="form-check-input" type="checkbox" value="java" id="flexCheckDefault" name="lenguajes">
@@ -81,13 +81,26 @@
                         Ruby
                     </label>
 
-                </div>
+                </div>-->
+					<div class=form-check>
+						
+					<div th:each="tec: ${listaTec} " >
 					
-                    <div class="botones">
-                        <button class="boton" type="submit">Enviar</button> 
-                        <button class="boton">Cargar foto</button>
+						<input class="form-check-input" type="checkbox" th:value="${tec.lenguaje}"  name="lenguajes" id="flexCheckDefault" >
+						<label th:text="${tec.lenguaje}" for="tecnologia" class="form-check-label" ></label>
+					
+					</div>
 
-                       <!-- <a th:href="@{/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
+					
+                   
+                  <a th:href="@{/tecnologia/crearTecnologia} "style=""><button style="background: #7DDE92;border-radius: 20px; text-decoration:none; text-color:black; 	border: none;"> Ingresar Tecnologia</button></a>
+                   </div>
+                  
+                   <div class="botones">
+                        <button class="boton" type="submit">Enviar</button> 
+                   <!--  <button class="boton">Cargar foto</button>-->
+
+                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
                     </div>
 
                 </form>

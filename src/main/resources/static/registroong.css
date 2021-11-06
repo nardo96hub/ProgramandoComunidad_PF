@@ -32,13 +32,13 @@
 
 .contenedor{
 	position: relative;
-	height: 100vh;
+	height: 85vh;
 	background-color: #F8FFE5 ;
 }
 
 .centrar{
 	position: absolute;
-	height:70vh;
+	/*height:70vh;*/
 	width: 100vh;
 	padding: 2em;
 	background: rgba(125, 222, 146, 0.3);

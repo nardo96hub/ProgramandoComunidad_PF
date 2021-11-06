@@ -1,5 +1,7 @@
 package com.egg.tpfinal.entidades;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +32,21 @@ public class Tecnologias {
 	@Override
 	public String toString() {
 		return "Tecnologias [id_tecnologia=" + id_tecnologia + ", lenguaje=" + lenguaje + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id_tecnologia, lenguaje);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tecnologias other = (Tecnologias) obj;
+		return Objects.equals(id_tecnologia, other.id_tecnologia) && Objects.equals(lenguaje, other.lenguaje);
 	}
 	
 	

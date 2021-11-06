@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.egg.tpfinal.entidades.Foto;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Usuario;
+import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.OngService;
 import com.egg.tpfinal.servicios.UsuarioService;
 
@@ -29,21 +32,31 @@ public class OngControlador {
 	@Autowired
 	private OngService ServiOng;
 	
+	@Autowired
+	private FotoService ServiFoto;
+	
 	
 	@GetMapping("/crearong")
 	public String registro() {
 		return "registroong.html";
 	}
 	@PostMapping("/crearong")
-	public String cargaong(@RequestParam String marca, @RequestParam String name,@RequestParam String ape,@RequestParam String user,@RequestParam String pass)
+	public String cargaong(@RequestParam String marca, @RequestParam String name,@RequestParam String ape,
+			@RequestParam String user,@RequestParam String pass,@RequestParam(value="file", required=false) MultipartFile file)
 	{
 		
 		try {
 		
 			Usuario u =ServiUsu.seteoUsuario(user, pass, Rol.ONG);//Falta validar Usuario
 			
+			Foto foto=null;
+			if(file !=null) {
+				foto = ServiFoto.guardarfoto(file);//solo sube la foto al server(no persiste la url)
+				//se hizo asi porque sino no se guarda relacionada a la ong y no sabemos como funcionara la relacion con jointable
+				
+			}
 			
-			ServiOng.crearOng(u, marca, name, ape);
+			ServiOng.crearOng(u, marca, name, ape,foto);
 			System.out.println("Se creo bien");
 			return "redirect:/";
 		} catch (Exception e) {

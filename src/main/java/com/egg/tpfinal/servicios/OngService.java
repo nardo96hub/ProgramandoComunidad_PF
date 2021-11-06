@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.egg.tpfinal.entidades.*;
+import com.egg.tpfinal.repositorios.FotoRepository;
 import com.egg.tpfinal.repositorios.OngRepository;
 
 import enumeracion.Rol;
@@ -20,18 +21,23 @@ public class OngService {
 	private OngRepository ONGRepo;
 	@Autowired
 	private UsuarioService ServiUsu;
+	@Autowired
+	private FotoRepository fotoRepo;
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public void guardarOng(ONG ong,String marca, String nombre_rep, String apellido_rep,Usuario usuario) {
+	public void guardarOng(ONG ong,String marca, String nombre_rep, String apellido_rep,Usuario usuario, Foto foto) {
 		
 		ong.setMarca(marca);
 		ong.setNombre_rep(nombre_rep);
 		ong.setApellido_rep(apellido_rep);
 		ong.setUsuario(usuario);
 		ong.setAlta(true);
-		
+		ong.setFoto(foto);
 		ServiUsu.saveUsuario(usuario);
 		
+		if(foto!=null) {
+			fotoRepo.save(foto);
+		}
 		
 		ONGRepo.save(ong);
 				
@@ -63,11 +69,11 @@ public class OngService {
 	}
 	
 	@Transactional
-	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep,Usuario usuario){
+	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep,Usuario usuario, Foto foto){
 		
 		ONG ong = getONG(ID);
 	
-		guardarOng(ong, marca, nombre_rep, apellido_rep, usuario);
+		guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto);
 		
 	}
 	
@@ -78,11 +84,11 @@ public class OngService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public void crearOng(Usuario usuario,String marca,String nombre_rep,String apellido_rep) throws Exception {
+	public void crearOng(Usuario usuario,String marca,String nombre_rep,String apellido_rep, Foto foto) throws Exception {
 		ONG ong=ONGRepo.marcaOng(marca);//Se puede cambiar por email usuario
 		if(ong==null) {
 			ong=new ONG();
-			guardarOng(ong, marca, nombre_rep, apellido_rep, usuario);
+			guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto);
 			
 		}else {
 			throw new Exception("Ya se encuentra la Ong en BDD");

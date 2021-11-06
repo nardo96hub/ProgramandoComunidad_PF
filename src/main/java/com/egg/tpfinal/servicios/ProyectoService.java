@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
@@ -56,7 +58,7 @@ public class ProyectoService {
 		Proyecto proyecto = new Proyecto();
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
-	
+	@Transactional(readOnly = true)
 	public Proyecto buscarPorID(Long ID) {
 		Optional<Proyecto> p = ProyectoRepo.findById(ID);
 		return p.get();

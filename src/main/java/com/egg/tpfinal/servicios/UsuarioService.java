@@ -85,6 +85,7 @@ public class UsuarioService  implements UserDetailsService{
 		return RepoUsu.findAll();
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		System.out.println(email);

@@ -70,20 +70,31 @@
                 </div>
 
             </li>-->
+            
+            <!-- Intengo de mostrar Usuario -->
+            
+         <!--  
             <li>
 						<div class="navbar-item active d-flex align-items-right justify-content-right">
 							
-						  	<!--<p class="nav-link mt-3" th:value="${session.usuariosession.NyA}"></p> 
-							<p class="nav-link mt-3" th:value="${#authentication.getPrincipal().getUsername()}"></p>  -->
+						   <p class="nav-link mt-3" th:value="${session.usuariosession.NyA}"></p>
+							<p class="nav-link mt-3" th:value="${#authentication.getPrincipal().getUsername()}"></p> 
+							
+							
+							
 							<a th:href="@{/logout}" class="btn btn-primary mt-2">Logout</a>
 						</div>
 
-					</li>
+					</li>-->
 
           </ul>
           <div class="barra">
         		
-                   <a th:href="@{/logout}"><button class="ingresar"th:if="${session.usuariosession!=null}">Logout</button></a><a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
+                   <a th:href="@{/logout}"><button class="ingresar"th:if="${session.usuariosession!=null}">Logout</button></a>
+                   <a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
+               <!--  	Funciona mostrar Email
+	
+	<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> -->
               
           </div>
           

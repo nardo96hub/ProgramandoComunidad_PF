@@ -3,6 +3,7 @@ package com.egg.tpfinal.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import com.egg.tpfinal.servicios.UsuarioService;
 import enumeracion.Rol;
 
 @Controller
+
 @RequestMapping("/ong") 
 public class OngControlador {
 	
@@ -78,6 +80,7 @@ public class OngControlador {
 		return "redirect:/";
 	}
 	*/
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/listarong")
 	public String listarong(Model mod) {
 		List<ONG> lo=ServiOng.listarONGactivas();
@@ -85,7 +88,7 @@ public class OngControlador {
 		return "listaong";
 		//return "redirect:/";
 	}
-	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/eliminarong/{id}")
 	public String eliminarong(@PathVariable Long id) {
 		ServiOng.borrarONG(id);

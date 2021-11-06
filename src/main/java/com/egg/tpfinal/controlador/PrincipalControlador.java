@@ -1,5 +1,6 @@
 package com.egg.tpfinal.controlador;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class PrincipalControlador {
 	public String quiensoy() {
 		return "quienesomos";
 	}
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/principal")
 	public String principal() {
 		return "principal";

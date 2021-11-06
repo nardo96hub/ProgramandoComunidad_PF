@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import com.egg.tpfinal.servicios.UsuarioService;
 import enumeracion.Rol;
 
 @Controller
+
 @RequestMapping("/registrodev")
 public class DeveloperControlador {
 	@Autowired
@@ -35,6 +37,7 @@ public class DeveloperControlador {
 	private UsuarioService ServiUsu;
 	@Autowired
 	private FotoService ServiFoto;
+	
 	
 	@GetMapping()
 	public String mostrardev(ModelMap mod){
@@ -82,7 +85,7 @@ public class DeveloperControlador {
 		}
 		//return "redirect:/";
 	}
-	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/listardev")
 	public String listardev(ModelMap mod) {
 		List<Developer> ld= ServiDev.listarDeveloperActivos();

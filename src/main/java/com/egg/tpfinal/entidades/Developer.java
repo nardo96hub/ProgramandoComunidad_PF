@@ -1,5 +1,6 @@
 package com.egg.tpfinal.entidades;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -85,6 +86,24 @@ public class Developer {
 		return "Developer [id_developer=" + id_developer + ", nombre=" + nombre + ", apellido=" + apellido + ", alta="
 				+ alta + ", telefono=" + telefono + ", usuario=" + usuario + ", foto=" + foto + ", tecnologias="
 				+ tecnologias + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(alta, apellido, foto, id_developer, nombre, tecnologias, telefono, usuario);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Developer other = (Developer) obj;
+		return Objects.equals(alta, other.alta) && Objects.equals(apellido, other.apellido)
+				&& Objects.equals(foto, other.foto) && Objects.equals(id_developer, other.id_developer)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(tecnologias, other.tecnologias)
+				&& Objects.equals(telefono, other.telefono) && Objects.equals(usuario, other.usuario);
 	}
 	
 		

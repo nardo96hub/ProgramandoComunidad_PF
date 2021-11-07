@@ -31,10 +31,12 @@ public class ProyectoControlador {
 	
 	@Autowired
 	private ProyectoService proyecServi;
-	@Autowired
-	private UsuarioService userServi;
+	//@Autowired
+	//private UsuarioService userServi;
 	@Autowired
 	private OngService OngServi;
+	@Autowired
+	private DeveloperService deveServi;
 	
 	//@Autowired
 	//private DeveloperService devServi;
@@ -49,25 +51,28 @@ public class ProyectoControlador {
 			HttpSession session) {
 		//el email es obtenido por la session del usuario logeado
 		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
-		String email_usuario = ongLogeada.getEmail();
+		//String email_usuario = ongLogeada.getEmail();
 		
 		
-		Usuario user = userServi.getUsuarioEmail(email_usuario);
+	//	Usuario user = userServi.getUsuarioEmail(email_usuario);
 
-		ONG ongaux = new ONG();
+		//ONG ongaux = new ONG();
 		//optimizar siguiente codigo en futuras versiones, y ver que funcion cumple aqui
 		// aunque es una buena medida de seguridad, se prefiere hacer una sola consulta con email
-		for (ONG ong : OngServi.listarONGactivas()) {
+	/*	for (ONG ong : OngServi.listarONGactivas()) {
 			if (ong.getUsuario().getId_usuario() == user.getId_usuario()) {
 				ongaux = ong;
 			} else { //redireccionar a sign up?
 				
 			}
-		}
+		}*/
+		
+		ONG ongaux = OngServi.buscarONGporUsuario(ongLogeada);
+		
 		//ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get(); //arreglar en futuras versiones
 		Date date = new Date();
-		List<Developer> list = new ArrayList<Developer>(); //creo que no hace falta instanciar la lista
-		proyecServi.crearProyecto(titulo, cuerpo, date, list, ongaux);
+		
+		proyecServi.crearProyecto(titulo, cuerpo, date, new ArrayList<Developer>(), ongaux);
 		return "redirect:/principal"; // falta vista
 	}
 	
@@ -89,13 +94,33 @@ public class ProyectoControlador {
 		return "";
 	}
 	*/
+
+	@GetMapping("/postularse/{idProyecto}")
+	public String postularse(HttpSession session, @PathVariable Long idProyecto) {
+	
+		Usuario usuario = null;
+		try {
+		
+			Usuario login = (Usuario) session.getAttribute("usuariosession");
+			Developer deveAux= deveServi.getDeveloperporIdUser(login.getId_usuario());
+			
+			proyecServi.postularse( deveAux, idProyecto);
+			return "redirect:/proyect/proyecto/{idProyecto}";
+		
+		} catch (Exception e) {
+			return "redirect:/proyect/proyecto";
+		}
+		
+		
+	}
+	
 	
 	@GetMapping("/proyecto/{id}") // revisar
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
 		System.out.println(id);
 		Proyecto proyecto = proyecServi.buscarPorID(id);
 		mod.addAttribute("proyecto", proyecto);
-		return "proyectoindividual"; // falta vista
+		return "proyectoindividual";  
 	}
 	
 }

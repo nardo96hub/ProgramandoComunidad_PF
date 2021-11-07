@@ -88,10 +88,10 @@ public class UsuarioService  implements UserDetailsService{
 	@SuppressWarnings("unused")
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		System.out.println(email);
+	//	System.out.println(email);
 		Usuario u=RepoUsu.buscarPorEmail(email);
-		System.out.println(u.getContrasena());
-		System.out.println(u.getEmail());
+//		System.out.println(u.getContrasena());
+//		System.out.println(u.getEmail());
 		
 		if(u!=null) {
 			List<GrantedAuthority> permisos = new ArrayList<>();

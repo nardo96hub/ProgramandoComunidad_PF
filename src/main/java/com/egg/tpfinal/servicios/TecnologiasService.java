@@ -14,8 +14,9 @@ public class TecnologiasService {
 	private TecnologiaRepository RepoTec;
 	
 	public void guardarTecnologias(String lenguaje) throws Exception {
-		Tecnologias tec=RepoTec.buscarPorLenguaje(lenguaje);
 		
+		Tecnologias tec=RepoTec.buscarPorLenguaje(lenguaje);
+		lenguaje = lenguaje.toUpperCase();
 		if(tec==null) {
 			tec=new Tecnologias();
 			tec.setLenguaje(lenguaje);

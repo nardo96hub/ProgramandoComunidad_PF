@@ -43,7 +43,7 @@
              <p> <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2></p>
               
               <p  class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
-              <p><a href="@{/postularse}">postularse</a></p>
+              <p><a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}">postularse</a></p>	
               <!--<p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> -->
             </div>
         </div>

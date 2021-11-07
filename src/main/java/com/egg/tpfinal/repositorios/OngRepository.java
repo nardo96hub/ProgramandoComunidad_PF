@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.egg.tpfinal.entidades.ONG;
+import com.egg.tpfinal.entidades.Usuario;
 
 
 @Repository
@@ -31,6 +32,8 @@ public interface OngRepository extends JpaRepository <ONG, Long>{
 	
 	/*@Query("SELECT o FROM ONG WHERE o.publicaciones.id_proyecto= :idproyecto")
     public List<ONG> proyectosPorOng(@Param("idproyecto")Long Id );*/
+	
+	public ONG findByUsuario(Usuario usuario);
 	
 	
 }

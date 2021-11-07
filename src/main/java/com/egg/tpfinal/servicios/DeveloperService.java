@@ -97,4 +97,9 @@ public class DeveloperService {
 		DevRepo.save(developer);
 	}
 	
+	public Developer getDeveloperporIdUser(Long idUser) {
+		
+		return DevRepo.buscarPorIdUsuario(idUser);
+	}
+	
 }

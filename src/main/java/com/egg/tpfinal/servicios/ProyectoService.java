@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
+import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.repositorios.ProyectoRepository;
 
 @Service 
@@ -62,6 +63,31 @@ public class ProyectoService {
 	public Proyecto buscarPorID(Long ID) {
 		Optional<Proyecto> p = ProyectoRepo.findById(ID);
 		return p.get();
+	}
+
+	@Transactional
+	public void postularse( Developer deveAux, Long idProyecto) throws Exception{
+		
+		Proyecto proyecto = buscarPorID(idProyecto);
+		List<Developer> postulados= proyecto.getDeveloper();
+		 if( !postulados.contains(deveAux) && postulados.size()<9 && proyecto.getAdmitir_deve()) {
+			 
+			 postulados.add(deveAux);
+			 proyecto.setDeveloper(postulados);
+			 if(postulados.size()>=9) {
+				 proyecto.setAdmitir_deve(false);
+			 }
+			 
+			 
+			 ProyectoRepo.save(proyecto);
+		 }else {
+			 throw new Exception("no puede unirse a este proyecto");
+		 }
+		
+	
+		
+		
+		
 	}
 	
 }

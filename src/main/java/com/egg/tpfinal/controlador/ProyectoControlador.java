@@ -47,14 +47,16 @@ public class ProyectoControlador {
 	@PostMapping("/procesarform")
 	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo,
 			HttpSession session) {
-		//el email se obtendra por sesion o por json o otro
+		//el email es obtenido por la session del usuario logeado
 		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
 		String email_usuario = ongLogeada.getEmail();
 		
-		//reemplazar linea anterior cuando la seguridad o token o json o alternativa este hecha
+		
 		Usuario user = userServi.getUsuarioEmail(email_usuario);
-		//hacer validacion de usuario null
+
 		ONG ongaux = new ONG();
+		//optimizar siguiente codigo en futuras versiones, y ver que funcion cumple aqui
+		// aunque es una buena medida de seguridad, se prefiere hacer una sola consulta con email
 		for (ONG ong : OngServi.listarONGactivas()) {
 			if (ong.getUsuario().getId_usuario() == user.getId_usuario()) {
 				ongaux = ong;
@@ -64,7 +66,7 @@ public class ProyectoControlador {
 		}
 		//ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get(); //arreglar en futuras versiones
 		Date date = new Date();
-		List<Developer> list = new ArrayList<Developer>();
+		List<Developer> list = new ArrayList<Developer>(); //creo que no hace falta instanciar la lista
 		proyecServi.crearProyecto(titulo, cuerpo, date, list, ongaux);
 		return "redirect:/"; // falta vista
 	}

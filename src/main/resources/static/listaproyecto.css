@@ -29,6 +29,7 @@
     color: #004d40;
     text-align: center;
     margin:  1 1;
+    padding: auto;
   }
 
 
@@ -103,4 +104,10 @@
 	text-transform: lowercase;
 	text-transform: capitalize;
 	font-size: 15px;
+}
+
+.proyecto{
+	margin: auto;
+	text-align:center;
+	
 }

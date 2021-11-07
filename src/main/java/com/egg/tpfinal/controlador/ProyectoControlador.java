@@ -68,13 +68,13 @@ public class ProyectoControlador {
 		Date date = new Date();
 		List<Developer> list = new ArrayList<Developer>(); //creo que no hace falta instanciar la lista
 		proyecServi.crearProyecto(titulo, cuerpo, date, list, ongaux);
-		return "redirect:/"; // falta vista
+		return "redirect:/principal"; // falta vista
 	}
 	
 	@GetMapping("/proyecto")
 	public String mostrarproyectos(ModelMap mod) {
 		List<Proyecto> lp = proyecServi.listarProyectosActivos();
-		mod.addAttribute("listaProyecto", lp);
+		mod.addAttribute("proyectos", lp);
 		return "listaproyectos"; // falta vista
 	}
 	
@@ -92,9 +92,10 @@ public class ProyectoControlador {
 	
 	@GetMapping("/proyecto/{id}") // revisar
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
+		System.out.println(id);
 		Proyecto proyecto = proyecServi.buscarPorID(id);
 		mod.addAttribute("proyecto", proyecto);
-		return ""; // falta vista
+		return "proyectoindividual"; // falta vista
 	}
 	
 }

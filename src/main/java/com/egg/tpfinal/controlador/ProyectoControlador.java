@@ -3,6 +3,9 @@ package com.egg.tpfinal.controlador;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -42,9 +45,12 @@ public class ProyectoControlador {
 	}
 	
 	@PostMapping("/procesarform")
-	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo) {
+	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo,
+			HttpSession session) {
 		//el email se obtendra por sesion o por json o otro
-		String email_usuario="user1@gmail.com"; 
+		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+		String email_usuario = ongLogeada.getEmail();
+		
 		//reemplazar linea anterior cuando la seguridad o token o json o alternativa este hecha
 		Usuario user = userServi.getUsuarioEmail(email_usuario);
 		//hacer validacion de usuario null

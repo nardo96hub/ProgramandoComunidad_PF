@@ -16,6 +16,11 @@ public class Foto {
 private Long id_foto;
 private String url_foto;
 
+
+
+public Foto() {
+	super();
+}
 public Foto(String url_foto) {
 	
 	this.url_foto = url_foto;

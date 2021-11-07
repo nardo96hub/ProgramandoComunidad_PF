@@ -106,4 +106,9 @@ public class OngService {
 		return ONGRepo.findById(ID);
 		
 	}
+
+	@Transactional(readOnly=true )
+	public ONG buscarONGporUsuario(Usuario usuario){
+		return ONGRepo.findByUsuario(usuario);
+	}
 }

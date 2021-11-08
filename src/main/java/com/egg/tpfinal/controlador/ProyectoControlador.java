@@ -119,6 +119,7 @@ public class ProyectoControlador {
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
 		System.out.println(id);
 		Proyecto proyecto = proyecServi.buscarPorID(id);
+	//	System.out.println(proyecto.getDeveloper().get(0).getFoto().getUrl_foto());
 		mod.addAttribute("proyecto", proyecto);
 		return "proyectoindividual";  
 	}

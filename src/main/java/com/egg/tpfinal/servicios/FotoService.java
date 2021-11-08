@@ -22,7 +22,7 @@ public class FotoService {
 	FotoRepository fotoRepo;
 
 	 private String upload_folder = ".//src//main//resources//files//";
-	 
+	 private String url_fotoDB = "/src/main/resources/files/";
 	  public Foto guardarfoto(MultipartFile file) throws IOException {
 		  Foto foto=null;
 		  
@@ -31,24 +31,27 @@ public class FotoService {
 	            
 	           //Optional<Long> ultimoID = fotoRepo.findTopByOrderByIdDesc().get();
 	           String url_imagen;
-	          
+	           String url_base;
 	           try {
 	        	   Long ultimoID = fotoRepo.findTopByOrderById_fotoDesc();
 	        	   
 	        	   url_imagen = upload_folder+ (ultimoID+1);
+	        	   url_base = url_fotoDB +(ultimoID+1);
 	           }catch(NullPointerException e) {
 	        	   url_imagen = upload_folder+1;
+	        	   url_base = url_fotoDB +1;
 	           }
 	           
-	           String extension = file.getOriginalFilename().substring ( file.getOriginalFilename().indexOf("."), file.getOriginalFilename().length());
-	           System.out.println(extension);
+	          
+	           String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+	        
 	           //"1.jpeg
 	           // file.getOriginalFilename().substring ( file.getOriginalFilename().indexOf("."), file.getOriginalFilename().length());
 	           	url_imagen = url_imagen+extension;
 	            Path path = Paths.get(url_imagen);
 	            
 	            Files.write(path,bytes);
-	            foto = new Foto(url_imagen);
+	            foto = new Foto(url_base+extension);
 	                    
 	            
 	        }

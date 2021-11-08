@@ -117,11 +117,24 @@ public class ProyectoControlador {
 	
 	@GetMapping("/proyecto/{id}") // revisar
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
-		System.out.println(id);
+		//System.out.println(id);
 		Proyecto proyecto = proyecServi.buscarPorID(id);
 	//	System.out.println(proyecto.getDeveloper().get(0).getFoto().getUrl_foto());
 		mod.addAttribute("proyecto", proyecto);
 		return "proyectoindividual";  
+	}
+	
+	//Una vez se da a boton forzar o se alcanzo el estado false en mas developer se carga el proyecto en la ong
+	@GetMapping("/forzarInicio/{id}")
+	public String cargarProyectoenONG(@PathVariable Long id) {
+		
+		Proyecto p= proyecServi.buscarPorID(id);
+		
+		OngServi.agregarProyectos(p.getOng(), p);
+		
+		
+		return "redirect:/principal";
+		
 	}
 	
 }

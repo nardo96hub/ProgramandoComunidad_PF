@@ -2,6 +2,7 @@ package com.egg.tpfinal.entidades;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -91,6 +92,24 @@ public class Proyecto {
 		return "Proyecto [id_proyecto=" + id_proyecto + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", fecha_post="
 				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + developer
 				+ ", ong=" + ong + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(admitir_deve, alta, cuerpo, developer, fecha_post, id_proyecto, ong, titulo);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Proyecto other = (Proyecto) obj;
+		return Objects.equals(admitir_deve, other.admitir_deve) && Objects.equals(alta, other.alta)
+				&& Objects.equals(cuerpo, other.cuerpo) && Objects.equals(developer, other.developer)
+				&& Objects.equals(fecha_post, other.fecha_post) && Objects.equals(id_proyecto, other.id_proyecto)
+				&& Objects.equals(ong, other.ong) && Objects.equals(titulo, other.titulo);
 	}
 	
 	

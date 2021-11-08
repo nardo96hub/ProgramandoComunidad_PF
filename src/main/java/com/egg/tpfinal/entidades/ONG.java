@@ -1,6 +1,7 @@
 package com.egg.tpfinal.entidades;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -86,6 +87,24 @@ public class ONG {
 			return "ONG [id_ong=" + id_ong + ", marca=" + marca + ", nombre_rep=" + nombre_rep + ", apellido_rep="
 					+ apellido_rep + ", alta=" + alta + ", usuario=" + usuario + ", foto=" + foto + ", publicaciones="
 					+ publicaciones + "]";
+		}
+		@Override
+		public int hashCode() {
+			return Objects.hash(alta, apellido_rep, foto, id_ong, marca, nombre_rep, publicaciones, usuario);
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			ONG other = (ONG) obj;
+			return Objects.equals(alta, other.alta) && Objects.equals(apellido_rep, other.apellido_rep)
+					&& Objects.equals(foto, other.foto) && Objects.equals(id_ong, other.id_ong)
+					&& Objects.equals(marca, other.marca) && Objects.equals(nombre_rep, other.nombre_rep)
+					&& Objects.equals(publicaciones, other.publicaciones) && Objects.equals(usuario, other.usuario);
 		}
 		
 		

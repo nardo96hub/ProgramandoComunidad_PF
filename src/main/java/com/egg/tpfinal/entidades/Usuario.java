@@ -1,5 +1,7 @@
 package com.egg.tpfinal.entidades;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -66,6 +68,23 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id_usuario=" + id_usuario + ", email=" + email + ", contrasena=" + contrasena + ", alta="
 				+ alta  + ", rol=" + rol + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(alta, contrasena, email, id_usuario, rol);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(alta, other.alta) && Objects.equals(contrasena, other.contrasena)
+				&& Objects.equals(email, other.email) && Objects.equals(id_usuario, other.id_usuario)
+				&& rol == other.rol;
 	}
 	
 	

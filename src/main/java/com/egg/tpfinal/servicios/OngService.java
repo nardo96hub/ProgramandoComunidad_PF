@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.egg.tpfinal.entidades.*;
 import com.egg.tpfinal.repositorios.FotoRepository;
 import com.egg.tpfinal.repositorios.OngRepository;
+import com.egg.tpfinal.repositorios.ProyectoRepository;
 
 import enumeracion.Rol;
 
@@ -23,6 +24,8 @@ public class OngService {
 	private UsuarioService ServiUsu;
 	@Autowired
 	private FotoRepository fotoRepo;
+	@Autowired
+	private ProyectoRepository ProyRepo;
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public void guardarOng(ONG ong,String marca, String nombre_rep, String apellido_rep,Usuario usuario, Foto foto) {
@@ -110,5 +113,25 @@ public class OngService {
 	@Transactional(readOnly=true )
 	public ONG buscarONGporUsuario(Usuario usuario){
 		return ONGRepo.findByUsuario(usuario);
+	}
+	
+	@Transactional
+	public void agregarProyectos(ONG ong,Proyecto p) {
+		
+		if(!p.getAdmitir_deve()) {
+			List<Proyecto> proyec=ong.getPublicaciones();
+			if(!proyec.contains(p)) {
+				proyec.add(p);
+				ong.setPublicaciones(proyec);
+				saveOng(ong);
+			}
+			
+		}else {
+			p.setAdmitir_deve(false);
+			ProyRepo.save(p);
+			
+			agregarProyectos(ong, p);
+			
+		}
 	}
 }

@@ -28,10 +28,12 @@
 <body>
    <nav class="barra">
       <img src="/logo.png" alt="logo" class="logo">
+
      <a href="/principal"> <button class="ingresar">Volver</button></a>
     </nav><br>
         <h1 class="titulo" style="text-align:center">Proyectos disponibles</h1>
 		<div class="proyecto" th:each="proyecto : ${proyectos}">
+
           <div class="contenedor" >
  
          	 <div class="centrar">
@@ -40,6 +42,7 @@
            	 <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
               <p  class="descripcion" th:text="${proyecto.cuerpo}"></p>
               <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Postularse</a></p>
+
             </div>
         </div>
  </div>
@@ -59,6 +62,7 @@
             </div>
         </div>
  </div>-->
+
 
   
 

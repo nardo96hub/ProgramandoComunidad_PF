@@ -25,7 +25,8 @@
 <body>
     <nav class="barra">
         <img class="logo" src="/logo.png" alt="logo" />
-        <button class="ingresar">Volver</button>
+        <a th:if="${session.usuariosession!=null} " th:href="@{/principal}"><button type="button" class="ingresar">Volver</button></a>
+        <a th:if="${session.usuariosession==null} " th:href="@{/}"><button type="button" class="ingresar">Volver</button></a>
     </nav>
     <!--<nav><a href="/"><button>Volver</button></a></nav>-->
 

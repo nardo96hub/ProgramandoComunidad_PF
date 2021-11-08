@@ -98,7 +98,7 @@ public class ProyectoControlador {
 	@GetMapping("/postularse/{idProyecto}")
 	public String postularse(HttpSession session, @PathVariable Long idProyecto) {
 	
-		Usuario usuario = null;
+	//	Usuario usuario = null;
 		try {
 		
 			Usuario login = (Usuario) session.getAttribute("usuariosession");

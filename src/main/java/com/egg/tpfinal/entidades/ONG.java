@@ -30,7 +30,7 @@ public class ONG {
 		private Usuario	usuario;
 		@OneToOne
 		private Foto foto;
-		@OneToMany
+		@OneToMany  (cascade = CascadeType.ALL)
 		private List<Proyecto> publicaciones;
 		//Ver si hace falta los JoinColumn
 		
@@ -82,6 +82,12 @@ public class ONG {
 		public void setPublicaciones(List<Proyecto> publicaciones) {
 			this.publicaciones = publicaciones;
 		}
+		
+		public void addProyecto(Proyecto proyecto) {
+			publicaciones.add(proyecto);
+		}
+		
+		
 		@Override
 		public String toString() {
 			return "ONG [id_ong=" + id_ong + ", marca=" + marca + ", nombre_rep=" + nombre_rep + ", apellido_rep="

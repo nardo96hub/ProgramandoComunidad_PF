@@ -1,5 +1,6 @@
 package com.egg.tpfinal.servicios;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +19,8 @@ public class ProyectoService {
 
 	@Autowired
 	private ProyectoRepository ProyectoRepo;
+	@Autowired
+	private OngService ONGservi;
 	
 	public List<Proyecto> listarTodosProyecto() {
 		return ProyectoRepo.findAll();
@@ -44,19 +47,27 @@ public class ProyectoService {
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
 	
+	
 	public void guardarProyecto(Proyecto proyecto, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
+		ong.setPublicaciones(new ArrayList<Proyecto>());
+		
 		proyecto.setTitulo(titulo);
 		proyecto.setCuerpo(cuerpo);
 		proyecto.setFecha_post(fecha);
 		proyecto.setDeveloper(developer);
-		proyecto.setOng(ong);
+		
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
+		ong.addProyecto(proyecto);
+		ONGservi.saveOng(ong);
+		proyecto.setOng(ong);
+		
 		ProyectoRepo.save(proyecto);
 	}
 	
 	public void crearProyecto(String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
 		Proyecto proyecto = new Proyecto();
+		
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
 	@Transactional(readOnly = true)

@@ -39,7 +39,7 @@ import com.egg.tpfinal.servicios.UsuarioService;
 		  protected void configure(HttpSecurity http) throws Exception {
 		        http
 		                .authorizeRequests()
-		                .antMatchers("/css/*", "/js/*", "/img/*",
+		                .antMatchers("/css/*", "/js/*", "/img/*","/files/*",
 		                        "/**").permitAll()
 		                .and().
 		                formLogin()

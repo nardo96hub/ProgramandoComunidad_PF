@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
@@ -45,6 +44,9 @@ public class ProyectoService {
 	}
 	
 	public void guardarProyecto(Proyecto proyecto, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
+
+    ong.setPublicaciones(new ArrayList<Proyecto>());
+		
 		proyecto.setTitulo(titulo);
 		proyecto.setCuerpo(cuerpo);
 		proyecto.setFecha_post(fecha);
@@ -52,6 +54,11 @@ public class ProyectoService {
 		proyecto.setOng(ong);
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
+
+		ong.addProyecto(proyecto);
+	  ONGservi.saveOng(ong);
+		proyecto.setOng(ong);
+		
 		ProyectoRepo.save(proyecto);
 	}
 	
@@ -78,16 +85,9 @@ public class ProyectoService {
 				 proyecto.setAdmitir_deve(false);
 			 }
 			 
-			 
 			 ProyectoRepo.save(proyecto);
 		 }else {
 			 throw new Exception("no puede unirse a este proyecto");
 		 }
-		
-	
-		
-		
-		
-	}
-	
+  }
 }

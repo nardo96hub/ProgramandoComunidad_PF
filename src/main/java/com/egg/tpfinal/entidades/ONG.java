@@ -30,6 +30,7 @@ public class ONG {
 		private Usuario	usuario;
 		@OneToOne
 		private Foto foto;
+
 		@OneToMany(mappedBy = "ong")
 		private List<Proyecto> publicaciones;
 		//Ver si hace falta los JoinColumn

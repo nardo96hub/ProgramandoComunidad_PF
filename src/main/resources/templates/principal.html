@@ -45,7 +45,7 @@
             <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Developer</span> </a>
                 <div class="dropdown-menu" >
-                    <a class="dropdown-item fuente" href="/registrodev/" >Crear Developer</a>
+                    <a class="dropdown-item fuente" href="/registrodev/" sec:authorize="hasAnyRole('ROLE_ADMIN')" >Crear Developer</a>
                     <a class="dropdown-item fuente" href="/registrodev/listardev">Listar Developer Activos</a>
                  
                 </div>
@@ -53,7 +53,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Ong</span></a>
                 <div class="dropdown-menu" >
-                    <a class="dropdown-item fuente" href="/ong/crearong">Crear Ong</a>
+                    <a class="dropdown-item fuente" href="/ong/crearong" sec:authorize="hasAnyRole('ROLE_ADMIN')">Crear Ong</a>
                     <a class="dropdown-item fuente" href="/ong/listarong">Listar Ong Activos</a>
                 
                   </div>

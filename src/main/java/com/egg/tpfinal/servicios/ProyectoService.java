@@ -49,7 +49,7 @@ public class ProyectoService {
 	
 	
 	public void guardarProyecto(Proyecto proyecto, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
-		ong.setPublicaciones(new ArrayList<Proyecto>());
+	//	ong.setPublicaciones(new ArrayList<Proyecto>());
 		
 		proyecto.setTitulo(titulo);
 		proyecto.setCuerpo(cuerpo);
@@ -58,8 +58,8 @@ public class ProyectoService {
 		
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
-		ong.addProyecto(proyecto);
-		ONGservi.saveOng(ong);
+	//	ong.addProyecto(proyecto);
+		//ONGservi.saveOng(ong);
 		proyecto.setOng(ong);
 		
 		ProyectoRepo.save(proyecto);

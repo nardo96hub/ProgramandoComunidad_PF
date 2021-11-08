@@ -30,7 +30,7 @@ public class UsuarioService  implements UserDetailsService{
 	private UsuarioRepository RepoUsu;
 	
 	
-	//Metodo para setear usuario
+	@Transactional //Metodo para setear usuario
 	public Usuario seteoUsuario(String email,String contrasena,Rol rol) {
 		Usuario u = new Usuario();
 		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena);
@@ -40,6 +40,12 @@ public class UsuarioService  implements UserDetailsService{
 		u.setAlta(true);
 		
 		return u;
+	}
+	
+	public void validarDatos (String contrasena) throws Exception {
+		if(contrasena.length()<=6 || contrasena.length()>=20 || contrasena == null || contrasena.isEmpty()) {
+			throw new Exception("La contraseña debe tener entre 6 y 20 caracteres.");
+		}
 	}
 	
 	@Transactional
@@ -84,7 +90,8 @@ public class UsuarioService  implements UserDetailsService{
 	public List<Usuario> mostrarUsuarios(){
 		return RepoUsu.findAll();
 	}
-
+	
+	@Transactional(readOnly=true)
 	@SuppressWarnings("unused")
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

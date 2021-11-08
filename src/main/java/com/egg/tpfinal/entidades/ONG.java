@@ -30,7 +30,7 @@ public class ONG {
 		private Usuario	usuario;
 		@OneToOne
 		private Foto foto;
-		@OneToMany  (cascade = CascadeType.ALL)
+		@OneToMany // (cascade = CascadeType.ALL)
 		private List<Proyecto> publicaciones;
 		//Ver si hace falta los JoinColumn
 		

@@ -1,30 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Programando Comunidades</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+
+  <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <title>Programando Comunidades</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/listadeveloper.css" />
   <body>
-  <div class="contenedor">
-      <nav><button>Cerrar sesión</button></nav>
-      <h1>Developer disponibles</h1>
+      <nav class="barra">
+      <img src="/logo.png" alt="logo" class="logo">
+        <a href="/principal"><button class="ingresar">Volver</button></a>
+    </nav>
       
-       <div class="centrar">
+      <h1 class="titulo">Developer disponibles</h1>
+      <div class="booleans">
+      <button class="alta">Alta</button>
+      <button class="baja">Baja</button>
+      </div>
+      
        	<div th:each="developer : ${listaDev} ">
+       		<div class="contenedor">
+	        <div th:class="(${developer.alta == true}? centrar:centrar-baja)" >
+	        <div class="nombre">
 	        <h2 th:text="${developer.nombre}"></h2>
+	        </div>
 	        <h2 th:text="${developer.apellido}"></h2>
 	        <h2 th:text="${developer.telefono}"></h2>
 	       <!-- <p th:text="${developer.usuario.email}"></p>-->
               <!-- VER COMO AGREGAR FOTO Y TECNOLOGIAS -->
-
 		</div>
-       </div>
-       </div>
+		</div>
+      		</div>
+      <footer>
+      Contacto:
+      <i class="fab fa-instagram fa-2x"></i>
+      <i class="fab fa-facebook fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

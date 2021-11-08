@@ -61,10 +61,13 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" ><span class="text-light fuente">Proyectos</span></a>
               <div class="dropdown-menu" >
-                <a class="dropdown-item fuente" href="/proyect/publicarproyecto">Crear Proyectos</a>
+                <a class="dropdown-item fuente"sec:authorize="hasAnyRole('ROLE_ONG')"  href="/proyect/publicarproyecto">Crear Proyectos</a>
                 <a class="dropdown-item fuente" href="/proyect/proyecto">Listar Proyecto Activos</a>
                
               </div> 
+            </li>
+            <li class="navbar-item " sec:authorize="hasAnyRole('ROLE_ADMIN')">
+            <a href="#" class="nav-link">Mostrar Toda Informacion</a>
             </li>
            <!-- <li>
                 <div class="navbar-item d-flex align-items-right justify-content-right"

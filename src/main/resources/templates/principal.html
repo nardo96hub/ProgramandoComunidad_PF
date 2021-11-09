@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/inicio.css" />
+    <link rel="stylesheet" href="/principal.css" />
 </head>
 
 <body>
@@ -100,7 +100,7 @@
           </ul>
           <div class="barra">
         		
-                   <a th:href="@{/logout}"><button class="ingresar"th:if="${session.usuariosession!=null}">Logout</button></a>
+                   <a th:href="@{/logout}"><button class="qs"th:if="${session.usuariosession!=null}">Logout</button></a>
                    <a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
               
 	
@@ -112,14 +112,11 @@
       </nav>
     
 
-
-
-
     <div class="contenido">
-        <img src="/foto-inicio.png" alt="fondo-programacion" />
+        <img src="/Foto-principal.png" alt="fondo-programacion" />
         <div class="descripcion">
             <h1 class="titulo">
-                Lorem ipsum dolor, sit amet consectetur amet
+              	Hola, <span th:text="${session.usuariosession.email}"></span>
             </h1>
             <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. A magnam
@@ -131,32 +128,8 @@
 
     </div>
 
-    <div style="height: 67px;">
 
-    </div>
-
-
-
-
-
-
-    <!--
-    <div class="boton">
-      <div class="roles">
-        <div class="dev">
-        <img class="developer-icono" src="../static/icono-developer.png" alt="">
-        	<a class="developer btn" th:href="@{/registrodev}">Developer </a>
-
-      </div>
-       
-        <div class="gno">
-        <img class="ong-icono" src="../static/icono-ong.png" alt="">
-        <button class="ong">ONG</button>
-      </div>
-      </div>
-    </div>
-     -->
-    <footer>
+	<footer>
         Contacto:
         <i class="fab fa-instagram fa-2x"></i>
         <i class="fab fa-facebook fa-2x"></i>

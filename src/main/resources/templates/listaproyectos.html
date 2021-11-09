@@ -34,14 +34,13 @@
 		
         <div class="proyecto" th:each="proyecto : ${proyectos}">
           <div class="contenedor" >
- 
-         	 <div class="centrar">
-            <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
-             <h2 class="marca" th:text="${proyecto.ong.marca}"></h2>
+       <div class="centrar">
+         	 <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
+<!--              <h2 class="marca" th:text="${proyecto.ong.marca}"></h2> -->
            	 <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
-              <p  class="descripcion" th:text="${proyecto.cuerpo}"></p>
-              <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Postularse</a></p>
-            </div>
+             <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
+             <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Postularse</a></p>
+        </div>
         </div>
  </div>
   

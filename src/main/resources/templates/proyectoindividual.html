@@ -21,29 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/listaproyecto.css" />
-  <style>
-    .integrantes{
-      height: 75px;
-      width: 75px;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      border-radius: 50%;
-      border: 10px solid;
-      border-image-slice: 1;
-      border-width: 5px;
-      border-color: #2ebfa5;
-      display:inline;
-    }
-    .listaDeveloper{
-      display: inline;
-      float: left;
-      margin: 4px 6px;
-      padding: 0  10px;
-      position:relative;
-    }
-   
-  </style>
+  <link rel="stylesheet" href="/proyectoindividual.css" />
 
 </head>
 
@@ -53,47 +31,34 @@
     <img src="/logo.png" alt="logo" class="logo">
     <button class="ingresar">Volver</button>
   </nav><br>
-  <h1 class="titulo" style="text-align:center">Proyectos disponibles</h1>
 
-  <div class="proyecto" style="text-align:center; margin:auto">
     <div class="contenedor">
       <!--      <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
           aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
           ducimus.</h2>  -->
-      <div class="centrar" style="padding: 2px 25px">
-        <div style="text-align:right"><span>fecha publicacion: </span> <span class="fecha"
-            th:text="${proyecto.fecha_post}">4/11/2021</span></div>
-        <p>
+      <div class="centrar">
+        <div style="text-align:right"><span>Fecha publicacion: </span> <span class="fecha"
+            th:text="${proyecto.fecha_post}"></span></div>
         <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2>
-        </p>
-        <p>
         <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2>
-        </p>
 
         <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
-        <p><a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}">postularse</a></p>
+        <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
       <!--th:each="proyecto : ${proyectos} "   <img th:src="@{'/images/' + ${post.imageName}}"/> -->
       <!-- <img th:if="${usuario.foto != null}" class="rounded-circle" th:src="${'/foto/usuario/' + usuario.id}" alt="" style="max-height: 100px">-->
-        <div class="col-md-4" >
-          <div>
-            <div th:each="developer : ${proyecto.developer}" class="listaDeveloper">
-              <div class="avatar">
+        <div class="todo">
+            <div th:each="developer : ${proyecto.developer}" class="developer">
                <!-- <img class="integrantes" th:src="@{'/src/main/resources/files/'+ ${developer.foto.id_foto}}+'.jpg'" alt=""> -->
+              
                <img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
-              </div>
-              
-                <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}" style="font-weight: bold"></h6>
-                
-              
+               <div class="bajar">
+               <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
             </div>
-          </div>
-        </div>
-      </div>
-      <br /><br /><br />
-      <!--<p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> -->
+            </div>
     </div>
   </div>
-  </div>
+    </div>
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

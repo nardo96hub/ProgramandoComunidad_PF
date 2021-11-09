@@ -17,7 +17,7 @@
   font-size: 12px;
   background: #7dde92;
   border-radius: 20px;
-  width: 160px;
+  width: 170px;
   padding: 5px;
   float: right;
   margin: 20px;
@@ -71,16 +71,18 @@ img {
   font-family: "Poppins";
   font-style: normal;
   font-weight: bold;
+  color: white;
 }
 
 p {
   font-family: "Quicksand";
   font-style: normal;
   font-weight: bold;
+  color:white;
 }
 
 footer {
-  height: 10vh;
+  height: 25vh;
   width: 100%;
   background-color: #2ebfa5;
   position: absolute;
@@ -178,3 +180,9 @@ i {
   font-family: 'Poppins';
 margin: 30px;
 }
+
+
+
+
+
+

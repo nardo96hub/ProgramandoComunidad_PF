@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,14 +17,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.egg.tpfinal.entidades.Developer;
+import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.repositorios.UsuarioRepository;
+import com.egg.tpfinal.repositorios.DeveloperRepository;
+import com.egg.tpfinal.repositorios.OngRepository;
+
 import enumeracion.Rol;
 
 @Service
 public class UsuarioService implements UserDetailsService {
 	@Autowired
 	private UsuarioRepository RepoUsu;
+	@Autowired
+	private DeveloperRepository dr;
+	@Autowired
+	private OngRepository or;
 
 	@Transactional // Metodo para setear usuario
 	public Usuario seteoUsuario(String email, String contrasena, Rol rol) throws Exception {
@@ -119,6 +132,36 @@ public class UsuarioService implements UserDetailsService {
 	public void saveUsuario(Usuario usuario) {
 		RepoUsu.save(usuario);
 	}
+	
+	public Usuario usuarioConectado(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
+	if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		String email = authentication.getName();
+		Usuario u = RepoUsu.buscarPorEmail(email);
+                    return RepoUsu.save(u);
+	}else{
+                return null; 
+            }                
+    }
+    public String nombre(){
+        Usuario usuario = usuarioConectado();
+        Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
+        ONG o = or.buscarPorEmail(usuario.getEmail());
+
+        if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
+            return d.getNombre();
+        }else if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
+            return o.getMarca();
+        }else{
+            return null;
+        }
+        
+        
+      
+  
+    }
+	
+	
 
 	/*
 	 * public void validarDatos (String contrasena, String email) throws Exception {

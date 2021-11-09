@@ -1,9 +1,9 @@
 package com.egg.tpfinal.servicios;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.repositorios.TecnologiaRepository;
@@ -13,6 +13,7 @@ public class TecnologiasService {
 	@Autowired
 	private TecnologiaRepository RepoTec;
 	
+	@Transactional
 	public void guardarTecnologias(String lenguaje) throws Exception {
 		
 		Tecnologias tec=RepoTec.buscarPorLenguaje(lenguaje);
@@ -21,14 +22,18 @@ public class TecnologiasService {
 			tec=new Tecnologias();
 			tec.setLenguaje(lenguaje);
 			RepoTec.save(tec);
-		}//else throw new  Exception("Ya existe la tecnologia");
-		
+		} else {
+			throw new Exception("Ya existe la tecnología");
+		}
 	}
-	public List<Tecnologias> listarTecnologias(){
-		
+	
+	@Transactional(readOnly = true)
+	public List<Tecnologias> listarTecnologias() {
 		return RepoTec.findAll();
 	}
-	public List<Tecnologias> listarTecnologiasUnicas(){
+	
+	@Transactional(readOnly=true)
+	public List<Tecnologias> listarTecnologiasUnicas() {
 		return RepoTec.listarLenguajes();
 	}
 }

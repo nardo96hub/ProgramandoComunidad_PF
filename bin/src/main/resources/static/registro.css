@@ -38,7 +38,7 @@
 
 .centrar{
 	position: absolute;
-	height: 100vh;
+	height: 110vh;
 	width: 100vh;
 	padding: 2em;
 	background: rgba(125, 222, 146, 0.3);
@@ -104,7 +104,14 @@ input::placeholder{
 	font: 'Poppins';
 	float: right;
 	margin: 10px;
+	transition: all .2s ease-in-out;
 }
+
+.boton:hover{
+	background: #5eb972;
+	transform: scale(1.1);
+}
+
 
 .form-check{
 	height: 5vh;

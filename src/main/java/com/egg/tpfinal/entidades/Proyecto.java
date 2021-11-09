@@ -3,7 +3,6 @@ package com.egg.tpfinal.entidades;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Proyecto {
@@ -26,84 +26,108 @@ public class Proyecto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_proyecto;
+	
+	@Size(max = 50)
+	@NotNull(message = "Debes especificar un título")
+	@NotEmpty(message = "El título no puede estar vacío")
 	private String	titulo;
 	
+	@Size(min = 20, max = 4000,message = "Debes escribir al menos 150 caracteres")
 	@Column(length = 4000)
-	private String	cuerpo;
+	private String cuerpo;
 	
 	@Temporal (TemporalType.DATE)
 	private Date fecha_post;
-	
 	private Boolean	admitir_deve; //se setea en false cuando el proyecto ya tiene 5 developers
 	private Boolean	alta;
+	
 	@OneToMany
 	private List<Developer> developer;	
+	
 	@ManyToOne
 	@JoinTable(
 	        name = "proyecto_ong",
 	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
 	        inverseJoinColumns = @JoinColumn(name="id_ong", nullable = false))
-	private ONG	ong;
 	
+	private ONG	ong;
 	
 	public Long getId_proyecto() {
 		return id_proyecto;
 	}
+	
 	public void setId_proyecto(Long id_proyecto) {
 		this.id_proyecto = id_proyecto;
 	}
+	
 	public String getTitulo() {
 		return titulo;
 	}
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
 	public String getCuerpo() {
 		return cuerpo;
 	}
+	
 	public void setCuerpo(String cuerpo) {
 		this.cuerpo = cuerpo;
 	}
+	
 	public Date getFecha_post() {
 		return fecha_post;
 	}
+	
 	public void setFecha_post(Date fecha_post) {
 		this.fecha_post = fecha_post;
 	}
+	
 	public Boolean getAdmitir_deve() {
 		return admitir_deve;
 	}
+	
 	public void setAdmitir_deve(Boolean admitir_deve) {
 		this.admitir_deve = admitir_deve;
 	}
+	
 	public Boolean getAlta() {
 		return alta;
 	}
+	
 	public void setAlta(Boolean alta) {
 		this.alta = alta;
 	}
+	
 	public List<Developer> getDeveloper() {
 		return developer;
 	}
+	
 	public void setDeveloper(List<Developer> developer1) {
 		developer = developer1;
 	}
+	
 	public ONG getOng() {
 		return ong;
 	}
+	
 	public void setOng(ONG ong) {
 		this.ong = ong;
 	}
+	
 	@Override
 	public String toString() {
 		return "Proyecto [id_proyecto=" + id_proyecto + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", fecha_post="
 				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + developer
 				+ ", ong=" + ong + "]";
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(admitir_deve, alta, cuerpo, developer, fecha_post, id_proyecto, ong, titulo);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -118,6 +142,5 @@ public class Proyecto {
 				&& Objects.equals(fecha_post, other.fecha_post) && Objects.equals(id_proyecto, other.id_proyecto)
 				&& Objects.equals(ong, other.ong) && Objects.equals(titulo, other.titulo);
 	}
-	
 	
 }

@@ -52,7 +52,7 @@
                         <span th:unless="${usuario.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td>
-                        <a th:href=""><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -80,8 +80,8 @@
                 <tr>
                     <th scope="row" th:text="${developer.id_developer}"></th>
                     <td th:text="${developer.nombre}+ ' ' + ${developer.apellido}"></td>
-                    <td th:text="${developer.usuario.email"></td>
-                    <td th:text="${developer.telefono"></td>
+                    <td th:text="${developer.usuario.email}"></td>
+                    <td th:text="${developer.telefono}"></td>
                     <td>
                         <img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
                     </td>
@@ -90,7 +90,7 @@
                         <span th:unless="${developer.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td>
-                        <a th:href=""><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>

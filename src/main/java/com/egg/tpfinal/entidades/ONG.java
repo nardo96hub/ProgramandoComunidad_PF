@@ -30,7 +30,8 @@ public class ONG {
 		private Usuario	usuario;
 		@OneToOne
 		private Foto foto;
-		@OneToMany  (cascade = CascadeType.ALL)
+
+		@OneToMany(mappedBy = "ong")
 		private List<Proyecto> publicaciones;
 		//Ver si hace falta los JoinColumn
 		

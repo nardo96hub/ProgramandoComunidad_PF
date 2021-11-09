@@ -28,11 +28,12 @@
 <body>
    <nav class="barra">
       <img src="/logo.png" alt="logo" class="logo">
-        <a href="/principal"><button class="ingresar">Volver</button></a>
+
+     <a href="/principal"> <button class="ingresar">Volver</button></a>
     </nav><br>
-        <h1 class="titulo">Proyectos disponibles</h1>
-		
-        <div class="proyecto" th:each="proyecto : ${proyectos}">
+        <h1 class="titulo" style="text-align:center">Proyectos disponibles</h1>
+		<div class="proyecto" th:each="proyecto : ${proyectos}">
+
           <div class="contenedor" >
        <div class="centrar">
          	 <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
@@ -41,8 +42,27 @@
              <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
              <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Postularse</a></p>
         </div>
+
         </div>
  </div>
+       <!-- <div class="proyecto" th:each="proyecto : ${proyectos} " style="text-align:center; margin:auto">
+          <div class="contenedor" >
+       <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
+          aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
+          ducimus.</h2>   
+          <div class="centrar" style="padding: 2px 25px">
+       		<div style="text-align:right"><span>fecha publicacion: </span> <span class="fecha"  th:text="${proyecto.fecha_post}">4/11/2021</span></div>
+             <p> <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2></p>
+             <p> <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2></p>
+            
+              <p  class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
+              <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">ir a postularse</a></p>
+             <p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> 
+            </div>
+        </div>
+ </div>-->
+
+
   
 
   <!-- Optional JavaScript -->

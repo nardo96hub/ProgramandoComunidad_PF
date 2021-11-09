@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -37,6 +39,10 @@ public class Proyecto {
 	@OneToMany
 	private List<Developer> developer;	
 	@ManyToOne
+	@JoinTable(
+	        name = "proyecto_ong",
+	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
+	        inverseJoinColumns = @JoinColumn(name="id_ong", nullable = false))
 	private ONG	ong;
 	
 	

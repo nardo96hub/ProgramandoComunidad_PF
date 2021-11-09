@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+ <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 
 <head>
     <title>Programando Comunidades</title>
@@ -19,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/registro.css" />
+    <link rel="stylesheet" href="/registro.css" />
 </head>
 
 <body>
@@ -27,23 +28,29 @@
 
     
         <nav class="barra">
-            <img src="../static/logo.png" alt="logo" class="logo">
-            <button class="ingresar">Volver</button>
+            <img src="/logo.png" alt="logo" class="logo">
+            <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
         <div class="contenedor">
             <div class="centrar">
-                <form action="POST">
-                    <div class="form-group"><label for="nombre">Nombre</label><input type="text"></div>
-                    <div class="form-group"><label for="apellido">Apellido</label><input type="text"></div>
-                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text"></div>
-                    <div class="form-group"><label for="email">Email</label><input type="email"
-                            placeholder="asd@asd.com"></div>
-                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password"></div>
+                <form  action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
+                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name" required></div>
+                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido" required></div>
+                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel" required></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" name="user"
+                            placeholder="asd@asd.com" required></div>
+                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass" required></div>
+                    
                     <br>
-                    <div class="form-check">
+                    
+                  	 <div class="form-group" style="margin-bottom:70px" >
+                     <input type="file" name="file" class="boton" required > 
+                     </div>
+                   
+                   <!-- <div class="form-check" >
 
                        
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="java" id="flexCheckDefault" name="lenguajes">
                     <label class="form-check-label" for="tecnologia">
                         Java
                     </label><br>
@@ -75,13 +82,27 @@
                         Ruby
                     </label>
 
-                </div>
+                </div>-->
+					<div class="form-check required">
+						
+					<div th:each="tec: ${listaTec} " >
+					
+						<input class="form-check-input" type="checkbox" th:value="${tec.lenguaje}"  name="lenguajes" id="flexCheckDefault" >
+						<label th:text="${tec.lenguaje}" for="tecnologia" class="form-check-label" ></label>
+					
+					</div>
 
-                    <div class="botones">
+					
+                   
+                 
+                   </div>
+                  
+                   <div class="botones">
+                  	  <a th:href="@{/tecnologia/crearTecnologia} "><button type="button"class="boton"> Ingresar Tecnologia</button></a>
                         <button class="boton" type="submit">Enviar</button> 
-                        <button class="boton">Cargar foto</button>
+                   <!--  <button class="boton">Cargar foto</button>-->
 
-                       <!-- <a th:href="@{/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
+                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
                     </div>
 
                 </form>

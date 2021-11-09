@@ -21,6 +21,9 @@ public interface OngRepository extends JpaRepository <ONG, Long>{
 	@Query("SELECT o FROM ONG o WHERE o.marca like :marca1")
 	public ONG marcaOng(@Param("marca1") String marca);
 	
+	@Query("SELECT o.marca FROM ONG o WHERE o.marca like :marca1")
+	public String marcaOngString(@Param("marca1") String marca);
+	
 	@Query("SELECT o FROM ONG o WHERE o.marca LIKE %:marca2% ")
 	public ONG BuscarPorMarca(@Param("marca2") String marca);
 	

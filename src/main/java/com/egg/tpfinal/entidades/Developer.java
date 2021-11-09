@@ -1,4 +1,5 @@
 package com.egg.tpfinal.entidades;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -9,88 +10,117 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Developer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_developer;
-	
-	private String	nombre;
-	private String	apellido;
-	private Boolean	alta;
+
+	@NotNull(message = "Debes especificar un nombre")
+	@NotEmpty(message = "El nombre no puede estar vacío")
+	@Size(min = 2)
+	private String nombre;
+
+	@NotNull(message = "Debes especificar un apellido")
+	@NotEmpty(message = "El apellido no puede estar vacío")
+	@Size(min = 3)
+	private String apellido;
+
+	private Boolean alta;
+
+	@Pattern(regexp = "[0-9]{16}")
 	private String telefono;
+
 	@OneToOne
 	private Usuario usuario;
+
 	@OneToOne
-	private Foto foto;  
+	private Foto foto;
+
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Tecnologias>tecnologias;
-	
-	
-	
+	private List<Tecnologias> tecnologias;
+
 	public Long getId_developer() {
 		return id_developer;
 	}
+
 	public void setId_developer(Long id_developer) {
 		this.id_developer = id_developer;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public Boolean getAlta() {
 		return alta;
 	}
+
 	public void setAlta(Boolean alta) {
 		this.alta = alta;
 	}
+
 	public String getTelefono() {
 		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 	public Foto getFoto() {
 		return foto;
 	}
+
 	public void setFoto(Foto foto) {
 		this.foto = foto;
 	}
+
 	public List<Tecnologias> getTecnologias() {
 		return tecnologias;
 	}
+
 	public void setTecnologias(List<Tecnologias> tecnologias) {
 		this.tecnologias = tecnologias;
 	}
+
 	@Override
 	public String toString() {
 		return "Developer [id_developer=" + id_developer + ", nombre=" + nombre + ", apellido=" + apellido + ", alta="
 				+ alta + ", telefono=" + telefono + ", usuario=" + usuario + ", foto=" + foto + ", tecnologias="
 				+ tecnologias + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(alta, apellido, foto, id_developer, nombre, tecnologias, telefono, usuario);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -105,7 +135,5 @@ public class Developer {
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(tecnologias, other.tecnologias)
 				&& Objects.equals(telefono, other.telefono) && Objects.equals(usuario, other.usuario);
 	}
-	
-		
-	
+
 }

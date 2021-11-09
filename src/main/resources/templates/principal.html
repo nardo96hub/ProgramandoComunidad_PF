@@ -22,11 +22,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../static/inicio.css" />
-=======
-    <link rel="stylesheet" href="/principal.css" />
->>>>>>> 989c956d2dd396eaa6b7eb958bcfa64a315a67aa
+
+    <link rel="stylesheet" href="/principal.css"/>
+
 </head>
 
 <body>
@@ -40,7 +38,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light barra">
-        <a class="navbar-brand" href="#"><img src="../static/logo.png" alt="logo" class="logo"></a>
+        <a class="navbar-brand" href="#"><img src="/logo.png" alt="logo" class="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,7 +69,7 @@
               </div> 
             </li>
             <li class="navbar-item " sec:authorize="hasAnyRole('ROLE_ADMIN')">
-            <a href="/listarTodo" class="nav-link">Mostrar Toda Informacion</a>
+            <a href="/listarTodo" class="nav-link" style="color:white">Información</a>
             </li>
            <!-- <li>
                 <div class="navbar-item d-flex align-items-right justify-content-right"
@@ -104,11 +102,11 @@
           </ul>
           <div class="barra">
         		
-                   <a th:href="@{/logout}"><button class="qs"th:if="${session.usuariosession!=null}">Logout</button></a>
+                   <a th:href="@{/logout}"><button class="qs"th:if="${session.usuariosession!=null}">Cerrar sesión</button></a>
                    <a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
               
 	
-	<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> 
+	<!--<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> -->
               
           </div>
           

@@ -65,6 +65,7 @@ img {
   width: 40%;
   left: 53%;
   margin-top: 100px;
+  
 }
 
 .titulo {
@@ -72,6 +73,7 @@ img {
   font-style: normal;
   font-weight: bold;
   color: white;
+ font-size: 25px;
 }
 
 p {

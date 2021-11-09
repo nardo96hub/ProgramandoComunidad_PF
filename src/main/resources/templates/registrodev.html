@@ -33,7 +33,7 @@
         </nav>
         <div class="contenedor">
             <div class="centrar">
-                <form  action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
+                <form action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
                     <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name" required></div>
                     <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido" required></div>
                     <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel" required></div>
@@ -82,7 +82,7 @@
                         Ruby
                     </label>
 
-                </div>-->
+                </div> -->
 					<div class="form-check required">
 						
 					<div th:each="tec: ${listaTec} " >
@@ -94,20 +94,19 @@
 
 					
                    
-                 
+                  <a th:href="@{/tecnologia/crearTecnologia} "><button type="button" style="background: #7DDE92;border-radius: 20px; text-decoration:none; color:black; 	border: none;"> Ingresar Tecnologia</button></a>
                    </div>
                   
                    <div class="botones">
-                  	  <a th:href="@{/tecnologia/crearTecnologia} "><button type="button"class="boton"> Ingresar Tecnologia</button></a>
                         <button class="boton" type="submit">Enviar</button> 
                    <!--  <button class="boton">Cargar foto</button>-->
 
-                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
+                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a> -->
                     </div>
 
-                </form>
-
-            
+                </form>  
+				 
+           
             </div>
         </div>
         <footer>Contacto:

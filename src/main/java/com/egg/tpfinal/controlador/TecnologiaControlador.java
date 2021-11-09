@@ -15,20 +15,20 @@ public class TecnologiaControlador {
 
 	@Autowired
 	private TecnologiasService ServiTec;
+	
 	@GetMapping("/crearTecnologia")
 	public String tec() {
 		return "crearTecnologias";
 	}
+	
 	@PostMapping("/crearTecnologia")
 	public String tecn(@RequestParam String tecno) {
 		try {
 			ServiTec.guardarTecnologias(tecno);
 			return "redirect:/registrodev";
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 			return "redirect:/tecnologia/crearTecnologia";
 		}
-	
 	}
 }

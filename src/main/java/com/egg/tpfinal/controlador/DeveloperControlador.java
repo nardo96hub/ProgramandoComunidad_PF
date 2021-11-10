@@ -47,19 +47,16 @@ public class DeveloperControlador {
 	@PostMapping("/cargardev")
 	public String cargardev(@RequestParam List<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
-			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file) throws Exception{
+			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 		try {
 			List<Tecnologias> tecnologias= new ArrayList<Tecnologias>();
 			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
-				if (tec.isEmpty() || tec == null) {
-					throw new Exception("Campo obligatorio");
-				} else {
+				 
 				Tecnologias tecn=new Tecnologias();
 				tecn.setLenguaje(tec);
 				tecnologias.add(tecn);
-				return "redirect:/registrodev.html";
-				}
-			//	System.out.println(tec);
+				//return "redirect:/registrodev";
+				
 			}
 			
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);
@@ -73,10 +70,13 @@ public class DeveloperControlador {
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
 			return "redirect:/";
 		} catch (Exception e) {
-			e.printStackTrace();	
-			return "redirect:/registrodev";
+			List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();
+			modelo.addAttribute("listaTec", lt);
+			modelo.put("error", e.getMessage());
+			e.printStackTrace();
+			return "registrodev.html";
 		}
-		//return "redirect:/";
+		
 	}
 	
 	@PreAuthorize("isAuthenticated()")

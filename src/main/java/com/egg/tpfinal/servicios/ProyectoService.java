@@ -104,14 +104,14 @@ public class ProyectoService {
 	}
 	
 	public void validarDatos(String titulo, String cuerpo, ONG ong) throws Exception {
-		if(titulo.isEmpty() || titulo.length()<4 || titulo.length()>20) {
+		if(titulo.isEmpty() ||!( titulo.length()>4 && titulo.length()<40)) {
 			throw new Exception("Ingreso un titulo nulo o tamaño<4 o >20");
 		}
-		if(cuerpo.isEmpty() || titulo.length()<20 || titulo.length()>4000) {
+		if(cuerpo.isEmpty() && !(cuerpo.length()>20 && cuerpo.length()<4000)) {
 			throw new Exception("Ingreso un cuerpo nulo o tamaño<20 o >4000");
 		}
 		if(ong==null) {
-			throw new Exception("Ong no se logro cargar con exito");
+			throw new Exception("Proyecto no se logro cargar con exito");
 		}
 	}
 }

@@ -146,7 +146,7 @@ public class UsuarioService implements UserDetailsService {
         Usuario usuario = usuarioConectado();
        System.out.println(usuario);
       
-        if(usuario.getRol() != Rol.ONG) {
+        if(usuario.getRol() == Rol.ONG ) {
         	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
         	 System.out.println("deve");
         	 System.out.println(d);
@@ -157,8 +157,7 @@ public class UsuarioService implements UserDetailsService {
                  }
         	 }
             
-        }
-        if(usuario.getRol() != Rol.DEVE) {
+        }else  if(usuario.getRol() == Rol.DEVE || usuario.getRol() == Rol.ADMIN) {
         	  ONG o = or.buscarPorEmail(usuario.getEmail());
         	  System.out.println("ong");
         	  System.out.println(o);

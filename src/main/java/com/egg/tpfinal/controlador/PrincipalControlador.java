@@ -40,7 +40,8 @@ public class PrincipalControlador {
 	}
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/principal")
-	public String principal() {
+	public String principal(ModelMap model) {
+        model.put("nombre", ServiUsu.nombre());
 		return "principal";
 	}
 	

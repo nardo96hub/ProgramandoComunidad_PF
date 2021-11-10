@@ -37,7 +37,7 @@ public class Tecnologias {
 	}
 	
 	@Override
-	public int hashCode() {
+	public int hashCode() {  							//genera cog unico p c/objet y poder usar equals al llamar contains
 		return Objects.hash(id_tecnologia, lenguaje);
 	}
 	

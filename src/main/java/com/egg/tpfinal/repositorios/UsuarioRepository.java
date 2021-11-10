@@ -14,18 +14,15 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	@Query("SELECT u FROM Usuario u WHERE u.alta = true")
 	public List<Usuario> listarUsuariosActivos();
 	
-	@Query("SELECT u FROM Usuario u WHERE u.email = :email1")
-	public Usuario buscarPorEmail(@Param("email1") String email);
+	@Query("SELECT u FROM Usuario u WHERE u.email = :email1")					//= funcion q la de abajo
+	public Usuario buscarPorEmail(@Param("email1") String email);				
+
+	public Usuario findByEmail(String email);									//devuelve usuario
 	
-	//diferencia entre buscarPorEmail y findByEmail
-	public Usuario findByEmail(String email);
-	
-	@Query("SELECT u.email FROM Usuario u WHERE u.email = :email1")
+	@Query("SELECT u.email FROM Usuario u WHERE u.email = :email1")				//devuelve string email 
 	public String findByStringEmail(String email);
 	
 	@Query("SELECT u FROM Usuario u WHERE u.rol = :rol1 OR u.rol = :rol2")
 	public List<Usuario> buscarPorRol(@Param("rol1") String rol1, @Param("rol2") String rol2);
-	
-	
 	
 }

@@ -45,32 +45,42 @@ public class ProyectoControlador {
 	
 	@PostMapping("/procesarform")
 	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo,
-			HttpSession session) {
-		//el email es obtenido por la session del usuario logeado
-		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
-		//String email_usuario = ongLogeada.getEmail();
+			HttpSession session,ModelMap mod) {
 		
-		
-	//	Usuario user = userServi.getUsuarioEmail(email_usuario);
+		try {
+			// el email es obtenido por la session del usuario logeado
+			Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+			// String email_usuario = ongLogeada.getEmail();
 
-		//ONG ongaux = new ONG();
-		//optimizar siguiente codigo en futuras versiones, y ver que funcion cumple aqui
-		// aunque es una buena medida de seguridad, se prefiere hacer una sola consulta con email
-	/*	for (ONG ong : OngServi.listarONGactivas()) {
-			if (ong.getUsuario().getId_usuario() == user.getId_usuario()) {
-				ongaux = ong;
-			} else { //redireccionar a sign up?
-				
-			}
-		}*/
+			// Usuario user = userServi.getUsuarioEmail(email_usuario);
+
+			// ONG ongaux = new ONG();
+			// optimizar siguiente codigo en futuras versiones, y ver que funcion cumple
+			// aqui
+			// aunque es una buena medida de seguridad, se prefiere hacer una sola consulta
+			// con email
+			/*
+			 * for (ONG ong : OngServi.listarONGactivas()) { if
+			 * (ong.getUsuario().getId_usuario() == user.getId_usuario()) { ongaux = ong; }
+			 * else { //redireccionar a sign up?
+			 * 
+			 * } }
+			 */
+
+			ONG ongaux = OngServi.buscarONGporUsuario(ongLogeada);
+
+			// ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get();
+			// //arreglar en futuras versiones
+			Date date = new Date();
+
+			proyecServi.crearProyecto(titulo, cuerpo, date, new ArrayList<Developer>(), ongaux);
+			return "redirect:/principal";
+		} catch (Exception e) {
+			mod.put("error", e.getMessage());
+			e.printStackTrace();
+			return "publishproyectTest.html";
+		}
 		
-		ONG ongaux = OngServi.buscarONGporUsuario(ongLogeada);
-		
-		//ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get(); //arreglar en futuras versiones
-		Date date = new Date();
-		
-		proyecServi.crearProyecto(titulo, cuerpo, date, new ArrayList<Developer>(), ongaux);
-		return "redirect:/principal"; // falta vista
 	}
 	
 	@GetMapping("/proyecto")

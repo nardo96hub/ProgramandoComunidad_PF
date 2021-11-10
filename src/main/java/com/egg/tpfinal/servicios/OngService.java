@@ -27,8 +27,8 @@ public class OngService {
 	private ProyectoRepository ProyRepo;
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public void guardarOng(ONG ong, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) {
-		// validarDatos(marca, nombre_rep);
+	public void guardarOng(ONG ong, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {
+		 validarDatos(marca, nombre_rep,apellido_rep,usuario,foto);
 		ong.setMarca(marca);
 		ong.setNombre_rep(nombre_rep);
 		ong.setApellido_rep(apellido_rep);
@@ -81,7 +81,7 @@ public class OngService {
 	}
 
 	@Transactional
-	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) {
+	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {
 		ONG ong = getONG(ID);
 		guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto);
 
@@ -135,5 +135,34 @@ public class OngService {
 			ProyRepo.save(p);
 			agregarProyectos(ong, p);
 		}
+	}
+	public void validarDatos(String marca, String nombre, String apellido, Usuario usuario, Foto foto)  throws Exception{
+		// Revisar Orden de if segun la prioridad en crear ong
+		
+		if(marca.isEmpty() || marca.length()<4){
+			throw new Exception("Marca no registrada o ingreso tamaño < 4"); //Cambiar isBlank()
+		}
+		if(nombre.isEmpty() || nombre.length()<4 || nombre.length()>20) {
+			throw new Exception("Nombre no registrada o ingreso tamaño < 4 o tamaño>20");
+		}
+		if(apellido.isEmpty() ||apellido.length()<4 || apellido.length()>20) {
+			throw new Exception("Apellido no registrada o ingreso tamaño < 4 o tamaño>20");
+		}
+		if(usuario==null) {
+			throw new Exception("Usuario no registrado");
+		}
+		if(usuario.getEmail().isEmpty() || usuario.getEmail().length()<4 || (!usuario.getEmail().contains(".")|| !usuario.getEmail().contains("@") )) {
+			throw new Exception("Email no registrada o ingreso tamaño < 4 o incluye un email sin punto o @");
+		}
+		if(usuario.getContrasena().isEmpty() ) {
+			throw new Exception("Contraseña no registrada");
+		}
+		if(foto==null) {
+			throw new Exception("Foto no ingresada ");
+		}
+		
+	
+		
+		
 	}
 }

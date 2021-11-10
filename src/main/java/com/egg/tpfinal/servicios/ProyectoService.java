@@ -48,14 +48,15 @@ public class ProyectoService {
 	}
 
 	@Transactional
-	public void editarProyecto(Long ID, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
+	public void editarProyecto(Long ID, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = buscarPorID(ID);
+		validarDatos(titulo, cuerpo, ong);
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
 
 	@Transactional
 	public void guardarProyecto(Proyecto proyecto, String titulo, String cuerpo, Date fecha, List<Developer> developer,
-			ONG ong) {
+			ONG ong)  {
 
 		ong.setPublicaciones(new ArrayList<Proyecto>());
 
@@ -73,8 +74,9 @@ public class ProyectoService {
 	}
 
 	@Transactional
-	public void crearProyecto(String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) {
+	public void crearProyecto(String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = new Proyecto();
+		validarDatos(titulo, cuerpo, ong);
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
 
@@ -98,6 +100,18 @@ public class ProyectoService {
 			ProyectoRepo.save(proyecto);
 		} else {
 			throw new Exception("no puede unirse a este proyecto");
+		}
+	}
+	
+	public void validarDatos(String titulo, String cuerpo, ONG ong) throws Exception {
+		if(titulo.isEmpty() || titulo.length()<4 || titulo.length()>20) {
+			throw new Exception("Ingreso un titulo nulo o tamaño<4 o >20");
+		}
+		if(cuerpo.isEmpty() || titulo.length()<20 || titulo.length()>4000) {
+			throw new Exception("Ingreso un cuerpo nulo o tamaño<20 o >4000");
+		}
+		if(ong==null) {
+			throw new Exception("Ong no se logro cargar con exito");
 		}
 	}
 }

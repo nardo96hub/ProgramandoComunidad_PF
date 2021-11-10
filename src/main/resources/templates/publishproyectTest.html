@@ -27,6 +27,11 @@
         <img src="/logo.png" alt="logo" class="logo">
         <a href="/principal"> <button class="ingresar">Volver</button></a>
       </nav>
+      <div th:if="${error}!=null" class="card">
+					<div class="card-body">
+						<p class="card-text" th:text="${error}"></p>
+					</div>
+		</div>
     <div class="contenedor">
     <h1 class="titulo">Crear Proyecto</h1>
         <div class="centrar">

@@ -21,9 +21,9 @@ public class Developer {
 	private Boolean alta;
 	private String telefono;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) // propaga operaciones (EntityManageroperaciones)en entidades relacionadas
 	@JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
-	private Usuario usuario;
+	private Usuario usuario;								// TO-DO: revisar JoinC. onetoone si es necesario
 
 	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;

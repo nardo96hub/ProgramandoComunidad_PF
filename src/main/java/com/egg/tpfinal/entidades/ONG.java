@@ -29,9 +29,9 @@ public class ONG {
 	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;
 
-	@OneToMany(mappedBy = "ong")
-	private List<Proyecto> publicaciones;
-	// Ver si hace falta los JoinColumn
+	@OneToMany(mappedBy = "ong") 							//establece propiedad de la relación (esquema/tabla en BBDD relacional)
+	private List<Proyecto> publicaciones;  					//TO-DO: hace falta los JoinColumn???		
+	
 
 	public Long getId_ong() {
 		return id_ong;

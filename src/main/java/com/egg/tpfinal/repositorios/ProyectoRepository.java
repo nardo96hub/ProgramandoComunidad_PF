@@ -25,16 +25,15 @@ public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
 	@Query("SELECT p FROM Proyecto p WHERE p.admitir_deve = false")
 	public List<Proyecto> buscarPorDisponibilidadFalse();
 	
-	/*@Query("SELECT p FROM Proyecto p WHERE p.developer.id = :idDev")
-	public List<Proyecto> buscarPorIdDeveloper(@Param("idDev") Long id);*/
+	@Query("SELECT p.developer from Proyecto p WHERE p.id_proyecto = :id_proyecto")
+	public List<Developer> listadeveloper(@Param("id_proyecto") Long id);
 	
 	@Query("SELECT p FROM Proyecto p WHERE p.ong.id = :idONG")
 	public List<Proyecto> buscarPorIdONG(@Param("idONG") Long id);
 	
-	//public List<Proyecto> findByDeveloper(List<Developer> developer);
+	/*@Query("SELECT p FROM Proyecto p WHERE p.developer.id = :idDev")
+	public List<Proyecto> buscarPorIdDeveloper(@Param("idDev") Long id);
 	
-	@Query("SELECT p.developer from Proyecto p WHERE p.id_proyecto = :id_proyecto")
-	public List<Developer> listadeveloper(@Param("id_proyecto") Long id);
-	
+	public List<Proyecto> findByDeveloper(List<Developer> developer);*/
 	
 }

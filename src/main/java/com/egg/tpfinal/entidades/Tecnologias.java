@@ -6,9 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 
 @Entity
 public class Tecnologias {
@@ -16,9 +13,6 @@ public class Tecnologias {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id_tecnologia;
-	
-	@NotEmpty(message = "El lenguaje no puede estar vacío")
-	@NotNull(message = "Debes especificar un lenguaje")
 	String lenguaje;
 	
 	public Long getId_tecnologia() {

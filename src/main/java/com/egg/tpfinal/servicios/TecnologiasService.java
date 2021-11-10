@@ -15,15 +15,21 @@ public class TecnologiasService {
 	
 	@Transactional
 	public void guardarTecnologias(String lenguaje) throws Exception {
-		
-		Tecnologias tec=RepoTec.buscarPorLenguaje(lenguaje);
+		//Tecnologias tec = RepoTec.buscarPorLenguaje(lenguaje);
+		validar(lenguaje);
 		lenguaje = lenguaje.toUpperCase();
-		if(tec==null) {
-			tec=new Tecnologias();
+		if(!lenguaje.isEmpty()) {
+			Tecnologias tec = new Tecnologias();
 			tec.setLenguaje(lenguaje);
 			RepoTec.save(tec);
 		} else {
-			throw new Exception("Ya existe la tecnología");
+			throw new Exception("Campo obligatorio");
+		}
+	}
+	
+	public void validar(String lenguaje) throws Exception {
+		if(lenguaje.isEmpty() || lenguaje==null) {
+			throw new Exception("Campo obligatorio");
 		}
 	}
 	

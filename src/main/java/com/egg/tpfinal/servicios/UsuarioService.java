@@ -19,7 +19,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Usuario;

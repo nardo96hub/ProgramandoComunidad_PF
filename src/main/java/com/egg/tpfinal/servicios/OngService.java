@@ -145,7 +145,7 @@ public class OngService {
 		if(nombre.isEmpty() || nombre.length()<4 || nombre.length()>20) {
 			throw new Exception("Nombre no registrada o ingreso tamaño < 4 o tamaño>20");
 		}
-		if(apellido.isEmpty() ||apellido.length()<4 || apellido.length()>20) {
+		if(apellido.isEmpty() ||(apellido.length()<4 || apellido.length()>20)) {
 			throw new Exception("Apellido no registrada o ingreso tamaño < 4 o tamaño>20");
 		}
 		if(usuario==null) {

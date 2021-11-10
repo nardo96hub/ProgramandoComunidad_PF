@@ -26,7 +26,7 @@ public class ONG {
 	@JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
 	private Usuario usuario;
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;
 
 	@OneToMany(mappedBy = "ong")

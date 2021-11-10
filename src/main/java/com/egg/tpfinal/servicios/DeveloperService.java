@@ -36,10 +36,10 @@ public class DeveloperService {
 		dev.setUsuario(usuario);
 		dev.setFoto(foto);
 		if (foto != null) {
-			fotoRepo.save(foto);
+			//fotoRepo.save(foto);
 		}
 //		userRepo.save(dev.getUsuario());
-		userServi.saveUsuario(usuario);
+	//	userServi.saveUsuario(usuario);
 		DevRepo.save(dev);
 	}
 	

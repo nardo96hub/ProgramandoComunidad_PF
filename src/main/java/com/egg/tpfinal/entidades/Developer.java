@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -20,10 +21,11 @@ public class Developer {
 	private Boolean alta;
 	private String telefono;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
 	private Usuario usuario;
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;
 
 	@OneToMany(cascade = CascadeType.ALL)

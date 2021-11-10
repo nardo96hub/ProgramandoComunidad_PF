@@ -10,15 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Proyecto {
@@ -26,13 +21,8 @@ public class Proyecto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_proyecto;
-	
-	@Size(max = 50)
-	@NotNull(message = "Debes especificar un título")
-	@NotEmpty(message = "El título no puede estar vacío")
 	private String	titulo;
 	
-	@Size(min = 20, max = 4000,message = "Debes escribir al menos 150 caracteres")
 	@Column(length = 4000)
 	private String cuerpo;
 	

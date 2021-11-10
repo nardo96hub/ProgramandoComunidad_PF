@@ -2,7 +2,6 @@ package com.egg.tpfinal.entidades;
 
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,30 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Developer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_developer;
-
-	@NotNull(message = "Debes especificar un nombre")
-	@NotEmpty(message = "El nombre no puede estar vacío")
-	@Size(min = 2)
 	private String nombre;
-
-	@NotNull(message = "Debes especificar un apellido")
-	@NotEmpty(message = "El apellido no puede estar vacío")
-	@Size(min = 3)
 	private String apellido;
-
 	private Boolean alta;
-
-	@Pattern(regexp = "[0-9]{16}")
 	private String telefono;
 
 	@OneToOne

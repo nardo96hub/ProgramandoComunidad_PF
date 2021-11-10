@@ -3,9 +3,7 @@ package com.egg.tpfinal.controlador;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +20,6 @@ import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.OngService;
 import com.egg.tpfinal.servicios.ProyectoService;
-import com.egg.tpfinal.servicios.UsuarioService;
 
 @Controller
 @PreAuthorize("isAuthenticated()")

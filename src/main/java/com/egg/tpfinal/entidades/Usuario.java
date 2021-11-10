@@ -8,11 +8,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import enumeracion.Rol;
 
 @Entity
@@ -21,15 +16,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_usuario;
-	
-	@Email
-	@NotEmpty(message = "El email no puede estar vacío")
-	@NotNull(message = "Debes ingresar un email")
 	private	String email;
-	
-	@NotNull(message = "Debes ingresar una contraseña")
-	@NotEmpty(message = "La contraseña no puede estar vacía")
-	@Size(min = 6, max = 20, message = "La contraseña debe tener entre 6 y 20 caracteres")
 	private String	contrasena;
 	private Boolean alta;
 

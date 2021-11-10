@@ -2,7 +2,6 @@ package com.egg.tpfinal.entidades;
 
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class ONG {
@@ -21,22 +17,9 @@ public class ONG {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_ong;
-
-	@Size(min = 3, max = 30)
-	@NotNull(message = "Debes especificar el nombre de la ONG")
-	@NotEmpty(message = "El nombre no puede estar vacío")
 	private String marca;
-
-	@Size(min = 2, max = 30)
-	@NotNull(message = "Debes especificar un nombre")
-	@NotEmpty(message = "El nombre no puede estar vacío")
 	private String nombre_rep;
-
-	@Size(min = 2, max = 30)
-	@NotNull(message = "Debes especificar un apellido")
-	@NotEmpty(message = "El apellido no puede estar vacío")
 	private String apellido_rep;
-
 	private Boolean alta;
 
 	@OneToOne(cascade = CascadeType.ALL)

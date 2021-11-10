@@ -131,7 +131,7 @@ public class UsuarioService implements UserDetailsService {
 	public void saveUsuario(Usuario usuario) {
 		RepoUsu.save(usuario);
 	}
-	
+
 	public Usuario usuarioConectado(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
 	if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -144,33 +144,40 @@ public class UsuarioService implements UserDetailsService {
     }
     public String nombre(){
         Usuario usuario = usuarioConectado();
-        Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
-        ONG o = or.buscarPorEmail(usuario.getEmail());
-
-        if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
-            return d.getNombre();
-        }else if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
-            return o.getMarca();
-        }else{
-            return null;
-        }
-        
-        
+       System.out.println(usuario);
       
+        if(usuario.getRol() != Rol.ONG) {
+        	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
+        	 System.out.println("deve");
+        	 System.out.println(d);
+        	 
+        	 if(d!=null) {
+        		  if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
+                 return d.getNombre();
+                 }
+        	 }
+            
+        }
+        if(usuario.getRol() != Rol.DEVE) {
+        	  ONG o = or.buscarPorEmail(usuario.getEmail());
+        	  System.out.println("ong");
+        	  System.out.println(o);
+        	  if(o!=null) {
+        		   if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
+                  return o.getMarca();
+              }
+        	  }
+        	 
+        }
+  
+        return null;//Nunca llega aqui
+        
+  
   
     }
 	
+}
+
 	
 
-	/*
-	 * public void validarDatos (String contrasena, String email) throws Exception {
-	 * if(contrasena.length()<=6 || contrasena.length()>=20 || contrasena == null ||
-	 * contrasena.isEmpty()) { throw new
-	 * Exception("La contraseña debe tener entre 6 y 20 caracteres."); }
-	 * 
-	 * if(!email.contains("@") || !email.contains(".") || email ==
-	 * RepoUsu.findByStringEmail(email)) { throw new
-	 * Exception("El email no es válido o ya se encuentra registrado."); } }
-	 */
 
-}

@@ -112,19 +112,19 @@ public class DeveloperService {
 		if(usuario==null) { 
 			throw new Exception("usuario no creado");
 		}
-		if(usuario.getEmail().isBlank()) {
+		if(usuario.getEmail().isEmpty()) {//Cambiar isBlank()
 			throw new Exception("email no válido");
 		}
-		if(usuario.getContrasena().isBlank()) {
+		if(usuario.getContrasena().isEmpty()) {//Cambiar isBlank()
 			throw new Exception("contraseña no válida");
 		}
-		if(tel.isBlank() || tel.length()<6 /*|| tel.matches("a-zA-Z")*/) {
+		if(tel.isEmpty() || tel.length()<6 /*|| tel.matches("a-zA-Z")*/) {//Cambiar isBlank()
 			throw new Exception("teléfono no válido (tamaño: mínimo 6 caracteres - sólo se admiten números)");
 		}
-		if(nombre.isBlank() || nombre.length()<2 || nombre.length()>20 /*|| !(nombre.matches("a-zA-Z"))*/) {
+		if(nombre.isEmpty() || nombre.length()<2 || nombre.length()>20 /*|| !(nombre.matches("a-zA-Z"))*/) {//Cambiar isBlank()
 			throw new Exception("nombre no válido (tamaño: mínimo 2 caracteres / máximo= 20 caracteres - sólo se admiten letras)");
 		}
-		if(apellido.isBlank() || apellido.length()<2 || apellido.length()>20 /*|| !(apellido.matches("a-zA-Z"))*/) {
+		if(apellido.isEmpty() || apellido.length()<2 || apellido.length()>20 /*|| !(apellido.matches("a-zA-Z"))*/) {//Cambiar isBlank()
 			throw new Exception("apeliido no válido (tamaño: mínimo 2 caracteres / máximo= 20 caracteres - sólo se admiten letras)");
 		}
 		if(foto == null) {

@@ -21,8 +21,21 @@ public class DeveloperService {
 
 	@Autowired
 	private FotoRepository fotoRepo;
+	
+	/* JDBC lenguaje directo a BBDD (new EntityManager)
+	 * Spring (API NO directa a BBDD) extiende de Jpa.x eso no van mas los EntityManager xq extiende de JPA, 
+	 * este baja sus utilidades- Utiliza @Etiquetas p comunicarse con BBDD (leng NO directo)
+	 * Propagation.REQUIRED =  consulta lógica (código, ambito externo) a BBDD  tiene 3 opciones:
+	 * 1- existe consula fisica (BBDD, ámbito interno) en curso, continua con la misma
+	 * 2-existe  consula fisica (BBDD, ámbito interno) curso, anula esa,y luego crea una nueva
+	 * 3-no exite  consula fisica (BBDD, ámbito interno), la crea
+	 * 
+	   rollBack= ctrl Z en BBDD si alguna transc no se puede ralizar (exception-error)
+	   controlador invoca a crearDev y,a su vez, ésta invoca a guardarDev
+		https://docs.google.com/document/d/1qjo8ND-mDg05a4QHfcA0Y-S8lSzT-XtgzkXLjYOYZfk/edit
+	 */
 
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
 	public void guardarDeveloper(Developer dev, Usuario usuario, String tel, String nombre, String apellido, Foto foto,
 			List<Tecnologias> tec) throws Exception  {
 		
@@ -31,15 +44,15 @@ public class DeveloperService {
 		dev.setNombre(nombre);
 		dev.setApellido(apellido);
 		dev.setAlta(true);
-		dev.setTecnologias(tec);// ver como se arma en el front
+		dev.setTecnologias(tec);										// TO-DO= tecnologias ENUM
 		dev.setTelefono(tel);
 		dev.setUsuario(usuario);
 		dev.setFoto(foto);
-		if (foto != null) {
+		/*if (foto != null) {
 			//fotoRepo.save(foto);
 		}
-//		userRepo.save(dev.getUsuario());
-	//	userServi.saveUsuario(usuario);
+		userRepo.save(dev.getUsuario());
+		userServi.saveUsuario(usuario);*/
 		DevRepo.save(dev);
 	}
 	
@@ -71,7 +84,7 @@ public class DeveloperService {
 		}
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)   								//aviso q se usará SOLO LECTURA BBDD
 	public List<Developer> listarTodosDeveloper() {
 		return DevRepo.findAll();
 	}
@@ -85,7 +98,7 @@ public class DeveloperService {
 	public void EditarDeveloperActivo(Long ID) {
 		Developer dev = getDeveloper(ID);
 		if (dev != null) {
-			dev.setAlta(!dev.getAlta());
+			dev.setAlta(!dev.getAlta());                 //invierte alta-baja o viceversa
 			DevRepo.save(dev);
 		}
 	}
@@ -108,17 +121,17 @@ public class DeveloperService {
 
 	public void validar(Usuario usuario, String tel, String nombre, String apellido, Foto foto,
 			List<Tecnologias> tec) throws Exception {
-		//ACOMODAR ORDEN DE IF´SSSSSSSSSS
+																//TO-DO =ACOMODAR ORDEN DE IF´SSSSSSSSSS
 		if(usuario==null) { 
 			throw new Exception("usuario no creado");
 		}
-		if(usuario.getEmail().isEmpty()) {//Cambiar isBlank()
+		if(usuario.getEmail().isEmpty()) {						//Cambiar isBlank()
 			throw new Exception("email no válido");
 		}
-		if(usuario.getContrasena().isEmpty()) {//Cambiar isBlank()
+		if(usuario.getContrasena().isEmpty()) {					//Cambiar isBlank()
 			throw new Exception("contraseña no válida");
 		}
-		if(tel.isEmpty() || tel.length()<6 /*|| tel.matches("a-zA-Z")*/) {//Cambiar isBlank()
+		if(tel.isEmpty() || tel.length()<6) { 			/*|| tel.matches("a-zA-Z") Cambiar isBlank()*/
 			throw new Exception("teléfono no válido (tamaño: mínimo 6 caracteres - sólo se admiten números)");
 		}
 		if(nombre.isEmpty() || nombre.length()<2 || nombre.length()>20 /*|| !(nombre.matches("a-zA-Z"))*/) {//Cambiar isBlank()
@@ -131,7 +144,7 @@ public class DeveloperService {
 			throw new Exception("foto no añadida");
 		}
 		if(tec==null ||tec.size()==0) { 
-			throw new Exception("no ingresó compas de tecnologías");
+			throw new Exception("no ingresó campos de tecnologías");
 		}
 
 	}

@@ -14,7 +14,7 @@ import enumeracion.Rol;
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)  				//strategy incrementa en 1 el id
 	private Long id_usuario;
 	private	String email;
 	private String	contrasena;

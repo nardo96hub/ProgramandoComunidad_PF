@@ -28,14 +28,14 @@ public class Proyecto {
 	
 	@Temporal (TemporalType.DATE)
 	private Date fecha_post;
-	private Boolean	admitir_deve; //se setea en false cuando el proyecto ya tiene 5 developers
+	private Boolean	admitir_deve; 					//se setea en false cuando el proyecto ya tiene 5 developers
 	private Boolean	alta;
 	
 	@OneToMany
 	private List<Developer> developer;	
 	
 	@ManyToOne
-	@JoinTable(
+	@JoinTable(										// tabla unión intemedia(many) entre entity (sin foránea)
 	        name = "proyecto_ong",
 	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
 	        inverseJoinColumns = @JoinColumn(name="id_ong", nullable = false))
@@ -119,7 +119,7 @@ public class Proyecto {
 	}
 	
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) {   			  //equals evita proyecto X2 en arreglo
 		if (this == obj)
 			return true;
 		if (obj == null)

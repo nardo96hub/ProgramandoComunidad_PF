@@ -31,20 +31,26 @@
             <img src="/logo.png" alt="logo" class="logo">
             <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
+          	<div th:if="${error}!=null" class="card">
+					<div class="card-body">
+						<p class="card-text" th:text="${error}"></p>
+					</div>
+		</div>
         <div class="contenedor">
+      
             <div class="centrar">
                 <form action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
-                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name" required></div>
-                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido" required></div>
-                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel" required></div>
+                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name"></div>
+                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido"></div>
+                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel"></div>
                     <div class="form-group"><label for="email">Email</label><input type="email" name="user"
-                            placeholder="asd@asd.com" required></div>
-                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass" required></div>
+                            placeholder="asd@asd.com"></div>
+                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
                     
                     <br>
                     
                   	 <div class="form-group" style="margin-bottom:70px" >
-                     <input type="file" name="file" class="boton" required > 
+                     <input type="file" name="file" class="boton"> 
                      </div>
                    
                    <!-- <div class="form-check" >
@@ -83,7 +89,7 @@
                     </label>
 
                 </div> -->
-					<div class="form-check required">
+					<div class="form-check">
 						
 					<div th:each="tec: ${listaTec} " >
 					

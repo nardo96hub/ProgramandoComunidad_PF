@@ -28,7 +28,7 @@ public class TecnologiasService {
 	}
 	
 	public void validar(String lenguaje) throws Exception {
-		if(lenguaje.isEmpty() || lenguaje==null) {
+		if(lenguaje.isBlank()) { //devuelve true si hay doble comillas/espacios (isEmpty no lo hace)
 			throw new Exception("Campo obligatorio");
 		}
 	}

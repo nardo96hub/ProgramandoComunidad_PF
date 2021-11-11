@@ -38,8 +38,5 @@ public class TecnologiasService {
 		return RepoTec.findAll();
 	}
 	
-	@Transactional(readOnly=true)
-	public List<Tecnologias> listarTecnologiasUnicas() {
-		return RepoTec.listarLenguajes();
-	}
+	
 }

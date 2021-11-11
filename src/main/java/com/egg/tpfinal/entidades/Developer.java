@@ -1,5 +1,6 @@
 package com.egg.tpfinal.entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -27,9 +28,8 @@ public class Developer {
 
 	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Tecnologias> tecnologias;
+	
+	private ArrayList<String> tecnologias;
 
 	public Long getId_developer() {
 		return id_developer;
@@ -87,11 +87,11 @@ public class Developer {
 		this.foto = foto;
 	}
 
-	public List<Tecnologias> getTecnologias() {
+	public ArrayList<String> getTecnologias() {
 		return tecnologias;
 	}
 
-	public void setTecnologias(List<Tecnologias> tecnologias) {
+	public void setTecnologias(ArrayList<String> tecnologias) {
 		this.tecnologias = tecnologias;
 	}
 

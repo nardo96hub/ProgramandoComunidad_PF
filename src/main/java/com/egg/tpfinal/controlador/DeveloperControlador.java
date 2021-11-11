@@ -40,7 +40,7 @@ public class DeveloperControlador {
  
 	@GetMapping()								//GetMapping retorna siempre un html en este caso no lleva direccion porque es /registrodev
 	public String mostrardev(ModelMap mod){		//Por cada model/ModelMap se le envia informacion del back al front ej datos de base de datos o errores 
-		List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();	//
+		List<Tecnologias> lt=ServiTec.listarTecnologias();	//
 		mod.addAttribute("listaTec", lt);							// Buscar Las tecnologias en la BASE DE DATOS 
 		return "registrodev.html";
 	}
@@ -54,21 +54,23 @@ public class DeveloperControlador {
 	
 
 	@PostMapping("/cargardev")
-	public String cargardev(@RequestParam List<String> lenguajes,
+	public String cargardev(@RequestParam ArrayList<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 		try {
-			List<Tecnologias> tecnologias= new ArrayList<Tecnologias>();	
 			
 			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
 				 
-				Tecnologias tecn=new Tecnologias();
-				tecn.setLenguaje(tec);
-				tecnologias.add(tecn);
-				//return "redirect:/registrodev";
 				
-			}
-			
+				//return "redirect:/registrodev";
+				for (Tecnologias tecbase : ServiTec.listarTecnologias()) {
+					if (!tec.equalsIgnoreCase(tecbase.getLenguaje())) {
+						ServiTec.guardarTecnologias(tec);
+					}
+				}
+						
+			}						
+								
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);		//Creo y guardo nuevo usuario
 			Foto foto=null;													//Es necesario porque ServiFoto retorna una foto
 			
@@ -77,11 +79,11 @@ public class DeveloperControlador {
 				//se hizo asi porque sino no se guarda relacionada al developer
 			}
 			
-			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
+			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); //crea y guarda
 			return "redirect:/login";  			//Si todo funciono regresa al index 
 		} catch (Exception e) {
-			List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();		//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
-			modelo.addAttribute("listaTec", lt);
+															//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
+			modelo.addAttribute("listaTec", lenguajes);
 			modelo.put("error", e.getMessage());					//Mando error al html si existio, el 'error' debe coincidir en el html
 			e.printStackTrace();									//Muestro error en consola
 			return "registrodev.html";

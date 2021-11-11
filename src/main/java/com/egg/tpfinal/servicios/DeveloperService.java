@@ -37,7 +37,7 @@ public class DeveloperService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
 	public void guardarDeveloper(Developer dev, Usuario usuario, String tel, String nombre, String apellido, Foto foto,
-			List<Tecnologias> tec) throws Exception  {
+			ArrayList<String> tec) throws Exception  {
 		
 		validar(usuario,tel,nombre,apellido, foto,tec);
 		
@@ -64,7 +64,7 @@ public class DeveloperService {
 
 	@Transactional
 	public void editarDeveloper(Long ID, Usuario usuario, String nombre, String apellido, String tel, Foto foto,
-			List<Tecnologias> tec) throws Exception {
+			ArrayList<String> tec) throws Exception {
 		Developer dev = getDeveloper(ID);
 		validar(usuario,tel,nombre,apellido, foto,tec);
 		guardarDeveloper(dev, usuario, nombre, apellido, tel, foto, tec);
@@ -72,7 +72,7 @@ public class DeveloperService {
 
 	@Transactional
 	public void crearDeveloper(Usuario usuario, String nombre, String apellido, String tel, Foto foto,
-			List<Tecnologias> tec) throws Exception {
+			ArrayList<String> tec) throws Exception {
 		Developer dev = DevRepo.buscarPorEmail(usuario.getEmail());
 		
 		validar(usuario,tel,nombre,apellido, foto,tec);
@@ -120,7 +120,7 @@ public class DeveloperService {
 	}
 
 	public void validar(Usuario usuario, String tel, String nombre, String apellido, Foto foto,
-			List<Tecnologias> tec) throws Exception {
+			ArrayList<String> tec) throws Exception {
 																//TO-DO =ACOMODAR ORDEN DE IF´SSSSSSSSSS
 		if(usuario==null) { 
 			throw new Exception("usuario no creado");
@@ -143,7 +143,7 @@ public class DeveloperService {
 		if(foto == null) {
 			throw new Exception("foto no añadida");
 		}
-		if(tec==null ||tec.size()==0) { 
+		if(tec.isEmpty() ||tec.size()==0) { 
 			throw new Exception("no ingresó campos de tecnologías");
 		}
 

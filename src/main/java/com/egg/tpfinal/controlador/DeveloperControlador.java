@@ -97,6 +97,15 @@ public class DeveloperControlador {
 		mod.addAttribute("listaDev", ld);
 		return "listadevelop";
 	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/eliminardev/{id_developer}")
+	public String eliminardev(@PathVariable Long id_developer) {
+		System.out.println("ID:");
+		System.out.println(id_developer);
+		ServiDev.borrarDeveloper(id_developer);
+		return "redirect:/listarTodo";
+	}
  
 }
  

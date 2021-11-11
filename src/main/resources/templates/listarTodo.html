@@ -19,13 +19,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/inicio.css" />
-    <link rel="stylesheet" href="/proyectoindividual.css" />
+    <link rel="stylesheet" href="/css/inicio.css" />
+    <link rel="stylesheet" href="/css/proyectoindividual.css" />
 </head>
 
 <body>
     <nav class="barra">
-        <img class="logo" src="/logo.png" alt="logo" />
+        <img class="logo" src="/img/logo.png" alt="logo" />
         <a th:if="${session.usuariosession!=null} " th:href="@{/principal}"><button type="button"
                 class="ingresar">Volver</button></a>
     </nav>
@@ -90,7 +90,7 @@
                         <span th:unless="${developer.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td>
-                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a th:href="@{/registrodev/eliminardev/__${developer.id_developer}__}"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -130,7 +130,7 @@
                         <span th:unless="${ong.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td>
-                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -166,17 +166,13 @@
                         <span th:unless="${proyecto.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
 
-                    <td><a href=""><button type="button">Forzar</button></a></td>
+                    <td><a href="#"><button type="button">Forzar</button></a></td>
 
 
-                    <td>
-
-                        <a href="#"><i class="far fa-edit" style="color: gold;"></i>
-                        </a>
-                    </td>
+                 
                    
                     <td>
-                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>

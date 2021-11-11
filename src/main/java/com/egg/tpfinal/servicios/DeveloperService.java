@@ -99,7 +99,7 @@ public class DeveloperService {
 		Developer dev = getDeveloper(ID);
 		if (dev != null) {
 			dev.setAlta(!dev.getAlta());                 //invierte alta-baja o viceversa
-			DevRepo.save(dev);
+			//DevRepo.save(dev);
 		}
 	}
 

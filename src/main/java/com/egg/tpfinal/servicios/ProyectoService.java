@@ -39,7 +39,7 @@ public class ProyectoService {
 		Proyecto proyecto = buscarPorID(ID);
 		if (proyecto != null) {
 			proyecto.setAlta(!proyecto.getAlta());
-			ProyectoRepo.save(proyecto);
+			//ProyectoRepo.save(proyecto);
 		}
 	}
 
@@ -69,12 +69,11 @@ public class ProyectoService {
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
 		ong.addProyecto(proyecto);
-		ONGservi.saveOng(ong); //esta de mas 
+		//ONGservi.saveOng(ong); //esta de mas 
 		proyecto.setOng(ong);
 		ProyectoRepo.save(proyecto);
 		
-		System.out.println("proyecto:");
-		System.out.println(proyecto.getOng());
+		
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
@@ -105,6 +104,7 @@ public class ProyectoService {
 				proyecto.setAdmitir_deve(false);
 				
 			}
+			//ineproyecto.getOng().getPublicaciones().forEach((e) -> System.out.println(e.getTitulo()));
 			
 			ProyectoRepo.save(proyecto);
 		} else {

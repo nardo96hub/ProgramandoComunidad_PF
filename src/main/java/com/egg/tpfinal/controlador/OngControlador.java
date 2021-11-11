@@ -61,7 +61,7 @@ public class OngControlador {
 			
 			ServiOng.crearOng(u, marca, name, ape,foto);
 			
-			return "redirect:/";
+			return "redirect:/login";
 		} catch (Exception e) {
 			mod.put("error", e.getMessage());
 			e.printStackTrace();

@@ -17,7 +17,7 @@ public interface TecnologiaRepository extends JpaRepository<Tecnologias, Long> {
 	@Query("SELECT t FROM Tecnologias t WHERE t.lenguaje = :lenguaje1 ")
 	public Tecnologias buscarPorLenguaje(@Param("lenguaje1") String lenguaje);
 	
-	@Query("SELECT DISTINCT  t from Tecnologias t group by t.lenguaje")
-	public List<Tecnologias> listarLenguajes();
+	@Query("SELECT DISTINCT  t from Tecnologias t group by t.lenguaje")           //evita duplicar en front checkbox
+	public List<Tecnologias> listarLenguajes();									 // TO-DO: mapear p NO duplicar leng en BBDD 
 
 }

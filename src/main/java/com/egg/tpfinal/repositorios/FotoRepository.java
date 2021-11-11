@@ -8,7 +8,7 @@ import com.egg.tpfinal.entidades.Foto;
 @Repository
 public interface FotoRepository extends JpaRepository<Foto, Long>{
 
-	@Query("SELECT max(id_foto) from Foto")
+	@Query("SELECT max(id_foto) from Foto")           //devuelve ID max (p no duplicar el nombre archivo foto)
 	Long findTopByOrderById_fotoDesc();
 	
 	

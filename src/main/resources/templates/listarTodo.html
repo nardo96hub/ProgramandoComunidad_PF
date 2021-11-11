@@ -120,7 +120,7 @@
                     <th scope="row" th:text="${ong.id_ong}"></th>
                     <td th:text="${ong.marca} "></td>
                     <td th:text="${ong.nombre_rep}+ ' ' + ${ong.apellido_rep}"></td>
-                    <td th:text="${ong.usuario.email"></td>
+                    <td th:text="${ong.usuario.email}"></td>
 
                     <td>
                         <img class="integrantes" th:src="${ong.foto.url_foto}" alt="">
@@ -130,7 +130,7 @@
                         <span th:unless="${ong.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td>
-                        <a th:href=""><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -158,8 +158,8 @@
                 <tr>
                     <th scope="row" th:text="${proyecto.id_proyecto}"></th>
                     <td th:text="${proyecto.titulo}"></td>
-                    <td th:text="${proyecto.cuerpo"></td>
-                    <td th:text="${proyecto.fecha_post"></td>
+                    <td th:text="${proyecto.cuerpo}"></td>
+                    <td th:text="${proyecto.fecha_post}"></td>
                     <td th:text="${proyecto.admitir_deve}"></td>
                     <td>
                         <span th:if="${proyecto.alta}"><i class="fa fa-circle " style="color:green"></i> </span>
@@ -171,12 +171,12 @@
 
                     <td>
 
-                        <a th:href=""><i class="far fa-edit" style="color: gold;"></i>
+                        <a href="#"><i class="far fa-edit" style="color: gold;"></i>
                         </a>
                     </td>
                    
                     <td>
-                        <a th:href=""><i class="fas fa-trash" style="color: red;"></i></a>
+                        <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
                     </td>
                 </tr>
             </tbody>

@@ -78,7 +78,7 @@ public class DeveloperControlador {
 			}
 			
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
-			return "redirect:/";  			//Si todo funciono regresa al index 
+			return "redirect:/login";  			//Si todo funciono regresa al index 
 		} catch (Exception e) {
 			List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();		//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
 			modelo.addAttribute("listaTec", lt);

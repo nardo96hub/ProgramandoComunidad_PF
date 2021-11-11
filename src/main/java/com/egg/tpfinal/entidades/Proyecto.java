@@ -3,6 +3,8 @@ package com.egg.tpfinal.entidades;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,12 +36,12 @@ public class Proyecto {
 	@OneToMany
 	private List<Developer> developer;	
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinTable(										// tabla unión intemedia(many) entre entity (sin foránea)
 	        name = "proyecto_ong",
 	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
 	        inverseJoinColumns = @JoinColumn(name="id_ong", nullable = false))
-	
+		
 	private ONG	ong;
 	
 	public Long getId_proyecto() {

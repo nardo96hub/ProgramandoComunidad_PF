@@ -104,8 +104,7 @@ public class ONG {
 	@Override
 	public String toString() {
 		return "ONG [id_ong=" + id_ong + ", marca=" + marca + ", nombre_rep=" + nombre_rep + ", apellido_rep="
-				+ apellido_rep + ", alta=" + alta + ", usuario=" + usuario + ", foto=" + foto + ", publicaciones="
-				+ publicaciones + "]";
+				+ apellido_rep + ", alta=" + alta + ", usuario=" + usuario ;
 	}
 
 	@Override

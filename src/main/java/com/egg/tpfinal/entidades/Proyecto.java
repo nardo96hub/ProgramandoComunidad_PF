@@ -106,13 +106,17 @@ public class Proyecto {
 		this.ong = ong;
 	}
 	
+
+	
+	
+
 	@Override
 	public String toString() {
 		return "Proyecto [id_proyecto=" + id_proyecto + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", fecha_post="
-				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + developer
+				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", developer=" + developer
 				+ ", ong=" + ong + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(admitir_deve, alta, cuerpo, developer, fecha_post, id_proyecto, ong, titulo);

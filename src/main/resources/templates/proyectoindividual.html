@@ -29,7 +29,7 @@
 
   <nav class="barra">
     <img src="/logo.png" alt="logo" class="logo">
-    <button class="ingresar">Volver</button>
+   <a th:href="@{/principal}"> <button class="ingresar">Volver</button></a>
   </nav><br>
 
     <div class="contenedor">
@@ -43,7 +43,9 @@
         <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2>
 
         <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
+        <div th:if=${proyecto.admitir_deve}>
         <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
+        </div>
       <!--th:each="proyecto : ${proyectos} "   <img th:src="@{'/images/' + ${post.imageName}}"/> -->
       <!-- <img th:if="${usuario.foto != null}" class="rounded-circle" th:src="${'/foto/usuario/' + usuario.id}" alt="" style="max-height: 100px">-->
         <div class="todo">

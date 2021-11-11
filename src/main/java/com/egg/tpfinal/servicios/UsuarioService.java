@@ -41,7 +41,7 @@ public class UsuarioService implements UserDetailsService {
 	public Usuario seteoUsuario(String email, String contrasena, Rol rol) throws Exception {
 		Usuario u = new Usuario();
 		// validarDatos(contrasena, email);
-		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena);
+		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena); 		//Recibo una contraseña y con esta linea se encripta guardandola en BDD 
 		u.setContrasena(contraseniaEncriptada);
 		u.setEmail(email);
 		u.setRol(rol);
@@ -51,7 +51,7 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	@Transactional
-	public void crearUsuario(String email, String contrasena, Rol rol) throws Exception {
+	public void crearUsuario(String email, String contrasena, Rol rol) throws Exception {	//No se usa se reemplazo por seteoUsuario
 		Usuario u = RepoUsu.buscarPorEmail(email);
 		if (u != null)
 			throw new Exception("Usuario ya registrado");
@@ -62,7 +62,7 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	@Transactional
-	public void editarUsuario(String email, String contrasena, Rol rol) throws Exception {
+	public void editarUsuario(String email, String contrasena, Rol rol) throws Exception {  		//Adaptar cuando se haga editar
 		Usuario u = RepoUsu.buscarPorEmail(email);
 		// guardarUsuario(u,email,contrasena,rol);
 		// editar usuario y volverselo a setear a developer o ong y persistir en esas
@@ -70,7 +70,7 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	@Transactional
-	public void editarAlta(Long id) {
+	public void editarAlta(Long id) {					//Invierte  el estado
 		Usuario u = getUsuario(id);
 		if (u != null) {
 			u.setAlta(!u.getAlta());
@@ -79,60 +79,82 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	@Transactional
-	public void eliminarUsuario(Long id) {
+	public void eliminarUsuario(Long id) {				//Elimino alta
 		editarAlta(id);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)						//Muestra usuariosActivos
 	public List<Usuario> mostrarUsuarioActivos() {
 		return RepoUsu.listarUsuariosActivos();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)						//Muestro Todos los Usuarios
 	public List<Usuario> mostrarUsuarios() {
 		return RepoUsu.findAll();
 	}
 
 	@Transactional(readOnly = true)
-	// @SuppressWarnings("unused")
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		// System.out.println(email);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {	//Metodo encargado de realizar login
+	
 		Usuario u = RepoUsu.buscarPorEmail(email);
-//		System.out.println(u.getContrasena());
-//		System.out.println(u.getEmail());
+
 
 		if (u != null) {
-			List<GrantedAuthority> permisos = new ArrayList<>();
-			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + u.getRol().toString());
+			List<GrantedAuthority> permisos = new ArrayList<>();						//Guarda Lista de roles supuestamente		
+			GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + u.getRol().toString());	//Carga el Rol
 			permisos.add(p1);
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-			HttpSession session = attr.getRequest().getSession(true);
+			HttpSession session = attr.getRequest().getSession(true);		//Defino la session		
 			session.setAttribute("usuariosession", u);
-			return new User(email, u.getContrasena(), permisos);
-		} else {
-			throw new UsernameNotFoundException("error");
+			return new User(email, u.getContrasena(), permisos);			//Creo Nuevo usuario para login
+		} else {	
+			throw new UsernameNotFoundException("error");					//Por si ocurre problema
 		}
 	}
 
 	@Transactional(readOnly = true)
 	public Usuario getUsuario(Long ID) {
-		Optional<Usuario> u = RepoUsu.findById(ID);
+		Optional<Usuario> u = RepoUsu.findById(ID);							//Retorna usuario por Id
 		return u.get();
 	}
 
 	@Transactional(readOnly = true)
-	public Usuario getUsuarioEmail(String email) {
+	public Usuario getUsuarioEmail(String email) {							//Busca usuario por Email
 		Usuario u = RepoUsu.buscarPorEmail(email);
 		return u;
 	}
 
 	@Transactional
-	public void saveUsuario(Usuario usuario) {
+	public void saveUsuario(Usuario usuario) {								//Guarda usuario en BDD
 		RepoUsu.save(usuario);
 	}
 
-	public Usuario usuarioConectado(){
+	public String  usuarioConectado(Usuario u) {
+		System.out.println("Rol : "+u.getRol());
+		if(u.getRol()==Rol.DEVE) {
+			Developer developer = dr.buscarPorEmail(u.getEmail());
+			return developer.getNombre()+" "+developer.getApellido();
+		}
+		if(u.getRol()==Rol.ONG) {
+			ONG ong=or.buscarPorEmail(u.getEmail());
+			return ong.getMarca();
+		}
+		if(u.getRol()==Rol.ADMIN) {
+			Developer dev = dr.buscarPorEmail(u.getEmail());
+			if(dev !=null) {
+				return dev.getNombre()+" "+dev.getApellido();
+			}else {
+				ONG ong=or.buscarPorEmail(u.getEmail());
+				return ong.getMarca();
+			}
+		}
+		
+		
+		return null;
+	}
+	
+	public Usuario usuarioconectado(){										//Funcion que trae usuario conectado
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
 	if (!(authentication instanceof AnonymousAuthenticationToken)) {
 		String email = authentication.getName();
@@ -142,14 +164,14 @@ public class UsuarioService implements UserDetailsService {
                 return null; 
             }                
     }
-    public String nombre(){
-        Usuario usuario = usuarioConectado();
-       System.out.println(usuario);
+	/*
+    public String nombre(){												//Funcion que retorna el nombre del usuario 
+        Usuario usuario = usuarioConectado();							//Retorna usuario conectado
+
       
-        if(usuario.getRol() == Rol.ONG ) {
+        if(usuario.getRol() == Rol.ONG ) {						
         	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
-        	 System.out.println("deve");
-        	 System.out.println(d);
+        	 
         	 
         	 if(d!=null) {
         		  if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
@@ -159,8 +181,7 @@ public class UsuarioService implements UserDetailsService {
             
         }else  if(usuario.getRol() == Rol.DEVE || usuario.getRol() == Rol.ADMIN) {
         	  ONG o = or.buscarPorEmail(usuario.getEmail());
-        	  System.out.println("ong");
-        	  System.out.println(o);
+        
         	  if(o!=null) {
         		   if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
                   return o.getMarca();
@@ -173,7 +194,40 @@ public class UsuarioService implements UserDetailsService {
         
   
   
-    }
+    }*/
+	 public String nombre(){
+	        Usuario usuario = usuarioconectado();
+	 
+	      
+	        if(usuario.getRol() != Rol.ONG) {
+	        	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
+	     
+	        	 System.out.println(d);
+	        	 
+	        	 if(d!=null) {
+	        		  if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
+	                 return d.getNombre();
+	                 }
+	        	 }
+	            
+	        }
+	        if(usuario.getRol() != Rol.DEVE) {
+	        	  ONG o = or.buscarPorEmail(usuario.getEmail());
+	        	
+	        	  System.out.println(o);
+	        	  if(o!=null) {
+	        		   if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
+	                  return o.getMarca();
+	              }
+	        	  }
+	        	 
+	        }
+	  
+	        return null;//Nunca llega aqui
+	        
+	  
+	  
+	    }
 	
 }
 

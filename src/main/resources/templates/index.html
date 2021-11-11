@@ -60,20 +60,28 @@
 	<br><br>
     <div class="grilla">
 		<h1 class="titulo-botones">Elegí como registrarte</h1>
-		
-        
+		<img class="fondo2" alt="" src="/index.png">
+        <div class="marco">
         <img class="developer-icono" src="/logo-developer.png" alt="">
+        </div>
         
+        <div class="marco2">
 	    <img class="ong-icono" src="/logo-ong.png" alt="">
-       
+       </div>
         <div class="boton-d">
 		<a href="/registrodev" ><button class="developer">Developer</button></a>
         </div>
 
         <div class="boton-o">
 		<a href="/ong/crearong"><button class="ong">ONG</button></a>
-        </div><br>
-    </div>
+
+        </div>
+        
+        
+
+        </div>
+
+    
 
 <!--
     <div class="boton">
@@ -97,8 +105,20 @@
       <i class="fab fa-facebook fa-2x"></i>
       <i class="fab fa-linkedin fa-2x"></i>
     </footer>
+	<script type="text/javascript" src="/vanilla-tilt.js"></script>
+	<script type="text/javascript">
+	VanillaTilt.init(document.querySelector(".marco"), {
+		max: 25,
+		speed: 400
+	});
+</script>
 
-
+<script type="text/javascript">
+	VanillaTilt.init(document.querySelector(".marco2"), {
+		max: 25,
+		speed: 400
+	});
+</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

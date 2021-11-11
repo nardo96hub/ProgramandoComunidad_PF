@@ -71,6 +71,9 @@ public class ProyectoService {
 		ONGservi.saveOng(ong);
 		proyecto.setOng(ong);
 		ProyectoRepo.save(proyecto);
+		
+		System.out.println("proyecto:");
+		System.out.println(proyecto.getOng());
 	}
 
 	@Transactional
@@ -90,10 +93,10 @@ public class ProyectoService {
 	public void postularse(Developer deveAux, Long idProyecto) throws Exception {
 		Proyecto proyecto = buscarPorID(idProyecto);
 		List<Developer> postulados = proyecto.getDeveloper();
-		if (!postulados.contains(deveAux) && postulados.size() < 9 && proyecto.getAdmitir_deve()) {
+		if (!postulados.contains(deveAux) && postulados.size() < 1 && proyecto.getAdmitir_deve()) { //Cambiar a 9
 			postulados.add(deveAux);
 			proyecto.setDeveloper(postulados);
-			if (postulados.size() >= 9) {
+			if (postulados.size() >= 1) {				//Cambiar a 9
 				proyecto.setAdmitir_deve(false);
 			}
 

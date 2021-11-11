@@ -17,6 +17,7 @@ import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
 import com.egg.tpfinal.entidades.Usuario;
+import com.egg.tpfinal.repositorios.OngRepository;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.OngService;
 import com.egg.tpfinal.servicios.ProyectoService;
@@ -34,15 +35,18 @@ public class ProyectoControlador {
 	private OngService OngServi;
 	@Autowired
 	private DeveloperService deveServi;
-	
+	@Autowired
+	private OngRepository ongRepo;
 	//@Autowired
 	//private DeveloperService devServi;
 	
+	@PreAuthorize("hasAnyRole('ROLE_ONG')")
 	@GetMapping("/publicarproyecto")
 	public String registrar() {
 		return "publishproyectTest.html";
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ONG')")
 	@PostMapping("/procesarform")
 	public String crearProyecto(/*@RequestParam String email_usuario,*/ @RequestParam String cuerpo, @RequestParam String titulo,
 			HttpSession session,ModelMap mod) {
@@ -50,6 +54,8 @@ public class ProyectoControlador {
 		try {
 			// el email es obtenido por la session del usuario logeado
 			Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+			/*System.out.println("Usuario?");
+			System.out.println(ongLogeada);*/
 			// String email_usuario = ongLogeada.getEmail();
 
 			// Usuario user = userServi.getUsuarioEmail(email_usuario);
@@ -67,7 +73,10 @@ public class ProyectoControlador {
 			 * } }
 			 */
 
-			ONG ongaux = OngServi.buscarONGporUsuario(ongLogeada);
+			//ONG ongaux = OngServi.buscarONGporUsuario(ongLogeada);
+			ONG ongaux =ongRepo.buscarPorEmail(ongLogeada.getEmail());
+			/*System.out.println("ONG?");
+			System.out.println(ongaux);*/
 
 			// ONG ong = OngServi.buscarONGporidUsuario(user.getId_usuario()).get();
 			// //arreglar en futuras versiones

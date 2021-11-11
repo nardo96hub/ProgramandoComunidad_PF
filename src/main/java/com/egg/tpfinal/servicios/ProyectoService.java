@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.ONG;
@@ -68,16 +69,23 @@ public class ProyectoService {
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
 		ong.addProyecto(proyecto);
-		ONGservi.saveOng(ong);
+		ONGservi.saveOng(ong); //esta de mas 
 		proyecto.setOng(ong);
 		ProyectoRepo.save(proyecto);
+		
+		System.out.println("proyecto:");
+		System.out.println(proyecto.getOng());
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
 	public void crearProyecto(String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = new Proyecto();
 		validarDatos(titulo, cuerpo, ong);
+		ong.setPublicaciones(new ArrayList<Proyecto>());
+		ong.addProyecto(proyecto);
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
+		
+		
 	}
 
 	@Transactional(readOnly = true)
@@ -86,17 +94,18 @@ public class ProyectoService {
 		return p.get();
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
 	public void postularse(Developer deveAux, Long idProyecto) throws Exception {
 		Proyecto proyecto = buscarPorID(idProyecto);
 		List<Developer> postulados = proyecto.getDeveloper();
-		if (!postulados.contains(deveAux) && postulados.size() < 9 && proyecto.getAdmitir_deve()) {
+		if (!postulados.contains(deveAux) && postulados.size() < 2 && proyecto.getAdmitir_deve()) { //Cambiar a 9
 			postulados.add(deveAux);
 			proyecto.setDeveloper(postulados);
-			if (postulados.size() >= 9) {
+			if (postulados.size() >= 2) {				//Cambiar a 9
 				proyecto.setAdmitir_deve(false);
+				
 			}
-
+			
 			ProyectoRepo.save(proyecto);
 		} else {
 			throw new Exception("no puede unirse a este proyecto");

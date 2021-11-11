@@ -2,6 +2,8 @@ package com.egg.tpfinal.controlador;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -40,8 +42,9 @@ public class PrincipalControlador {
 	}
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/principal")
-	public String principal(ModelMap model) {
-        model.put("nombre", ServiUsu.nombre());
+	public String principal(ModelMap model,HttpSession session) {
+		//Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+      model.put("nombre", ServiUsu.nombre());
 		return "principal";
 	}
 	

@@ -3,6 +3,8 @@ package com.egg.tpfinal.entidades;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,12 +36,12 @@ public class Proyecto {
 	@OneToMany
 	private List<Developer> developer;	
 	
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinTable(										// tabla unión intemedia(many) entre entity (sin foránea)
 	        name = "proyecto_ong",
 	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
 	        inverseJoinColumns = @JoinColumn(name="id_ong", nullable = false))
-	
+		
 	private ONG	ong;
 	
 	public Long getId_proyecto() {
@@ -106,13 +108,17 @@ public class Proyecto {
 		this.ong = ong;
 	}
 	
+
+	
+	
+
 	@Override
 	public String toString() {
 		return "Proyecto [id_proyecto=" + id_proyecto + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", fecha_post="
-				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", Developer=" + developer
+				+ fecha_post + ", admitir_deve=" + admitir_deve + ", alta=" + alta + ", developer=" + developer
 				+ ", ong=" + ong + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(admitir_deve, alta, cuerpo, developer, fecha_post, id_proyecto, ong, titulo);

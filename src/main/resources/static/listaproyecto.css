@@ -20,7 +20,7 @@
 
 .contenedor{
     display: grid;
-    grid-template-columns: 0.4fr 1fr 0.1fr;
+    grid-template-columns: 1fr;
     grid-template-columns: "1 2 3";
     grid-gap: 25px;
     font-weight: 800;
@@ -28,8 +28,9 @@
     font-size: 12px;
     color: #004d40;
     text-align: center;
-    margin:  1 1;
     padding: auto;
+    margin-left: 200px;
+    margin-right: 200px;
   }
 
 
@@ -66,9 +67,16 @@
 	text-transform: uppercase;
 }
 
+.titulo-pagina{
+	font-family: "Poppins";
+		text-transform: lowercase;
+		text-transform: capitalize;
+}
+
+
+
 .centrar{
-    grid-column: 2;
-    margin-top: 10px;
+    grid-column: 1;
     width: 100%;
 	background-color: #F8FFE5;
 	border: 6px solid transparent;
@@ -79,7 +87,7 @@
 
 .proyecto{
 	text-align: left;
-	padding: 30px;
+	padding: 15px;
 }
 .titulo{
 	font-family: 'Poppins';

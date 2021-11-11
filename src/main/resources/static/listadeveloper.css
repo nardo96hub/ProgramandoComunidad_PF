@@ -20,7 +20,7 @@
 
 .contenedor {
 	display: grid;
-	grid-template-columns: 0.4fr 1fr 0.1fr;
+	grid-template-columns: 1fr ;
 	grid-template-columns: "1 2 3";
 	grid-gap: 25px;
 	font-weight: 800;
@@ -30,7 +30,11 @@
 	text-align: center;
 	margin: 1 1;
 	padding: auto;
-}
+	  margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    }
 
 .ingresar {
 	background: #7dde92;
@@ -44,15 +48,14 @@
 }
 
 .centrar {
-	grid-column: 2;
-	margin-top: 10px;
-	width: 100%;
+  grid-column: 1;
+    width: 100%;
 	background-color: #F8FFE5;
 	border: 6px solid transparent;
-	border-image: linear-gradient(to bottom, #7DDE92, #37BBA3);
-	border-image-slice: 4;
-	box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
-	padding: 20px;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+    box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+   	padding: 30px;
 }
 
 .centrar-baja {

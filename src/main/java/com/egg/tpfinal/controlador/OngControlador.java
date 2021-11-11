@@ -90,10 +90,10 @@ public class OngControlador {
 		//return "redirect:/";
 	}
 	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/eliminarong/{id}")
-	public String eliminarong(@PathVariable Long id) {
-		ServiOng.borrarONG(id);
-		return "redirect:/";
+	@GetMapping("/eliminarong/{id_ong}")
+	public String eliminarong(@PathVariable Long id_ong) {
+		ServiOng.borrarONG(id_ong);
+		return "redirect:/listarTodo";
 	}
 
 }

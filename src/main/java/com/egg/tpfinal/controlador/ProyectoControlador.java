@@ -101,8 +101,9 @@ public class ProyectoControlador {
 	
 	@GetMapping("/eliminarproyecto/{id}")
 	public String eliminarProyecto(@PathVariable Long id) {
+		System.out.println("Id: "+id);
 		proyecServi.borrarProyecto(id);
-		return "redirect:/"; // falta vista
+		return "redirect:/listarTodo"; // falta vista
 	}
 	
 	/* EN SEGUNDA VERSION

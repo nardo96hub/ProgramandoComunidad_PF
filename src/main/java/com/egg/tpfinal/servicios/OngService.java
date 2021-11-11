@@ -66,7 +66,7 @@ public class OngService {
 		ONG ong = getONG(ID);
 		if (ong != null) {
 			ong.setAlta(!ong.getAlta());
-			ONGRepo.save(ong);
+		//	ONGRepo.save(ong);
 		}
 	}
 

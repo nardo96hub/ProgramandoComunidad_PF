@@ -39,7 +39,7 @@ public class ProyectoService {
 		Proyecto proyecto = buscarPorID(ID);
 		if (proyecto != null) {
 			proyecto.setAlta(!proyecto.getAlta());
-			ProyectoRepo.save(proyecto);
+			//ProyectoRepo.save(proyecto);
 		}
 	}
 

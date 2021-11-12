@@ -22,43 +22,43 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/proyectoindividual.css" />
+  <!--Linkeo css -->
 
 </head>
 
 <body>
 
   <nav class="barra">
+    <!--NavBar-->
     <img src="/img/logo.png" alt="logo" class="logo">
-   <a th:href="@{/principal}"> <button class="ingresar">Volver</button></a>
+    <a th:href="@{/principal}"> <button class="ingresar">Volver</button></a>
   </nav><br>
 
-    <div class="contenedor">
-      <!--      <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
-          aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
-          ducimus.</h2>  -->
-      <div class="centrar">
-        <div style="text-align:right"><span>Fecha publicacion: </span> <span class="fecha"
-            th:text="${proyecto.fecha_post}"></span></div>
-        <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2>
-        <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2>
+  <div class="contenedor">
 
-        <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
-        <div th:if="${proyecto.admitir_deve}" sec:authorize="hasAnyRole('ROLE_DEVE')">
+    <div class="centrar">
+      <div style="text-align:right"><span>Fecha publicacion: </span> <span class="fecha"
+          th:text="${proyecto.fecha_post}"></span></div>
+      <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2>
+      <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2>
+
+      <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
+      <div th:if="${proyecto.admitir_deve}" sec:authorize="hasAnyRole('ROLE_DEVE')">
+        <!-- este div si admitir_deve=true lo muestra sino no esto ocurre si el tamaño >= al asignado por programador-->
         <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
+      </div>
+
+      <div class="todo">
+        <div th:each="developer : ${proyecto.developer}" class="developer">
+
+
+          <img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
+          <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
         </div>
-      <!--th:each="proyecto : ${proyectos} "   <img th:src="@{'/images/' + ${post.imageName}}"/> -->
-      <!-- <img th:if="${usuario.foto != null}" class="rounded-circle" th:src="${'/foto/usuario/' + usuario.id}" alt="" style="max-height: 100px">-->
-        <div class="todo">
-            <div th:each="developer : ${proyecto.developer}" class="developer">
-               <!-- <img class="integrantes" th:src="@{'/src/main/resources/files/'+ ${developer.foto.id_foto}}+'.jpg'" alt=""> -->
-              
-               <img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
-               <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
-            </div>
+      </div>
     </div>
   </div>
-    </div>
-  
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

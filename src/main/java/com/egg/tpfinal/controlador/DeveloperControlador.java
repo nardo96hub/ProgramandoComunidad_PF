@@ -53,7 +53,7 @@ public class DeveloperControlador {
 	 
 
 	@PostMapping("/cargardev")
-	public String cargardev(@RequestParam(value="lenguajes",required=false) ArrayList<String> lenguajes,
+	public String cargardev(@RequestParam(required=false, defaultValue = "") ArrayList<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 		

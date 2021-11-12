@@ -1,0 +1,206 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.qs {
+	display: inline;
+	float: right;
+	font-size: 12px;
+	background: #7dde92;
+	border-radius: 20px;
+	width: 160px;
+	padding: 5px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	position: relative;
+	margin: 0;
+}
+
+.contenido {
+	position: relative;
+	display: inline-block;
+	text-align: right;
+	width: 100%;
+	height: 68vh;
+}
+
+.descripcion {
+	position: absolute;
+	top: 10px;
+	width: 40%;
+	left: 53%;
+	margin-top: 100px;
+}
+
+.titulo {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: bold;
+}
+
+p {
+	font-family: "Quicksand";
+	font-style: normal;
+	font-weight: bold;
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+}
+
+i {
+	display: inline-block;
+}
+
+.developer {
+	background: #4e4187;
+	border-radius: 20px;
+	width: 250px;
+	padding: 10px;
+	border: none;
+	color: white;
+	font-family: "Poppins";
+	font-size: 20px;
+	align-self: center;
+	justify-self: center;
+}
+
+.boton-d {
+	grid-area: 3/2/4/3;
+	align-self: center;
+	justify-self: center;
+	margin-bottom: 30px;
+	z-index: 1;
+}
+
+.boton-o {
+	grid-area: 3/3/4/4;
+	align-self: center;
+	justify-self: center;
+	margin-bottom: 30px;
+	z-index: 1;
+}
+
+.developer:hover {
+	background: #2f2657;
+}
+
+.ong {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 250px;
+	padding: 10px;
+	border: none;
+	color: black;
+	font-family: "Poppins";
+	font-size: 20px;
+	grid-area: 3/3/4/4;
+	align-self: center;
+	justify-self: center;
+}
+
+.ong:hover {
+	background: #55af69;
+}
+
+.ong-icono {
+	height: 250px;
+	width: auto;
+	grid-area: 2/3/3/4;
+	align-self: center;
+	justify-self: center;
+}
+
+.developer-icono {
+	height: 250px;
+	width: auto;
+	grid-area: 2/2/3/3;
+	align-self: center;
+	justify-self: center;
+}
+
+.marco {
+	grid-area: 2/2/3/3;
+	align-self: center;
+	justify-self: center;
+	background: rgba(255, 255, 255, 0.86);
+	box-shadow: 0px 4px 41px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+	padding: 30px;
+	z-index: 1;
+}
+
+.marco2 {
+	grid-area: 2/3/3/4;
+	align-self: center;
+	justify-self: center;
+	background: rgba(255, 255, 255, 0.86);
+	box-shadow: 0px 4px 41px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+	padding: 30px;
+	z-index: 1;
+}
+
+.fondo2 {
+	grid-area: 1/1/4/5;
+	height: 100vh;
+	width: 300vh;
+}
+
+.grilla {
+	display: grid;
+	grid-template-columns: 0.5fr repeat(2, 1fr) 0.5fr;
+	grid-template-rows: 0.4fr 1fr 0.4fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 3px;
+	background-color: #F8FFE5;
+}
+
+.titulo-botones {
+	grid-area: 1/2/2/4;
+	align-self: center;
+	justify-self: center;
+	font-family: 'Poppins';
+	margin: 30px;
+	z-index: 1;
+}

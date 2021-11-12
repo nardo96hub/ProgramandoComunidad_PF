@@ -22,16 +22,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/listaproyecto.css" />
+  <link rel="stylesheet" href="/css/listaproyecto.css" />
 </head>
 
 <body>
    <nav class="barra">
-      <img src="/logo.png" alt="logo" class="logo">
+      <img src="/img/logo.png" alt="logo" class="logo">
 
      <a href="/principal"> <button class="ingresar">Volver</button></a>
     </nav><br>
-        <h1 class="titulo" style="text-align:center">Proyectos disponibles</h1>
+        <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1>
 		<div class="proyecto" th:each="proyecto : ${proyectos}">
 
           <div class="contenedor" >
@@ -40,7 +40,7 @@
 <!--              <h2 class="marca" th:text="${proyecto.ong.marca}"></h2> -->
            	 <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
              <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
-             <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Postularse</a></p>
+             <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Ver mas informacion</a></p>
         </div>
 
         </div>

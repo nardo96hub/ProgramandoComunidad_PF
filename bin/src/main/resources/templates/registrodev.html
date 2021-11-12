@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/registro.css" />
+    <link rel="stylesheet" href="/css/registro.css" />
 </head>
 
 <body>
@@ -28,23 +28,29 @@
 
     
         <nav class="barra">
-            <img src="/logo.png" alt="logo" class="logo">
+            <img src="/img/logo.png" alt="logo" class="logo">
             <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
+          	<div th:if="${error}!=null" class="card">
+					<div class="card-body">
+						<p class="card-text" th:text="${error}"></p>
+					</div>
+		</div>
         <div class="contenedor">
+      
             <div class="centrar">
-                <form  action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
-                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name" required></div>
-                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido" required></div>
-                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel" required></div>
+                <form action="/registrodev/cargardev" enctype="multipart/form-data" method="post">
+                    <div class="form-group"><label for="nombre">Nombre</label><input type="text" name="name"></div>
+                    <div class="form-group"><label for="apellido">Apellido</label><input type="text" name="apellido"></div>
+                    <div class="form-group"><label for="telefono">Teléfono</label><input type="text" name="tel"></div>
                     <div class="form-group"><label for="email">Email</label><input type="email" name="user"
-                            placeholder="asd@asd.com" required></div>
-                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass" required></div>
+                            placeholder="asd@asd.com"></div>
+                    <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass"></div>
                     
                     <br>
                     
                   	 <div class="form-group" style="margin-bottom:70px" >
-                     <input type="file" name="file" class="boton" required > 
+                     <input type="file" name="file" class="boton"> 
                      </div>
                    
                    <!-- <div class="form-check" >
@@ -82,8 +88,8 @@
                         Ruby
                     </label>
 
-                </div>-->
-					<div class="form-check required">
+                </div> -->
+					<div class="form-check"> 
 						
 					<div th:each="tec: ${listaTec} " >
 					
@@ -94,20 +100,19 @@
 
 					
                    
-                 
+                  <a th:href="@{/tecnologia/crearTecnologia} "><button type="button" style="background: #7DDE92;padding:10px;border-radius: 20px; text-decoration:none; color:black; 	border: none;"> Ingresar Tecnologia</button></a>
                    </div>
                   
                    <div class="botones">
-                  	  <a th:href="@{/tecnologia/crearTecnologia} "><button type="button"class="boton"> Ingresar Tecnologia</button></a>
                         <button class="boton" type="submit">Enviar</button> 
                    <!--  <button class="boton">Cargar foto</button>-->
 
-                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a>-->
+                       <!-- <a th:href="@{/tecnologia/crearTecnologia} " class="boton">Ingresar Nuevas Tecnologias</a> -->
                     </div>
 
-                </form>
-
-            
+                </form>  
+				 
+           
             </div>
         </div>
         <footer>Contacto:

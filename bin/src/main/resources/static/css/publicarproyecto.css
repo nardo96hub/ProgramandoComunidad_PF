@@ -42,7 +42,7 @@ footer {
 
 .contenedor{
 	position: relative;
-	height: 100vh;
+	height: 90vh;
 }
 .centrar{
 	position: absolute;
@@ -64,9 +64,10 @@ footer {
 .titulo{
     font-family: 'Poppins';
     font-size: 35px;
-  padding: 25px;
+	padding: 25px;
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .boton{

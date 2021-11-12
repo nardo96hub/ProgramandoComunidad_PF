@@ -154,4 +154,24 @@ public class ProyectoControlador {
 		
 	}
 	
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@GetMapping("/editar/{id}")
+	public String ed(@PathVariable Long id,ModelMap mod) {
+		Proyecto p=proyecServi.buscarPorID(id);
+		mod.addAttribute(p);
+		return "";
+	}
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PostMapping("/editar/{id}")
+	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo) {
+		try {
+			Proyecto p=proyecServi.buscarPorID(id);
+			proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
+			return "";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}	
+	}
+	
 }

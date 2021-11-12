@@ -1,0 +1,140 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.qs {
+	display: inline;
+	float: right;
+	font-size: 12px;
+	background: #7dde92;
+	border-radius: 20px;
+	width: 170px;
+	padding: 5px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	position: relative;
+	margin: 0;
+}
+
+.texto-ong {
+	grid-area: 1/2/2/3;
+}
+
+.descripcion {
+	position: absolute;
+	top: 10px;
+	width: 40%;
+	left: 53%;
+	margin-top: 300px;
+	text-align: right;
+}
+
+.titulo {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: bold;
+	color: white;
+	font-size: 25px;
+}
+
+.texto-imagen {
+	font-family: "Quicksand";
+	font-style: normal;
+	font-weight: bold;
+	color: white;
+}
+
+footer {
+	height: 25vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+}
+
+i {
+	display: inline-block;
+}
+
+.grilla {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	background-color: #F8FFE5;
+}
+
+.foto-ong {
+	grid-area: 1/1/2/2;
+	
+}
+
+
+.foto-dev {
+	grid-area: 2/2/3/3;
+}
+
+.texto{
+	background-color: #F8FFE5;
+	font-family: "Quicksand"; padding : 60px;
+	justify-content: center;
+	align-self: center;
+	padding: 60px;
+	text-align: right;
+}
+
+.texto-d {
+	background-color: #F8FFE5;
+	font-family: "Quicksand"; 
+	padding : 60px;
+	justify-content: center;
+	align-self: center;
+	padding: 60px;
+	text-align: left;
+}
+
+h1 {
+	font-family: "Poppins";
+}
+
+
+
+
+

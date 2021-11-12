@@ -30,30 +30,35 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="/tecnologias.css" />
+<link rel="stylesheet" href="/css/tecnologias.css" />
 </head>
 
 <body>
 	<!-- Content here -->
 	<nav class="barra">
-		<img src="/logo.png" alt="logo" class="logo"> <a href="/login">
+		<img src="/img/logo.png" alt="logo" class="logo"> <a href="/login">
 		</a> 
 		<a th:href="@{/registrodev}"><button class="ingresar"> Volver</button></a>
 	</nav>
 
 	<div class="contenedor">
+		<div th:if="${error}!=null" class="card">
+					<div class="card-body">
+						<p class="card-text" th:text="${error}"></p>
+					</div>
+		</div>
 		<div class="centrar">
 			<form action="/tecnologia/crearTecnologia" method="POST">
 				<label for="Marca">Nombre de Tecnologia</label><input type="text"
-					name="tecno" required>
+					name="tecno">
 
 
-
-			</form>
 				<button type="submit" class="ingresar">Enviar</button>
+			</form>
 		</div>
 	</div>
-
+	
+	
 	<footer>
 		Contacto: <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
 		<i class="fab fa-linkedin"></i>

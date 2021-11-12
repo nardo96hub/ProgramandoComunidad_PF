@@ -103,6 +103,32 @@ public class DeveloperControlador {
 		ServiDev.borrarDeveloper(id_developer);
 		return "redirect:/listarTodo";
 	}
- 
+	
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@GetMapping("/editar/{id}")
+	public String edi(@PathVariable Long id,ModelMap mod) {
+		
+		Developer dev=ServiDev.getDeveloper(id);
+		mod.addAttribute(dev); //Esto esta para mostrar el valor del objeto en editar :)
+		
+		return ""; //Cambiar por el html editar
+	}
+	
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PostMapping("/editar/{id}")  //Consultar a adri como camiar foto
+	public String editar(@PathVariable Long id, @RequestParam String name,
+			@RequestParam String apellido,@RequestParam String tel) {
+		
+		// El post admin solo cambia nombre apellido y telefono 
+		try {		
+			Developer d= ServiDev.getDeveloper(id);
+			ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, d.getFoto(), d.getTecnologias());
+			return "";
+		} catch (Exception e) {			
+			e.printStackTrace();
+			return "";
+		}
+
+	}
 }
  

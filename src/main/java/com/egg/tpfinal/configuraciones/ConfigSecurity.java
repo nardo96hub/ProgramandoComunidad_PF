@@ -51,7 +51,7 @@ import com.egg.tpfinal.servicios.UsuarioService;
 		                .permitAll()
 		                .and().logout()
 		                .logoutUrl("/logout")
-		                .logoutSuccessUrl("/login?logout")             
+		                .logoutSuccessUrl("/?logout")             
 		                .permitAll().
 		                and().csrf().disable();
 		    }

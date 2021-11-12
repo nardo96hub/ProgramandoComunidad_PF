@@ -2,7 +2,6 @@ package com.egg.tpfinal.controlador;
  
 import java.util.ArrayList;
 import java.util.List;
- 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,6 @@ import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.TecnologiasService;
 import com.egg.tpfinal.servicios.UsuarioService;
- 
 import enumeracion.Rol;
  
 @Controller
@@ -40,10 +38,11 @@ public class DeveloperControlador {
  
 	@GetMapping()								//GetMapping retorna siempre un html en este caso no lleva direccion porque es /registrodev
 	public String mostrardev(ModelMap mod){		//Por cada model/ModelMap se le envia informacion del back al front ej datos de base de datos o errores 
-		List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();	//
+		List<Tecnologias> lt=ServiTec.listarTecnologias();	//
 		mod.addAttribute("listaTec", lt);							// Buscar Las tecnologias en la BASE DE DATOS 
 		return "registrodev.html";
 	}
+	
 /* @RequestParam es si envian desde un formulario con etiqueta name o si se usa Objetos con th (Lo que intentaron pame,fede y tami)
 	El nombre en el parametro del controlador se tiene que llamar igual que el name en el html
 	
@@ -51,24 +50,17 @@ public class DeveloperControlador {
 	
 	Estas 2 etiquetas son fundamentales en los parametros de controladores 
 	*/
-	
+	 
 
 	@PostMapping("/cargardev")
-	public String cargardev(@RequestParam List<String> lenguajes,
+	public String cargardev(@RequestParam(required=false, defaultValue = "") ArrayList<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
+		
+		if (lenguajes.isEmpty()) {
+			return "redirect:/registrodev";
+		}
 		try {
-			List<Tecnologias> tecnologias= new ArrayList<Tecnologias>();	
-			
-			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
-				 
-				Tecnologias tecn=new Tecnologias();
-				tecn.setLenguaje(tec);
-				tecnologias.add(tecn);
-				//return "redirect:/registrodev";
-				
-			}
-			
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);		//Creo y guardo nuevo usuario
 			Foto foto=null;													//Es necesario porque ServiFoto retorna una foto
 			
@@ -77,11 +69,16 @@ public class DeveloperControlador {
 				//se hizo asi porque sino no se guarda relacionada al developer
 			}
 			
-			ServiDev.crearDeveloper(u, name, apellido, tel, foto, tecnologias); //crea y guarda
+			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); //crea y guarda
 			return "redirect:/login";  			//Si todo funciono regresa al index 
 		} catch (Exception e) {
-			List<Tecnologias> lt=ServiTec.listarTecnologiasUnicas();		//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
-			modelo.addAttribute("listaTec", lt);
+			modelo.put("nombre", name);						//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
+			modelo.put("apellido", apellido);
+			modelo.put("tel", tel);
+			modelo.put("file", file);
+			modelo.put("user", user);
+			//modelo.put("lenguajes", lenguajes);
+			modelo.addAttribute("listaTec", lenguajes);
 			modelo.put("error", e.getMessage());					//Mando error al html si existio, el 'error' debe coincidir en el html
 			e.printStackTrace();									//Muestro error en consola
 			return "registrodev.html";

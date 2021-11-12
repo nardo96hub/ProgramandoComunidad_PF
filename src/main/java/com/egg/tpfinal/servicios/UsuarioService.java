@@ -41,13 +41,22 @@ public class UsuarioService implements UserDetailsService {
 	public Usuario seteoUsuario(String email, String contrasena, Rol rol) throws Exception {
 		Usuario u = new Usuario();
 		// validarDatos(contrasena, email);
+		validarCredenciales(contrasena, email);
 		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena); 		//Recibo una contraseña y con esta linea se encripta guardandola en BDD 
 		u.setContrasena(contraseniaEncriptada);
 		u.setEmail(email);
 		u.setRol(rol);
 		u.setAlta(true);
-
 		return u;
+	}
+	
+	public void validarCredenciales(String contrasena, String email) throws Exception  {
+		if (contrasena.isEmpty()) {
+			throw new Exception("Contraseña no válida");
+		}
+		if (email.isEmpty()) {
+			throw new Exception("Email no válido");
+		}
 	}
 
 	@Transactional

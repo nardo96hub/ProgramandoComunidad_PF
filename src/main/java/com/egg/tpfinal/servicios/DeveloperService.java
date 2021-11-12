@@ -67,7 +67,7 @@ public class DeveloperService {
 	public void editarDeveloper(Long ID, Usuario usuario, String nombre, String apellido, String tel, Foto foto,
 			ArrayList<String> tec) throws Exception {
 		Developer dev = getDeveloper(ID);
-		validar(usuario,tel,nombre,apellido, foto,tec);
+		//validar(usuario,tel,nombre,apellido, foto,tec);
 		guardarDeveloper(dev, usuario, nombre, apellido, tel, foto, tec);
 	}
 

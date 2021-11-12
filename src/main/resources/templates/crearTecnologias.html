@@ -2,7 +2,7 @@
 
 
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- Etiquetas para los que no le funciona th usando bs4-->
 
 <head>
 <title>Programando Comunidades</title>
@@ -28,31 +28,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="/css/tecnologias.css" />
+	href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"					
+	rel="stylesheet">																																							
+<link rel="stylesheet" href="/css/tecnologias.css" /> 												<!-- Linqueo css-->
 </head>
 
 <body>
-	<!-- Content here -->
-	<nav class="barra">
-		<img src="/img/logo.png" alt="logo" class="logo"> <a href="/login">
+
+	<nav class="barra">		<!-- Navbar-->
+		<img src="/img/logo.png" alt="logo" class="logo"> <a href="/login"> <!-- Imagen Logo-->
 		</a> 
-		<a th:href="@{/registrodev}"><button class="ingresar"> Volver</button></a>
+		<a th:href="@{/registrodev}"><button class="ingresar"> Volver</button></a>	<!--Retorna al formulario de registro-->
 	</nav>
 
 	<div class="contenedor">
-		<div th:if="${error}!=null" class="card">
+		<div th:if="${error}!=null" class="card"> 	<!-- Este div se muestra si hay errores en el back-->
 					<div class="card-body">
-						<p class="card-text" th:text="${error}"></p>
+						<p class="card-text" th:text="${error}"></p> <!-- Se muestra el mensaje del error-->
 					</div>
 		</div>
 		<div class="centrar">
-			<form action="/tecnologia/crearTecnologia" method="POST">
-				<label for="Marca">Nombre de Tecnologia</label><input type="text"
-					name="tecno">
-
-
+			<form action="/tecnologia/crearTecnologia" method="POST">	<!--Formulario para crear Tecnologias-->
+				<label for="Marca">Nombre de Tecnologia</label><input type="text" name="tecno">
 				<button type="submit" class="ingresar">Enviar</button>
 			</form>
 		</div>
@@ -60,8 +57,8 @@
 	
 	
 	<footer>
-		Contacto: <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
-		<i class="fab fa-linkedin"></i>
+		Contacto: <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i> <!-- Esta imagen se trae de fontawesore-->
+		<i class="fab fa-linkedin"></i><!-- Esta imagen se trae de fontawesore-->
 
 	</footer>
 

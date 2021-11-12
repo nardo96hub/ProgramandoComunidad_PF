@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
 
-  <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <title>Programando Comunidades</title>
@@ -23,48 +22,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/listaproyecto.css" />
+  <!--Linkeo css-->
 </head>
 
 <body>
-   <nav class="barra">
-      <img src="/img/logo.png" alt="logo" class="logo">
+  <nav class="barra">
+    <!--navBar-->
+    <img src="/img/logo.png" alt="logo" class="logo">
 
-     <a href="/principal"> <button class="ingresar">Volver</button></a>
-    </nav><br>
-        <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1>
-		<div class="proyecto" th:each="proyecto : ${proyectos}">
+    <a href="/principal"> <button class="ingresar">Volver</button></a>
+  </nav><br>
+  <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1>
+  <div class="proyecto" th:each="proyecto : ${proyectos}">
+    <!--th:each es como si fuera foreach en Java, proyectos lo trae del back-->
 
-          <div class="contenedor" >
-       <div class="centrar">
-         	 <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
-<!--              <h2 class="marca" th:text="${proyecto.ong.marca}"></h2> -->
-           	 <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
-             <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
-             <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Ver mas informacion</a></p>
-        </div>
+    <div class="contenedor">
+      <div class="centrar">
+        <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
+        <!-- Signo $ muestra variable , el . es para indicar el campo del objeto (se debe llamar igual que como este en la entidad)-->
+        <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
+        <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
+        <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Ver mas informacion</a></p>
+      </div>
 
-        </div>
- </div>
-       <!-- <div class="proyecto" th:each="proyecto : ${proyectos} " style="text-align:center; margin:auto">
-          <div class="contenedor" >
-       <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
-          aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
-          ducimus.</h2>   
-          <div class="centrar" style="padding: 2px 25px">
-       		<div style="text-align:right"><span>fecha publicacion: </span> <span class="fecha"  th:text="${proyecto.fecha_post}">4/11/2021</span></div>
-             <p> <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2></p>
-             <p> <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2></p>
-            
-              <p  class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
-              <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">ir a postularse</a></p>
-             <p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> 
-            </div>
-        </div>
- </div>-->
-
-
+    </div>
+  </div>
   
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

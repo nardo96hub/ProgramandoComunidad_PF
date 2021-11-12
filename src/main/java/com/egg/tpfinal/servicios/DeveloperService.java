@@ -104,7 +104,7 @@ public class DeveloperService {
 	}
 
 	@Transactional(readOnly = true)
-	public Developer getDeveloper(Long ID) {
+	public Developer getDeveloper(Long ID) {			//REPOSITORIO USA LA FUNCION DE JPA-RETORNA DEVEL
 		Optional<Developer> d = DevRepo.findById(ID);
 		return d.get();
 	}
@@ -115,7 +115,7 @@ public class DeveloperService {
 	}
 
 	@Transactional(readOnly = true)
-	public Developer getDeveloperporIdUser(Long idUser) {
+	public Developer getDeveloperporIdUser(Long idUser) { //SE USA UNA QUERY-RETORNA DEVELOP
 		return DevRepo.buscarPorIdUsuario(idUser);
 	}
 

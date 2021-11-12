@@ -25,33 +25,33 @@ public class ProyectoService {
 	private OngService ONGservi;
 
 	@Transactional(readOnly = true)
-	public List<Proyecto> listarTodosProyecto() {
+	public List<Proyecto> listarTodosProyecto() { 						//query JPA- muestra todos 
 		return ProyectoRepo.findAll();
 	}
 
 	@Transactional(readOnly = true)
-	public List<Proyecto> listarProyectosActivos() {
+		public List<Proyecto> listarProyectosActivos() {				//muestra proyectos activos, con query REPO
 		return ProyectoRepo.buscarPorAlta();
 	}
 
 	@Transactional
 	public void EditarProyectoActivo(Long ID) {
-		Proyecto proyecto = buscarPorID(ID);
-		if (proyecto != null) {
+		Proyecto proyecto = buscarPorID(ID);				
+		if (proyecto != null) {											// invierte valor de variab ALTA
 			proyecto.setAlta(!proyecto.getAlta());
-			//ProyectoRepo.save(proyecto);
+			
 		}
 	}
 
 	@Transactional
-	public void borrarProyecto(Long ID) {
+	public void borrarProyecto(Long ID) {								//pone ALTA=FALSE 
 		EditarProyectoActivo(ID);
 	}
 
-	@Transactional
+	@Transactional														//actaliza inform de Proyecto
 	public void editarProyecto(Long ID, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = buscarPorID(ID);
-		validarDatos(titulo, cuerpo, ong);
+		validarDatos(titulo, cuerpo, ong);								//valida datos recibidos y guarda en BBDD		
 		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
 	}
 
@@ -60,18 +60,16 @@ public class ProyectoService {
 			ONG ong)  {
 
 		ong.setPublicaciones(new ArrayList<Proyecto>());
-
 		proyecto.setTitulo(titulo);
 		proyecto.setCuerpo(cuerpo);
 		proyecto.setFecha_post(fecha);
-		proyecto.setDeveloper(developer);
+		proyecto.setDeveloper(developer);								//seteo de valores
 		proyecto.setOng(ong);
 		proyecto.setAdmitir_deve(true);
 		proyecto.setAlta(true);
 		ong.addProyecto(proyecto);
-		//ONGservi.saveOng(ong); //esta de mas 
 		proyecto.setOng(ong);
-		ProyectoRepo.save(proyecto);
+		ProyectoRepo.save(proyecto);									// guarda en BBDD
 		
 		
 	}
@@ -79,34 +77,34 @@ public class ProyectoService {
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
 	public void crearProyecto(String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = new Proyecto();
-		validarDatos(titulo, cuerpo, ong);
+		validarDatos(titulo, cuerpo, ong);    									//valida y setea datos
 		ong.setPublicaciones(new ArrayList<Proyecto>());
 		ong.addProyecto(proyecto);
-		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);
+		guardarProyecto(proyecto, titulo, cuerpo, fecha, developer, ong);		//guarda el NUEVO PROYECTO
 		
 		
 	}
 
 	@Transactional(readOnly = true)
 	public Proyecto buscarPorID(Long ID) {
-		Optional<Proyecto> p = ProyectoRepo.findById(ID);
-		return p.get();
+		Optional<Proyecto> p = ProyectoRepo.findById(ID);							//consulta JPA x ID
+		return p.get();												//es optional xq es lo q devuelve la query JPA
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
-	public void postularse(Developer deveAux, Long idProyecto) throws Exception {
-		Proyecto proyecto = buscarPorID(idProyecto);
-		List<Developer> postulados = proyecto.getDeveloper();
-		if (!postulados.contains(deveAux) && postulados.size() < 2 && proyecto.getAdmitir_deve()) { //Cambiar a 9
-			postulados.add(deveAux);
-			proyecto.setDeveloper(postulados);
+	public void postularse(Developer deveAux, Long idProyecto) throws Exception {				
+		Proyecto proyecto = buscarPorID(idProyecto);								//busca el proyecto x query REPO
+		List<Developer> postulados = proyecto.getDeveloper();						//devuelve lista ebntera
+		if (!postulados.contains(deveAux) && postulados.size() < 2 && proyecto.getAdmitir_deve()) { //(Cambiar a 9)
+			postulados.add(deveAux);							//si el devep q se quiere postular no esta, y no excede el max N°DEVP
+			proyecto.setDeveloper(postulados);					//si cumple lo anterior, lo guarda
 			if (postulados.size() >= 2) {				//Cambiar a 9
-				proyecto.setAdmitir_deve(false);
+				proyecto.setAdmitir_deve(false);				//si se lleno cant de devep, se pone el fase admitir deves en proyecto			
 				
 			}
-			//ineproyecto.getOng().getPublicaciones().forEach((e) -> System.out.println(e.getTitulo()));
+			//ineproyecto.getOng().getPublicaciones().forEach((e) -> System.out.println(e.getTitulo()));   //forech en 1 LINEA
 			
-			ProyectoRepo.save(proyecto);
+			ProyectoRepo.save(proyecto);						//guarda proyecto de nuevo con cambios(admitir y develp cant)
 		} else {
 			throw new Exception("no puede unirse a este proyecto");
 		}

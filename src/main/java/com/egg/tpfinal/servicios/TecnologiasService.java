@@ -15,31 +15,31 @@ public class TecnologiasService {
 	
 	@Transactional
 	public void guardarTecnologias(String lenguaje) throws Exception {
-		//Tecnologias tec = RepoTec.buscarPorLenguaje(lenguaje);
+
 		validar(lenguaje);
-		lenguaje = lenguaje.toUpperCase();
-		if(!lenguaje.isEmpty()) {
+		lenguaje = lenguaje.toUpperCase();							//pone en MAYUS 
+		if(!lenguaje.isEmpty()) {									//si NO esta vacío, crea una nueva TEC y setea el lenguaje
 			Tecnologias tec = new Tecnologias();
 			tec.setLenguaje(lenguaje);
-			RepoTec.save(tec);
+			RepoTec.save(tec);											//guarda la nueva TEC
 		} else {
 			throw new Exception("Campo obligatorio");
 		}
 	}
 	
 	public void validar(String lenguaje) throws Exception {
-		if(lenguaje.isEmpty()) { //devuelve true si hay doble comillas/espacios (isEmpty no lo hace)
+		if(lenguaje.isEmpty()) { 		//devuelve true si hay doble comillas/espacios (isEmpty no lo hace)
 			throw new Exception("Campo obligatorio");
 		}
 	}
 	
 	@Transactional(readOnly = true)
-	public List<Tecnologias> listarTecnologias() {
+	public List<Tecnologias> listarTecnologias() { 					//query JPA
 		return RepoTec.findAll();
 	}
 	
 	@Transactional(readOnly=true)
-	public List<Tecnologias> listarTecnologiasUnicas() {
+	public List<Tecnologias> listarTecnologiasUnicas() {		//query de repo
 		return RepoTec.listarLenguajes();
 	}
 }

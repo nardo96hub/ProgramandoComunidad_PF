@@ -23,13 +23,13 @@ public class TecnologiaControlador {
 	}
 	
 	@PostMapping("/crearTecnologia")
-	public String tecn(@RequestParam String tecno, ModelMap modelo) {
+	public String tecn(@RequestParam String tecno, ModelMap modelo) {			//recibe de front tecnol
 		try {
-			ServiTec.guardarTecnologias(tecno);
+			ServiTec.guardarTecnologias(tecno);								//guarda tecnl en DDBB
 			return "redirect:/registrodev";
 		} catch (Exception e) {
 			modelo.put("error", e.getMessage());
-			e.printStackTrace();
+			e.printStackTrace();											//sino puede, lanza error (pila error)
 			return "crearTecnologias.html";
 		}
 	}

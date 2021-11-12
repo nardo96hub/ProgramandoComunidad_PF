@@ -98,12 +98,10 @@ public class DeveloperControlador {
 		return "listadevelop";
 	}
 	
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")									//controlador que elimina, se usa en listar todo
 	@GetMapping("/eliminardev/{id_developer}")
-	public String eliminardev(@PathVariable Long id_developer) {
-		System.out.println("ID:");
-		System.out.println(id_developer);
-		ServiDev.borrarDeveloper(id_developer);
+	public String eliminardev(@PathVariable Long id_developer) {		//PathVar rindica q recibe param de la URL
+		ServiDev.borrarDeveloper(id_developer);							//en serv se cambia ALTA=TRUE
 		return "redirect:/listarTodo";
 	}
  

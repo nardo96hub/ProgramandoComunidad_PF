@@ -37,11 +37,11 @@ public class OngControlador {
 	private FotoService ServiFoto;
 	
 	
-	@GetMapping("/crearong")
+	@GetMapping("/crearong")					//muestra el registro de ONG
 	public String registro() {
 		return "registroong.html";
 	}
-	@PostMapping("/crearong")
+	@PostMapping("/crearong")						//CREA ONG
 	public String cargaong(@RequestParam String marca, @RequestParam String name,@RequestParam String ape,
 			@RequestParam String user,@RequestParam String pass,@RequestParam(value="file", required=false) MultipartFile file
 			,ModelMap mod)
@@ -50,46 +50,35 @@ public class OngControlador {
 		
 		try {
 		
-			Usuario u =ServiUsu.seteoUsuario(user, pass, Rol.ONG);//Falta validar Usuario
+			Usuario u =ServiUsu.seteoUsuario(user, pass, Rol.ONG); 			//crea y setea usuario con atrib del front
 			
 			Foto foto=null;
-			if(file !=null) {
+			if(file !=null) {												// si recibe foto, la guarda
 				foto = ServiFoto.guardarfoto(file);//solo sube la foto al server(no persiste la url)
 				//se hizo asi porque sino no se guarda relacionada a la ong y no sabemos como funcionara la relacion con jointable
 				
 			}
 			
-			ServiOng.crearOng(u, marca, name, ape,foto);
+			ServiOng.crearOng(u, marca, name, ape,foto);				//crea y setea ONG
 			
-			return "redirect:/login";
+			return "redirect:/login";									//si se crea bien, te redirige a login ONG
 		} catch (Exception e) {
-			mod.put("error", e.getMessage());
+			mod.put("error", e.getMessage());						// sino, lanza excepción
 			e.printStackTrace();
 			return "registroong.html";
 		}
 		
 	}
-	/*@GetMapping(value="/agregarong")//value=
-	public String mostrarong(Model model) {
-		model.addAttribute("ONG",new ONG());
-		return "registroong.html";
-	}
 	
-	@PostMapping("/crearong")
-	public String cargarong(@ModelAttribute ONG ong ) {
-		ServiOng.saveOng(ong);//En el futuro hacer crearOng para validar
-		return "redirect:/";
-	}
-	*/
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")							//loguead@, se puede ver list de ONG 
 	@GetMapping("/listarong")
 	public String listarong(Model mod) {
-		List<ONG> lo=ServiOng.listarONGactivas();
-		mod.addAttribute("listarOng",lo);
+		List<ONG> lo=ServiOng.listarONGactivas();				
+		mod.addAttribute("listarOng",lo);						//añade al modelmap lita de ong
 		return "listaong";
 		//return "redirect:/";
 	}
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")								//si esta loguead@ puede aliminar (alta=false) ONG
 	@GetMapping("/eliminarong/{id_ong}")
 	public String eliminarong(@PathVariable Long id_ong) {
 		ServiOng.borrarONG(id_ong);

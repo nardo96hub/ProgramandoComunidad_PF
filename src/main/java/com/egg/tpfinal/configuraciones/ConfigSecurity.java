@@ -19,19 +19,10 @@ import com.egg.tpfinal.servicios.UsuarioService;
 		
 		@Autowired
 		private UsuarioService usuarioService;
-		
-		/*@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-				.authorizeRequests()
-					.antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
-					.and().csrf()
-						.disable();
-		} */
-		
+			
 		@Override
 		public void configure(AuthenticationManagerBuilder auth) throws Exception {
-			auth.userDetailsService(usuarioService).passwordEncoder(new BCryptPasswordEncoder());
+			auth.userDetailsService(usuarioService).passwordEncoder(new BCryptPasswordEncoder());  //objeto q encripta contrasñ
 		}
 		
 		@Override
@@ -39,19 +30,19 @@ import com.egg.tpfinal.servicios.UsuarioService;
 		        http
 		                .authorizeRequests()
 		                .antMatchers("/css/*", "/js/*", "/img/*","/files/*",
-		                        "/**").permitAll()
+		                        "/**").permitAll()					//carpetas q no te genere conflict spring
 		                .and().
 		                formLogin()
-		                .loginPage("/login")
-		                .loginProcessingUrl("/logincheck")
-		                .usernameParameter("email")
-		                .passwordParameter("password")
-		                .defaultSuccessUrl("/principal")
-		                .failureUrl("/login?error=error")
-		                .permitAll()
-		                .and().logout()
-		                .logoutUrl("/logout")
-		                .logoutSuccessUrl("/login?logout")             
+		                .loginPage("/login")					//pag de loguin
+		                .loginProcessingUrl("/logincheck")		//URL generada al hacer loguin
+		                .usernameParameter("email")				//param de usuario
+		                .passwordParameter("password")			//param de contraseñ
+		                .defaultSuccessUrl("/principal")		//URL q se accede al loguin exitoso
+		                .failureUrl("/login?error=error")		// URL q se accede al loguin defectuoso
+		                .permitAll()							
+		                .and().logout()							
+		                .logoutUrl("/logout")					//deslogueo
+		                .logoutSuccessUrl("/login?logout")      //deslogueo exitoso
 		                .permitAll().
 		                and().csrf().disable();
 		    }

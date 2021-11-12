@@ -109,8 +109,8 @@ public class OngService {
 
 	@Transactional
 	public void agregarProyectos(ONG ong, Proyecto p) {
-		if (!p.getAdmitir_deve()) {								//si no se llego al max_develop permitidos
-			List<Proyecto> proyec = ong.getPublicaciones();		
+		if (!p.getAdmitir_deve()) {								//si esta en TRUE NO ENTRA AL IF-
+			List<Proyecto> proyec = ong.getPublicaciones();		//
 			if (!proyec.contains(p)) {							//si el proyecto no está en la lista, setea y guarda
 				proyec.add(p);
 				ong.setPublicaciones(proyec);

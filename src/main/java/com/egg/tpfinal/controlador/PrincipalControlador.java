@@ -31,52 +31,48 @@ public class PrincipalControlador {
 	private ProyectoService ServiProy;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/")							//la vista x defec 
 	public String s() {
 		return "index.html";
 	}
 	
-	@GetMapping("/quienesomos")
+	@GetMapping("/quienesomos")				//vista q se muestra al tocar "quienes somos"
 	public String quiensoy() {
 		return "quienesomos";
 	}
-	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/principal")
+	@PreAuthorize("isAuthenticated()") 									//se accede si se loguea 
+	@GetMapping("/principal")											//vista q se muestra al loguear
 	public String principal(ModelMap model,HttpSession session) {
-		//Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
-      model.put("nombre", ServiUsu.nombre());
+	    model.put("nombre", ServiUsu.nombre());							//muestra el nombre cuando se loguea
 		return "principal";
 	}
 	
 	 @GetMapping("/login")
 	    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
-	        if (error != null) {
-	            model.put("error", "Usuario o clave incorrectos");
+	        if (error != null) {											//si error esta lleno, se imprime mensj
+	            model.put("error", "Usuario o clave incorrectos");			
 	        }
 	        if (logout != null) {
-	            model.put("logout", "Ha salido correctamente.");
+	            model.put("logout", "Ha salido correctamente.");		//si usuario cerro seción, vuelve al inicio y muestra mensj
 	        }
 	        return "login.html";
 	    }
 	 
 	 
-	 @PreAuthorize("hasAnyRole('ROLE_ADMIN') && isAuthenticated()" )
+	 @PreAuthorize("hasAnyRole('ROLE_ADMIN') && isAuthenticated()" )  // si está logueadoy rol=admin, puede acceder a URL
 	 @GetMapping("/listarTodo")
-	 public String todo(ModelMap mod) {
+	 public String todo(ModelMap mod) {									
 		 List<Proyecto> lp= ServiProy.listarTodosProyecto();
-		 List<Usuario> lu = ServiUsu.mostrarUsuarios();
+		 List<Usuario> lu = ServiUsu.mostrarUsuarios();					//estos son toas tablas q puede ver ADMIN
 		 List<Developer> ld = ServiDev.listarTodosDeveloper();
 		 List<ONG> lo = ServiOng.listartodaslasONG();
 		 
 		 mod.addAttribute("usuarios",lu);
-		 mod.addAttribute("developers",ld);
+		 mod.addAttribute("developers",ld);							// el .add agrega listas de objetos al modelmap p mostrar a admin
 		 mod.addAttribute("ongs",lo);
 		 mod.addAttribute("proyectos",lp);
 		 return "listarTodo";
 	 }
-	
-					
-
 		
 }
 

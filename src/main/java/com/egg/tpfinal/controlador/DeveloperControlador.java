@@ -2,7 +2,6 @@ package com.egg.tpfinal.controlador;
  
 import java.util.ArrayList;
 import java.util.List;
- 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,6 @@ import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.TecnologiasService;
 import com.egg.tpfinal.servicios.UsuarioService;
- 
 import enumeracion.Rol;
  
 @Controller
@@ -55,12 +53,14 @@ public class DeveloperControlador {
 	
 
 	@PostMapping("/cargardev")
-	public String cargardev(@RequestParam ArrayList<String> lenguajes,
+	public String cargardev(@RequestParam(value="lenguajes",required=false) ArrayList<String> lenguajes,
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
+		
+		if (lenguajes.isEmpty()) {
+			return "redirect:/registrodev";
+		}
 		try {
-			
-								
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);		//Creo y guardo nuevo usuario
 			Foto foto=null;													//Es necesario porque ServiFoto retorna una foto
 			
@@ -72,7 +72,12 @@ public class DeveloperControlador {
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); //crea y guarda
 			return "redirect:/login";  			//Si todo funciono regresa al index 
 		} catch (Exception e) {
-															//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
+			modelo.put("nombre", name);						//Esta linea y la de abajo esta para que vuelva a cargar las tecnologias sino no lo hace
+			modelo.put("apellido", apellido);
+			modelo.put("tel", tel);
+			modelo.put("file", file);
+			modelo.put("user", user);
+			//modelo.put("lenguajes", lenguajes);
 			modelo.addAttribute("listaTec", lenguajes);
 			modelo.put("error", e.getMessage());					//Mando error al html si existio, el 'error' debe coincidir en el html
 			e.printStackTrace();									//Muestro error en consola

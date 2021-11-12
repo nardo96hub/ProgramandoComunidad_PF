@@ -44,6 +44,7 @@ public class DeveloperControlador {
 		mod.addAttribute("listaTec", lt);							// Buscar Las tecnologias en la BASE DE DATOS 
 		return "registrodev.html";
 	}
+	
 /* @RequestParam es si envian desde un formulario con etiqueta name o si se usa Objetos con th (Lo que intentaron pame,fede y tami)
 	El nombre en el parametro del controlador se tiene que llamar igual que el name en el html
 	
@@ -59,17 +60,6 @@ public class DeveloperControlador {
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 		try {
 			
-			for (String tec : lenguajes) { //lenguajes es string, se lo pasa a tipo de tecnologias
-				 
-				
-				//return "redirect:/registrodev";
-				for (Tecnologias tecbase : ServiTec.listarTecnologias()) {
-					if (!tec.equalsIgnoreCase(tecbase.getLenguaje())) {
-						ServiTec.guardarTecnologias(tec);
-					}
-				}
-						
-			}						
 								
 			Usuario u = ServiUsu.seteoUsuario(user, pass, Rol.DEVE);		//Creo y guardo nuevo usuario
 			Foto foto=null;													//Es necesario porque ServiFoto retorna una foto

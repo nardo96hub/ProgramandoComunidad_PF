@@ -157,9 +157,9 @@ public class OngService {
 		if(usuario.getContrasena().isEmpty() ) {
 			throw new Exception("Contraseña no registrada");
 		}
-		if(foto==null) {
+		/*if(foto==null) {
 			throw new Exception("Foto no ingresada ");
-		}
+		}*/
 		
 	
 		

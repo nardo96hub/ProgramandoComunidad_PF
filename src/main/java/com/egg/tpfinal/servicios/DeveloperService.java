@@ -41,13 +41,14 @@ public class DeveloperService {
 		
 		validar(usuario,tel,nombre,apellido, foto,tec);
 		
+		dev.setTecnologias(new ArrayList<String>());	
 		dev.setNombre(nombre);
 		dev.setApellido(apellido);
 		dev.setAlta(true);
-		dev.setTecnologias(tec);										// TO-DO= tecnologias ENUM
-		dev.setTelefono(tel);
+		dev.setTelefono(tel);									// TO-DO= tecnologias ENUM
 		dev.setUsuario(usuario);
 		dev.setFoto(foto);
+		dev.setTecnologias(tec);	
 		/*if (foto != null) {
 			//fotoRepo.save(foto);
 		}
@@ -140,9 +141,9 @@ public class DeveloperService {
 		if(apellido.isEmpty() || apellido.length()<2 || apellido.length()>20 /*|| !(apellido.matches("a-zA-Z"))*/) {//Cambiar isBlank()
 			throw new Exception("apeliido no válido (tamaño: mínimo 2 caracteres / máximo= 20 caracteres - sólo se admiten letras)");
 		}
-		if(foto == null) {
+		/*if(foto == null) {
 			throw new Exception("foto no añadida");
-		}
+		}*/
 		if(tec.isEmpty() ||tec.size()==0) { 
 			throw new Exception("no ingresó campos de tecnologías");
 		}

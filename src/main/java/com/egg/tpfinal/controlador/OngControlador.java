@@ -96,4 +96,27 @@ public class OngControlador {
 		return "redirect:/listarTodo";
 	}
 
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@GetMapping("/editar/{id}")
+	public String edi(@PathVariable Long id,ModelMap mod) {
+		ONG o=ServiOng.getONG(id);
+		mod.addAttribute(o);
+
+		return "editarong";
+	}
+	
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PostMapping("/editar/{id}") //Consultar a adri como camiar foto
+	public String editar(@PathVariable Long id,@RequestParam String marca, @RequestParam String name,@RequestParam String ape,ModelMap mod) {	
+		try {			
+			ONG o = ServiOng.getONG(id);			
+			ServiOng.editarOng(id, marca, name, ape, o.getUsuario(), o.getFoto());
+			return "redirect:/listarTodo";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			mod.put("error",e.getMessage());
+			return "redirect:/ong/editar/{id}";
+		}	
+	}
 }

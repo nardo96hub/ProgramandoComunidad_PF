@@ -19,20 +19,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/listadeveloper.css" />
+  <link rel="stylesheet" href="/css/listadeveloper.css" />
 </head>
  
   <body>
       <nav class="barra">
-      <img src="/logo.png" alt="logo" class="logo">
+      <img src="/img/logo.png" alt="logo" class="logo">
         <a href="/principal"><button class="ingresar">Volver</button></a>
     </nav>
       
       <h1 class="titulo">Developer disponibles</h1>
-      <div class="booleans">
-      <button class="alta">Alta</button>
-      <button class="baja">Baja</button>
-      </div>
+      
       
        	<div th:each="developer : ${listaDev} ">
        		<div class="contenedor">

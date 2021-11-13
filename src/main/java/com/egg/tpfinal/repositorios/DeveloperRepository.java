@@ -26,6 +26,9 @@ public interface DeveloperRepository extends JpaRepository<Developer,Long> {   /
 	
 	@Query("SELECT d.tecnologias FROM Developer d WHERE d.id_developer = :idDeveloper")
 	public List<Tecnologias> buscarTecnologiasporId(@Param("idDeveloper") Long id);
+
+	@Query("SELECT d FROM Developer d where d.alta= true and (d.usuario.email LIKE :b OR d.nombre LIKE :b OR d.apellido LIKE :b OR d.telefono LIKE :b)")
+	public List<Developer> listaBusquedaDeveloperActivos(@Param("b") String buscar);
 	
 	/*@Query("SELECT d FROM Developer d WHERE d.tecnologias.lenguaje = :tecno1 AND d.tecnologias.lenguaje = :tecno2 AND d.tecnologias.lenguaje = :tecno3")
 	public List<Developer> buscarPor3Tecnologias(@Param("tecno1") String tecno1, @Param("tecno2") String tecno2, @Param("tecno3") String tecno3);

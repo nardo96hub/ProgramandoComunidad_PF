@@ -11,7 +11,7 @@
 	<groupId>com.egg.tpfinal</groupId>
 	<artifactId>ProgramandoComunidades</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>ProgramandoComunidades</name>
 	<description>Proyecto_Final</description>
 	<properties>

@@ -38,8 +38,10 @@
     <nav class="barra" >
       <img src="/img/logo.png" alt="logo" class="logo">
       <a href="/login"> <button class="ingresar">Ingresar</button></a>
-   <!-- <a th:if="${session.usuariosession==null}" href="#registrate"><button class="ingresar" type="button">Registrar</button></a> 
-   	boton de ir a registrarse pero se ve mal =( idea de nardo-->
+
+    <a th:if="${session.usuariosession==null}" href="#registrate"><button class="ingresar" type="button">Registrar</button></a> 
+   	
+
       <a href="/quienesomos"> <button class="qs">¿Quienes somos?</button></a>
     </nav>
 
@@ -59,8 +61,10 @@
     
     </div>
 	<br><br>
+
     <div class="grilla" id="registrate">
 		<h1 class="titulo-botones">Elegí como registrarte</h1>
+
 		<img class="fondo2" alt="" src="/img/index.png">
         <div class="marco">
         <img class="developer-icono" src="/img/logo-developer.png" alt="">

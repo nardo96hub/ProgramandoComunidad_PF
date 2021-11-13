@@ -163,7 +163,7 @@ public class ProyectoControlador {
 	}
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("/editar/{id}")
-	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo) {
+	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo,ModelMap mod) {
 		try {
 			Proyecto p=proyecServi.buscarPorID(id);
 			proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());

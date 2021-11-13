@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/listadeveloper.css" />
+    <link rel="stylesheet" href="/css/inicio.css" />
+    <link rel="stylesheet" href="/css/proyectoindividual.css" />
 </head>
  
   <body>
@@ -37,8 +39,12 @@
 	        <h2 class="texto ">Nombre Developer: <span th:text="${developer.nombre}"></span></h2>
 	        <h2 class="texto">Apellido Developer: <span th:text="${developer.apellido}"></span></h2>
 	        <h2 class="texto" >Telefono: <span th:text="${developer.telefono}"></span></h2>
-	       <!-- <p th:text="${developer.usuario.email}"></p>-->
-              <!-- VER COMO AGREGAR FOTO Y TECNOLOGIAS -->
+	        
+	       <h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>
+           <span>Lenguajes:</span>
+           <span th:each="leng : ${developer.tecnologias}" >
+           	<span th:text="${leng}" class="texto"> </span>
+           </span><img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
 		</div>
 		</div>
       		</div>

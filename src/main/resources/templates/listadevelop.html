@@ -36,15 +36,16 @@
        	<div th:each="developer : ${listaDev} ">
        		<div class="contenedor">
 	        <div class="centrar" >
-	        <h2 class="texto ">Nombre Developer: <span th:text="${developer.nombre}"></span></h2>
-	        <h2 class="texto">Apellido Developer: <span th:text="${developer.apellido}"></span></h2>
+	        <img class="integrantes" th:src="${developer.foto.url_foto}" alt=""> <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br>
+	       
+	   
 	        <h2 class="texto" >Telefono: <span th:text="${developer.telefono}"></span></h2>
 	        
 	       <h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>
-           <span>Lenguajes:</span>
+           <h2 class="texto">Lenguajes:
            <span th:each="leng : ${developer.tecnologias}" >
-           	<span th:text="${leng}" class="texto"> </span>
-           </span><img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
+           	<span th:text="${leng}" class="texto">   </span>
+           </span></h2>
 		</div>
 		</div>
       		</div>

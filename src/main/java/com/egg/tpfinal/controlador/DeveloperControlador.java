@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,9 +90,15 @@ public class DeveloperControlador {
 	//Lista los Developer Activos (alta=true)
 	@PreAuthorize("isAuthenticated()")	//Es una etiqueta de Spring security no se puede acceder a la url si no se esta Logueado 
 	@GetMapping("/listardev")
-	public String listardev(ModelMap mod) {
-		List<Developer> ld= ServiDev.listarDeveloperActivos();
-		mod.addAttribute("listaDev", ld);
+	public String listardev(Model mod,@RequestParam(required=false) String b) {
+		if(b!=null) {
+			System.out.println("Entre busqueda "+ b);
+			mod.addAttribute("listaDev", ServiDev.listarBusquedaDeveloperActivos(b));
+		}else {
+			System.out.println("Entre Normal "+ b);
+			mod.addAttribute("listaDev", ServiDev.listarDeveloperActivos());
+		}
+		
 		return "listadevelop";
 	}
 	
@@ -111,22 +118,23 @@ public class DeveloperControlador {
 		Developer dev=ServiDev.getDeveloper(id);
 		mod.addAttribute(dev); //Esto esta para mostrar el valor del objeto en editar :)
 		
-		return ""; //Cambiar por el html editar
+		return "editardev"; 
 	}
 	
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("/editar/{id}")  //Consultar a adri como camiar foto
 	public String editar(@PathVariable Long id, @RequestParam String name,
-			@RequestParam String apellido,@RequestParam String tel) {
+			@RequestParam String apellido,@RequestParam String tel,ModelMap mod) {
 		
 		// El post admin solo cambia nombre apellido y telefono 
 		try {		
 			Developer d= ServiDev.getDeveloper(id);
 			ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, d.getFoto(), d.getTecnologias());
-			return "";
+			return "redirect:/listarTodo";
 		} catch (Exception e) {			
 			e.printStackTrace();
-			return "";
+			mod.put("error",e.getMessage());
+			return "redirect:/registrodev/editar/{id}";
 		}
 
 	}

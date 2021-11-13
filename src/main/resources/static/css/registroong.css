@@ -121,3 +121,14 @@ input::placeholder{
 	width: 50%;
 }
 
+.card{
+	background-color: #E23737;
+	width: 100%;
+	font-family: "poppins";
+	font-weight: 700;
+	color: white;
+	text-align: center;
+}
+
+
+

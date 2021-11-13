@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,9 +90,15 @@ public class DeveloperControlador {
 	//Lista los Developer Activos (alta=true)
 	@PreAuthorize("isAuthenticated()")	//Es una etiqueta de Spring security no se puede acceder a la url si no se esta Logueado 
 	@GetMapping("/listardev")
-	public String listardev(ModelMap mod) {
-		List<Developer> ld= ServiDev.listarDeveloperActivos();
-		mod.addAttribute("listaDev", ld);
+	public String listardev(Model mod,@RequestParam(required=false) String b) {
+		if(b!=null) {
+			System.out.println("Entre busqueda "+ b);
+			mod.addAttribute("listaDev", ServiDev.listarBusquedaDeveloperActivos(b));
+		}else {
+			System.out.println("Entre Normal "+ b);
+			mod.addAttribute("listaDev", ServiDev.listarDeveloperActivos());
+		}
+		
 		return "listadevelop";
 	}
 	

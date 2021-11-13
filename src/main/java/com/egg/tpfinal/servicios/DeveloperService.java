@@ -149,4 +149,10 @@ public class DeveloperService {
 		}
 
 	}
+
+
+	public List<Developer> listarBusquedaDeveloperActivos(String buscar) {
+		
+		return DevRepo.listaBusquedaDeveloperActivos("%"+buscar+"%");
+	}
 }

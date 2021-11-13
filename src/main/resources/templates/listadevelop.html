@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/listadeveloper.css" />
-    <link rel="stylesheet" href="/css/inicio.css" />
+    
     <link rel="stylesheet" href="/css/proyectoindividual.css" />
 </head>
  
@@ -30,9 +30,18 @@
         <a href="/principal"><button class="ingresar">Volver</button></a>
     </nav>
       
-      <h1 class="titulo">Developer disponibles</h1>
+      <h1 class="titulo " style="text-align: center;">Developer disponibles</h1><br>
       
       
+      <form th:action="@{/registrodev/listardev}" method="GET"> 
+      	<div style="text-align: center;">
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="btn btn-info">Buscar</button>
+      	<a th:href="@{/registrodev/listardev}"><button type="button" class="btn btn-info">Ver Dev Activos</button></a>
+      	</div>
+      </form>
+      
+      
+      <br><br>
        	<div th:each="developer : ${listaDev} ">
        		<div class="contenedor">
 	        <div class="centrar" >

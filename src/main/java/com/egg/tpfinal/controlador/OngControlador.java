@@ -102,7 +102,7 @@ public class OngControlador {
 		ONG o=ServiOng.getONG(id);
 		mod.addAttribute(o);
 
-		return "";
+		return "editarong";
 	}
 	
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
@@ -111,11 +111,12 @@ public class OngControlador {
 		try {			
 			ONG o = ServiOng.getONG(id);			
 			ServiOng.editarOng(id, marca, name, ape, o.getUsuario(), o.getFoto());
-			return "";
+			return "redirect:/listarTodo";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "";
+			mod.put("error",e.getMessage());
+			return "redirect:/ong/editar/{id}";
 		}	
 	}
 }

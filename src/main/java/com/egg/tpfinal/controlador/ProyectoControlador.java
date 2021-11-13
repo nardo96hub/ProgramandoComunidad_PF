@@ -159,7 +159,7 @@ public class ProyectoControlador {
 	public String ed(@PathVariable Long id,ModelMap mod) {
 		Proyecto p=proyecServi.buscarPorID(id);
 		mod.addAttribute(p);
-		return "";
+		return "editarproyecto";
 	}
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("/editar/{id}")
@@ -167,10 +167,11 @@ public class ProyectoControlador {
 		try {
 			Proyecto p=proyecServi.buscarPorID(id);
 			proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
-			return "";
+			return "redirect:/listarTodo";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "";
+			mod.put("error",e.getMessage());
+			return "redirect:/registrodev/editar/{id}";
 		}	
 	}
 	

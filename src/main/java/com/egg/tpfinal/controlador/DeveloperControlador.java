@@ -111,22 +111,23 @@ public class DeveloperControlador {
 		Developer dev=ServiDev.getDeveloper(id);
 		mod.addAttribute(dev); //Esto esta para mostrar el valor del objeto en editar :)
 		
-		return ""; //Cambiar por el html editar
+		return "editardev"; 
 	}
 	
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
 	@PostMapping("/editar/{id}")  //Consultar a adri como camiar foto
 	public String editar(@PathVariable Long id, @RequestParam String name,
-			@RequestParam String apellido,@RequestParam String tel) {
+			@RequestParam String apellido,@RequestParam String tel,ModelMap mod) {
 		
 		// El post admin solo cambia nombre apellido y telefono 
 		try {		
 			Developer d= ServiDev.getDeveloper(id);
 			ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, d.getFoto(), d.getTecnologias());
-			return "";
+			return "redirect:/listarTodo";
 		} catch (Exception e) {			
 			e.printStackTrace();
-			return "";
+			mod.put("error",e.getMessage());
+			return "redirect:/registrodev/editar/{id}";
 		}
 
 	}

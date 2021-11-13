@@ -20,10 +20,10 @@
         <!-- Content here -->
 
         <nav><button>Cerrar sesión</button></nav>
-        <form action="POST">
-            <div class="form-group"><label for="titulo">Titulo</label><input type="text"></div>
+        <form th:action="@{/proyect/editar/__${proyecto.id_proyecto}__}" method="post">
+            <div class="form-group"><label for="titulo">Titulo</label><input type="text" name="titulo" th:value="${proyecto.titulo}"></div>
             <div class="form-group"><label for="descripcion">Descripción del proyecto</label>
-            <input type="text" rows="10" cols="40"></div>
+            <input type="text" rows="10" cols="40" name="cuerpo" th:value="${proyecto.cuerpo}"></div>
             <button type="submit">Enviar</button>
         </form>
 

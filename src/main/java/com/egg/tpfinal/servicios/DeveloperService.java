@@ -152,7 +152,27 @@ public class DeveloperService {
 
 
 	public List<Developer> listarBusquedaDeveloperActivos(String buscar) {
+		List<Developer> activos,busqueda;
+		Boolean agregar;
+		List<String> lista;
+		activos=listarDeveloperActivos();
+		busqueda=DevRepo.listaBusquedaDeveloperActivos("%"+buscar+"%");
+		for (Developer developer : activos) {
+			if(!busqueda.contains(developer)) {	//Si el developer no esta en la lista de busqueda analizo el lenguaje
+				agregar=false; //Si esta en true agrego al busqueda
+				lista=developer.getTecnologias();//Obtengo la lista de tecnologias si no esta
+				for (String s : lista) {	//Recorro todas las tecnologias a ver si contiene por busqueda
+					if(s.contains(buscar.toUpperCase())) {
+						agregar=true;
+					}
+				}
+				if(agregar) { //Si esta true agrego a la lista de resultados por busqueda
+					busqueda.add(developer);
+				}
+			}
+			
+		}
 		
-		return DevRepo.listaBusquedaDeveloperActivos("%"+buscar+"%");
+		return busqueda;
 	}
 }

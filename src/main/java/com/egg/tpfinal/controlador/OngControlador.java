@@ -96,7 +96,7 @@ public class OngControlador {
 		return "redirect:/listarTodo";
 	}
 
-	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG') ")
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG')) ")
 	@GetMapping("/editar/{id}")
 	public String edi(@PathVariable Long id,ModelMap mod) {
 		ONG o=ServiOng.getONG(id);

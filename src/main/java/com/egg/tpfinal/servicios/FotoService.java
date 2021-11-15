@@ -42,8 +42,8 @@ public class FotoService {
 	@Autowired
 	FotoRepository fotoRepo;
 
-	private String upload_folder = ".//src//main//resources//files//";
-	private String url_fotoDB = "/src/main/resources/files/";
+	//private String upload_folder = ".//src//main//resources//files//";
+	//private String url_fotoDB = "/src/main/resources/files/";
 
 	public Foto guardarfoto(MultipartFile file) {
 		Foto foto = null;
@@ -51,13 +51,13 @@ public class FotoService {
 			
 			
 			// Optional<Long> ultimoID = fotoRepo.findTopByOrderByIdDesc().get();
-			String url_imagen;
+			//String url_imagen;
 			String url_base;
 			try {
 				byte[] bytes = file.getBytes();
-				System.out.println("comenzando");
+				//System.out.println("comenzando");
 				url_base =subirApi(bytes);
-				System.out.println("vamos bien");
+				//System.out.println("vamos bien");
 				return new Foto(url_base);
 			}catch(Exception e) {
 				e.printStackTrace();

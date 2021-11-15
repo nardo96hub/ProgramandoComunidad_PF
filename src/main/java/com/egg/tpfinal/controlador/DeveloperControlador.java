@@ -58,7 +58,7 @@ public class DeveloperControlador {
 			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 	
-		if (lenguajes.isEmpty()) {
+		if (lenguajes.isEmpty()) { 
 			return "redirect:/registrodev";
 		}
 		try {
@@ -91,11 +91,11 @@ public class DeveloperControlador {
 	@PreAuthorize("isAuthenticated()")	//Es una etiqueta de Spring security no se puede acceder a la url si no se esta Logueado 
 	@GetMapping("/listardev")
 	public String listardev(Model mod,@RequestParam(required=false) String b) {
-		if(b!=null) {
-			System.out.println("Entre busqueda "+ b);
+		if(b!=null) { //Si no llega nulo realiza la busqueda por el string en cambio si llega nulo muestra activos
+		
 			mod.addAttribute("listaDev", ServiDev.listarBusquedaDeveloperActivos(b));
 		}else {
-			System.out.println("Entre Normal "+ b);
+			//System.out.println("Entre Normal "+ b);
 			mod.addAttribute("listaDev", ServiDev.listarDeveloperActivos());
 		}
 		
@@ -105,8 +105,7 @@ public class DeveloperControlador {
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/eliminardev/{id_developer}")
 	public String eliminardev(@PathVariable Long id_developer) {
-		System.out.println("ID:");
-		System.out.println(id_developer);
+	
 		ServiDev.borrarDeveloper(id_developer);
 		return "redirect:/listarTodo";
 	}

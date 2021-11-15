@@ -134,11 +134,37 @@ i {
 	opacity: 1;
 }
 
-
-
 .foto-dev {
 	grid-area: 2/2/3/3;
 }
+
+.cont2{
+	position: relative;
+}
+
+
+.hover-foto2{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #4E4187;
+  text-align: center;
+}
+.hoverr{
+	grid-area:2/2/3/3;
+	
+
+	}
+
+.hoverr:hover .hover-foto2{
+	opacity: 1;
+}
+
 
 .texto{
 	background-color: #F8FFE5;

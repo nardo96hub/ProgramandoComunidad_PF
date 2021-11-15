@@ -128,3 +128,13 @@ input::placeholder{
 .titulo-proyecto{
 	text-align: left;
 }
+
+.card{
+	background-color: #E23737;
+	width: 100%;
+	font-family: "poppins";
+	font-weight: 700;
+	color: white;
+	text-align: center;
+}
+

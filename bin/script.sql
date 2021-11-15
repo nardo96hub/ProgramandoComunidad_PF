@@ -10,10 +10,11 @@ SELECT * FROM comunidad.developer;
 
 SELECT * FROM ong inner join usuario;
 create database comunidad;
-
+SELECT * FROM comunidad.foto;
 SELECT max(id_foto) from foto;
 SELECT * FROM comunidad.foto;
 select * from proyecto;
+SELECT * FROM proyecto_developer;
 SELECT * FROM usuario u WHERE u.email = 'aaaa@gmail.com';
 select * from comunidad.proyecto;
 

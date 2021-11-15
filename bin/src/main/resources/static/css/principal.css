@@ -103,72 +103,17 @@ i {
 
 .foto-ong {
 	grid-area: 1/1/2/2;
-}
-
-.cont{
-	position: relative;
 	
 }
 
-.hover-foto{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin:auto;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #2ebfa5;
-  text-align: center;
-}
-
-.txt{
-	grid-area:1/1/2/2;
-	font-size: 35px;
-	font-family: "Quicksand";
-	margin-top: 160px;
-}
-
-.cont:hover .hover-foto{
-	opacity: 1;
-}
 
 .foto-dev {
 	grid-area: 2/2/3/3;
 }
 
-.cont2{
-	position: relative;
-}
-
-
-.hover-foto2{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin:auto;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #4E4187;
-  text-align: center;
-}
-.hoverr{
-	grid-area:2/2/3/3;
-	
-
-	}
-
-.hoverr:hover .hover-foto2{
-	opacity: 1;
-}
-
-
 .texto{
 	background-color: #F8FFE5;
-	font-family: "Quicksand";
+	font-family: "Quicksand"; padding : 60px;
 	justify-content: center;
 	align-self: center;
 	padding: 60px;
@@ -190,14 +135,6 @@ h1 {
 }
 
 
-.icono{
-	margin-left:10px; 
-}
 
-a{
-	color: black;
-}
 
-a:hover{
-	color: black;
-}
+

@@ -39,7 +39,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Editar </th>
+
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
@@ -50,9 +50,6 @@
                     <td>
                         <span th:if="${usuario.alta}"><i class="fa fa-circle " style="color:green"></i> </span>
                         <span th:unless="${usuario.alta}"><i class="fa fa-circle" style="color:red"></i></span>
-                    </td>
-                    <td> 
-                        <a href="#"><i class="far fa-edit" style="color: gold;"></i></a>
                     </td>
                     <td>
                         <a href="#"><i class="fas fa-trash" style="color: red;"></i></a>
@@ -75,7 +72,7 @@
                     <th scope="col">Foto</th>
                     <th scope="col">Estado</th><!-- Falta metodo que muestre las tecnologias -->
 
-                    <th scope="col">Editar</th>
+
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
@@ -91,9 +88,6 @@
                     <td>
                         <span th:if="${developer.alta}"><i class="fa fa-circle " style="color:green"></i> </span>
                         <span th:unless="${developer.alta}"><i class="fa fa-circle" style="color:red"></i></span>
-                    </td>
-                    <td> 
-                        <a th:href="@{/registrodev/editar/__${developer.id_developer}__}"><i class="far fa-edit" style="color: gold;"></i></a>
                     </td>
                     <td>
                         <a th:href="@{/registrodev/eliminardev/__${developer.id_developer}__}"><i class="fas fa-trash" style="color: red;"></i></a>
@@ -117,7 +111,7 @@
                     <th scope="col">Foto</th>
                     <th scope="col">Estado</th><!-- Falta metodo que muestre las tecnologias -->
 
-                    <th scope="col">Editar</th>
+
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
@@ -134,9 +128,6 @@
                     <td>
                         <span th:if="${ong.alta}"><i class="fa fa-circle " style="color:green"></i> </span>
                         <span th:unless="${ong.alta}"><i class="fa fa-circle" style="color:red"></i></span>
-                    </td>
-                    <td> 
-                        <a href="@{/ong/editar/__${ong.id_ong}__}"><i class="far fa-edit" style="color: gold;"></i></a>
                     </td>
                     <td>
                         <a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash" style="color: red;"></i></a>
@@ -159,7 +150,7 @@
                     <th scope="col">Admitir programador</th>
                     <th scope="col">Estado</th><!-- Falta metodo que muestre las tecnologias -->
                     <th scope="col">Forzar Inicio</th>
-                    <th scope="col">Editar</th>
+
                     <th scope="col">Eliminar</th>
                 </tr>
             </thead>
@@ -177,9 +168,7 @@
 
                     <td><a href="#"><button type="button">Forzar</button></a></td>
 
-                    <td> 
-                        <a href="@{/proyect/editar/__${proyecto.id_proyecto}__}"><i class="far fa-edit" style="color: gold;"></i></a>
-                    </td>
+
                  
                    
                     <td>

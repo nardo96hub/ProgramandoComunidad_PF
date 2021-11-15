@@ -36,7 +36,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <body>
     
         <!-- Content here -->
-            <nav class="barra">
+        <nav class="barra">
           <img src="/img/logo.png" alt="logo" class="logo">
           <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
@@ -69,17 +69,16 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 		</div>
 		<div class="contenedor">
         <div class="centrar">
-        <form method="POST" th:action="@{/ong/crearong}" enctype="multipart/form-data">
-            <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca"></div>
-            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name" ></div>
-            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape" ></div>
-            <div class="form-group"><label for="email">Email</label><input type="text" placeholder="asd@asd.com"  name="user" ></div>
-            <div class="form-group"><label for="contrasena">Contraseña</label><input type="password" name="pass" ></div>
- <div class="form-group" style="margin-bottom:70px" >
+        <form method="post" th:action="@{/ong/editar/__${ong.id_ong}__}" enctype="multipart/form-data">
+            <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca" th:value="${ong.marca}"></div>
+            <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name" th:value="${ong.nombre_rep}" ></div>
+            <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape" th:value="${ong.apellido_rep}" ></div>
+            
+			 <!--<div class="form-group" style="margin-bottom:70px" >
                      <input type="file" name="file" class="boton"  > 
-                     </div>
+              </div>-->
             <div class="botones">
-            <button class="boton" type="submit">Cargar datos</button>      
+            <button class="boton" type="submit">Actualizar datos</button>      
             <!--<button class="boton">Cargar foto</button>   -->
                      
             </div>

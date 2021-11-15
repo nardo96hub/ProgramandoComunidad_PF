@@ -33,12 +33,11 @@
 .contenedor{
 	position: relative;
 	height: 120vh;
-	background-color: #F8FFE5 ;
 }
 
 .centrar{
 	position: absolute;
-	height: 110vh;
+	height:110vh;
 	width: 100vh;
 	padding: 2em;
 	background: rgba(125, 222, 146, 0.3);
@@ -51,6 +50,8 @@
 	border-image: linear-gradient(to bottom,#7DDE92 , #37bba300);
 	border-image-slice: 4;
 	overflow: hidden;
+	box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.25);
+border-radius: 32px;
 }
 
 footer {

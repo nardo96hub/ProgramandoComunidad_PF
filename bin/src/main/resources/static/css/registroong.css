@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	
 }
 
 .barra {
@@ -33,7 +34,6 @@
 .contenedor{
 	position: relative;
 	height: 85vh;
-	background-color: #F8FFE5 ;
 }
 
 .centrar{
@@ -47,10 +47,13 @@
 	right: 0;
 	left: 0;
 	margin: auto;
+	margin-top:50px;
 	border: 6px solid transparent;
 	border-image: linear-gradient(to bottom,#7DDE92 , #37bba300);
 	border-image-slice: 4;
 	overflow: hidden;
+	box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.25);
+	border-radius: 32px;
 }
 
 footer {

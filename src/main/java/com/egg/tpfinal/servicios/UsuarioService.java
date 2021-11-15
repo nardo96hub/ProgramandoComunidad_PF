@@ -139,10 +139,10 @@ public class UsuarioService implements UserDetailsService {
 		RepoUsu.save(usuario);
 	}
 
-	public String  usuarioConectado(Usuario u) {
+	/*public String  usuarioConectado(Usuario u) {						
 		System.out.println("Rol : "+u.getRol());
-		if(u.getRol()==Rol.DEVE) {
-			Developer developer = dr.buscarPorEmail(u.getEmail());
+		if(u.getRol()==Rol.DEVE) {										
+			Developer developer = dr.buscarPorEmail(u.getEmail());		//según rol, se obtiene nombre q figura cuando se loguea
 			return developer.getNombre()+" "+developer.getApellido();
 		}
 		if(u.getRol()==Rol.ONG) {
@@ -150,8 +150,8 @@ public class UsuarioService implements UserDetailsService {
 			return ong.getMarca();
 		}
 		if(u.getRol()==Rol.ADMIN) {
-			Developer dev = dr.buscarPorEmail(u.getEmail());
-			if(dev !=null) {
+			Developer dev = dr.buscarPorEmail(u.getEmail());			//Admin se cambia en BBDD, de ONG o Develop => busco Develop, si esta return NombreDevelop;
+			if(dev !=null) {											// sino busco ONG, si esta, return MarcaONG. Si hay ERROR, return NULL
 				return dev.getNombre()+" "+dev.getApellido();
 			}else {
 				ONG ong=or.buscarPorEmail(u.getEmail());
@@ -161,11 +161,11 @@ public class UsuarioService implements UserDetailsService {
 		
 		
 		return null;
-	}
+	}*/
 	
-	public Usuario usuarioconectado(){										//Funcion que trae usuario conectado
+	public Usuario usuarioconectado(){										//Función que trae usuario conectado
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
-	if (!(authentication instanceof AnonymousAuthenticationToken)) {
+	if (!(authentication instanceof AnonymousAuthenticationToken)) {        //LUUUUUUU????????????
 		String email = authentication.getName();
 		Usuario u = RepoUsu.buscarPorEmail(email);
                     return RepoUsu.save(u);
@@ -173,70 +173,32 @@ public class UsuarioService implements UserDetailsService {
                 return null; 
             }                
     }
-	/*
-    public String nombre(){												//Funcion que retorna el nombre del usuario 
-        Usuario usuario = usuarioConectado();							//Retorna usuario conectado
-
-      
-        if(usuario.getRol() == Rol.ONG ) {						
-        	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
-        	 
-        	 
-        	 if(d!=null) {
-        		  if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
-                 return d.getNombre();
-                 }
-        	 }
-            
-        }else  if(usuario.getRol() == Rol.DEVE || usuario.getRol() == Rol.ADMIN) {
-        	  ONG o = or.buscarPorEmail(usuario.getEmail());
-        
-        	  if(o!=null) {
-        		   if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
-                  return o.getMarca();
-              }
-        	  }
-        	 
-        }
-  
-        return null;//Nunca llega aqui
-        
-  
-  
-    }*/
+	
 	 public String nombre(){
-	        Usuario usuario = usuarioconectado();
-	 
+	        Usuario usuario = usuarioconectado();						//Trae usuario logueado	
 	      
-	        if(usuario.getRol() != Rol.ONG) {
+	        if(usuario.getRol() != Rol.ONG) {							//ROL= Dev o ROL=Admin
 	        	 Developer d = dr.buscarPorIdUsuario(usuario.getId_usuario());
-	     
-	        	 System.out.println(d);
-	        	 
+       	 
 	        	 if(d!=null) {
 	        		  if (usuario.getId_usuario() == d.getUsuario().getId_usuario()) {
 	                 return d.getNombre();
 	                 }
-	        	 }
-	            
+	        	 }  
 	        }
-	        if(usuario.getRol() != Rol.DEVE) {
+	        if(usuario.getRol() != Rol.DEVE) {							//ROL=ONG 0 ROL=Admin
 	        	  ONG o = or.buscarPorEmail(usuario.getEmail());
 	        	
 	        	  System.out.println(o);
 	        	  if(o!=null) {
 	        		   if (usuario.getId_usuario() == o.getUsuario().getId_usuario()) {
 	                  return o.getMarca();
-	              }
-	        	  }
-	        	 
-	        }
+	        		   }
+	        	    } 	 
+	        	}
 	  
-	        return null;//Nunca llega aqui
-	        
-	  
-	  
-	    }
+	        return null;
+	 }
 	
 }
 

@@ -201,3 +201,116 @@ a{
 a:hover{
 	color: black;
 }
+
+
+.dropbtn {
+  
+ padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.perfil{
+  position: relative;
+  display: inline;
+	float: right;
+
+ 
+
+  
+}
+
+/* Dropdown Content (Hidden by Default) */
+.link {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right:0;
+  font-family: "quicksand";
+ 
+  
+  
+}
+
+/* Links inside the dropdown */
+.link a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.link a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.perfil:hover .link {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.perfil:hover .foto_perfil {
+	
+  background-color: #3e8e41;
+}
+
+
+
+.foto_perfil{
+	border-radius: 50%;
+	height: 61px;
+	width: 61px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	display: inline;
+	float: right;
+	margin-right: 10px;
+
+	
+	
+	
+}
+
+.boton_foto{
+	border:none;
+	background:transparent;
+	
+
+}
+
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

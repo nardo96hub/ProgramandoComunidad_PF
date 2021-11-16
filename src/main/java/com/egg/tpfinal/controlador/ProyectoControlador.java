@@ -93,9 +93,14 @@ public class ProyectoControlador {
 	}
 	
 	@GetMapping("/proyecto")
-	public String mostrarproyectos(ModelMap mod) {
-		List<Proyecto> lp = proyecServi.listarProyectosActivos();
-		mod.addAttribute("proyectos", lp);
+	public String mostrarproyectos(ModelMap mod,@RequestParam(required = false) String b) {
+		if(b!=null) {
+			mod.addAttribute("proyectos",proyecServi.listarProyectosBusquedaActivos(b));
+		}else {
+			mod.addAttribute("proyectos",proyecServi.listarProyectosActivos());
+		}
+	
+		
 		return "listaproyectos"; // falta vista
 	}
 	

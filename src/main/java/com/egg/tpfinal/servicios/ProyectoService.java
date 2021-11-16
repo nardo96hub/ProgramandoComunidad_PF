@@ -49,7 +49,7 @@ public class ProyectoService {
 
 	@Transactional
 	public void borrarProyecto(Long ID) {
-		EditarProyectoActivo(ID);
+		EditarProyectoActivo(ID);                     //revisar utilidad de este método
 	}
 
 	@Transactional
@@ -62,9 +62,7 @@ public class ProyectoService {
 	@Transactional
 	public void guardarProyecto(Proyecto proyecto, String titulo, String cuerpo, Date fecha, List<Developer> developer,
 			ONG ong)  {
-
 		ong.setPublicaciones(new ArrayList<Proyecto>());
-
 		proyecto.setTitulo(titulo);
 		proyecto.setCuerpo(cuerpo);
 		proyecto.setFecha_post(fecha);
@@ -76,8 +74,6 @@ public class ProyectoService {
 		//ONGservi.saveOng(ong); //esta de mas 
 		proyecto.setOng(ong);
 		ProyectoRepo.save(proyecto);
-		
-		
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     

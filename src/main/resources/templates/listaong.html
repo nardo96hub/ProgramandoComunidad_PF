@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/listadeveloper.css" />
+  <link rel="stylesheet" href="/css/proyectoindividual.css" />
 </head>
   <body>
      <nav class="barra">
@@ -38,11 +39,18 @@
        	<div th:each="listaong : ${listarOng} ">
        	 <div class="contenedor">
        	  <div class="centrar" >
-
-	        <h2 class="texto">Nombre Ong: <span th:text="${listaong.marca}"></span></h2>
+			<div>
+	        <span th:if="${listaong.foto} != null" >
+        <img class="integrantes" th:src="${listaong.foto.url_foto}" alt=""> <span class="texto" th:text="${listaong.marca}"></span><br> 
+	       	</span>
+	       	<span th:if="${listaong.foto} == null" >
+        <img class="integrantes" src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" alt=""> <span class="texto" th:text="${listaong.marca}"></span><br> 
+	       	</span>
+	   		</div>
 	        <h2 class="texto">Nombre Representante: <span th:text="${listaong.nombre_rep}" ></span></h2>
 	        <h2 class="texto"> Apellido Representante <span  th:text="${listaong.apellido_rep}"></span> </h2>
 	        <a th:href="@{/ong/editar/__${listaong.id_ong}__}"><button type="button">Editar</button></a>
+	        <a th:href="@{/ong/eliminarong/__${listaong.id_ong}__}"><button type="button">Eliminar</button></a>
 	       <!-- <p th:text="${listaong.usuario.email}"></p>-->
               <!-- VER COMO AGREGAR FOTO Y LISTA DE PROYECTOS -->
 		</div>

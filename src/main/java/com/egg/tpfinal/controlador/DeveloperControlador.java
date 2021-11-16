@@ -74,6 +74,8 @@ public class DeveloperControlador {
 			if (file != null) {
 				foto = ServiFoto.guardarfoto(file);// solo sube la foto al server(no persiste la url)
 				// se hizo asi porque sino no se guarda relacionada al developer
+			} else {
+				foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
 			}
 
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); // crea y guarda

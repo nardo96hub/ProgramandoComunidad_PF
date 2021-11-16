@@ -45,9 +45,15 @@
        	<div th:each="developer : ${listaDev} ">
        		<div class="contenedor">
 	        <div class="centrar" >
+	        <div>
+	        <span th:if="${developer.foto} != null" >
         <img class="integrantes" th:src="${developer.foto.url_foto}" alt=""> <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br> 
-	       
-	   
+	       	</span>
+	       	<span th:if="${developer.foto} == null" >
+        <img class="integrantes" src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" alt=""> <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br> 
+	       	</span>
+	   		</div>
+	   		
 	        <h2 class="texto" >Telefono: <span th:text="${developer.telefono}"></span></h2>
 	        
 	       <h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>

@@ -40,6 +40,7 @@ public class PrincipalControlador {
 	public String quiensoy() {
 		return "quienesomos";
 	}
+	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/principal")
 	public String principal(ModelMap model,HttpSession session) {

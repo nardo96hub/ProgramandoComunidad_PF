@@ -163,17 +163,17 @@ public class UsuarioService implements UserDetailsService {
 		return null;
 	}*/
 	
-	public Usuario usuarioconectado(){										//Función que trae usuario conectado
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
-	if (!(authentication instanceof AnonymousAuthenticationToken)) {        //LUUUUUUU????????????
-		String email = authentication.getName();
-		Usuario u = RepoUsu.buscarPorEmail(email);
-                    return RepoUsu.save(u);
-	}else{
-                return null; 
-            }                
-    }
-	
+	public Usuario usuarioconectado() { // Función que trae usuario conectado
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) { // LUUUUUUU????????????
+			String email = authentication.getName();
+			Usuario u = RepoUsu.buscarPorEmail(email);
+			return RepoUsu.save(u);
+		} else {
+			return null;
+		}
+	}
+
 	 public String nombre(){
 	        Usuario usuario = usuarioconectado();						//Trae usuario logueado	
 	      

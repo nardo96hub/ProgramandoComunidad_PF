@@ -141,9 +141,9 @@ public class DeveloperService {
 		if(apellido.isEmpty() || apellido.length()<2 || apellido.length()>20 /*|| !(apellido.matches("a-zA-Z"))*/) {//Cambiar isBlank()
 			throw new Exception("Apellido no válido (Tamaño: Mínimo 2 caracteres / Máximo= 20 caracteres - Sólo se admiten letras)");
 		}
-		/*if(foto == null) {
-			throw new Exception("Foto no añadida");
-		}*/
+		if(foto == null) {
+			foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
+		}
 		if(tec.isEmpty() ||tec.size()==0) { 
 			throw new Exception("No ingresó campos de tecnologías");
 		}

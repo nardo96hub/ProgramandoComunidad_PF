@@ -143,9 +143,9 @@ public class OngService {
 		if(usuario.getContrasena().isEmpty() ) {
 			throw new Exception("Contraseña no registrada");
 		}
-		/*if(foto==null) {
-			throw new Exception("Foto no ingresada ");
-		}*/
+		if(foto==null) {
+			foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
+		}
 		
 	}
 }

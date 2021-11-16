@@ -31,6 +31,8 @@ public interface ProyectoRepository extends JpaRepository<Proyecto, Long>{
 	@Query("SELECT p FROM Proyecto p WHERE p.ong.id = :idONG")
 	public List<Proyecto> buscarPorIdONG(@Param("idONG") Long id);
 	
+	@Query("SELECT p FROM Proyecto p where p.alta=true and (p.titulo LIKE :b OR p.cuerpo LIKE :b OR p.ong.usuario.email LIKE :b)")
+	public List<Proyecto> busqueda(@Param("b") String buscar);
 	/*@Query("SELECT p FROM Proyecto p WHERE p.developer.id = :idDev")
 	public List<Proyecto> buscarPorIdDeveloper(@Param("idDev") Long id);
 	

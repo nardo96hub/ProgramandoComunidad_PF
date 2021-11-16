@@ -33,6 +33,10 @@ public class ProyectoService {
 	public List<Proyecto> listarProyectosActivos() {
 		return ProyectoRepo.buscarPorAlta();
 	}
+	@Transactional(readOnly = true)
+	public List<Proyecto> listarProyectosBusquedaActivos(String b) {
+		return ProyectoRepo.busqueda("%"+b+"%");
+	}
 
 	@Transactional
 	public void EditarProyectoActivo(Long ID) {

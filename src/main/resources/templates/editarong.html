@@ -67,9 +67,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 						<p class="card-text" th:text="${error}"></p>
 					</div>
 		</div>
+		
 		<div class="contenedor">
         <div class="centrar">
-        <form method="post" th:action="@{/ong/editar/__${ong.id_ong}__}" enctype="multipart/form-data">
+        <form  th:action="@{/ong/editar/__${ong.id_ong}__}" method="post" enctype="multipart/form-data">
             <div class="form-group"><label for="Marca" >Marca</label><input type="text" name="marca" th:value="${ong.marca}"></div>
             <div class="form-group"><label for="nombre_rep">Nombre de representante</label><input type="text" name="name" th:value="${ong.nombre_rep}" ></div>
             <div class="form-group"><label for="apellido_rep">Apellido</label><input type="text" name="ape" th:value="${ong.apellido_rep}" ></div>

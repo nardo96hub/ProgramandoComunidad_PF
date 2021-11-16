@@ -26,35 +26,21 @@ public class OngService {
 	@Autowired
 	private ProyectoRepository ProyRepo;
 
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })  				//SETEA ONG
 	public void guardarOng(ONG ong, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {
-		 validarDatos(marca, nombre_rep,apellido_rep,usuario,foto);
+		 validarDatos(marca, nombre_rep,apellido_rep,usuario,foto);        //valido campos de front al registrarse
 		ong.setMarca(marca);
 		ong.setNombre_rep(nombre_rep);
 		ong.setApellido_rep(apellido_rep);
-		ong.setUsuario(usuario);
+		ong.setUsuario(usuario);										//seteo de campos
 		ong.setAlta(true);
 		ong.setFoto(foto);
-		ServiUsu.saveUsuario(usuario);
-		if (foto != null) {
+		/*ServiUsu.saveUsuario(usuario);								
+		if (foto != null) {													
 			fotoRepo.save(foto);
-		}
-		ONGRepo.save(ong);
+		}*/
+		ONGRepo.save(ong);											//seteo con REPOSITORIO en BBDD
 	}
-
-	/*
-	 * public void validarDatos(String marca, String nombre_rep) throws Exception{
-	 * if (marca == null || marca.isEmpty()) { throw new
-	 * Exception("El nombre de la ONG no es válido"); } if (marca ==
-	 * ONGRepo.marcaOngString(marca)) { throw new
-	 * Exception("El nombre de la ONG ya se encuentra registrado"); } Pattern
-	 * pattern = Pattern.compile("[^a-zA-Z'\\-\\s]"); boolean caracterInvalido =
-	 * false; if(!caracterInvalido == pattern.matcher(nombre_rep).find()) { throw
-	 * new Exception("Carácter inválido"); }
-	 * 
-	 * 
-	 * }
-	 */
 
 	@Transactional
 	public void borrarONG(Long ID) {
@@ -63,7 +49,7 @@ public class OngService {
 
 	@Transactional
 	private void EditarONGActivo(Long ID) {
-		ONG ong = getONG(ID);
+		ONG ong = getONG(ID);									//atributo ALTA= cambio true a false o viceversa
 		if (ong != null) {
 			ong.setAlta(!ong.getAlta());
 		//	ONGRepo.save(ong);
@@ -76,56 +62,60 @@ public class OngService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<ONG> listarONGactivas() {
+	public List<ONG> listarONGactivas() {					//lista ONG con ALTA=true
 		return ONGRepo.listarONGactivas();
 	}
+	@Transactional(readOnly = true)
+	public List<ONG> listarONGBusquedaActiva(String buscar){
+		return ONGRepo.busqueda("%"+buscar+"%");
+	}
 
-	@Transactional
+	@Transactional											//actualiza información de ONG ACTIVA
 	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {
 		ONG ong = getONG(ID);
 		guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto);
 
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true)							//busca ONG x ID
 	public ONG getONG(Long ID) {
 		Optional<ONG> ong = ONGRepo.findById(ID);
 		return ong.get();
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })  //CREA ONG
 	public void crearOng(Usuario usuario, String marca, String nombre_rep, String apellido_rep, Foto foto)
 			throws Exception {
-		ONG ong = ONGRepo.marcaOng(marca);// Se puede cambiar por email usuario
-		if (ong == null) {
+		ONG ong = ONGRepo.marcaOng(marca);							// busca ONG x MARCA
+		if (ong == null) {											//si es null(si no existe) crea una nueva ONG
 			ong = new ONG();
-			guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto);
+			guardarOng(ong, marca, nombre_rep, apellido_rep, usuario, foto); //guarda la nueva ONG creada
 		} else {
 			throw new Exception("Ya se encuentra la Ong en BDD");
 		}
 	}
 
 	@Transactional
-	public void saveOng(ONG ong) {
+	public void saveOng(ONG ong) {									//SOLO SE USA EN LINEA 117 (adrián creator)
 		ONGRepo.save(ong);
 	}
 
 	@Transactional(readOnly = true)
-	public Optional<ONG> buscarONGporidUsuario(Long ID) {
+	public Optional<ONG> buscarONGporidUsuario(Long ID) {           //busca ONG x ID_USUARIO- return OPTIONAL (contenedor unitario génerico)
 		// return ONGRepo.buscarONGporidUsuario(ID);
 		return ONGRepo.findById(ID);
 	}
 
 	@Transactional(readOnly = true)
-	public ONG buscarONGporUsuario(Usuario usuario) {
+	public ONG buscarONGporUsuario(Usuario usuario) {			//REPO USA JPA-retorna ONG
 		return ONGRepo.findByUsuario(usuario);
 	}
 
 	@Transactional
 	public void agregarProyectos(ONG ong, Proyecto p) {
-		if (!p.getAdmitir_deve()) {
-			List<Proyecto> proyec = ong.getPublicaciones();
-			if (!proyec.contains(p)) {
+		if (!p.getAdmitir_deve()) {								//si no se llego al max_develop permitidos
+			List<Proyecto> proyec = ong.getPublicaciones();		
+			if (!proyec.contains(p)) {							//si el proyecto no está en la lista, setea y guarda
 				proyec.add(p);
 				ong.setPublicaciones(proyec);
 				saveOng(ong);
@@ -157,12 +147,9 @@ public class OngService {
 		if(usuario.getContrasena().isEmpty() ) {
 			throw new Exception("Contraseña no registrada");
 		}
-		/*if(foto==null) {
-			throw new Exception("Foto no ingresada ");
-		}*/
-		
-	
-		
+		if(foto==null) {
+			foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
+		}
 		
 	}
 }

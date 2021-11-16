@@ -95,7 +95,6 @@ input::placeholder{
 	float: right;
 }
 
-
 .boton{
 	background: #7DDE92;
 	border-radius: 20px;
@@ -128,4 +127,47 @@ input::placeholder{
 	font-weight: 700;
 	color: white;
 	text-align: center;
+}
+/*css tecnologias adrian abajo*/
+
+.botone{
+	background: #7DDE92;
+	border-radius: 15px;
+	border: none;
+	padding-left: 4px;
+	padding-right: 4px;
+	
+	font: 'Poppins';
+	position:relative;
+	margin: 10px;
+	transition: all .2s ease-in-out;
+	overflow-y: hidden;
+}
+
+.contenedorRespuesta{
+	position: absolute;
+	height: 32vh;
+	margin: 30px;
+	overflow-y: auto;
+	overflow-x: auto;
+	max-width: 70%;
+	max-height: 50%;
+   -ms-overflow-style: none;
+	scrollbar-width: none;
+	
+
+}
+.contenedorRespuesta::-webkit-scrollbar {
+  display: none;
+}
+
+.invisible {
+	  border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

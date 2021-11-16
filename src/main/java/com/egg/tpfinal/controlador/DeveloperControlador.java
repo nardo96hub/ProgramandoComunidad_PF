@@ -59,10 +59,15 @@ public class DeveloperControlador {
 
 	@PostMapping("/cargardev")
 
-	public String cargardev(@RequestParam(required=false, defaultValue = "") ArrayList<String> lenguajes,
-			@RequestParam String user,@RequestParam String pass, @RequestParam String name,
+	public String cargardev( @RequestParam(required=false, defaultValue = "") ArrayList<String> lenguajes , @RequestParam(required=false, defaultValue = "") String[] lenguajess
+			,@RequestParam String user,@RequestParam String pass, @RequestParam String name,
 			@RequestParam String apellido,@RequestParam String tel,@RequestParam(value="file", required=false) MultipartFile file, ModelMap modelo) throws Exception{
 	
+		
+		//ineproyecto.getOng().getPublicaciones().forEach((e) -> System.out.println(e.getTitulo()));
+	
+		lenguajes.forEach((e) -> System.out.println(e)) ;
+
 		if (lenguajes.isEmpty()) { 
 
 			return "redirect:/registrodev";
@@ -75,7 +80,7 @@ public class DeveloperControlador {
 				foto = ServiFoto.guardarfoto(file);// solo sube la foto al server(no persiste la url)
 				// se hizo asi porque sino no se guarda relacionada al developer
 			}
-
+			
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); // crea y guarda
 			return "redirect:/login"; // Si todo funciono regresa al index
 		} catch (Exception e) {

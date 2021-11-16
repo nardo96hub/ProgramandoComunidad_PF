@@ -45,7 +45,7 @@ public class ProyectoService {
 
 	@Transactional
 	public void borrarProyecto(Long ID) {
-		EditarProyectoActivo(ID);
+		EditarProyectoActivo(ID);                     //revisar utilidad de este método
 	}
 
 	@Transactional

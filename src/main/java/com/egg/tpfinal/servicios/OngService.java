@@ -25,7 +25,7 @@ public class OngService {
 	private FotoRepository fotoRepo;
 	@Autowired
 	private ProyectoRepository ProyRepo;
-
+	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })  				//SETEA ONG
 	public void guardarOng(ONG ong, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {
 		 validarDatos(marca, nombre_rep,apellido_rep,usuario,foto);        //valido campos de front al registrarse
@@ -43,7 +43,7 @@ public class OngService {
 	}
 
 	@Transactional
-	public void borrarONG(Long ID) {
+	public void borrarONG(Long ID) {                             //ver la utilidad de este método
 		EditarONGActivo(ID);
 	}
 

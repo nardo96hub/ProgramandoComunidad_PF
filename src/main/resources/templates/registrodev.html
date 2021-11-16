@@ -20,13 +20,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  
+  
     <link rel="stylesheet" href="/css/registro.css" />
 </head>
 
 <body>
     <!-- Content here -->
 
-    
+  
+
         <nav class="barra">
             <img src="/img/logo.png" alt="logo" class="logo">
             <a href="/"><button class="ingresar">Volver</button></a>
@@ -89,15 +92,28 @@
                     </label>
 
                 </div> -->
+                <script>
+        
+      
+                          
+                
+                            </script>
+                    <input type="text" name="lenguajes" value="e" id="lenguaje1"  oninput="enviarTexto()" >
+                    <input type="text" id="lenguaje2" >
 					<div class="form-check"> 
-						
+                        <div class="result">
+
+                        </div>
+                        <br>
+                     
+				<!--  		
 					<div th:each="tec: ${listaTec} " >
 					
-						<input class="form-check-input" type="checkbox" th:value="${tec.lenguaje}"  name="lenguajes" id="flexCheckDefault" >
+						<input class="form-check-input" type="checkbox" id="tecnos" th:value="${tec.lenguaje}"  name="lenguajes" id="flexCheckDefault" >
 						<label th:text="${tec.lenguaje}" for="tecnologia" class="form-check-label" ></label>
 					
 					</div>
-
+-->
 					
                    
                   <a th:href="@{/tecnologia/crearTecnologia} "><button type="button" style="background: #7DDE92;padding:10px;border-radius: 20px; text-decoration:none; color:black; 	border: none;"> Ingresar Tecnologia</button></a>
@@ -124,6 +140,13 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        
+ 	<script type="text/javascript" src="/js/registrodev.js"></script>
+  
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+        crossorigin="anonymous">
+            
+        </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>

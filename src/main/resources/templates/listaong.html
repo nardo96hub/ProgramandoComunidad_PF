@@ -27,15 +27,22 @@
       <a href="/principal"><img src="/img/logo.png" alt="logo" class="logo"></a>
         <a href="/principal"><button class="ingresar">Volver</button></a>
     </nav>
-      <h1 class="titulo">Lista de ONG Activos</h1>
-    
+      <h1 class="titulo">Lista de ONG Activos</h1><br>
+     <form th:action="@{/ong/listarong}" method="GET"> 
+      	<div style="text-align: center;">
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="btn btn-info">Buscar</button>
+      	<a th:href="@{/ong/listarong}"><button type="button" class="btn btn-info">Ver Ong Activos</button></a>
+      	</div>
+      </form>
       
        	<div th:each="listaong : ${listarOng} ">
        	 <div class="contenedor">
        	  <div class="centrar" >
+
 	        <h2 class="texto">Nombre Ong: <span th:text="${listaong.marca}"></span></h2>
 	        <h2 class="texto">Nombre Representante: <span th:text="${listaong.nombre_rep}" ></span></h2>
 	        <h2 class="texto"> Apellido Representante <span  th:text="${listaong.apellido_rep}"></span> </h2>
+	        <a th:href="@{/ong/editar/__${listaong.id_ong}__}"><button type="button">Editar</button></a>
 	       <!-- <p th:text="${listaong.usuario.email}"></p>-->
               <!-- VER COMO AGREGAR FOTO Y LISTA DE PROYECTOS -->
 		</div>

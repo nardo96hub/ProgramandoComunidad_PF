@@ -157,6 +157,7 @@ public class DeveloperService {
 		List<String> lista;
 		activos=listarDeveloperActivos();
 		busqueda=DevRepo.listaBusquedaDeveloperActivos("%"+buscar+"%");
+		//Esto realiza la busqueda de tecnologias
 		for (Developer developer : activos) {
 			if(!busqueda.contains(developer)) {	//Si el developer no esta en la lista de busqueda analizo el lenguaje
 				agregar=false; //Si esta en true agrego al busqueda

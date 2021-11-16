@@ -136,7 +136,7 @@
                         <span th:unless="${ong.alta}"><i class="fa fa-circle" style="color:red"></i></span>
                     </td>
                     <td> 
-                        <a href="@{/ong/editar/__${ong.id_ong}__}"><i class="far fa-edit" style="color: gold;"></i></a>
+                        <a th:href="@{/ong/editar/__${ong.id_ong}__}"><i class="far fa-edit" style="color: gold;"></i></a>
                     </td>
                     <td>
                         <a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash" style="color: red;"></i></a>

@@ -81,9 +81,14 @@ public class OngControlador {
 	 */
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/listarong")
-	public String listarong(Model mod) {
-		List<ONG> lo = ServiOng.listarONGactivas();
-		mod.addAttribute("listarOng", lo);
+	public String listarong(Model mod,@RequestParam(required=false) String b) {
+		if(b!=null) {
+			mod.addAttribute("listarOng",ServiOng.listarONGBusquedaActiva(b));
+		}else {
+			mod.addAttribute("listarOng", ServiOng.listarONGactivas());
+		}
+		
+		
 		return "listaong";
 		// return "redirect:/";
 	}
@@ -99,9 +104,9 @@ public class OngControlador {
 	@GetMapping("/editar/{id}")
 	public String edi(@PathVariable Long id, ModelMap mod) {
 		ONG o = ServiOng.getONG(id);
-		mod.addAttribute(o); // devuelvo a front el objeto a editar desde la base de datos
+		mod.addAttribute("ong",o); // devuelvo a front el objeto a editar desde la base de datos
 
-		return "editarong";
+		return "editarong.html";
 	}
 
 	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")

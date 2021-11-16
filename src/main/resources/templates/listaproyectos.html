@@ -31,7 +31,13 @@
 
      <a href="/principal"> <button class="ingresar">Volver</button></a>
     </nav><br>
-        <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1>
+        <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1><br>
+        <form th:action="@{/proyect/proyecto}" method="GET"> 
+      	<div style="text-align: center;">
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="btn btn-info">Buscar</button>
+      	<a th:href="@{/proyect/proyecto}"><button type="button" class="btn btn-info">Ver Proyectos Activos</button></a>
+      	</div>
+      </form>
 		<div class="proyecto" th:each="proyecto : ${proyectos}">
 
           <div class="contenedor" >

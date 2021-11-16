@@ -65,6 +65,10 @@ public class OngService {
 	public List<ONG> listarONGactivas() {					//lista ONG con ALTA=true
 		return ONGRepo.listarONGactivas();
 	}
+	@Transactional(readOnly = true)
+	public List<ONG> listarONGBusquedaActiva(String buscar){
+		return ONGRepo.busqueda("%"+buscar+"%");
+	}
 
 	@Transactional											//actualiza información de ONG ACTIVA
 	public void editarOng(Long ID, String marca, String nombre_rep, String apellido_rep, Usuario usuario, Foto foto) throws Exception {

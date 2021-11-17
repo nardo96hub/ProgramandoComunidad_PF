@@ -130,6 +130,8 @@ public class OngControlador {
 							ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
 						} 
 					}
+					ServiOng.saveOng(o2);
+					ServiUsu.eliminarUsuario(o2.getUsuario().getId_usuario());
 				}
 				return "redirect:/listarTodo";
 

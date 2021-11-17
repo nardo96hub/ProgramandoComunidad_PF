@@ -86,7 +86,7 @@
                   <div class="barra">
 				<div class="perfil">
 					<!--   <button class="sq">Dropdown</button> -->
-					<button class="boton_foto" style="padding-left: 810px;"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
+					<button class="boton_foto" style="padding-left: 700px;"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
 						<div class="link">
 							
 							<a href="#">Ver perfil</a>
@@ -128,8 +128,18 @@
 		<div class="descripcion">
 			<span th:if= "${usuario.alta}"><h1 class="titulo">
 				Hola, <span th:text="${nombre}"></span>
-			</h1></span><span th:unless="${usuario.alta}">
+			</h1></span>
+			
+			<span th:unless="${usuario.alta}">
+			
+			<span sec:authorize="hasAnyRole('ROLE_DEVE')">
 			<a th:href="@{/registrodev/eliminardev/__${fotoperfil.id_developer}__}"><button type="button" class="btn btn-success">Agregar Cuenta</button></a>
+			</span>
+			
+			<span sec:authorize="hasAnyRole('ROLE_ONG')">
+			<a th:href="@{/ong/eliminarong/__${fotoperfil.id_ong}__}"><button type="button" class="btn btn-success">Agregar Cuenta</button></a>
+			</span>
+		
 		</span>
 			<p class="texto-imagen">Lorem ipsum dolor sit, amet consectetur
 				adipisicing elit. A magnam accusantium repellendus, quaerat

@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/listadeveloper.css" />
     
-    <link rel="stylesheet" href="/css/proyectoindividual.css" />
+   <!-- <link rel="stylesheet" href="/css/proyectoindividual.css" />-->
 </head>
  
   <body>
@@ -35,35 +35,39 @@
       
       <form th:action="@{/registrodev/listardev}" method="GET"> 
       	<div style="text-align: center;">
-      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="btn btn-info">Buscar</button>
-      	<a th:href="@{/registrodev/listardev}"><button type="button" class="btn btn-info">Ver Dev Activos</button></a>
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="boton_buscar">Buscar</button>
+      	<a th:href="@{/registrodev/listardev}"><button type="button" class="boton_activos">Ver Dev Activos</button></a>
       	</div>
       </form>
       
       
       <br><br>
-       	<div th:each="developer : ${listaDev} ">
-       		<div class="contenedor">
-	        <div class="centrar" >
-	        <div>
-	        <span th:if="${developer.foto} != null" >
-        <img class="integrantes" th:src="${developer.foto.url_foto}" alt=""> <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br> 
-	       	</span>
-	       	<span th:if="${developer.foto} == null" >
-        <img class="integrantes" src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" alt=""> <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br> 
-	       	</span>
-	   		</div>
-	   		
-	        <h2 class="texto" >Telefono: <span th:text="${developer.telefono}"></span></h2>
-	        
-	       <h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>
-           <h2 class="texto">Lenguajes:
-           <span th:each="leng : ${developer.tecnologias}" >
-           	<span th:text="${leng}" class="texto">   </span>
-           </span></h2>
+		<div th:each="developer : ${listaDev} ">
+			<div class="contenedor">
+				<div class="centrar">
+					<div>
+						<span th:if="${developer.foto} != null">
+							<img class="integrantes" th:src="${developer.foto.url_foto}" alt=""> <span class="texto"
+								th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br>
+						</span>
+						<span th:if="${developer.foto} == null">
+							<img class="integrantes" src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" alt="">
+							<span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br>
+						</span>
+					</div>
+		
+					<h2 class="texto">Telefono: <span th:text="${developer.telefono}"></span></h2>
+		
+					<h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>
+					<h2 class="texto">Lenguajes:
+						<span th:each="leng : ${developer.tecnologias}">
+							<span th:text="${leng}" class="texto"> </span>
+						</span>
+					</h2>
+					
+				</div>
+			</div>
 		</div>
-		</div>
-      		</div>
       <footer>
       Contacto:
       <i class="fab fa-instagram fa-2x"></i>

@@ -65,9 +65,9 @@ public class OngControlador {
 				// se hizo asi porque sino no se guarda relacionada a la ong y no sabemos como
 				// funcionara la relacion con jointable
 
-			} else {
+			}/* else {
 				foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
-			}
+			}*/
 
 			ServiOng.crearOng(u, marca, name, ape, foto);
 			

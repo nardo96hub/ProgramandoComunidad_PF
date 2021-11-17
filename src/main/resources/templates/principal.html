@@ -116,7 +116,7 @@
                   <div class="barra">
 				<div class="perfil">
 					<!--   <button class="sq">Dropdown</button> -->
-					<button class="boton_foto"> <img src="img/nosotros/Nai.jpg" class="foto_perfil"> </button>
+					<button class="boton_foto"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
 						<div class="link">
 							
 							<a href="#">Ver perfil</a>
@@ -145,7 +145,10 @@
 
 
 	<div class="contenido">
-		<img src="/img/Foto-principal.png" alt="fondo-programacion" />
+		<span><img src="/img/Foto-principal.png" alt="fondo-programacion" /></span>
+		
+		
+		
 		<div class="descripcion">
 			<h1 class="titulo">
 				Hola, <span th:text="${nombre}"></span>

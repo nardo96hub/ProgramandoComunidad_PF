@@ -18,6 +18,7 @@ import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.Foto;
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
+import com.egg.tpfinal.repositorios.FotoRepository;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.TecnologiasService;
@@ -36,6 +37,8 @@ public class DeveloperControlador {
 	private UsuarioService ServiUsu;
 	@Autowired
 	private FotoService ServiFoto;
+	@Autowired
+	private FotoRepository RepoFoto;
 
 	@GetMapping() // GetMapping retorna siempre un html en este caso no lleva direccion porque es
 					// /registrodev
@@ -79,9 +82,12 @@ public class DeveloperControlador {
 			if (file != null) {
 				foto = ServiFoto.guardarfoto(file);// solo sube la foto al server(no persiste la url)
 				// se hizo asi porque sino no se guarda relacionada al developer
-			} else {
+			} /*else {
+				foto=new Foto();
 				foto.setUrl_foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
-			}
+				RepoFoto.save(foto);
+				
+			}*/
 			
 			ServiDev.crearDeveloper(u, name, apellido, tel, foto, lenguajes); // crea y guarda
 			return "redirect:/login"; // Si todo funciono regresa al index

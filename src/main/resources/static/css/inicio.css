@@ -61,16 +61,34 @@ img {
 
 .descripcion {
 	position: absolute;
-	top: 10px;
+	top: 1;
+	bottom:0;
+	left:1;
+	right:0;
+	margin: auto;
 	width: 40%;
-	left: 53%;
-	margin-top: 100px;
-}
+	margin-right: 100px;
+	margin-bottom: 100px;
+	
+
+	}
 
 .titulo {
 	font-family: "Poppins";
-	font-style: normal;
-	font-weight: bold;
+	font-size: 40px;
+	line-height: 10px;
+	margin-top: 40px;
+}
+
+.igual {
+	background: -webkit-linear-gradient(#3083DC, #4E4187);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 120px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1em;
+
 }
 
 p {

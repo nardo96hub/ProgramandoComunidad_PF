@@ -1,4 +1,4 @@
-* {
+*{
 	margin: 0;
 	padding: 0;
 }
@@ -26,6 +26,7 @@
 }
 
 .logo {
+	
 	height: 50px;
 	width: auto;
 	margin: 10px;
@@ -40,8 +41,7 @@
 	float: right;
 	margin: 20px;
 	border: none;
-	font-family: "Poppins";
-}
+	font-family: "Poppins";}
 
 img {
 	max-width: 100%;
@@ -68,7 +68,7 @@ img {
 	font-style: normal;
 	font-weight: bold;
 	color: white;
-	font-size: 25px;
+	font-size: 40px;
 }
 
 .texto-imagen {
@@ -79,7 +79,7 @@ img {
 }
 
 footer {
-	height: 25vh;
+	height: 10vh;
 	width: 100%;
 	background-color: #2ebfa5;
 	position: absolute;
@@ -273,18 +273,14 @@ a:hover{
 	float: right;
 	margin-right: 10px;
 
-	
-	
-	
 }
 
 .boton_foto{
 	border:none;
-	background:transparent;
-	
+	background:transparent;	
+	padding: 5px;
 
 }
-
 
 .barra {
 	height: 10.5vh;
@@ -293,18 +289,6 @@ a:hover{
 	margin: 0;
 	padding: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

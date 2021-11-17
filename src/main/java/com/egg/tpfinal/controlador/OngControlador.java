@@ -113,7 +113,7 @@ public class OngControlador {
 				ServiOng.borrarONG(id_ong);
 				for (Proyecto p : ong.getPublicaciones() ) {
 					if (p.getAlta()) {
-						ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
+						ServiProyecto.EliminarProyectoActivo(p.getId_proyecto());
 					}
 				}
 				ServiOng.saveOng(ong);
@@ -127,7 +127,7 @@ public class OngControlador {
 					for (Proyecto p : o2.getPublicaciones() ) {
 						if (p.getAlta()) {
 							
-							ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
+							ServiProyecto.EliminarProyectoActivo(p.getId_proyecto());
 						} 
 					}
 					ServiOng.saveOng(o2);

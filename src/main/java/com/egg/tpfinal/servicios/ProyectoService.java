@@ -48,6 +48,20 @@ public class ProyectoService {
 	}
 
 	@Transactional
+	public void EliminarProyectoActivo(Long ID) {
+		Proyecto proyecto = buscarPorID(ID);
+		if (proyecto != null && proyecto.getAlta()==true) {
+			proyecto.setAlta(!proyecto.getAlta());
+			//ProyectoRepo.save(proyecto);
+		}
+	}
+	
+	@Transactional
+	public void EliminarProyecto(Long ID) {
+		EliminarProyectoActivo(ID);                     //revisar utilidad de este método
+	}
+	
+	@Transactional
 	public void borrarProyecto(Long ID) {
 		EditarProyectoActivo(ID);                     //revisar utilidad de este método
 	}

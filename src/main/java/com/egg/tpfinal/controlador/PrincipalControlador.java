@@ -109,7 +109,12 @@ public class PrincipalControlador {
 		 return "listarTodo";
 	 }
 	
-					
+	/*@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ONG') || hasAnyRole('ROLE_DEVE'))")	
+	@GetMapping("/activar")
+	public String activarUsuario() {
+		
+		return "";
+	}*/
 
 		
 }

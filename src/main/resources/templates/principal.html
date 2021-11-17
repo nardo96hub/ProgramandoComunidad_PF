@@ -35,17 +35,17 @@
     </nav><br>-->
 
 
-
+<span th:if="${usuario.alta}"> 
 	<nav class="navbar navbar-expand-lg navbar-light barra">
 		<a class="navbar-brand" href="#"><img src="/img/logo.png" alt="logo" class="logo"></a>
 		
-		<span th:if="${usuario.alta}"> 
+		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
 			<span class="navbar-toggler-icon"></span>
 
 
 		</button>
-		</span>
+		
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown "><a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink"
@@ -93,7 +93,17 @@
 				</div>
 			<!--<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> -->
 		</div>
+		
+		
 	</nav>
+	</span>
+	
+	<span th:unless=${usuario.alta}>
+		<nav class=" barra">
+		<a class="navbar-brand" href="#"><img src="/img/logo.png" alt="logo" class="logo"></a>
+		 <a href="/logout"> <button class="ingresar">Cerrar </button></a>
+		</nav>
+	</span>
 
 
 	<div class="contenido">

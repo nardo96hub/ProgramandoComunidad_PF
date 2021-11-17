@@ -36,7 +36,7 @@ public class DeveloperService {
 	 */
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })     
-	public void guardarDeveloper(Developer dev, Usuario usuario, String tel, String nombre, String apellido, Foto foto,
+	public void guardarDeveloper(Developer dev, Usuario usuario,  String nombre, String apellido, String tel, Foto foto,
 			ArrayList<String> tec) throws Exception  {
 		
 		validar(usuario,tel,nombre,apellido, foto,tec);
@@ -79,7 +79,7 @@ public class DeveloperService {
 		validar(usuario,tel,nombre,apellido, foto, tec);
 		if (dev == null) {
 			dev = new Developer();
-			guardarDeveloper(dev, usuario, tel, nombre, apellido, foto, tec);
+			guardarDeveloper(dev, usuario,  nombre, apellido, tel, foto, tec);
 		} else {
 			throw new Exception("El email ya existe");
 		}

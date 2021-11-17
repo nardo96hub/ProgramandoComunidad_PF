@@ -144,11 +144,13 @@ public class DeveloperControlador {
 	@GetMapping("/editar/{id}")
 	public String edi(@PathVariable Long id, ModelMap mod) {
 		Developer dev = ServiDev.getDeveloper(id);
-		mod.addAttribute(dev); // Esto esta para mostrar el valor del objeto en editar :)
-		return "editardev";
+		System.out.println(id);
+		System.out.println(dev.getUsuario().getEmail());
+		mod.addAttribute("dev", dev); // Esto esta para mostrar el valor del objeto en editar :)
+		return "editardev.html";
 	}
 
-	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PreAuthorize("isAuthenticated() && ( hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_DEVE'))")
 	@PostMapping("/editar/{id}")
 	public String editar(@PathVariable Long id, @RequestParam String name, @RequestParam String apellido,
 			@RequestParam String tel, ModelMap mod, HttpSession session,
@@ -160,12 +162,14 @@ public class DeveloperControlador {
 			Developer d = ServiDev.getDeveloper(id);
 			Usuario devLogeado = (Usuario) session.getAttribute("usuariosession");
 			if (devLogeado.getRol().equals(Rol.DEVE) && (d.getUsuario().getEmail().equals(devLogeado.getEmail()))) { // editar developer desde perfil
+				System.out.println("entro DEVE");
 				if (file != null) {
 					foto = ServiFoto.guardarfoto(file);
 					ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, foto, d.getTecnologias());
 				} else {
 					ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, d.getFoto(), d.getTecnologias());
 				}
+				
 				return "redirect:/principal";
 			} else {
 				// Permite editar perfil desde el rol ADMIN
@@ -178,6 +182,7 @@ public class DeveloperControlador {
 					} else {
 						ServiDev.editarDeveloper(id, d2.getUsuario(), name, apellido, tel, d2.getFoto(), d2.getTecnologias());
 					}
+					ServiDev.editarDeveloper(id, d2.getUsuario(), name, apellido, tel, d2.getFoto(), d2.getTecnologias());
 					return "redirect:/listarTodo";
 				}
 			}

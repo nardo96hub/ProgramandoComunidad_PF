@@ -102,17 +102,6 @@ public class OngControlador {
 		// return "redirect:/";
 	}
 
-	/*@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
-	@GetMapping("/eliminarong/{id_ong}")
-	public String eliminarOng(@PathVariable Long id_ong,  ModelMap mod) {
-		
-		ONG o = ServiOng.getONG(id_ong);
-		mod.addAttribute(o); // devuelvo a front el objeto a editar desde la base de datos
-
-		return "eliminarong";
-		 
-	}*/
-	
 	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@GetMapping("/eliminarong/{id_ong}")
 	public String eliminarong(@PathVariable Long id_ong, ModelMap mod, HttpSession session) {

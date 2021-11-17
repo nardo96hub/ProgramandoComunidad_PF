@@ -119,7 +119,8 @@ public class DeveloperService {
 	public Developer getDeveloperporIdUser(Long idUser) { //SE USA UNA QUERY-RETORNA DEVELOP
 		return DevRepo.buscarPorIdUsuario(idUser);
 	}
-
+	
+	
 	public void validar(Usuario usuario, String tel, String nombre, String apellido, Foto foto,
 			ArrayList<String> tec) throws Exception {
 																//TO-DO =ACOMODAR ORDEN DE IF´SSSSSSSSSS

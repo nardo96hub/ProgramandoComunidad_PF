@@ -1,6 +1,7 @@
 package com.egg.tpfinal.controlador;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.Foto;
+import com.egg.tpfinal.entidades.ONG;
+import com.egg.tpfinal.entidades.Proyecto;
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
+import com.egg.tpfinal.servicios.ProyectoService;
 import com.egg.tpfinal.servicios.TecnologiasService;
 import com.egg.tpfinal.servicios.UsuarioService;
 import enumeracion.Rol;
+
 
 @Controller
 
@@ -36,6 +41,8 @@ public class DeveloperControlador {
 	private UsuarioService ServiUsu;
 	@Autowired
 	private FotoService ServiFoto;
+	@Autowired
+	private ProyectoService ServiPro;
 
 	@GetMapping() // GetMapping retorna siempre un html en este caso no lleva direccion porque es
 					// /registrodev
@@ -176,4 +183,59 @@ public class DeveloperControlador {
 		return null; // Nunca debería llegar a este return
 
 	}
+	
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_DEVE'))")
+	@GetMapping("/eliminardeveloper/{id_developer}")
+	public String eliminardeveloper(@PathVariable Long id_developer, ModelMap mod, HttpSession session) {
+		try {
+			//permite eliminar la ong al rol "ROLE_DEVE"
+			Usuario developerLogeado = (Usuario) session.getAttribute("usuariosession");
+			Developer developer = ServiDev.getDeveloper(id_developer);
+			if(developerLogeado.getRol().equals(Rol.DEVE) && (developer.getUsuario().getEmail().equals(developerLogeado.getEmail()))) {
+				
+				List <Proyecto>proyectos = ServiPro.bucarProyectoIDDeveloper(id_developer);
+				
+				for (Proyecto p : proyectos) {
+					/*List<Developer>develop = p.getDeveloper();
+					Iterator iter= proyectos.developer.iterator();
+					while(iter.hasNext()){
+					    Object o=iter.next()
+					    if(o.equals(what i'm looking for)){
+					        iter.remove();
+					    }
+					}*/
+					p.getDeveloper().remove(developer);
+					ServiPro.editarProyecto(p.getId_proyecto(), p.getTitulo(), p.getCuerpo(), p.getFecha_post(), p.getDeveloper(), p.getOng());
+					
+			}
+				ServiDev.borrarDeveloper(id_developer);
+				
+				ServiUsu.eliminarUsuario(developerLogeado.getId_usuario());
+				return "redirect:/logout";  // cambiar vista   
+			} /*else {
+				//permite eliminar la ong al rol "ROLE_ADMIN"
+				if (ongLogeada.getRol().equals(Rol.ADMIN)) {
+					ONG o2 = ServiOng.getONG(id_ong);
+					ServiOng.borrarONG(id_ong);
+					for (Proyecto p : o2.getPublicaciones() ) {
+						if (p.getAlta()) {
+							
+							ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
+						} 
+					}
+				}
+				return "redirect:/listarTodo";
+
+			}*/
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			mod.put("error", e.getMessage());
+			return "redirect:/principal";
+		}
+		return null; // no debería llegar nunca acá
+		 
+	}
+	
+	
 }

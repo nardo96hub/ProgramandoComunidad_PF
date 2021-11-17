@@ -110,9 +110,17 @@
 					<td><a
 						th:href="@{/registrodev/editar/__${developer.id_developer}__}"><i
 							class="far fa-edit" style="color: gold;"></i></a></td>
-					<td><a
-						th:href="@{/registrodev/eliminardev/__${developer.id_developer}__}"><i
-							class="fas fa-trash" style="color: red;"></i></a></td>
+					<td>
+					<span th:if="${developer.alta}">
+					<a
+						th:href="@{/registrodev/eliminardeveloper/__${developer.id_developer}__}"><i
+							class="fas fa-trash" style="color: red;"></i></a>
+					</span>
+					<span th:unless="${developer.alta}">
+					<a
+						th:href="@{/registrodev/eliminardeveloper/__${developer.id_developer}__}"><i class="fas fa-check" style="color:green"></i></a>
+					</span>
+							</td>
 				</tr>
 			</tbody>
 		</table>

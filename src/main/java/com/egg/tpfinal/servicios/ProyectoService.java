@@ -112,10 +112,7 @@ public class ProyectoService {
 		}
 	}
 	
-	public List <Proyecto> bucarProyectoIDDeveloper (Long id){
-		  List <Proyecto> proyectos = ProyectoRepo.buscarPorIdDeveloper(id); 
-		  return proyectos;
-		}
+	
 	
 	public void validarDatos(String titulo, String cuerpo, ONG ong) throws Exception {
 		if(titulo.isEmpty() ||!( titulo.length()>4 && titulo.length()<40)) {

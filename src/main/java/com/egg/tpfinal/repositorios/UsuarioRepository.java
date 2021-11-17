@@ -14,9 +14,12 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	@Query("SELECT u FROM Usuario u WHERE u.alta = true")
 	public List<Usuario> listarUsuariosActivos();
 	
-	@Query("SELECT u FROM Usuario u WHERE u.email = :email1")					//= funcion q la de abajo
+	@Query("SELECT u FROM Usuario u WHERE u.email = :email1 ")					//= funcion q la de abajo
 	public Usuario buscarPorEmail(@Param("email1") String email);				
 
+	@Query("SELECT u FROM Usuario u WHERE u.email = :email1 and u.alta=true ")					//= funcion q la de abajo
+	public Usuario buscarPorEmailActivo(@Param("email1") String email);	
+	
 	public Usuario findByEmail(String email);									//devuelve usuario
 	
 	@Query("SELECT u.email FROM Usuario u WHERE u.email = :email1")				//devuelve string email 

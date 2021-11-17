@@ -38,6 +38,8 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light barra">
 		<a class="navbar-brand" href="#"><img src="/img/logo.png" alt="logo" class="logo"></a>
+		
+		<span th:if="${usuario.alta}"> 
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
 			<span class="navbar-toggler-icon"></span>
 
@@ -80,43 +82,11 @@
 				</li>
 
    </ul>
-
-
-				<!-- <li>
-                <div class="navbar-item d-flex align-items-right justify-content-right"
-                   
-                    <a th:href="@{/logout}" class="btn btn-primary mt-2">Logout</a>
-                </div>
-
-            </li>-->
-
-				<!-- Intengo de mostrar Usuario -->
-
-				<!--  
-            <li>
-						<div class="navbar-item active d-flex align-items-right justify-content-right">
-							
-						   <p class="nav-link mt-3" th:value="${session.usuariosession.NyA}"></p>
-							<p class="nav-link mt-3" th:value="${#authentication.getPrincipal().getUsername()}"></p> 
-							
-							
-							
-							<a th:href="@{/logout}" class="btn btn-primary mt-2">Logout</a>
-						</div>
-
-					</li>-->
-				<!--	<li>
-				<div class="navbar-item active d-flex align-items-right justify-content-right">
-					<a th:href="@{/logout}" class="btn btn-primary mt-2">Logout</a>
-				</div>
-			</li>-->
-			
-			
-               
+     
                   <div class="barra">
 				<div class="perfil">
 					<!--   <button class="sq">Dropdown</button> -->
-					<button class="boton_foto"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
+					<button class="boton_foto" style="padding-left: 810px;"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
 						<div class="link">
 							
 							<a href="#">Ver perfil</a>
@@ -141,6 +111,12 @@
 
 
 		</div>
+		
+		</span>
+		
+		
+		
+		
 	</nav>
 
 
@@ -150,9 +126,11 @@
 		
 		
 		<div class="descripcion">
-			<h1 class="titulo">
+			<span th:if= "${usuario.alta}"><h1 class="titulo">
 				Hola, <span th:text="${nombre}"></span>
-			</h1>
+			</h1></span><span th:unless="${usuario.alta}">
+			<a th:href="@{/registrodev/eliminardev/__${fotoperfil.id_developer}__}"><button type="button" class="btn btn-success">Agregar Cuenta</button></a>
+		</span>
 			<p class="texto-imagen">Lorem ipsum dolor sit, amet consectetur
 				adipisicing elit. A magnam accusantium repellendus, quaerat
 				tevoluptatum dolorum odit, ducimus modi est hic fugiat voluptas

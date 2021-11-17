@@ -54,6 +54,7 @@ public class PrincipalControlador {
 	@GetMapping("/principal")
 	public String principal(ModelMap model,HttpSession session) {
 		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+		model.addAttribute("usuario",ongLogeada);
 		if(ongLogeada.getRol()==Rol.DEVE) {
 			Developer dev=RepoDev.buscarPorEmail(ongLogeada.getEmail());
 			model.addAttribute("fotoperfil",dev);

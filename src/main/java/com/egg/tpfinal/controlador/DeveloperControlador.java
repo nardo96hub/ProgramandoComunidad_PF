@@ -134,10 +134,12 @@ public class DeveloperControlador {
 
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/eliminardev/{id_developer}")
-	public String eliminardev(@PathVariable Long id_developer) {
+	public String eliminardev(@PathVariable Long id_developer,HttpSession session) {
 	
+		Usuario devLogeado = (Usuario) session.getAttribute("usuariosession");
 		ServiDev.borrarDeveloper(id_developer);
-		return "redirect:/listarTodo";
+		ServiUsu.eliminarUsuario(devLogeado.getId_usuario());
+		return "redirect:/logout";
 	}
 
 	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_DEVE')")
@@ -201,50 +203,64 @@ public class DeveloperControlador {
 		try {
 			//permite eliminar la ong al rol "ROLE_DEVE"
 			Usuario developerLogeado = (Usuario) session.getAttribute("usuariosession");
+		
 			Developer developer = ServiDev.getDeveloper(id_developer);
 			if(developerLogeado.getRol().equals(Rol.DEVE) && (developer.getUsuario().getEmail().equals(developerLogeado.getEmail()))) {
-				
-				List <Proyecto>proyectos = ServiPro.bucarProyectoIDDeveloper(id_developer);
+				//Tira error si elimino  dev != logueado se arregla cuando implementemos perfil
+				List <Proyecto>proyectos = ServiPro.listarProyectosActivos();//Traigo proyectos activos 
 				
 				for (Proyecto p : proyectos) {
-					/*List<Developer>develop = p.getDeveloper();
-					Iterator iter= proyectos.developer.iterator();
-					while(iter.hasNext()){
-					    Object o=iter.next()
-					    if(o.equals(what i'm looking for)){
-					        iter.remove();
-					    }
-					}*/
-					p.getDeveloper().remove(developer);
-					ServiPro.editarProyecto(p.getId_proyecto(), p.getTitulo(), p.getCuerpo(), p.getFecha_post(), p.getDeveloper(), p.getOng());
 					
+					List<Developer> programadores = p.getDeveloper();
+					Iterator i=programadores.iterator();
+					
+					while(i.hasNext()) {
+						Developer dev=(Developer)i.next();
+						if(dev.getUsuario().getEmail().equals(developer.getUsuario().getEmail())) {
+							i.remove();
+						}
+					}
+	
 			}
 				ServiDev.borrarDeveloper(id_developer);
 				
-				ServiUsu.eliminarUsuario(developerLogeado.getId_usuario());
-				return "redirect:/logout";  // cambiar vista   
-			} /*else {
-				//permite eliminar la ong al rol "ROLE_ADMIN"
-				if (ongLogeada.getRol().equals(Rol.ADMIN)) {
-					ONG o2 = ServiOng.getONG(id_ong);
-					ServiOng.borrarONG(id_ong);
-					for (Proyecto p : o2.getPublicaciones() ) {
-						if (p.getAlta()) {
-							
-							ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
-						} 
-					}
+				ServiUsu.eliminarUsuario(developerLogeado.getId_usuario()); //AGREGAR LA LOGICA DEL CREAR SI YA FIGURA EMAIL EN BDD Y TIENE ALTA=FALSE LO CAMBIE A TRUE
+				return "redirect:/logout";  
+			} else {
+				//permite eliminar EL DEVELOPER al rol "ROLE_ADMIN"
+				
+				if (developerLogeado.getRol().equals(Rol.ADMIN)) {
+					
+					Developer d1 = ServiDev.getDeveloper(id_developer);
+					List <Proyecto>proyectoss = ServiPro.listarProyectosActivos();//Traigo proyectos activos 
+					
+					for (Proyecto p1 : proyectoss) {
+						
+						List<Developer> programadores = p1.getDeveloper();
+						Iterator i2=programadores.iterator();
+						
+						while(i2.hasNext()) {
+							Developer dev2=(Developer)i2.next();
+							if(dev2.getUsuario().getEmail().equals(d1.getUsuario().getEmail())) {
+								i2.remove();
+							}
+						}
+		
+				}
+					ServiDev.borrarDeveloper(id_developer);
+					
+					ServiUsu.eliminarUsuario(d1.getUsuario().getId_usuario()); //AGREGAR LA LOGICA DEL CREAR SI YA FIGURA EMAIL EN BDD Y TIENE ALTA=FALSE LO CAMBIE A TRUE
 				}
 				return "redirect:/listarTodo";
 
-			}*/
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			mod.put("error", e.getMessage());
 			return "redirect:/principal";
 		}
-		return null; // no debería llegar nunca acá
+		//return null; // no debería llegar nunca acá
 		 
 	}
 	

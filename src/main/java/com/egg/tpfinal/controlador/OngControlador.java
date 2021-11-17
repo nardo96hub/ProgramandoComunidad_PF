@@ -125,8 +125,7 @@ public class OngControlador {
 					ONG o2 = ServiOng.getONG(id_ong);
 					ServiOng.borrarONG(id_ong);
 					for (Proyecto p : o2.getPublicaciones() ) {
-						if (p.getAlta()) {
-							
+						if (p.getAlta()) {							
 							ServiProyecto.EliminarProyectoActivo(p.getId_proyecto());
 						} 
 					}
@@ -134,7 +133,6 @@ public class OngControlador {
 					ServiUsu.eliminarUsuario(o2.getUsuario().getId_usuario());
 				}
 				return "redirect:/listarTodo";
-
 			}
 			
 		} catch (Exception e) {

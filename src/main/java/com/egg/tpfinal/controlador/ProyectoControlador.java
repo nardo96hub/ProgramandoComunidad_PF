@@ -21,6 +21,9 @@ import com.egg.tpfinal.repositorios.OngRepository;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.OngService;
 import com.egg.tpfinal.servicios.ProyectoService;
+import com.egg.tpfinal.servicios.UsuarioService;
+
+import enumeracion.Rol;
 
 @Controller
 @PreAuthorize("isAuthenticated()")
@@ -29,8 +32,8 @@ public class ProyectoControlador {
 	
 	@Autowired
 	private ProyectoService proyecServi;
-	//@Autowired
-	//private UsuarioService userServi;
+	@Autowired
+	private UsuarioService userServi;
 	@Autowired
 	private OngService OngServi;
 	@Autowired
@@ -132,10 +135,7 @@ public class ProyectoControlador {
 		} catch (Exception e) {
 			return "redirect:/proyect/proyecto";
 		}
-		
-		
 	}
-	
 	
 	@GetMapping("/proyecto/{id}") // revisar
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
@@ -153,24 +153,25 @@ public class ProyectoControlador {
 		Proyecto p= proyecServi.buscarPorID(id);
 		
 		OngServi.agregarProyectos(p.getOng(), p);
-		
-		
+
 		return "redirect:/principal";
-		
 	}
 	
-	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@GetMapping("/editar/{id}")
 	public String ed(@PathVariable Long id,ModelMap mod) {
 		Proyecto p=proyecServi.buscarPorID(id);
 		mod.addAttribute(p);
 		return "editarproyecto";
 	}
-	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_ADMIN')")
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@PostMapping("/editar/{id}")
-	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo,ModelMap mod) {
+	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo,ModelMap mod, HttpSession session) {
 		try {
 			Proyecto p=proyecServi.buscarPorID(id);
+			Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+			ONG o = OngServi.getONG(id);
+			if (ongLogeada.getRol().equals(Rol.ONG) && (o.getUsuario().getEmail().equals(ongLogeada.getEmail()))) {
 			proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
 			return "redirect:/listarTodo";
 		} catch (Exception e) {
@@ -178,6 +179,7 @@ public class ProyectoControlador {
 			mod.put("error",e.getMessage());
 			return "redirect:/registrodev/editar/{id}";
 		}	
-	}
+		}
 	
+}
 }

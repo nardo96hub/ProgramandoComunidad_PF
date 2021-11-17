@@ -34,8 +34,8 @@
         <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1><br>
         <form th:action="@{/proyect/proyecto}" method="GET"> 
       	<div style="text-align: center;">
-      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="btn btn-info">Buscar</button>
-      	<a th:href="@{/proyect/proyecto}"><button type="button" class="btn btn-info">Ver Proyectos Activos</button></a>
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="boton_buscar">Buscar</button>
+      	<a th:href="@{/proyect/proyecto}"><button type="button" class="boton_activos">Ver Proyectos Activos</button></a>
       	</div>
       </form>
 		<div class="proyecto" th:each="proyecto : ${proyectos}">
@@ -68,7 +68,12 @@
         </div>
  </div>-->
 
-
+<footer>
+      Contacto:
+      <i class="fab fa-instagram fa-2x"></i>
+      <i class="fab fa-facebook fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
   
 
   <!-- Optional JavaScript -->

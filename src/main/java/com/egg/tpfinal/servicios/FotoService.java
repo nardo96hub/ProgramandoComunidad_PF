@@ -83,6 +83,8 @@ public class FotoService {
 			Path path = Paths.get(url_imagen);
 			Files.write(path, bytes);
 			foto = new Foto(url_base + extension);*/
+		}else {
+			foto=new Foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
 		}
 		return foto;
 	}

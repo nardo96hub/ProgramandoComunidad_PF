@@ -10,7 +10,16 @@
 	margin: 0;
 	padding: 0;
 }
-
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+	margin-top:25px;
+}
 .logo {
 	height: 50px;
 	width: auto;
@@ -123,4 +132,25 @@
 	margin: auto;
 	text-align:center;
 	
+}
+.boton_buscar{
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	border:none;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.boton_activos{
+	background: #7dde92;
+	border-radius: 20px;
+	width: 180px;
+	padding: 2px;
+	border:none
+}
+input{
+	border-radius: 20px;
+		border: #7dde92 solid 3px;
+		
 }

@@ -38,9 +38,9 @@
           ducimus.</h2>  -->
       <div class="centrar">
         <div style="text-align:right"><span>Fecha publicacion: </span> <span class="fecha"
-            th:text="${proyecto.fecha_post}"></span></div>
+            th:text="${proyecto.fecha_post}"></span></div><br>
         <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2>
-        <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2>
+        <h2 class="marca" >Marca: <span th:text="${proyecto.ong.marca}"> </span></h2>
 
         <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
         <div th:if="${proyecto.admitir_deve}" sec:authorize="hasAnyRole('ROLE_DEVE')">
@@ -49,6 +49,8 @@
       <!--th:each="proyecto : ${proyectos} "   <img th:src="@{'/images/' + ${post.imageName}}"/> -->
       <!-- <img th:if="${usuario.foto != null}" class="rounded-circle" th:src="${'/foto/usuario/' + usuario.id}" alt="" style="max-height: 100px">-->
         <div class="todo">
+        
+        	<h3> Participantes:</h3>
             <div th:each="developer : ${proyecto.developer}" class="developer">
                <!-- <img class="integrantes" th:src="@{'/src/main/resources/files/'+ ${developer.foto.id_foto}}+'.jpg'" alt=""> -->
               
@@ -67,6 +69,12 @@
     </div>
   </div>
     </div>
+    <footer>
+      Contacto:
+      <i class="fab fa-instagram fa-2x"></i>
+      <i class="fab fa-facebook fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

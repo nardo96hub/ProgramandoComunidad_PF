@@ -85,7 +85,7 @@
 				<div class="perfil">
 				<button class="boton_foto"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
 						<div class="link">
-							<a href="#">Ver perfil</a>
+							<a href="/perfil">Ver perfil</a>
 							<a href="/quienesomos">Quienes Somos</a>
 							<a th:href="@{/logout}"  th:if="${session.usuariosession!=null}">Cerrar sesión</a>
 						</div>

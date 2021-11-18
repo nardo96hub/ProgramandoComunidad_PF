@@ -18,7 +18,7 @@ var tecno=document.getElementById("lenguaje1").value;
 
 
  
-if( tecno.slice(-1) == "," || tecno.slice(-1) == " " ){
+if( tecno.slice(-1) == ","){
 	
 	if(!tecnos.includes(enviartexto2())){
 		

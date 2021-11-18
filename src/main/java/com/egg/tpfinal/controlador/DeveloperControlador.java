@@ -218,6 +218,9 @@ public class DeveloperControlador {
 						Developer dev=(Developer)i.next();
 						if(dev.getUsuario().getEmail().equals(developer.getUsuario().getEmail())) {
 							i.remove();
+							p.setAdmitir_deve(true);
+							ServiPro.saveProyecto(p);
+
 						}
 					}
 	

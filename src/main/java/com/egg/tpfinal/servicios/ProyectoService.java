@@ -139,4 +139,7 @@ public class ProyectoService {
 			throw new Exception("Proyecto no se logro cargar con exito");
 		}
 	}
+	public void saveProyecto(Proyecto proyecto){
+		ProyectoRepo.save(proyecto);
+	}
 }

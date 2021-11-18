@@ -113,7 +113,7 @@ public class OngControlador {
 				ServiOng.borrarONG(id_ong);
 				for (Proyecto p : ong.getPublicaciones() ) {
 					if (p.getAlta()) {
-						ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
+						ServiProyecto.EliminarProyectoActivo(p.getId_proyecto());
 					}
 				}
 				ServiOng.saveOng(ong);
@@ -125,16 +125,14 @@ public class OngControlador {
 					ONG o2 = ServiOng.getONG(id_ong);
 					ServiOng.borrarONG(id_ong);
 					for (Proyecto p : o2.getPublicaciones() ) {
-						if (p.getAlta()) {
-							
-							ServiProyecto.EditarProyectoActivo(p.getId_proyecto());
+						if (p.getAlta()) {							
+							ServiProyecto.EliminarProyectoActivo(p.getId_proyecto());
 						} 
 					}
 					ServiOng.saveOng(o2);
 					ServiUsu.eliminarUsuario(o2.getUsuario().getId_usuario());
 				}
 				return "redirect:/listarTodo";
-
 			}
 			
 		} catch (Exception e) {
@@ -188,7 +186,6 @@ public class OngControlador {
 					}
 					return "redirect:/listarTodo";
 				}
-
 			}
 
 		} catch (Exception e) {

@@ -233,7 +233,6 @@ public class DeveloperControlador {
 					
 					Developer d1 = ServiDev.getDeveloper(id_developer);
 					List <Proyecto>proyectoss = ServiPro.listarProyectosActivos();//Traigo proyectos activos 
-					
 					for (Proyecto p1 : proyectoss) {
 						
 						List<Developer> programadores = p1.getDeveloper();
@@ -245,14 +244,12 @@ public class DeveloperControlador {
 								i2.remove();
 							}
 						}
-		
 				}
 					ServiDev.borrarDeveloper(id_developer);
 					
 					ServiUsu.eliminarUsuario(d1.getUsuario().getId_usuario()); //AGREGAR LA LOGICA DEL CREAR SI YA FIGURA EMAIL EN BDD Y TIENE ALTA=FALSE LO CAMBIE A TRUE
 				}
 				return "redirect:/listarTodo";
-
 			}
 			
 		} catch (Exception e) {

@@ -44,38 +44,57 @@
 
         <p class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
         <div th:if="${proyecto.admitir_deve}" sec:authorize="hasAnyRole('ROLE_DEVE')">
-        <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
+      
         </div>
       <!--th:each="proyecto : ${proyectos} "   <img th:src="@{'/images/' + ${post.imageName}}"/> -->
       <!-- <img th:if="${usuario.foto != null}" class="rounded-circle" th:src="${'/foto/usuario/' + usuario.id}" alt="" style="max-height: 100px">-->
+       <h3> Participantes:</h3>
         <div class="todo">
         
-        	<h3> Participantes:</h3>
+        <!-- 
+        <figure>
+    <img src="/media/cc0-images/elephant-660-480.jpg"
+         alt="Elephant at sunset">
+    <figcaption>An elephant at sunset</figcaption>
+</figure> -->
+        
+        	
             <div th:each="developer : ${proyecto.developer}" class="developer">
                <!-- <img class="integrantes" th:src="@{'/src/main/resources/files/'+ ${developer.foto.id_foto}}+'.jpg'" alt=""> -->
               
-              <div th:if="${developer.foto} != null" >
-               <img class="integrantes" th:src="${developer.foto.url_foto}" alt=""><br>
-               <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
+              <div th:if="${developer.foto} != null" class="developers" >
+              
+              <figure>
+               <img class="integrantes" th:src="${developer.foto.url_foto}" alt="">
+              <!--      <figcaption th:text=" ${developer.nombre}+' '+${developer.apellido}"></figcaption> -->
+              
+               </figure>
+                <h6 class="nombre" th:text=" ${developer.nombre}+' '+${developer.apellido}"></h6><br>
+               
+               <br>
+                  
+             
+            
               </div> 
-              <div th:if="${developer.foto} == null">
-              <img class="integrantes" src="https://img.blogs.es/anexom/wp-content/uploads/2020/03/messenger-antiguo-microsoft-live.png"  alt="imagen generica"><br>
-               <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
+         
+              
+              <div th:if="${developer.foto} == null" class="developers">
+              <img class="integrantes" src="https://img.blogs.es/anexom/wp-content/uploads/2020/03/messenger-antiguo-microsoft-live.png"  alt="imagen generica">
+                <h6 class="nombre" th:text="${developer.nombre}+' '+${developer.apellido}"></h6>
+             
               
               </div>
-              
+                <br>
                
             </div>
+              
     </div>
+      <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
   </div>
+ 
     </div>
-    <footer>
-      Contacto:
-      <i class="fab fa-instagram fa-2x"></i>
-      <i class="fab fa-facebook fa-2x"></i>
-      <i class="fab fa-linkedin fa-2x"></i>
-    </footer>
-  
+   
+ 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -85,4 +104,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+     <footer>
+      Contacto:
+      <i class="fab fa-instagram fa-2x"></i>
+      <i class="fab fa-facebook fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
 </body>

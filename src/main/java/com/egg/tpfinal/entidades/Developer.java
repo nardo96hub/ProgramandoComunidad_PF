@@ -3,12 +3,15 @@ package com.egg.tpfinal.entidades;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,12 +28,15 @@ public class Developer {
 	@OneToOne(cascade = CascadeType.ALL) // propaga operaciones (EntityManageroperaciones)en entidades relacionadas
 	@JoinColumn(name = "usuario_id_usuario", referencedColumnName = "id_usuario")
 	private Usuario usuario;								// TO-DO: revisar JoinC. onetoone si es necesario
-
+	
 	@OneToOne (cascade = CascadeType.ALL)
 	private Foto foto;
 	
 	private ArrayList<String> tecnologias;
 
+	@ManyToMany (mappedBy = "developer") 
+	private List<Proyecto> proyecto;
+	
 	public Long getId_developer() {
 		return id_developer;
 	}

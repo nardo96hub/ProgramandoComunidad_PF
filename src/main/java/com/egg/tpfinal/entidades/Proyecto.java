@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -33,10 +34,14 @@ public class Proyecto {
 	private Boolean	admitir_deve; 					//se setea en false cuando el proyecto ya tiene 5 developers
 	private Boolean	alta;
 	
-	@OneToMany
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(										
+	        name = "proyecto_developer",
+	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),
+	        inverseJoinColumns = @JoinColumn(name="id_developer", nullable = false))
 	private List<Developer> developer;	
 	
-	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinTable(										// tabla unión intemedia(many) entre entity (sin foránea)
 	        name = "proyecto_ong",
 	        joinColumns = @JoinColumn(name = "id_proyecto", nullable = false),

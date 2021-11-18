@@ -89,7 +89,9 @@
             </div>
               
     </div>
-      <a th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
+
+      <a th:if="${proyecto.admitir_deve}" th:href="@{/proyect/postularse/__${proyecto.id_proyecto}__}"><button class="boton"> Postularse </button></a>
+
   </div>
  
     </div>

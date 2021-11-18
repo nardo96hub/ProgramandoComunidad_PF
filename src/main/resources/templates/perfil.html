@@ -21,97 +21,236 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="../static/css/perfil.css" />
+    <link rel="stylesheet" href="/css/perfil.css" />
 </head>
 
 <body>
     <nav class="barra">
-        <a href="/principal"><img src="../static/img/logo.png" alt="logo" class="logo"></a>
+        <a href="/principal"><img src="/img/logo.png" alt="logo" class="logo"></a>
         <a href="/principal"><button class="ingresar">Volver</button></a>
     </nav>
-    <div class="contenedor">
+
+    <!--            Comienza PErfil ong Con css puro-->
+
+  <!--<div class="contenedor" sec:authorize="hasAnyRole('ROLE_ONG')">
         <div class="grilla">
             <div class="perfil_col">
                 <i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
                 <div class="foto">
-                    <img src="../static/img/nosotros/Lu.jpg" alt="" class="integrantes">
+                    <img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
                 </div>
                 <div class="informacion">
-                    <h2>Marca</h2>
-                    <p>hola@gmail</p>
-                    <span>pedro</span> <br>
-                    <span>gomez</span>
+                    <h2 th:text="${perfil.marca}"></h2>
+                    <p th:text="${perfil.usuario.email}"></p>
+                    <span th:text="${perfil.nombre_rep}"></span> <br>
+                    <span th:text="${perfil.apellido_rep}"></span>
                 </div>
                 <div class="botones">
-                    <a href=""><button type="button" class="crear">Crear Proyecto</button></a>
-                    <a href=""><button type="button" class="eliminar">Eliminar Cuenta</button></a>
+                    <a href="/proyect/publicarproyecto"><button type="button" class="crear">Crear Proyecto</button></a>
+                    <a th:href="@{/ong/eliminarong/__${perfil.id_ong}__}"><button type="button" class="eliminar">Eliminar Cuenta</button></a>
                 </div>
             </div>
             <div class="proyectos">
                 <h1 class="titulo-pagina">Mis Proyectos</h1>
 
-                <div></div>
-                <!--<div th:each="developer : ${listaDev} ">
-    
-                    <div class="centrar">
-                        <div>
-                            <span th:if="${developer.foto} != null">
-                                <img class="integrantes" th:src="${developer.foto.url_foto}" alt=""> <span class="texto"
-                                    th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br>
-                            </span>
-                            <span th:if="${developer.foto} == null">
-                                <img class="integrantes" src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png"
-                                    alt="">
-                                <span class="texto" th:text="${developer.nombre}+' '+ ${developer.apellido}"></span><br>
-                            </span>
-                        </div>
-    
-                        <h2 class="texto">Telefono: <span th:text="${developer.telefono}"></span></h2>
-    
-                        <h2 class="texto">Email:<span th:text="${developer.usuario.email}"></span></h2>
-                        <h2 class="texto">Lenguajes:
-                            <span th:each="leng : ${developer.tecnologias}">
-                                <span th:text="${leng}" class="texto"> </span>
-                            </span>
-                        </h2>
-    
-                        <a th:href="@{/registrodev/editar/__${developer.id_developer}__}"><button
-                                type="button">Editar</button></a>
-                        <a th:href="@{/registrodev/eliminardeveloper/__${developer.id_developer}__}"><button
-                                type="button">Eliminar</button></a>
-                    </div>
-                 -->
-                    <div class="centrar">
-                        <h2 class="titulo">Marca</h2>
-                        <h3 class="fecha" >Fecha: 23-07-20201</h3>
-                        <p class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quod perspiciatis accusantium eius, autem itaque illo? Voluptate laboriosam velit sequi, quos, ratione ab, pariatur nostrum voluptatibus voluptatum asperiores assumenda at!</p>
-                        
-                        <h3 class="nombre_ong">ONG</h3>
-                    </div>
-    
+
+				<div th:each="proy : ${perfil.publicaciones}">
+                <div class="centrar">
+                    <h2 class="titulo" th:text="${proy.titulo}"></h2>
+                    <h3 class="fecha" >Fecha: <span th:text="${proy.fecha_post}" > </span></h3>
+                    <p class="descripcion" th:text="${proy.cuerpo}"></p>
+
+                    
                 </div>
-    
+				</div>
             </div>
+            
+
         </div>
 
 
-        <footer>
-            Contacto:
-            <i class="fab fa-instagram fa-2x"></i>
-            <i class="fab fa-facebook fa-2x"></i>
-            <i class="fab fa-linkedin fa-2x"></i>
-        </footer>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+        
+
+    
+        
+    </div>-->
+    <div class="conteiner" sec:authorize="hasAnyRole('ROLE_ONG')">
+        <div class="row">
+            <div class="col-3" style="background: linear-gradient(180deg, #7DDE92 19.79%, #24BB85 100%);
+">
+                <i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
+                <div class="foto">
+                    <img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
+                </div>
+                <div class="informacion">
+                    <h2 th:text="${perfil.marca}"></h2>
+                    <p th:text="${perfil.usuario.email}"></p>
+                    <span th:text="${perfil.nombre_rep}"></span> <br>
+                    <span th:text="${perfil.apellido_rep}"></span>
+                </div>
+                <div class="botones">
+                    <a href="/proyect/publicarproyecto"><button type="button" class="crear">Crear Proyecto</button></a>
+                    <a th:href="@{/ong/eliminarong/__${perfil.id_ong}__}"><button type="button" class="eliminar">Eliminar Cuenta</button></a>
+                </div>
+            </div>
+            <div class="col-9">
+                <h1 class="" style="text-align: center;">Mis Proyectos</h1>
+
+
+				<div th:each="proy : ${perfil.publicaciones}">
+                <div class="" style="text-align: center;border: 6px solid transparent; border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;">
+                    <h2 class="titulo" th:text="${proy.titulo}"></h2>
+                    <h3 class="fecha" >Fecha: <span th:text="${proy.fecha_post}" > </span></h3>
+                    <p class="descripcion" th:text="${proy.cuerpo}"></p>
+
+                    
+                </div><br>
+				</div>
+            </div>
+            
+
+        </div>
+
+
+        
+
+    
+        
+    </div>
+    
+    
+
+<!-- PErfil dev  Con Css Puro-->
+
+  <!--  <div class="contenedor" sec:authorize="hasAnyRole('ROLE_DEVE')">
+        <div class="grilla2">
+            <div class="perfil">
+                <i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
+                <div class="foto">
+                    <img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
+                </div>
+                <div class="informacionn">
+                    <h2 th:text="${perfil.nombre}+', '+${perfil.apellido}"></h2>
+                    <p th:text="${perfil.usuario.email}"></p>
+                
+
+                    <div class="tec">
+                        <span class="" style="font-weight: bold;">Tecnologias:
+                        </span><br>
+						<div th:each="tecno : ${perfil.tecnologias}">
+                        <span th:text="${tecno}"></span><br>
+                        <div>
+                    </div>
+                </div>
+                <div class="botoness">
+                    
+                    <a th:href="@{/registrodev/eliminardeveloper/__${perfil.id_developer}__}"><button type="button" class="eliminarr">Eliminar Cuenta</button></a>
+                </div>
+            </div>
+            <div class="proyectoss">
+                <h1 class="titulo-paginas">Proyectos en lo que estuve</h1>
+
+
+				<div th:each="proy : ${listaProyDev}">
+                <div class="centrarr">
+                    <h2 class="tituloss" th:text="${proy.titulo}"></h2>
+                    <h3 class="fechas">Fecha: <span th:text="${proy.fecha_post}"></span></h3>
+                    <p class="descripciones" th:text="${proy.cuerpo}"></p>
+
+                    <h3 class="nombre_ong" >Ong: <span th:text="${proy.ong.marca}"></span></h3>
+                </div>
+				</div>
+            </div>
+            
+
+        </div>
+
+
+        
+
+    
+        
+    </div>-->
+
+ 
+ 
+ 
+       <div class="conteiner" sec:authorize="hasAnyRole('ROLE_DEVE')">
+        	<div class="row">
+            	<div class="col-3" style="background: linear-gradient(180deg, #3185DB 0%, #4E4187 100%);">
+               	 	<i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
+                	<div class="foto">
+                    	<img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
+                	</div>
+                	<div class="informacion">
+                    	<h2 th:text="${perfil.nombre}+', '+${perfil.apellido}"></h2>
+                    	<p th:text="${perfil.usuario.email}"></p>
+                
+
+                   	 	<div class="tec">
+                        	<span class="" style="font-weight: bold;">Tecnologias:
+                        	</span><br>
+							<div th:each="tecno : ${perfil.tecnologias}">
+                        		<span th:text="${tecno}"></span><br>
+                        	</div>
+                    	</div>
+                	</div>
+                	<div class="botones">
+                    
+                    	<a th:href="@{/registrodev/eliminardeveloper/__${perfil.id_developer}__}"><button type="button" class="eliminar">Eliminar Cuenta</button></a>
+                	</div>
+            	</div>
+            	<div class="col-9">
+                	<h1 class=""  style="text-align: center;">Proyectos en lo que estuve</h1>
+
+				<div th:each="proy : ${listaProyDev}">
+                	<div style="text-align: center;border: 6px solid transparent; border-image: linear-gradient(180deg, #3185DB 0%, #4E4187 100%);border-image-slice: 4;">
+    
+                    	<h2 class="titulos" th:text="${proy.titulo}"></h2>
+                    	<h3 class="fecha">Fecha: <span th:text="${proy.fecha_post}"></span></h3>
+                   		<p class="descripcione" th:text="${proy.cuerpo}"></p>
+
+                    	<h3 class="nombre_ong" >Ong: <span th:text="${proy.ong.marca}"></span></h3>
+                	</div>
+				</div>
+            </div>
+            
+
+        </div>
+
+
+        
+
+    
+        
+    </div>
+ 
+
+        
+
+    
+        
+   
+
+
+    <footer>
+        Contacto:
+        <i class="fab fa-instagram fa-2x"></i>
+        <i class="fab fa-facebook fa-2x"></i>
+        <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 package com.egg.tpfinal.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -109,12 +110,60 @@ public class PrincipalControlador {
 		 return "listarTodo";
 	 }
 	
-	/*@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ONG') || hasAnyRole('ROLE_DEVE'))")	
-	@GetMapping("/activar")
-	public String activarUsuario() {
-		
-		return "";
-	}*/
+	
+	 //Administrador no tiene perfil para ser el codigo mas facil en futuras versiones se implementa
+	 //@PreAuthorize("(hasAnyRole('ROLE_DEV') || hasAnyRole('ROLE_ONG')) && isAuthenticated()")
+	 @GetMapping("/perfil")
+	 public String perfil(ModelMap mod,HttpSession session){
+		 Usuario usuLog=(Usuario) session.getAttribute("usuariosession");
+		 if(usuLog.getRol()==Rol.ONG) {
+			 ONG o=RepoOng.buscarPorEmail(usuLog.getEmail());
+			 if(o!=null) {
+				 mod.addAttribute("perfil",o);
+			 }else {
+				 return "redirect:/principal";  //Nunca deberia pasar ya que usuario tiene rol ONG
+			 }
+			 
+		 }else {	//Como dev no tiene proyecto en atributos se reniega mas esto de ahora se deberia hacer en un servicio pero para evitar conflicto se hace en controlador
+			 Developer d=RepoDev.buscarPorEmail(usuLog.getEmail());
+			 if(d!=null) {
+				 
+				 mod.addAttribute("perfil",d);
+				 List<Proyecto> proy=new ArrayList<Proyecto>();
+				 List<Proyecto> proyact=ServiProy.listarProyectosActivos();
+				 
+				 for (Proyecto p : proyact) {
+					List<Developer> dep=p.getDeveloper();
+					fin:
+					for (Developer dev : dep) {
+						if(dev.equals(d)) {
+							proy.add(p);
+							System.out.println("Agrego el proyecto: "+p);
+							break fin;
+						}
+					}
+					
+				}
+				 System.out.println("Se agrego bien?");
+				 for (Proyecto proyecto : proy) {
+					System.out.println(proyecto);
+				}
+				 
+				 
+				 
+				 
+				 mod.addAttribute("listaProyDev",proy);
+				 
+				 
+			 }else {
+				 return "redirect:/principal";
+			 }
+		 }
+		 
+		 
+		 
+		 return "perfil.html";
+	 }
 
 		
 }

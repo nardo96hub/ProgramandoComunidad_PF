@@ -1,0 +1,192 @@
+* {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+   
+   /* position: absolute;
+  bottom: 0;*/
+
+}
+
+.integrantes {
+	height: 150px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-color: #2ebfa5;
+    
+    display:block;
+    margin:auto;
+    margin-top: 15px;
+
+
+}
+.grilla{
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 19px;
+    grid-row-gap: 0px;
+    /*height: 100vh;*/
+}
+
+.perfil_col{
+    grid-area: 1 / 1 / 2 / 2;
+
+    background: linear-gradient(180deg, #7DDE92 19.79%, #24BB85 100%);
+
+    width: 100%;
+  
+    height: inherit ;
+
+}
+.foto{
+    justify-content: center;
+	align-self: center;
+
+}
+.proyectos{
+    grid-area: 1 / 2 / 2 / 3;
+
+}
+.informacion{
+    display: inline-block;
+    margin-left:  28px;
+}
+.informacion h2{
+    font-family: "Poppins";
+    margin-top: 15px;
+}
+.informacion span{
+    font-family: "Quicksand";
+}
+.botones{
+    display: block;
+    width: 50%;
+   /* border-radius: 20px;*/
+    border: none;
+    margin:auto;
+  margin-top: 140px;
+ margin-bottom: 20px;
+}
+.botones button{
+    margin-top: 10px;
+    font-family: "Poppins";
+    width: 150px;
+}
+.crear{
+    background: #3083DC;
+    border-radius: 22px;
+    border: none;
+    padding: 1px 5px;
+}
+
+.eliminar{
+    background: #CB4E4E;
+    border-radius: 22px;
+    border: none;
+    padding: 1px 5px;
+   /* font-family: "Poppins";*/
+   
+}
+
+.proyecto_indi_dev h2{
+    width: 100%;
+    background: #F9F9F9;
+    border: 12px solid #7DDE92;
+
+}
+.centrar {
+	/*height: 40vh;*/
+  	grid-column: 1;
+    width: 100%;
+	background-color: #F8FFE5;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+    box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+   	padding: 30px;
+   	margin-top: 20px;
+    font-family:"Poppins" ;
+}
+
+.titulo{
+    font-family: "Poppins";
+    text-align: left;
+    grid-column: 1;
+    padding-left: 20px;
+    font-size: 30px; 
+	margin-top: 15px;
+	text-transform: uppercase;
+}
+.descripcion{
+    font-family: "quicksand";
+    font-size:20px; 
+    padding: 10px;
+    text-align: left;
+    padding-left: 20px;
+	text-transform: lowercase;
+	margin-top: 35px;
+
+}
+.fecha{
+	font-family: 'quicksand';
+	text-align: left;
+    padding-left: 20px;
+    margin-top:-80px;
+    font-size: 15px;
+    float: right;
+}
+.titulo-pagina{
+	font-family: "Poppins";
+	text-transform: lowercase;
+	text-transform: capitalize;
+    text-align:center;padding-top: 10px;
+}
+.nombre_ong{
+    font-family: 'quicksand';
+	text-align: right;
+    /*padding-left: 20px;*/
+   /* padding-bottom: 190px;*/
+    font-size: 25px;
+    /*float: right;*/
+}
+
+/*      *******************  ONG  */

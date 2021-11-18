@@ -94,7 +94,6 @@ public class ProyectoControlador {
 			e.printStackTrace();
 			return "publishproyectTest.html";
 		}
-
 	}
 
 	@GetMapping("/proyecto")
@@ -108,21 +107,36 @@ public class ProyectoControlador {
 		return "listaproyectos"; // falta vista
 	}
 
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@GetMapping("/eliminarproyecto/{id}")
-	public String eliminarProyecto(@PathVariable Long id) {
-		// System.out.println("Id: "+id);
-		proyecServi.borrarProyecto(id);
-		return "redirect:/listarTodo"; // falta vista
-	}
+	public String eliminarProyecto(@PathVariable Long id, ModelMap mod, HttpSession session) {
 
-	/*
-	 * EN SEGUNDA VERSION public String editarProyecto() { return ""; }
-	 */
+		Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
+		ONG ong = OngServi.buscarONGporUsuario(ongLogeada); // SI FUNCIONA HACERLO EN EDITAR
+		Proyecto p = proyecServi.buscarPorID(id);
+		try {
+			// permite eliminar el proyecto al rol "ROLE_ONG"
+			if (ongLogeada.getRol().equals(Rol.ONG) && (ong.getUsuario().getEmail().equals(ongLogeada.getEmail()))
+					&& (p.getOng()).equals(ong)) {
+				proyecServi.borrarProyecto(id);
+				return "redirect:/listarTodo"; // cambiar vista
+			} else {
+				// permite eliminar el proyecto al rol "ROLE_ADMIN"
+				if (ongLogeada.getRol().equals(Rol.ADMIN)) {
+					proyecServi.borrarProyecto(id);
+					return "redirect:/listarTodo";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			mod.put("error", e.getMessage());
+			return "redirect:/principal";
+		}
+		return null;
+	}
 
 	@GetMapping("/postularse/{idProyecto}")
 	public String postularse(HttpSession session, @PathVariable Long idProyecto) {
-
-		// Usuario usuario = null;
 		try {
 
 			Usuario login = (Usuario) session.getAttribute("usuariosession");
@@ -138,9 +152,7 @@ public class ProyectoControlador {
 
 	@GetMapping("/proyecto/{id}") // revisar
 	public String devolverProyecto(ModelMap mod, @PathVariable Long id) {
-		// System.out.println(id);
 		Proyecto proyecto = proyecServi.buscarPorID(id);
-		// System.out.println(proyecto.getDeveloper().get(0).getFoto().getUrl_foto());
 		mod.addAttribute("proyecto", proyecto);
 		return "proyectoindividual";
 	}
@@ -168,7 +180,7 @@ public class ProyectoControlador {
 	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@PostMapping("/editar/{id}")
 	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo, ModelMap mod,
-			HttpSession session) {
+			HttpSession session) { // VER PARAMETRO ID DE ONG
 		try {
 			Proyecto p = proyecServi.buscarPorID(id);
 			Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");

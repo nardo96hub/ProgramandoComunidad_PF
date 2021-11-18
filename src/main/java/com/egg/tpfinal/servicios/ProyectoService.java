@@ -46,6 +46,10 @@ public class ProyectoService {
 			//ProyectoRepo.save(proyecto);
 		}
 	}
+	@Transactional
+	public void borrarProyecto(Long ID) {
+		EditarProyectoActivo(ID);                     //revisar utilidad de este método
+	}
 
 	@Transactional
 	public void EliminarProyectoActivo(Long ID) {
@@ -61,11 +65,6 @@ public class ProyectoService {
 		EliminarProyectoActivo(ID);                     //revisar utilidad de este método
 	}
 	
-	@Transactional
-	public void borrarProyecto(Long ID) {
-		EditarProyectoActivo(ID);                     //revisar utilidad de este método
-	}
-
 	@Transactional
 	public void editarProyecto(Long ID, String titulo, String cuerpo, Date fecha, List<Developer> developer, ONG ong) throws Exception {
 		Proyecto proyecto = buscarPorID(ID);

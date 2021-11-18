@@ -176,43 +176,43 @@
  
  
  
-       <div class="contenedor" sec:authorize="hasAnyRole('ROLE_DEVE')">
-        <div class="grilla2">
-            <div class="perfil">
-                <i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
-                <div class="foto">
-                    <img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
-                </div>
-                <div class="informacionn">
-                    <h2 th:text="${perfil.nombre}+', '+${perfil.apellido}"></h2>
-                    <p th:text="${perfil.usuario.email}"></p>
+       <div class="conteiner" sec:authorize="hasAnyRole('ROLE_DEVE')">
+        	<div class="row">
+            	<div class="col-3" style="background: linear-gradient(180deg, #3185DB 0%, #4E4187 100%);">
+               	 	<i class="fas fa-edit fa-lg" style="float:right;margin: 5px; "></i>
+                	<div class="foto">
+                    	<img th:src="${perfil.foto.url_foto}" alt="" class="integrantes">
+                	</div>
+                	<div class="informacion">
+                    	<h2 th:text="${perfil.nombre}+', '+${perfil.apellido}"></h2>
+                    	<p th:text="${perfil.usuario.email}"></p>
                 
 
-                    <div class="tec">
-                        <span class="" style="font-weight: bold;">Tecnologias:
-                        </span><br>
-						<div th:each="tecno : ${perfil.tecnologias}">
-                        <span th:text="${tecno}"></span><br>
-                        <div>
-                    </div>
-                </div>
-                <div class="botoness">
+                   	 	<div class="tec">
+                        	<span class="" style="font-weight: bold;">Tecnologias:
+                        	</span><br>
+							<div th:each="tecno : ${perfil.tecnologias}">
+                        		<span th:text="${tecno}"></span><br>
+                        	</div>
+                    	</div>
+                	</div>
+                	<div class="botones">
                     
-                    <a th:href="@{/registrodev/eliminardeveloper/__${perfil.id_developer}__}"><button type="button" class="eliminarr">Eliminar Cuenta</button></a>
-                </div>
-            </div>
-            <div class="proyectoss">
-                <h1 class="titulo-paginas">Proyectos en lo que estuve</h1>
-
+                    	<a th:href="@{/registrodev/eliminardeveloper/__${perfil.id_developer}__}"><button type="button" class="eliminar">Eliminar Cuenta</button></a>
+                	</div>
+            	</div>
+            	<div class="col-9">
+                	<h1 class=""  style="text-align: center;">Proyectos en lo que estuve</h1>
 
 				<div th:each="proy : ${listaProyDev}">
-                <div class="centrarr">
-                    <h2 class="tituloss" th:text="${proy.titulo}"></h2>
-                    <h3 class="fechas">Fecha: <span th:text="${proy.fecha_post}"></span></h3>
-                    <p class="descripciones" th:text="${proy.cuerpo}"></p>
+                	<div style="text-align: center;border: 6px solid transparent; border-image: linear-gradient(180deg, #3185DB 0%, #4E4187 100%);border-image-slice: 4;">
+    
+                    	<h2 class="titulos" th:text="${proy.titulo}"></h2>
+                    	<h3 class="fecha">Fecha: <span th:text="${proy.fecha_post}"></span></h3>
+                   		<p class="descripcione" th:text="${proy.cuerpo}"></p>
 
-                    <h3 class="nombre_ong" >Ong: <span th:text="${proy.ong.marca}"></span></h3>
-                </div>
+                    	<h3 class="nombre_ong" >Ong: <span th:text="${proy.ong.marca}"></span></h3>
+                	</div>
 				</div>
             </div>
             

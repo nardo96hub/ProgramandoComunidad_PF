@@ -223,3 +223,7 @@ i {
 	margin: 30px;
 	z-index: 1;
 }
+
+.bold{
+	font-weight: bold;
+}

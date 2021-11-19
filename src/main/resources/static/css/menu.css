@@ -19,11 +19,12 @@
     width: 50px;
     height: 50px;
     background: #fff;
-   transition: width 0.5s, height 0.5s;
+  	 transition: width 0.5s, height 0.5s;
     transition-delay:0s,0.75s ;
     z-index: 100000;
     border-radius:4px ;
     overflow: hidden;
+    float: right;
 }
 
 .navigation .toggle{
@@ -35,15 +36,29 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: #3083dc;
     transition: 0.5s;
     cursor: pointer;
-
+ 	background-color:#2ebfa5;
+ 	
 
 }
 
+.imagen{
+	 background-repeat: no-repeat;
+	background-position: 50%;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-radius: 50%;
+	border: 5px solid #2ebfa5;
+	margin-top: 5px;
+}
+
 .navigation .toggle.active{
-    background: #2f2657;
+    height: 90px;
+    width: 90px;
+    display:block;
+    margin:auto;
+    background: transparent;
 
 }
 
@@ -56,16 +71,19 @@
     align-items: center;
     width: 50px;
     height: 50px;
-    color: #fff;
+    color:#2ebfa5;
     position: absolute;
     transition: 0.5s;
 
 }
 
-.navigation .toggle.active::before{
- transform: rotate(315deg);
+
+
+
+/* .navigation .toggle.active::before{ */
+/*  transform: rotate(315deg); */
  
-}
+/* } */
 
 .navigation.active{
     width: 250px;
@@ -78,6 +96,7 @@
     position: absolute;
     left:0;
     width: 100%;
+    margin-top: 50px;
 
 }
 
@@ -128,6 +147,6 @@
 
 .navigation ul li:hover a .icon .fa,
 .navigation ul li:hover a .title{
-  color: #3083dc;
+  color: #000000;
   
 }

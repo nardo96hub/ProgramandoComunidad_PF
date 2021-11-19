@@ -39,22 +39,20 @@
 	<!--<nav><a href="/"><button>Volver</button></a></nav>-->
 	<div class="navigation">
 		<div class="toggle">
-			<img class="imagen" alt="" th:if="${session.usuariosession!=null}" th:src="${fotoperfil.foto.url_foto}">
-			<!--<img class="imagen" alt="" th:if="${session.usuariosession==null}"   src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png"> -->
+			<img class="imagen" style="max-width: 100%; height: auto; position: relative; margin: 0;" alt="" th:if="${session.usuariosession!=null}" th:src="${fotoperfil.foto.url_foto}">
+			<img class="imagen" alt="" th:if="${session.usuariosession==null}"   src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" style="max-width: 100%; height: auto; position: relative; margin: 0;"> 
 		</div>
 		<ul>
-			<li><a href=""> <span class="icon"><i class="fas fa-home"></i> </span> <span class="title">Inicio</span>
+			<li><a href="#Anosotros"> <span class="icon"><i class="fas fa-address-card"></i> </span> <span class="title">Acerca de Nosotros</span>
 				</a></li>
-			<li><a href="/perfil"> <span class="icon"><i class="fas fa-user-alt"></i> </span> <span
-						class="title">Perfil</span>
+			<li><a href="#histo"> <span class="icon"><i class="fas fa-book-open"></i> </span> <span
+						class="title">Historia</span>
 				</a></li>
-			<li><a href="/quienesomos"> <span class="icon"><i class="fas fa-laptop"></i> </span> <span
-						class="title">¿Quienes
-						somos?</span>
+			<li><a href="#cult"> <span class="icon"><i class="fas fa-laptop"></i> </span> <span
+						class="title">Nuestro Cultura</span>
 				</a></li>
-			<li><a href="/logout"> <span class="icon"><i class="fas fa-sign-out-alt"></i> </span> <span
-						class="title">Cerrar
-						sesión</span>
+			<li><a href="#team"> <span class="icon"><i class="fas fa-users"></i> </span> <span
+						class="title">Nuestro Equipo</span>
 				</a></li>
 
 		</ul>
@@ -72,7 +70,7 @@
 			</div>
 		</section>
 		<section class="seccion-dos">
-			<div class="acerca">
+			<div class="acerca"><span id="Anosotros"></span>
 				<h2>Acerca de Nosotros</h2>
 				<p>Programando Comunidades es un ámbito de trabajo conjunto en
 					donde se entrelazan Devolepers y ONGs, otorgando experiencia
@@ -83,7 +81,7 @@
 
 		<section class="seccion-tres">
 			<div class="grilla">
-				<div class="historia">
+				<div class="historia"> <span id="histo"></span>
 					<h2>Historia</h2>
 					<p>Somos un grupo de desarrolladores de Rosario (Argentina) que
 						compartimos nuestra formación inicial de programación en 2021.
@@ -104,32 +102,32 @@
 		</section>
 
 		<section class="seccion-cuatro">
-			<div class="cultura">
+			<div class="cultura"><span id="cult"></span>
 				<h1>Nuestra Cultura</h1>
 			</div>
 			<div class="grilla-dos">
 
 				<div class="vision">
-					<img class="icono-vision" alt="vision" src="/img/iconovision.png">
+					<a href="#vis"><img class="icono-vision" alt="vision" src="/img/iconovision.png"></a>
 
 				</div>
 				<p class="titulo-vision">VISIÓN</p>
 
 				<div class="mision">
-					<img class="icono-mision" alt="mision" src="/img/iconomision.png">
+					<a href="#mis"><img class="icono-mision" alt="mision" src="/img/iconomision.png"></a>
 
 				</div>
 				<p class="titulo-mision">MISIÓN</p>
 
 				<div class="valores">
-					<img class="icono-valores" alt="valores" src="/img/iconovalores.png">
+					<a href="#val"><img class="icono-valores" alt="valores" src="/img/iconovalores.png"></a>
 				</div>
 				<p class="titulo-valores">VALORES</p>
 
 			</div>
 		</section>
 
-		<section class="seccion-cinco">
+		<section class="seccion-cinco"><span id="vis"></span>
 			<div class="visionc">
 				<h2>VISION</h2>
 				<img alt="" src="/img/onda-verde.png" class="onda-v">
@@ -141,7 +139,7 @@
 		</section>
 
 
-		<section class="seccion-seis">
+		<section class="seccion-seis"><span id="mis"></span>
 			<div class="misionc">
 				<h2>MISIÓN</h2>
 				<img alt="" src="/img/onda-celeste.png">
@@ -154,7 +152,7 @@
 		</section>
 
 
-		<section class="seccion-siete">
+		<section class="seccion-siete"><span id="val"></span>
 			<div class="valoresc">
 				<h2>VALORES</h2>
 				<img alt="" src="/img/onda-violeta.png">
@@ -169,7 +167,7 @@
 
 
 
-
+		<span id="team"></span>
 		<h1 class="equipo">Equipo</h1>
 
 		<div class="nosotros">

@@ -47,7 +47,20 @@ public class PrincipalControlador {
 	}
 	
 	@GetMapping("/quienesomos")
-	public String quiensoy() {
+	public String quiensoy(ModelMap model,HttpSession session) {
+		
+			Usuario log = (Usuario) session.getAttribute("usuariosession");
+			if(log!=null) {
+				Developer d=RepoDev.buscarPorEmail(log.getEmail());
+			if(d!=null) {
+				model.addAttribute("fotoperfil",d);
+			}else {
+				ONG o = RepoOng.buscarPorEmail(log.getEmail());
+				model.addAttribute("fotoperfil",o);
+			}
+			}
+			
+		
 		return "quienesomos";
 	}
 	

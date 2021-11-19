@@ -172,7 +172,7 @@ public class OngControlador {
 					ServiOng.editarOng(id, marca, name, ape, o.getUsuario(), o.getFoto());
 				}
 
-				return "redirect:/principal";
+				return "redirect:/perfil";
 			} else {
 				//permite editar la ong al rol "ROLE_ADMIN"
 				Foto foto2 = null;

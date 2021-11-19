@@ -172,7 +172,7 @@ public class DeveloperControlador {
 					ServiDev.editarDeveloper(id, d.getUsuario(), name, apellido, tel, d.getFoto(), d.getTecnologias());
 				}
 				
-				return "redirect:/principal";
+				return "redirect:/perfil";
 			} else {
 				// Permite editar perfil desde el rol ADMIN
 				Foto foto2 = null;

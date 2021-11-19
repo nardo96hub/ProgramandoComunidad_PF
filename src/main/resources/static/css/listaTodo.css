@@ -53,3 +53,16 @@ footer {
 	border: none;
 	font-family: "Poppins";
 }
+.forzar{
+		background: #3083DC;
+	border-radius: 20px;
+	/*width: 100px;*/
+	padding: 1px 10px;
+	/*float:right;*/
+	/*margin: 20px;*/
+	border: none;
+	font-family: "Poppins";
+	margin-top: 10px;
+	margin-left: 5px;
+	float:left;
+}

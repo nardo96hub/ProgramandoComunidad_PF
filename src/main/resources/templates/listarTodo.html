@@ -163,8 +163,13 @@
 					</td>
 					<td><a th:href="@{/ong/editar/__${ong.id_ong}__}"><i class="far fa-edit"
 								style="color: rgb(240, 163, 0);"></i></a></td>
-					<td><a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash"
-								style="color: red;"></i></a></td>
+					<td>
+					<span th:if="${ong.alta}"><a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash"
+								style="color: red;"></i></a></span>
+								
+						<span th:unless="${ong.alta}"><a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-check"
+								style="color: green;"></i></a></span>		
+								</td>
 				</tr>
 			</tbody>
 		</table>
@@ -196,7 +201,12 @@
 					<td th:text="${proyecto.titulo}"></td>
 					<td th:text="${proyecto.cuerpo}" ></td>
 					<td th:text="${proyecto.fecha_post}"></td>
-					<td th:text="${proyecto.admitir_deve}"></td>
+					<td >
+					
+					<span th:if="${proyecto.admitir_deve}"><i class="fas fa-thumbs-up " style="color: green"></i> </span> <span
+							th:unless="${proyecto.admitir_deve}"><i class="fas fa-thumbs-down" style="color: red"></i></span>
+					
+					</td>
 					<td><span th:if="${proyecto.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
 							th:unless="${proyecto.alta}"><i class="fa fa-circle" style="color: red"></i></span></td>
 
@@ -218,8 +228,12 @@
 								style="color: rgb(240, 163, 0);"></i></a></td>
 
 
-					<td><a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-trash"
-								style="color: red;"></i></a></td>
+					<td>
+					<span th:if="${proyecto.alta}"><a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-trash"
+								style="color: red;"></i></a></span>
+					<span th:unless="${proyecto.alta}"><a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-check"
+								style="color: green;"></i></a></span>			
+								</td>
 				</tr>
 			</tbody>
 		</table>

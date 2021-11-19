@@ -21,6 +21,13 @@ footer {
 	float: bottom;
 
 }
+
+.conjunto{
+	height: 100%;
+	min-height: 100%;
+	overflow:auto;
+  padding-bottom:20vh;;
+}
 .logo {
 	height: 50px;
 	width: auto;

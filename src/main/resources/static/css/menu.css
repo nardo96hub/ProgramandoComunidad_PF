@@ -24,7 +24,8 @@
     z-index: 100000;
     border-radius:4px ;
     overflow: hidden;
-    float: right;
+	right: 0;
+	margin: 10px;
 }
 
 .navigation .toggle{

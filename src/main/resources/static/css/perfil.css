@@ -191,6 +191,22 @@ footer {
     /*float: right;*/
 }
 
+.enviar{
+	background: #7dde92;
+	border-radius: 20px;
+	/*width: 100px;*/
+	padding: 1px 15px;
+	/*float:right;*/
+	/*margin: 20px;*/
+	border: none;
+	font-family: "Poppins";
+	margin-top: -15px;
+	margin-right: 15px;
+	float:right;
+	
+	
+}
+
 /*      *******************  DEVELoper  ****************************** */
 /*
 

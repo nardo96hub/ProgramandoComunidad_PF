@@ -167,12 +167,12 @@ public class ProyectoControlador {
 
 	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@PostMapping("/editar/{id}")
-	public String editar(@PathVariable Long id, @RequestParam String cuerpo, @RequestParam String titulo, ModelMap mod,
+	public String editar(@PathVariable Long id, @RequestParam String titulo,  @RequestParam String cuerpo,  ModelMap mod,
 			HttpSession session) {
 		try {
 			Proyecto p = proyecServi.buscarPorID(id);
 			Usuario ongLogeada = (Usuario) session.getAttribute("usuariosession");
-			ONG o = OngServi.getONG(id);
+			ONG o = OngServi.getONG(p.getOng().getId_ong());
 			if (ongLogeada.getRol().equals(Rol.ONG) && (o.getUsuario().getEmail().equals(ongLogeada.getEmail()))) {
 				proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
 				return "redirect:/perfil";

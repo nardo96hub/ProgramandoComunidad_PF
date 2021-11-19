@@ -175,7 +175,7 @@ public class ProyectoControlador {
 			ONG o = OngServi.getONG(id);
 			if (ongLogeada.getRol().equals(Rol.ONG) && (o.getUsuario().getEmail().equals(ongLogeada.getEmail()))) {
 				proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
-				return "redirect:/listarTodo";
+				return "redirect:/perfil";
 			} else {
 				proyecServi.editarProyecto(id, titulo, cuerpo, p.getFecha_post(), p.getDeveloper(), p.getOng());
 				return "redirect:/listarTodo";

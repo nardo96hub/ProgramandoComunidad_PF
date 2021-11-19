@@ -147,14 +147,21 @@ public class ProyectoControlador {
 
 	// Una vez se da a boton forzar o se alcanzo el estado false en mas developer se
 	// carga el proyecto en la ong
+	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")
 	@GetMapping("/forzarInicio/{id}")
-	public String cargarProyectoenONG(@PathVariable Long id) {
+	public String cargarProyectoenONG(@PathVariable Long id,HttpSession session) {
 
 		Proyecto p = proyecServi.buscarPorID(id);
-
-		OngServi.agregarProyectos(p.getOng(), p);
-
-		return "redirect:/principal";
+		p.setAdmitir_deve(!p.getAdmitir_deve());
+		proyecServi.saveProyecto(p);
+		//OngServi.agregarProyectos(p.getOng(), p);
+		Usuario rol = (Usuario) session.getAttribute("usuariosession");
+		if(rol.getRol()==Rol.ONG) {
+			return "redirect:/perfil";
+		}else {
+			return "redirect:/listarTodo";
+		}
+		
 	}
 
 	@PreAuthorize("isAuthenticated() && (hasAnyRole('ROLE_ADMIN') || hasAnyRole('ROLE_ONG'))")

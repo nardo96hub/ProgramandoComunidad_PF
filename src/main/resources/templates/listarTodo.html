@@ -183,7 +183,7 @@
 					<th scope="col">Admitir programador</th>
 					<th scope="col">Estado</th>
 					<!-- Falta metodo que muestre las tecnologias -->
-					<!--<th scope="col">Forzar Inicio</th>-->
+					<th scope="col">Forzar Inicio</th>
 					<th scope="col">Marca Ong </th>
 					<th scope="col">Participantes </th>
 					<th scope="col">Editar</th>
@@ -200,14 +200,21 @@
 					<td><span th:if="${proyecto.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
 							th:unless="${proyecto.alta}"><i class="fa fa-circle" style="color: red"></i></span></td>
 
-					<!--<td><a href="#"><button type="button">Forzar</button></a></td>-->
+					<td>
+						<span th:if="${proyecto.admitir_deve}">
+							<a th:href="@{/proyect/forzarInicio/__${proyecto.id_proyecto}__}"><button type="button" class="forzar" >Forzar Inicio</button></a><br>
+						</span>
+						<span th:unless="${proyecto.admitir_deve}">
+							<a th:href="@{/proyect/forzarInicio/__${proyecto.id_proyecto}__}"><button type="button" class="forzar" >Permitir developer</button></a><br>
+						</span>
+					</td>
 					<td th:text="${proyecto.ong.marca}"></td>
 					<td>
 					<span th:each="deve : ${proyecto.developer}"> 
 					<span th:text="${deve.apellido}+','+${deve.nombre}+' - '"></span>
 					</span>
 					</td>
-					<td><a href="@{/proyect/editar/__${proyecto.id_proyecto}__}"><i class="far fa-edit"
+					<td><a th:href="@{/proyect/editar/__${proyecto.id_proyecto}__}"><i class="far fa-edit"
 								style="color: rgb(240, 163, 0);"></i></a></td>
 
 

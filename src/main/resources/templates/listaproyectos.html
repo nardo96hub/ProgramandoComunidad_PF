@@ -38,6 +38,7 @@
       	<a th:href="@{/proyect/proyecto}"><button type="button" class="boton_activos">Ver Proyectos Activos</button></a>
       	</div>
       </form>
+      <div class="conjunto">
 		<div class="proyecto" th:each="proyecto : ${proyectos}">
 
           <div class="contenedor" >
@@ -50,6 +51,7 @@
         </div>
 
         </div>
+ </div>
  </div>
        <!-- <div class="proyecto" th:each="proyecto : ${proyectos} " style="text-align:center; margin:auto">
           <div class="contenedor" >

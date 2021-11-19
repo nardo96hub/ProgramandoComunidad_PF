@@ -38,31 +38,14 @@
             <img src="/img/logo.png" alt="logo" class="logo">
             <a href="/"><button class="ingresar">Volver</button></a>
         </nav>
-  
-  <div class="row mt-5">
-                <div class="col">
-                    <div class="display-1 text-center mt-5 text-danger" style="font-size: 160px; font-weight: bold;" th:text="${codigo}">
-
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="row mb-5">
-                <div class="col">
-                    <div class="display-1 text-center mb-5 text-danger" th:text="${mensaje}"></div>
-                </div>
-            </div>
-
-     
-  
-  
-  
-  
+ 
+  <div> <img th:src= "@{'/img/error/' + ${codigo} + '.jpg'}" ></div>
+ 
   
    <footer>
       Contacto:
-      <i class="fab fa-instagram fa-2x"></i>
+      <a href= "https://www.instagram.com/programandocomunidades/?utm_medium=copy_link" target="_blank">
+      <i class="fab fa-instagram fa-2x"></i></a>
       <i class="fab fa-facebook fa-2x"></i>
       <i class="fab fa-linkedin fa-2x"></i>
     </footer>

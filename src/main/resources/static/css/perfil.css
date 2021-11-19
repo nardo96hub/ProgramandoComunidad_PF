@@ -206,6 +206,32 @@ footer {
 	
 	
 }
+.forzar{
+		background: #7dde92;
+	border-radius: 20px;
+	/*width: 100px;*/
+	padding: 1px 15px;
+	/*float:right;*/
+	/*margin: 20px;*/
+	border: none;
+	font-family: "Poppins";
+	margin-top: 10px;
+	margin-left: 15px;
+	float:left;
+}
+.salir{
+	background: #3083DC;
+	border-radius: 20px;
+	/*width: 100px;*/
+	padding: 1px 15px;
+	/*float:right;*/
+	/*margin: 20px;*/
+	border: none;
+	font-family: "Poppins";
+	margin-top: -40px;
+	margin-left: 15px;
+	float:left;
+}
 
 /*      *******************  DEVELoper  ****************************** */
 /*

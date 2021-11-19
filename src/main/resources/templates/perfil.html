@@ -103,7 +103,13 @@
                     <h2 class="titulo" th:text="${proy.titulo}"></h2>
                     <h3 class="fecha" >Fecha: <span th:text="${proy.fecha_post}" > </span></h3>
                     <p class="descripcion" th:text="${proy.cuerpo}"></p>
-
+					
+					<span th:if="${proy.admitir_deve}">
+					<a th:href="@{/proyect/forzarInicio/__${proy.id_proyecto}__}"><button type="button" class="forzar" >Forzar Inicio</button></a><br>
+					</span>
+					<span th:unless="${proy.admitir_deve}">
+					<a th:href="@{/proyect/forzarInicio/__${proy.id_proyecto}__}"><button type="button" class="forzar" >Permitir developer</button></a><br>
+					</span>
                     <a th:href="@{/proyect/editar/__${proy.id_proyecto}__}"><button type="button" class="enviar" >Editar Proyecto</button></a><br>
                 </div><br>
 				</div>
@@ -212,7 +218,8 @@
                    		<p class="descripcione" th:text="${proy.cuerpo}"></p>
 
                     	<h3 class="nombre_ong" >Ong: <span th:text="${proy.ong.marca}"></span></h3>
-                	</div>
+                    	<a th:href="@{/registrodev/salirproy/__${proy.id_proyecto}__}"><button type="button" class="salir">Dejar el proyecto</button></a>
+                	</div><br>
 				</div>
             </div>
             

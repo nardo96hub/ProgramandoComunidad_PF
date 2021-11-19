@@ -39,7 +39,9 @@ public class UsuarioService implements UserDetailsService {
 
 	@Transactional // Metodo para setear usuario
 	public Usuario seteoUsuario(String email, String contrasena, Rol rol) throws Exception {
-		Usuario u = new Usuario();
+		Usuario u = RepoUsu.buscarPorEmail(email);
+		if(u==null) {
+			 u = new Usuario();
 		// validarDatos(contrasena, email);
 		validarCredenciales(contrasena, email);
 		String contraseniaEncriptada = new BCryptPasswordEncoder().encode(contrasena); 		//Recibo una contraseña y con esta linea se encripta guardandola en BDD 
@@ -48,6 +50,13 @@ public class UsuarioService implements UserDetailsService {
 		u.setRol(rol);
 		u.setAlta(true);
 		return u;
+		}else {
+			throw new Exception("Usuario ya registrado");
+			
+		}
+		
+		
+		
 	}
 	
 	public void validarCredenciales(String contrasena, String email) throws Exception  {

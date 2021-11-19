@@ -21,6 +21,7 @@ import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
 import com.egg.tpfinal.entidades.Tecnologias;
 import com.egg.tpfinal.entidades.Usuario;
+import com.egg.tpfinal.repositorios.DeveloperRepository;
 import com.egg.tpfinal.repositorios.FotoRepository;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
@@ -46,6 +47,8 @@ public class DeveloperControlador {
   private FotoRepository RepoFoto;
   @Autowired
 	private ProyectoService ServiPro;
+  @Autowired
+  private DeveloperRepository RepoDeve;
 
 	@GetMapping() // GetMapping retorna siempre un html en este caso no lleva direccion porque es
 					// /registrodev
@@ -264,5 +267,33 @@ public class DeveloperControlador {
 		 
 	}
 	
+	@PreAuthorize("isAuthenticated() && hasAnyRole('ROLE_DEVE')")
+	@GetMapping("/salirproy/{id}")
+	public String salir(@PathVariable Long id, ModelMap mod, HttpSession session) {
+		Proyecto pro=ServiPro.buscarPorID(id);
+		//Developer d=ServiDev.getDeveloper(id_developer);
+		Usuario developerLogeado = (Usuario) session.getAttribute("usuariosession");
+	
+		
+			
+		
+			List<Developer> programadores = pro.getDeveloper();
+			Iterator i=programadores.iterator();
+			
+			while(i.hasNext()) {
+				Developer dev=(Developer)i.next();
+				if(dev.getUsuario().getEmail().equals(developerLogeado.getEmail())) {
+					i.remove();
+					pro.setAdmitir_deve(true);
+					ServiPro.saveProyecto(pro);
+
+				}
+			}
+
+	
+		
+		
+		return "redirect:/perfil";
+	}
 	
 }

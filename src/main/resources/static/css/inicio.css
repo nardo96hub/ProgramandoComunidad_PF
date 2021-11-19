@@ -66,7 +66,7 @@ img {
 	left:1;
 	right:0;
 	margin: auto;
-	width: 40%;
+	width: 35%;
 	margin-right: 100px;
 	margin-bottom: 100px;
 	
@@ -75,7 +75,7 @@ img {
 
 .titulo {
 	font-family: "Poppins";
-	font-size: 40px;
+	font-size: 35px;
 	line-height: 10px;
 	margin-top: 40px;
 }

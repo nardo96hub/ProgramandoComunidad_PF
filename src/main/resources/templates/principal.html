@@ -23,6 +23,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="/css/principal.css" />
+	<link rel="stylesheet" href="/css/menu.css" />
+
 
 </head>
 
@@ -81,7 +83,7 @@
 
    </ul>
      
-                  <div class="barra">
+                <!--  <div class="barra">
 				<div class="perfil">
 				<button class="boton_foto"> <img th:src="${fotoperfil.foto.url_foto}" class="foto_perfil"> </button>
 						<div class="link">
@@ -91,12 +93,49 @@
 						</div>
 				</div>
 				</div>
-			<!--<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> -->
-		</div>
+			<button  th:if="${session.usuariosession != null}"  class="qs"><span th:text="${session.usuariosession.email}"></span> </button> 
+		</div>-->
 		
 		
 	</nav>
 	</span>
+	
+	 <div class="navigation">
+        <div class="toggle"></div>
+            <ul>
+                <li>
+                 <a href="">
+                     <span class="icon"><i class="fas fa-home"></i>
+                        </span> 
+                        <span class="title">Inicio</span>
+                    </a>
+                </li>
+                <li><a href="">
+                    <span class="icon"><i class="fas fa-user-alt"></i>
+                </span>
+                 <span class="title">Perfil</span>
+                </a>
+            </li>
+                <li>
+                    <a href="">
+                        <span class="icon"><i class="fas fa-laptop"></i>
+                </span> <span class="title">¿Quienes somos?</span>
+            </a>
+        </li>
+                <li>
+                    <a href="">
+                        <span class="icon"><i class="fas fa-sign-out-alt"></i>
+                </span> <span class="title">Cerrar sesión</span>
+            </a>
+        </li>
+
+            </ul>
+       
+
+
+    </div>
+
+   
 	
 	<span th:unless=${usuario.alta}>
 		<nav class=" barra">
@@ -126,11 +165,21 @@
 			</span>
 		
 		</span>
-			<p class="texto-imagen">Lorem ipsum dolor sit, amet consectetur
-				adipisicing elit. A magnam accusantium repellendus, quaerat
-				tevoluptatum dolorum odit, ducimus modi est hic fugiat voluptas
-				repellat iste dolore. ducimus modi est hic fugiat voluptas repellat
-				iste dolore.</p>
+			<p class="texto-imagen" sec:authorize="hasAnyRole('ROLE_DEVE')">
+			 ¡Gracias por registrarte! <br>
+Te invitamos a conocer los proyectos propuestos por diferentes Organizaciones sin fines de lucro, pendientes a desarrollarse.
+Si alguno de ellos te interesa para formar parte del equipo de trabajo ... 
+¡postúlate!  
+
+</p>
+
+<p class="texto-imagen" sec:authorize="hasAnyRole('ROLE_ONG')">
+	¡Gracias por registrarte!<br>
+Te invitamos a proponer proyectos con desarrollo IT para contribuir a tu propósito social.
+Los mismos serán presentados a desarrolladores que deseen aportar su conocimiento para la realización de estas ideas.
+ 
+
+</p>
 		</div>
 
 		<div class="grilla">
@@ -161,20 +210,20 @@
 
 			<div class="texto">
 				<h1>ONG</h1>
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
-					magnam accusantium repellendus, quaerat tevoluptatum dolorum odit,
-					ducimus modi est hic fugiat voluptas repellat iste dolore. ducimus
-					modi est hic fugiat voluptas repellat iste dolore.</p>
+				<p>Nos orientamos a entidades de iniciativa social, sin fines de lucro, de alcance local,provincial y/o nacional.
+Brindamos un espacio en donde puedan exponer ideas de proyectos tecnológicos que colaboren en su tarea humanitaria
+ para mejorar el aspecto de la comunidad en el que intervienen. 
+</p>
 			</div>
 
 
 
 			<div class="texto-d">
 				<h1>Developer</h1>
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A
-					magnam accusantium repellendus, quaerat tevoluptatum dolorum odit,
-					ducimus modi est hic fugiat voluptas repellat iste dolore. ducimus
-					modi est hic fugiat voluptas repellat iste dolore.</p>
+				<p>Acudimos a desarrolladores para crear e implementar soluciones IT, 
+				con conocimiento en uno o varios lenguajes de programación, tanto en el área de front-end como back-end.
+               Formaras parte de equipos de trabajo, en donde ganaras experiencia laboral, y a la vez, estarás ayudando a una causa social.
+</p>
 			</div>
 		</div>
 
@@ -199,6 +248,24 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		
+		<script>
+        const navigation = document.querySelector('.navigation');
+
+        document.querySelector('.toggle').onclick = function () {
+            this.classList.toggle('active');
+            navigation.classList.toggle('active');
+        }
+
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( ".navigation" ).draggable();
+} );
+</script>
 </body>
 
 </html>

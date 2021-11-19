@@ -94,9 +94,9 @@
 								Proyecto Activos</a>
 
 						</div></li>
-					<li class="navbar-item " sec:authorize="hasAnyRole('ROLE_ADMIN')">
+					<!--<li class="navbar-item " sec:authorize="hasAnyRole('ROLE_ADMIN')">
 						<a href="/listarTodo" class="nav-link" style="color: white">Información</a>
-					</li>
+					</li>-->
 
 				</ul>
 
@@ -124,8 +124,11 @@
 			<li><a href=""> <span class="icon"><i
 						class="fas fa-home"></i> </span> <span class="title">Inicio</span>
 			</a></li>
-			<li><a href="/perfil"> <span class="icon"><i
+			<li sec:authorize="hasAnyRole('ROLE_ONG','ROLE_DEVE')" ><a href="/perfil"> <span class="icon"><i
 						class="fas fa-user-alt"></i> </span> <span class="title">Perfil</span>
+			</a></li>
+			<li sec:authorize="hasAnyRole('ROLE_ADMIN')" ><a href="/listarTodo"> <span class="icon"><i
+						class="fas fa-user-alt"></i> </span> <span class="title">Ver Informacion</span>
 			</a></li>
 			<li><a href="/quienesomos"> <span class="icon"><i
 						class="fas fa-laptop"></i> </span> <span class="title">¿Quienes

@@ -111,10 +111,10 @@ public class ProyectoService {
 	public void postularse(Developer deveAux, Long idProyecto) throws Exception {
 		Proyecto proyecto = buscarPorID(idProyecto);
 		List<Developer> postulados = proyecto.getDeveloper();
-		if (!postulados.contains(deveAux) && postulados.size() < 2 && proyecto.getAdmitir_deve()) { //Cambiar a 9
+		if (!postulados.contains(deveAux) && postulados.size() < 5 && proyecto.getAdmitir_deve()) { //Cambiar a 9
 			postulados.add(deveAux);
 			proyecto.setDeveloper(postulados);
-			if (postulados.size() >= 2) {				//Cambiar a 9
+			if (postulados.size() >= 5) {				//Cambiar a 9
 				proyecto.setAdmitir_deve(false);
 				
 			}
@@ -130,7 +130,7 @@ public class ProyectoService {
 	
 	public void validarDatos(String titulo, String cuerpo, ONG ong) throws Exception {
 		if(titulo.isEmpty() ||!( titulo.length()>4 && titulo.length()<40)) {
-			throw new Exception("Ingreso un titulo nulo o tamaño<4 o >20");
+			throw new Exception("Ingreso un titulo nulo o tamaño<4 o >40");
 		}
 		if(cuerpo.isEmpty() && !(cuerpo.length()>20 && cuerpo.length()<4000)) {
 			throw new Exception("Ingreso un cuerpo nulo o tamaño<20 o >4000");

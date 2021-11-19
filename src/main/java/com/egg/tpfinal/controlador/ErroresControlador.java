@@ -30,9 +30,7 @@ public class ErroresControlador  implements ErrorController{
 		case 500:
 			mensajeerror="El servidor no pudo realizar la peticion con exito";
 			break;
-		default:
-			mensajeerror="Ocurrio algun otro problema";
-			break;
+		
 		}
 		
 		

@@ -19,14 +19,14 @@ import com.egg.tpfinal.entidades.Developer;
 import com.egg.tpfinal.entidades.Foto;
 import com.egg.tpfinal.entidades.ONG;
 import com.egg.tpfinal.entidades.Proyecto;
-import com.egg.tpfinal.entidades.Tecnologias;
+
 import com.egg.tpfinal.entidades.Usuario;
 import com.egg.tpfinal.repositorios.DeveloperRepository;
 import com.egg.tpfinal.repositorios.FotoRepository;
 import com.egg.tpfinal.servicios.DeveloperService;
 import com.egg.tpfinal.servicios.FotoService;
 import com.egg.tpfinal.servicios.ProyectoService;
-import com.egg.tpfinal.servicios.TecnologiasService;
+
 import com.egg.tpfinal.servicios.UsuarioService;
 import enumeracion.Rol;
 
@@ -35,8 +35,8 @@ import enumeracion.Rol;
 
 @RequestMapping("/registrodev") // RequestMapping si esta debajo de Controller es la url padre
 public class DeveloperControlador {
-	@Autowired // Autowired instancia el objeto, esto evita hacer new Objeto()
-	private TecnologiasService ServiTec;
+	 // Autowired instancia el objeto, esto evita hacer new Objeto()
+	
 	@Autowired
 	private DeveloperService ServiDev;
 	@Autowired
@@ -54,8 +54,8 @@ public class DeveloperControlador {
 					// /registrodev
 	public String mostrardev(ModelMap mod) { // Por cada model/ModelMap se le envia informacion del back al front ej
 												// datos de base de datos o errores
-		List<Tecnologias> lt = ServiTec.listarTecnologias(); //
-		mod.addAttribute("listaTec", lt); // Buscar Las tecnologias en la BASE DE DATOS
+		
+		 // Buscar Las tecnologias en la BASE DE DATOS
 		return "registrodev.html";
 	}
 

@@ -90,7 +90,7 @@ public class FotoService {
 	}
 	
 	 public String subirApi(byte[] fileBytes) throws Exception {
-	    String clientId="d67f64a98f14818"; //este es mi cliente id, es un dato muy privado y no hay que mostrarselo a nadie
+	    String clientId="151e2322b0d386c"; //este es mi cliente id, es un dato muy privado y no hay que mostrarselo a nadie
 	    //se genera en la misma pagina de imgur.
 		final String uri = "https://api.imgur.com/3/image";
 

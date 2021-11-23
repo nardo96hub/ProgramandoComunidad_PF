@@ -279,6 +279,7 @@ public class DeveloperControlador {
 		
 			List<Developer> programadores = pro.getDeveloper();
 			Iterator i=programadores.iterator();
+
 			
 			while(i.hasNext()) {
 				Developer dev=(Developer)i.next();

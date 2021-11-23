@@ -111,10 +111,10 @@ public class ProyectoService {
 	public void postularse(Developer deveAux, Long idProyecto) throws Exception {
 		Proyecto proyecto = buscarPorID(idProyecto);
 		List<Developer> postulados = proyecto.getDeveloper();
-		if (!postulados.contains(deveAux) && postulados.size() < 5 && proyecto.getAdmitir_deve()) { //Cambiar a 9
+		if (!postulados.contains(deveAux) && postulados.size() < 8 && proyecto.getAdmitir_deve()) { //Cambiar a 9
 			postulados.add(deveAux);
 			proyecto.setDeveloper(postulados);
-			if (postulados.size() >= 5) {				//Cambiar a 9
+			if (postulados.size() >= 8) {				//Cambiar a 9
 				proyecto.setAdmitir_deve(false);
 				
 			}

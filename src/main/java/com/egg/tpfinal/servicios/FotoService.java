@@ -42,11 +42,12 @@ public class FotoService {
 	@Autowired
 	FotoRepository fotoRepo;
 
-	//private String upload_folder = ".//src//main//resources//files//";
-	//private String url_fotoDB = "/src/main/resources/files/";
+	private String upload_folder = ".//src//main//resources//files//";
+	private String url_fotoDB = "/src/main/resources/files/";
 
 	public Foto guardarfoto(MultipartFile file) {
 		Foto foto = null;
+		
 		if (!file.isEmpty()) {
 			
 			
@@ -61,6 +62,14 @@ public class FotoService {
 				return new Foto(url_base);
 			}catch(Exception e) {
 				e.printStackTrace();
+				System.out.println("error, se intentara cargar la foto local");
+				try {
+					foto=	guardarfoto2(file);
+					return foto;
+				} catch (Exception ex) {
+				  System.out.println("error no se ha podido subir foto");
+				  return new Foto("https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png");
+				}
 			}
 			
 			
@@ -90,7 +99,7 @@ public class FotoService {
 	}
 	
 	 public String subirApi(byte[] fileBytes) throws Exception {
-	    String clientId="d67f64a98f14818"; //este es mi cliente id, es un dato muy privado y no hay que mostrarselo a nadie
+	    String clientId="151e2322b0d386c"; //este es mi cliente id, es un dato muy privado y no hay que mostrarselo a nadie
 	    //se genera en la misma pagina de imgur.
 		final String uri = "https://api.imgur.com/3/image";
 
@@ -123,7 +132,28 @@ public class FotoService {
 		return  new ByteArrayResource(bytes);
 	  }
 	
-
+	 public Foto guardarfoto2(MultipartFile file) throws IOException {		//guarda una foto
+			Foto foto = null;
+			if (!file.isEmpty()) {
+				byte[] bytes = file.getBytes();									//convierte un archivo a byte
+				String url_imagen;
+				String url_base;
+				try {
+					Long ultimoID = fotoRepo.findTopByOrderById_fotoDesc();		//obtengo ID max de foto 
+					url_imagen = upload_folder + (ultimoID + 1);				//completo URL
+					url_base = url_fotoDB + (ultimoID + 1);						//completo URL
+				} catch (NullPointerException e) {
+					url_imagen = upload_folder + 1;								//si nombrearchivo=null genero URL=1
+					url_base = url_fotoDB + 1;
+				}
+				String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")); //obtengo extensión de foto
+				url_imagen = url_imagen + extension;							//completo nombre foto
+				Path path = Paths.get(url_imagen);								//obtengo ruta de acceso completa+URL
+				Files.write(path, bytes);										//almaceno foto en BBDD/Servidor
+				foto = new Foto(url_base + extension);							//creo objeto foto
+			}
+			return foto;
+		}
 	 
 
 }

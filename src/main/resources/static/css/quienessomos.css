@@ -1,0 +1,382 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 11vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+.integrantes {
+	height: 150px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-color: #2ebfa5;
+}
+
+#container {
+	display: flex;
+	height: 100%;
+}
+
+.titulo-principal {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.titulo-principal h1 {
+	font-family: "Poppins";
+	font-size: 70px;
+	line-height: 10px;
+	vertical-align: middle;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.igual {
+	background: -webkit-linear-gradient(#3083DC, #4E4187);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 120px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1em;
+}
+
+.acerca {
+	text-align: center;
+	margin: 50px;
+	margin-left: 200px;
+	margin-right: 200px;
+}
+
+.acerca h2 {
+	font-family: "Poppins";
+	color: #4E4187;
+}
+
+.acerca p {
+	font-family: "Quicksand";
+}
+
+.grilla {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	height: 60vh;
+	margin-top: 100px;
+}
+
+.foto-historia {
+	width: 100%;
+	height: auto;
+	grid-area: 2/2/2/3;
+	height: auto;
+}
+
+.historia {
+	grid-area: 1/1/2/2;
+	padding: 50px;
+	justify-content: center;
+	align-self: center;
+	
+}
+
+.historia h2 {
+	font-family: "Poppins";
+	color: #4E4187;
+}
+
+.historia p {
+	font-family: "Quicksand";
+}
+
+/* SEGUNDA GRILLA */
+.icono-vision {
+	width: 40%;
+	height: auto;
+}
+
+.icono-mision {
+	width: 30%;
+	height: auto;
+}
+
+.icono-valores {
+	width: 40%;
+	height: auto;
+}
+
+.grilla-dos {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	height: 50vh;
+}
+
+.vision {
+	grid-area: 1/1/2/2;
+	justify-content: center;
+	align-self: center;
+	text-align: center;
+}
+
+.mision {
+	grid-area: 1/2/2/3;
+	justify-content: center;
+	align-self: center;
+	text-align: center;
+}
+
+.valores {
+	grid-area: 1/3/2/4;
+	justify-content: center;
+	align-self: center;
+	text-align: center;
+}
+
+.vision p {
+	font-family: "Poppins";
+}
+
+.mision p {
+	font-family: "Poppins";
+}
+
+.titulo-vision {
+	grid-area: 1/1/2/2;
+	font-family: "Poppins";
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.titulo-mision {
+	grid-area: 1/2/2/3;
+	font-family: "Poppins";
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.titulo-valores {
+	grid-area: 1/3/2/4;
+	font-family: "Poppins";
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.cultura{
+	text-align: center;
+	margin-top: 100px;
+	font-family: "Poppins";
+	color: #4E4187;
+	}
+
+.nuestra-vision{
+	text-align: center;
+	margin: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+
+.nuestra-vision p{
+	font-family: "Quicksand";
+	font-size: 30px;
+}
+
+
+.nuestra-mision{
+	text-align: center;
+	margin: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.nuestra-mision h2{
+	font-family: "Poppins";
+	border: #3083DC solid 7px;
+	
+}
+
+.nuestra-mision p{
+	font-family: "Quicksand";
+	font-size: 30px;
+}
+
+
+.visionc img{
+    width: 20%;
+    height: auto;
+    opacity: 0.5;
+    z-index: -1;
+    
+}
+
+.visionc h2{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-family: "Poppins";
+	z-index: 1;
+}
+
+.visionc{
+	text-align: center;
+	position: relative;
+	margin-top: 100px;
+}
+
+
+
+
+.misionc img{
+    width: 20%;
+    height: auto;
+    opacity: 0.5;
+    z-index: -1;
+    
+}
+
+.misionc h2{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-family: "Poppins";
+	z-index: 1;
+}
+
+.misionc{
+	text-align: center;
+	position: relative;
+	margin-top: 100px;
+}
+
+
+
+.valoresc img{
+    width: 20%;
+    height: auto;
+    opacity: 0.5;
+    z-index: -1;
+    
+}
+
+.valoresc h2{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-family: "Poppins";
+	z-index: 1;
+}
+
+.valoresc{
+	text-align: center;
+	position: relative;
+	margin-top: 100px;
+}
+
+
+.nuestra-mision h2{
+	font-family: "Poppins";
+	border: #3083DC solid 7px;
+	
+}
+
+.nuestros-valores p{
+	font-family: "Quicksand";
+	font-size: 40px;
+	text-align: center;
+}
+
+.nuestros-valores{
+	margin-top: 40px;
+	word-spacing: 30px;
+}
+
+
+.nosotros{
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top:10px;
+	margin-bottom: 100px;
+}
+
+.equipo{
+	margin-top:150px;
+	text-align: center;
+	font-family: "poppins";
+	color: #4E4187;
+	margin-bottom: 50px;
+}
+
+
+
+
+/* fotos y footer */
+i {
+	display: inline-block;
+}
+
+.nombre {
+	display: inline;
+	font-family: 'Poppins';
+	font-size: 15px;
+	margin-left: 2px;
+}
+
+.rol {
+	font-family: 'Quicksand';
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+ 	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+}

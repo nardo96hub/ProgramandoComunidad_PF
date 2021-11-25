@@ -1,0 +1,300 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 12vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.qs {
+	display: inline;
+	float: right;
+	font-size: 12px;
+	background: #7dde92;
+	border-radius: 20px;
+	width: 170px;
+	padding: 5px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+.logo {
+	
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";}
+
+img {
+	max-width: 100%;
+	height: auto;
+	position: relative;
+	margin: 0;
+}
+
+.texto-ong {
+	grid-area: 1/2/2/3;
+}
+
+.descripcion {
+	position: absolute;
+	top: 10px;
+	width: 40%;
+	left: 53%;
+	margin-top: 300px;
+	text-align: right;
+}
+
+.titulo {
+	font-family: "Poppins";
+	font-style: normal;
+	font-weight: bold;
+	color: white;
+	font-size: 40px;
+}
+
+.texto-imagen {
+	font-family: "Quicksand";
+	font-style: normal;
+	font-weight: bold;
+	color: white;
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+}
+
+i {
+	display: inline-block;
+}
+
+.grilla {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	background-color: #F8FFE5;
+}
+
+.foto-ong {
+	grid-area: 1/1/2/2;
+}
+
+.cont{
+	position: relative;
+	
+}
+
+.hover-foto{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #2ebfa5;
+  text-align: center;
+}
+
+.txt{
+	grid-area:1/1/2/2;
+	font-size: 35px;
+	font-family: "Quicksand";
+	margin-top: 160px;
+}
+
+.cont:hover .hover-foto{
+	opacity: 1;
+}
+
+.foto-dev {
+	grid-area: 2/2/3/3;
+}
+
+.cont2{
+	position: relative;
+}
+
+
+.hover-foto2{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #4E4187;
+  text-align: center;
+}
+.hoverr{
+	grid-area:2/2/3/3;
+	
+
+	}
+
+.hoverr:hover .hover-foto2{
+	opacity: 1;
+}
+
+
+.texto{
+	background-color: #F8FFE5;
+	font-family: "Quicksand";
+	justify-content: center;
+	align-self: center;
+	padding: 60px;
+	text-align: right;
+}
+
+.texto-d {
+	background-color: #F8FFE5;
+	font-family: "Quicksand"; 
+	padding : 60px;
+	justify-content: center;
+	align-self: center;
+	padding: 60px;
+	text-align: left;
+}
+
+h1 {
+	font-family: "Poppins";
+}
+
+
+.icono{
+	margin-left:10px; 
+}
+
+a{
+	color: black;
+}
+
+a:hover{
+	color: black;
+}
+
+
+.dropbtn {
+  
+ padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.perfil{
+  position: relative;
+  display: inline;
+	float: right;
+
+ 
+
+  
+}
+
+/* Dropdown Content (Hidden by Default) */
+.link {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right:0;
+  font-family: "quicksand";
+ 
+  
+  
+}
+
+/* Links inside the dropdown */
+.link a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.link a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.perfil:hover .link {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.perfil:hover .foto_perfil {
+	
+  background-color: #3e8e41;
+}
+
+
+
+.foto_perfil{
+	border-radius: 50%;
+	height: 61px;
+	width: 61px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	display: inline;
+	float: right;
+	margin-right: 10px;
+
+}
+
+.boton_foto{
+	border:none;
+	background:transparent;	
+	padding: 5px;
+
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Programando Comunidad</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap"
+		rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/listaTodo.css" />
+
+</head>
+
+<body>
+	<nav class="barra">
+		<a href="/principal"><img class="logo" src="/img/logo.png" alt="logo" /> </a>
+		<a th:if="${session.usuariosession!=null} "
+			th:href="@{/principal}"><button type="button" class="ingresar">Volver</button></a>
+	</nav>
+
+	<section class="container">
+		<!--Muestro Usuarios-->
+		<h3 style="text-align: center;">Lista de Usuarios</h3>
+		<table class="table tablas table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Rol</th>
+
+				</tr>
+			</thead>
+			<tbody th:each="usuario : ${usuarios}">
+				<tr>
+					<th scope="row" th:text="${usuario.id_usuario}"></th>
+					<td th:text="${usuario.email}"></td>
+					<td><span th:if="${usuario.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
+							th:unless="${usuario.alta}"><i class="fa fa-circle" style="color: red"></i></span></td>
+					<td th:text="${usuario.rol}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<section class="container">
+		<!--Muestro Developer-->
+		<h3 style="text-align: center;">Lista de Developer</h3>
+
+		<table class="table  table-bordered tablas">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre y Apellido</th>
+					<th scope="col">Email</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Foto</th>
+					<th scope="col">Estado</th>
+					<!-- Falta metodo que muestre las tecnologias -->
+					<th scope="col">Tecnologias</th>
+
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody th:each="developer : ${developers}">
+				<tr>
+					<th scope="row" th:text="${developer.id_developer}"></th>
+					<td th:text="${developer.nombre}+ ' ' + ${developer.apellido}"></td>
+					<td th:text="${developer.usuario.email}"></td>
+					<td th:text="${developer.telefono}"></td>
+					<td>
+						<div>
+							<span th:if="${developer.foto} != null"> <img class="integrantes"
+									th:src="${developer.foto.url_foto}" alt=""><br>
+							</span> <span th:if="${developer.foto} == null"> <img class="integrantes"
+									src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png"
+									alt=""></span><br> </span>
+						</div>
+
+					</td>
+					<td><span th:if="${developer.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
+							th:unless="${developer.alta}"><i class="fa fa-circle" style="color: red"></i></span>
+					</td>
+					<td>
+						<span th:each="lenguaje : ${developer.tecnologias}">
+							<span th:text="${lenguaje}"></span>
+
+						</span>
+					</td>
+
+					<td><a th:href="@{/registrodev/editar/__${developer.id_developer}__}"><i class="far fa-edit"
+								style="color: rgb(240, 163, 0);"></i></a></td>
+					<td>
+						<span th:if="${developer.alta}">
+							<a th:href="@{/registrodev/eliminardeveloper/__${developer.id_developer}__}"><i
+									class="fas fa-trash" style="color: red;"></i></a>
+						</span>
+						<span th:unless="${developer.alta}">
+							<a th:href="@{/registrodev/eliminardeveloper/__${developer.id_developer}__}"><i
+									class="fas fa-check" style="color:green"></i></a>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<section class="container">
+		<!-- Muestro ONG-->
+		<h3 style="text-align: center;">Lista de ONG</h3>
+
+		<table class="table table-bordered tablas">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Nombre y Apellido Representante</th>
+					<th scope="col">Email</th>
+
+					<th scope="col">Foto</th>
+					<th scope="col">Estado</th>
+					<th scope="col"> Proyectos </th>
+
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody th:each="ong : ${ongs}">
+				<tr>
+					<th scope="row" th:text="${ong.id_ong}"></th>
+					<td th:text="${ong.marca} "></td>
+					<td th:text="${ong.nombre_rep}+ ' ' + ${ong.apellido_rep}"></td>
+					<td th:text="${ong.usuario.email}"></td>
+
+					<td>
+						<div>
+							<span th:if="${ong.foto} != null"> <img class="integrantes" th:src="${ong.foto.url_foto}"
+									alt="">
+							</span> <span th:if="${ong.foto} == null"> <img class="integrantes"
+									src="https://miro.medium.com/max/720/1*W35QUSvGpcLuxPo3SRTH4w.png" alt="">
+							</span>
+						</div>
+
+					</td>
+					<td><span th:if="${ong.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
+							th:unless="${ong.alta}"><i class="fa fa-circle" style="color: red"></i></span></td>
+					
+					<td><span th:each="proy : ${ong.publicaciones}">
+					<span th:text="${proy.titulo}+' - '"></span>
+					</span> 
+					</td>
+					<td><a th:href="@{/ong/editar/__${ong.id_ong}__}"><i class="far fa-edit"
+								style="color: rgb(240, 163, 0);"></i></a></td>
+					<td>
+					<span th:if="${ong.alta}"><a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-trash"
+								style="color: red;"></i></a></span>
+								
+						<span th:unless="${ong.alta}"><a th:href="@{/ong/eliminarong/__${ong.id_ong}__}"><i class="fas fa-check"
+								style="color: green;"></i></a></span>		
+								</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<section class="container">
+		<!-- Muestro Proyectos -->
+		<h3 style="text-align: center;">Lista de Proyectos</h3>
+
+		<table class="table  table-bordered tablas" >
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Titulo</th>
+					<th scope="col" >Cuerpo</th>
+					<th scope="col">fecha_post</th>
+					<th scope="col">Admitir programador</th>
+					<th scope="col">Estado</th>
+					<!-- Falta metodo que muestre las tecnologias -->
+					<th scope="col">Forzar Inicio</th>
+					<th scope="col">Marca Ong </th>
+					<th scope="col">Participantes </th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody th:each="proyecto : ${proyectos}">
+				<tr>
+					<th scope="row" th:text="${proyecto.id_proyecto}"></th>
+					<td th:text="${proyecto.titulo}"></td>
+					<td th:text="${proyecto.cuerpo}" ></td>
+					<td th:text="${proyecto.fecha_post}"></td>
+					<td >
+					
+					<span th:if="${proyecto.admitir_deve}"><i class="fas fa-thumbs-up " style="color: green"></i> </span> <span
+							th:unless="${proyecto.admitir_deve}"><i class="fas fa-thumbs-down" style="color: red"></i></span>
+					
+					</td>
+					<td><span th:if="${proyecto.alta}"><i class="fa fa-circle " style="color: green"></i> </span> <span
+							th:unless="${proyecto.alta}"><i class="fa fa-circle" style="color: red"></i></span></td>
+
+					<td>
+						<span th:if="${proyecto.admitir_deve}">
+							<a th:href="@{/proyect/forzarInicio/__${proyecto.id_proyecto}__}"><button type="button" class="forzar" >Forzar Inicio</button></a><br>
+						</span>
+						<span th:unless="${proyecto.admitir_deve}">
+							<a th:href="@{/proyect/forzarInicio/__${proyecto.id_proyecto}__}"><button type="button" class="forzar" >Permitir developer</button></a><br>
+						</span>
+					</td>
+					<td th:text="${proyecto.ong.marca}"></td>
+					<td>
+					<span th:each="deve : ${proyecto.developer}"> 
+					<span th:text="${deve.apellido}+','+${deve.nombre}+' - '"></span>
+					</span>
+					</td>
+					<td><a th:href="@{/proyect/editar/__${proyecto.id_proyecto}__}"><i class="far fa-edit"
+								style="color: rgb(240, 163, 0);"></i></a></td>
+
+
+					<td>
+					<span th:if="${proyecto.alta}"><a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-trash"
+								style="color: red;"></i></a></span>
+					<span th:unless="${proyecto.alta}"><a th:href="@{/proyect/eliminarproyecto/__${proyecto.id_proyecto}__}"><i class="fas fa-check"
+								style="color: green;"></i></a></span>			
+								</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+
+
+	<footer>
+		Contacto: <a href= "https://www.instagram.com/programandocomunidades/?utm_medium=copy_link" target="_blank"><i class="fab fa-instagram"></i> </a><i class="fab fa-facebook"></i>
+		<i class="fab fa-linkedin"></i>
+
+	</footer>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

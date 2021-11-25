@@ -1,0 +1,126 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: "1 2 3";
+    grid-gap: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #004d40;
+    text-align: center;
+    padding: auto;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+
+.descripcion{
+    font-family: "quicksand";
+    font-size:20px; 
+    padding: 10px;
+    text-align: left;
+    padding-left: 20px;
+	text-transform: lowercase;
+	margin-top: 35px;
+
+}
+
+.titulo{
+    font-family: "Poppins";
+    text-align: left;
+    grid-column: 1;
+    padding-left: 20px;
+    font-size: 30px; 
+	margin-top: 15px;
+	text-transform: uppercase;
+}
+
+.titulo-pagina{
+	font-family: "Poppins";
+		text-transform: lowercase;
+		text-transform: capitalize;
+}
+
+
+
+.centrar{
+    grid-column: 1;
+    width: 100%;
+	background-color: #F8FFE5;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+    box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+}
+
+.proyecto{
+	text-align: left;
+	padding: 15px;
+}
+.titulo{
+	font-family: 'Poppins';
+}
+
+.marca{
+	font-family: 'quicksand';
+	text-transform: lowercase;
+	text-transform: capitalize;
+	text-align: left;
+    padding-left: 20px;
+    font-size: 22px;
+	
+}
+
+.fecha{
+	font-family: 'quicksand';
+	text-align: left;
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.cuerpo{
+	font-family: 'quicksand';
+	text-transform: lowercase;
+	text-transform: capitalize;
+	font-size: 15px;
+	text-align: left;
+    padding-left: 20px;
+}
+
+.proyecto{
+	margin: auto;
+	text-align:center;
+	
+}

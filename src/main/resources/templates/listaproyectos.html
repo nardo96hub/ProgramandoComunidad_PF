@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+
+  <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <title>Programando Comunidades</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/listaproyecto.css" />
+</head>
+
+<body>
+   <nav class="barra">
+     <a href="/principal"> <img src="/img/logo.png" alt="logo" class="logo"></a>
+
+     <a href="/principal"> <button class="ingresar">Volver</button></a>
+    </nav><br>
+        <h1 class="titulo-pagina" style="text-align:center">Proyectos disponibles</h1><br>
+        <form th:action="@{/proyect/proyecto}" method="GET"> 
+      	<div style="text-align: center;">
+      	<input type="text"  name="b" placeholder="Buscar..."><button type="submit" class="boton_buscar">Buscar</button>
+      	<a th:href="@{/proyect/proyecto}"><button type="button" class="boton_activos">Ver Proyectos Activos</button></a>
+      	</div>
+      </form>
+      <div class="conjunto">
+		<div class="proyecto" th:each="proyecto : ${proyectos}">
+
+          <div class="contenedor" >
+       <div class="centrar">
+         	 <h2 class="titulo" th:text="${proyecto.titulo}"></h2>
+<!--              <h2 class="marca" th:text="${proyecto.ong.marca}"></h2> -->
+           	 <h3 class="fecha">Fecha publicacion: <span th:text="${proyecto.fecha_post}"></span></h3>
+             <p class="descripcion" th:text="${proyecto.cuerpo}"></p>
+             <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">Ver mas informacion</a></p>
+        </div>
+
+        </div>
+ </div>
+ </div>
+       <!-- <div class="proyecto" th:each="proyecto : ${proyectos} " style="text-align:center; margin:auto">
+          <div class="contenedor" >
+       <h2 class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat autem atque sunt vel repudiandae labo
+          aliquid iste, laboriosam inventore. Numquam odio inventore doloribus id similique voluptatum cupiditate a vel
+          ducimus.</h2>   
+          <div class="centrar" style="padding: 2px 25px">
+       		<div style="text-align:right"><span>fecha publicacion: </span> <span class="fecha"  th:text="${proyecto.fecha_post}">4/11/2021</span></div>
+             <p> <h2 class="titulo-proyecto" th:text="${proyecto.titulo}">TÍTULO</h2></p>
+             <p> <h2 class="marca" th:text="${proyecto.ong.marca}">Marca</h2></p>
+            
+              <p  class="cuerpo" style="text-align:left" th:text="${proyecto.cuerpo}"></p>
+              <p><a th:href="@{/proyect/proyecto/__${proyecto.id_proyecto}__}">ir a postularse</a></p>
+             <p th:class="(${proyecto.developer = 6}?)" th:style="'border: green solid 5px;'">Cantidad develop</p> 
+            </div>
+        </div>
+ </div>-->
+
+<footer>
+      Contacto:
+      <a href= "https://www.instagram.com/programandocomunidades/?utm_medium=copy_link" target="_blank">
+      <i class="fab fa-instagram fa-2x"></i></a>
+      <i class="fab fa-facebook fa-2x"></i>
+      <i class="fab fa-linkedin fa-2x"></i>
+    </footer>
+  
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

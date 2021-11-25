@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.contenedor {
+	display: grid;
+	grid-template-columns: 1fr ;
+	grid-template-columns: "1 2 3";
+	grid-gap: 25px;
+	font-weight: 800;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #004d40;
+	text-align: center;
+	margin: 1 1;
+	padding: auto;
+	  margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    }
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+.centrar {
+  grid-column: 1;
+    width: 100%;
+	background-color: #F8FFE5;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+    box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+   	padding: 30px;
+}
+
+.centrar-baja {
+	grid-column: 2;
+	margin-top: 10px;
+	width: 100%;
+	background-color: #F8FFE5;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom, #D73636, #DE7D7D);
+	border-image-slice: 4;
+	box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+}
+
+.titulo {
+	font-family: "Poppins";
+	text-align: left;
+	grid-column: 1;
+	padding-left: 20px;
+	font-size: 30px;
+	margin-top: 15px;
+	text-transform: uppercase;
+}
+
+.boolean {
+	display: inline;
+}
+
+.baja {
+	width: 100px;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom, #D73636, #DE7D7D);
+	border-image-slice: 4;
+	font-family: 'Quicksand';
+	margin: 20px;
+}
+
+.alta {
+	width: 100px;
+	border: 6px solid transparent;
+	border-image: linear-gradient(to bottom, #7DDE92, #37BBA3);
+	border-image-slice: 4;
+	font-family: 'Quicksand';
+	margin: 20px;
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+	margin-top:25px;
+}
+
+
+.texto{
+	text-align:left;
+	font-family: "Poppins";
+	font-size: 15px;
+}
+
+span{
+	font-family: "Quicksand";
+}

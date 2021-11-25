@@ -1,0 +1,68 @@
+* {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+}
+footer {
+	height: 10vh;
+	width: 100%;
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+}
+.barra {
+	height: 10.5vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+.integrantes {
+	height: 90px;
+	width: 90px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-color: #2ebfa5;
+}
+
+
+.tablas{
+    background: #7dde92; 
+    color: #4e4187;
+}
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+.forzar{
+		background: #3083DC;
+	border-radius: 20px;
+	/*width: 100px;*/
+	padding: 1px 10px;
+	/*float:right;*/
+	/*margin: 20px;*/
+	border: none;
+	font-family: "Poppins";
+	margin-top: 10px;
+	margin-left: 5px;
+	float:left;
+}

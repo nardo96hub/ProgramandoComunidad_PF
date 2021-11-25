@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.barra {
+	height: 11vh;
+	width: 100%;
+	background-color: #2d2d2d;
+	margin: 0;
+	padding: 0;
+}
+.logo  {
+	height: 50px;
+	width: auto;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+.ingresar {
+	background: #7dde92;
+	border-radius: 20px;
+	width: 100px;
+	padding: 2px;
+	float: right;
+	margin: 20px;
+	border: none;
+	font-family: "Poppins";
+}
+
+
+.integrantes{
+	height: 75px;
+	width: 75px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	border: 10px solid;
+	border-image-slice: 1;
+	border-width: 5px;
+	border-color: #2ebfa5;
+	
+	margin:5px;
+	position: relative;
+	float:left;
+}
+.nombre{
+	display: inline-block;
+	font-family: 'Poppins';
+	font-size: 13px;
+	padding-top:0;
+	margin:0;
+	max-width:90px;
+	padding-left: 18px;
+	padding-right: 2px;
+		text-align: center;
+		
+}
+.apellido{
+	padding-top:0;
+	margin:0;
+	display: inline-block;
+	font-family: 'Poppins';
+	font-size: 13px;
+	text-align: center;
+	padding-left: 18px;
+	padding-right: 2px;
+	max-width: 90px;
+}
+.contenedor{
+	position: relative;
+	
+	min-height: 80vh;
+	box-sizing: content-box;
+	/*height: 100%; */
+	background-color: #F8FFE5 ;
+}
+
+.centrar{
+	position: relative;
+	width: 100vh;
+	height: 100%;
+	padding: 2em;
+		box-sizing: content-box;
+	background: rgba(125, 222, 146, 0.3);
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+    border: 6px solid transparent;
+	border-image: linear-gradient(to bottom,#7DDE92 , #37BBA3);
+    border-image-slice: 4;
+	overflow: hidden;
+    box-shadow: 0px -3px 11px 4px rgba(0, 0, 0, 0.11);
+
+}
+
+
+.developer{
+	display:flex !important;
+	margin-left: 20px;
+	flex-wrap: wrap;
+	
+}
+
+.developers{
+	
+	
+	max-width: 80px;
+	flex-wrap: wrap;
+	float: left;
+	box-sizing: content-box;
+	
+}
+
+
+
+figcaption{
+	color:red;
+}
+
+
+
+.boton{
+	float:right;
+	
+	background: #7DDE92;
+	border-radius: 20px;
+	border: none;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	font: 'Poppins';
+	margin-top: 25px;
+    font-family: 'Poppins';
+    transition: all .2s ease-in-out;
+   
+}
+.todo{
+margin-top: 70px;
+ display: flex; 
+width: 100%;
+flex-wrap:wrap;
+position:relative;
+  
+  /* Control de la altura con base en el texto del div*/
+  height: auto;
+  word-wrap: break-word;
+}
+
+footer {
+	height: 10vh;
+	width: 100%;
+
+	
+	background-color: #2ebfa5;
+	position: absolute;
+	padding: 20px;
+	font-family: "Quicksand";
+	font-size: 18px;
+	margin-top:25px;
+}
+
+

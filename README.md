@@ -1,8 +1,8 @@
-   # ProgramandoComunidad_PF
+  # ProgramandoComunidad_PF
 
 <h1 align="center"> PROGRAMANDO COMUNIDADES </h1><br>
 <div align="center" style="text-align: center;">
-<img  align="center" src="https://i.imgur.com/6vEGzb4.png" style="width:250px;height:250px;" ></img>
+<img  align="center" src="https://i.imgur.com/6vEGzb4.png" style="width:300px;height:250px;" ></img>
 </div>
 <br>
 <p align="center">Versión final presentada. </p>
@@ -17,4 +17,6 @@ Lucia Bagnis:  <a href="https://github.com/luciabagnis"><img style="width:15px;h
 Pamela Pacho: <a href="https://github.com/PamelaPacho"><img style="width:15px;height:15px" src="https://i.imgur.com/8gx1i5n.png"></img> </a><br>
 Naiara Belén Roldán: <a href="https://github.com/naiarabelen"><img style="width:15px;height:15px" src="https://i.imgur.com/8gx1i5n.png"></img> </a><br>
 
-<a href="https://www.linkedin.com/posts/naiarabelenroldan_trabajoenequipo-java-html-activity-6869402057825116160-SMJh/" ><h1>Ir a video</h1></a>
+<a href="https://youtu.be/PROXqaZrDrc" ><h1>Ir a video</h1></a>
+
+[![Alt text](https://img.youtube.com/vi/PROXqaZrDrc/0.jpg)](https://www.youtube.com/watch?v=PROXqaZrDrc)

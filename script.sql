@@ -26,4 +26,3 @@ INSERT INTO `comunidad`.`tecnologias` (`id_tecnologia`, `lenguaje`) VALUES ('2',
 select * from comunidad.proyecto;
 UPDATE `comunidad`.`proyecto` SET `admitir_deve` = NOT `admitir_deve`  WHERE (`id_proyecto` = '1');
 
-create database cinyema

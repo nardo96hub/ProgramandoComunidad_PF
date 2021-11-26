@@ -17,6 +17,6 @@ Lucia Bagnis:  <a href="https://github.com/luciabagnis"><img style="width:15px;h
 Pamela Pacho: <a href="https://github.com/PamelaPacho"><img style="width:15px;height:15px" src="https://i.imgur.com/8gx1i5n.png"></img> </a><br>
 Naiara Belén Roldán: <a href="https://github.com/naiarabelen"><img style="width:15px;height:15px" src="https://i.imgur.com/8gx1i5n.png"></img> </a><br>
 
-<a href="https://youtu.be/PROXqaZrDrc" Target="_blank"><h1>Ir a video</h1></a>
+<a href="https://youtu.be/PROXqaZrDrc" target="_blank"><h1>Ir a video</h1></a>
 
 [![Alt text](https://img.youtube.com/vi/PROXqaZrDrc/0.jpg)](https://www.youtube.com/watch?v=PROXqaZrDrc)
